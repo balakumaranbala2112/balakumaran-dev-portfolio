@@ -1,0 +1,196 @@
+/* ==========================
+   FULL CSS RESET
+   Remove all browser default styles
+   100% control for your portfolio
+   ========================== */
+
+/* Box sizing & margin/padding reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  vertical-align: baseline;
+}
+
+/* HTML5 display defaults */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/* Body defaults */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1.5;
+  font-family: sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  background: transparent;
+  color: inherit;
+}
+
+/* Remove default list styles */
+ol,
+ul {
+  list-style: none;
+}
+
+/* Remove default quotes */
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: "";
+}
+
+/* Table reset */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Images and media */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Form elements */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  resize: none;
+}
+
+/* Anchor reset */
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Button reset */
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Fieldset & legend */
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* hr reset */
+hr {
+  border: none;
+  margin: 0;
+  height: 1px;
+  background-color: transparent;
+}
+
+/* Input type reset for checkbox/radio */
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Iframes */
+iframe {
+  border: 0;
+}
+
+/* Details */
+details {
+  display: block;
+}
+
+/* Summary */
+summary {
+  display: list-item;
+}
+
+/* HTML elements that inherit font */
+abbr,
+b,
+strong,
+small,
+sub,
+sup {
+  font-weight: inherit;
+  font-size: inherit;
+  vertical-align: baseline;
+}
+
+/* SVG */
+svg {
+  fill: currentColor;
+}
+
+/* Overflow & scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Utility defaults */
+.hidden {
+  display: none !important;
+}

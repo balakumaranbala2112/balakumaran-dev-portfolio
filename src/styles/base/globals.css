@@ -1,0 +1,41 @@
+/* globals.css */
+body {
+  font-family: var(--font-blog);
+  background-color: var(--bg);
+  color: var(--text);
+
+  /* 38px grid */
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 38px 38px;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+button,
+nav,
+.nav-link {
+  font-family: var(--font-ui);
+}
+
+main {
+  display: block;
+}
+
+section {
+  padding: 48px 0;
+}

@@ -56,73 +56,257 @@ npm install
 ### Project Structure Organization
 
 **Create Directory Structure**
-```
-src/
-├── components/
-│   ├── layout/
-│   │   ├── Navbar.jsx
-│   │   ├── Footer.jsx
-│   │   └── ScrollToTop.jsx
-│   ├── home/
-│   │   ├── Hero.jsx
-│   │   ├── FeaturedProjects.jsx
-│   │   ├── Skills.jsx
-│   │   └── CallToAction.jsx
-│   ├── projects/
-│   │   ├── ProjectCard.jsx
-│   │   ├── ProjectFilter.jsx
-│   │   └── ProjectDetails.jsx
-│   ├── blog/
-│   │   ├── BlogCard.jsx
-│   │   └── BlogPost.jsx
-│   ├── contact/
-│   │   └── ContactForm.jsx
-│   └── common/
-│       ├── Button.jsx
-│       ├── Card.jsx
-│       └── Badge.jsx
-├── pages/
-│   ├── Home.jsx
-│   ├── About.jsx
-│   ├── Projects.jsx
-│   ├── Blog.jsx
-│   └── Contact.jsx
-├── data/
-│   ├── projects.js
-│   ├── blogs.js
-│   ├── skills.js
-│   └── experience.js
-├── styles/
-│   ├── reset.css
-│   ├── variables.css
-│   ├── globals.css
-│   ├── utilities.css
-│   └── components/
-│       ├── navbar.css
-│       ├── footer.css
-│       ├── hero.css
-│       └── ...
-├── assets/
-│   ├── images/
-│   │   ├── projects/
-│   │   ├── profile/
-│   │   └── icons/
-│   └── documents/
-│       └── resume.pdf
-├── hooks/
-│   ├── useIntersectionObserver.js
-│   └── useTheme.js
-├── utils/
-│   ├── constants.js
-│   └── helpers.js
-├── App.jsx
-└── main.jsx
 
-public/
-├── robots.txt
-├── sitemap.xml
-├── favicon.ico
-└── og-image.jpg
+```
+balakumaran-portfolio/
+│
+├── node_modules/
+│
+├── public/
+│   ├── favicon.ico
+│   ├── apple-touch-icon.png
+│   ├── favicon-16x16.png
+│   ├── favicon-32x32.png
+│   ├── robots.txt
+│   ├── sitemap.xml
+│   ├── og-image.jpg
+│   └── manifest.json
+│
+├── src/
+│   │
+│   ├── assets/
+│   │   ├── images/
+│   │   │   ├── profile/
+│   │   │   │   ├── profile-main.webp
+│   │   │   │   ├── profile-main.jpg
+│   │   │   │   ├── profile-about.webp
+│   │   │   │   └── profile-about.jpg
+│   │   │   │
+│   │   │   ├── projects/
+│   │   │   │   ├── ecommerce-main.webp
+│   │   │   │   ├── ecommerce-main.jpg
+│   │   │   │   ├── ecommerce-1.webp
+│   │   │   │   ├── ecommerce-2.webp
+│   │   │   │   ├── ecommerce-3.webp
+│   │   │   │   ├── social-media-main.webp
+│   │   │   │   ├── social-media-main.jpg
+│   │   │   │   ├── portfolio-main.webp
+│   │   │   │   ├── portfolio-main.jpg
+│   │   │   │   ├── task-manager-main.webp
+│   │   │   │   ├── task-manager-main.jpg
+│   │   │   │   ├── weather-app-main.webp
+│   │   │   │   ├── weather-app-main.jpg
+│   │   │   │   ├── blog-platform-main.webp
+│   │   │   │   └── blog-platform-main.jpg
+│   │   │   │
+│   │   │   ├── blog/
+│   │   │   │   ├── mern-tutorial.webp
+│   │   │   │   ├── mern-tutorial.jpg
+│   │   │   │   ├── react-hooks.webp
+│   │   │   │   ├── react-hooks.jpg
+│   │   │   │   ├── nodejs-best-practices.webp
+│   │   │   │   ├── nodejs-best-practices.jpg
+│   │   │   │   ├── mongodb-optimization.webp
+│   │   │   │   └── mongodb-optimization.jpg
+│   │   │   │
+│   │   │   ├── icons/
+│   │   │   │   ├── react.svg
+│   │   │   │   ├── nodejs.svg
+│   │   │   │   ├── mongodb.svg
+│   │   │   │   ├── express.svg
+│   │   │   │   ├── javascript.svg
+│   │   │   │   ├── html.svg
+│   │   │   │   ├── css.svg
+│   │   │   │   ├── tailwind.svg
+│   │   │   │   ├── git.svg
+│   │   │   │   ├── github.svg
+│   │   │   │   ├── vscode.svg
+│   │   │   │   ├── firebase.svg
+│   │   │   │   ├── mysql.svg
+│   │   │   │   └── postgresql.svg
+│   │   │   │
+│   │   │   ├── backgrounds/
+│   │   │   │   ├── hero-pattern.svg
+│   │   │   │   └── grid-pattern.svg
+│   │   │   │
+│   │   │   └── illustrations/
+│   │   │       ├── 404.svg
+│   │   │       ├── empty-state.svg
+│   │   │       └── success.svg
+│   │   │
+│   │   └── documents/
+│   │       └── balakumaran-k-resume.pdf
+│   │
+│   ├── components/
+│   │   │
+│   │   ├── layout/
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   ├── ScrollToTop.jsx
+│   │   │   └── Layout.jsx
+│   │   │
+│   │   ├── home/
+│   │   │   ├── Hero.jsx
+│   │   │   ├── FeaturedProjects.jsx
+│   │   │   ├── Skills.jsx
+│   │   │   ├── CallToAction.jsx
+│   │   │   └── AboutPreview.jsx
+│   │   │
+│   │   ├── projects/
+│   │   │   ├── ProjectCard.jsx
+│   │   │   ├── ProjectFilter.jsx
+│   │   │   ├── ProjectDetails.jsx
+│   │   │   ├── ProjectGallery.jsx
+│   │   │   └── RelatedProjects.jsx
+│   │   │
+│   │   ├── blog/
+│   │   │   ├── BlogCard.jsx
+│   │   │   ├── BlogPost.jsx
+│   │   │   ├── BlogFilter.jsx
+│   │   │   ├── BlogSearch.jsx
+│   │   │   └── FeaturedBlog.jsx
+│   │   │
+│   │   ├── about/
+│   │   │   ├── Timeline.jsx
+│   │   │   ├── TimelineItem.jsx
+│   │   │   ├── EducationCard.jsx
+│   │   │   ├── ExperienceCard.jsx
+│   │   │   ├── CertificationCard.jsx
+│   │   │   └── SkillCard.jsx
+│   │   │
+│   │   ├── contact/
+│   │   │   ├── ContactForm.jsx
+│   │   │   ├── ContactInfo.jsx
+│   │   │   └── SocialLinks.jsx
+│   │   │
+│   │   └── common/
+│   │       ├── Button.jsx
+│   │       ├── Card.jsx
+│   │       ├── Badge.jsx
+│   │       ├── Input.jsx
+│   │       ├── Textarea.jsx
+│   │       ├── Modal.jsx
+│   │       ├── Loader.jsx
+│   │       ├── SkeletonLoader.jsx
+│   │       ├── ErrorBoundary.jsx
+│   │       ├── SEO.jsx
+│   │       └── ThemeToggle.jsx
+│   │
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── About.jsx
+│   │   ├── Projects.jsx
+│   │   ├── ProjectDetailPage.jsx
+│   │   ├── Blog.jsx
+│   │   ├── BlogPostPage.jsx
+│   │   ├── Contact.jsx
+│   │   └── NotFound.jsx
+│   │
+│   ├── data/
+│   │   ├── projects.js
+│   │   ├── blogs.js
+│   │   ├── skills.js
+│   │   ├── experience.js
+│   │   ├── education.js
+│   │   ├── certifications.js
+│   │   ├── socialLinks.js
+│   │   └── siteConfig.js
+│   │
+│   ├── styles/
+│   │   │
+│   │   ├── base/
+│   │   │   ├── reset.css
+│   │   │   ├── variables.css
+│   │   │   ├── globals.css
+│   │   │   ├── typography.css
+│   │   │   └── utilities.css
+│   │   │
+│   │   ├── components/
+│   │   │   ├── navbar.css
+│   │   │   ├── footer.css
+│   │   │   ├── hero.css
+│   │   │   ├── skills.css
+│   │   │   ├── featured-projects.css
+│   │   │   ├── call-to-action.css
+│   │   │   ├── about-preview.css
+│   │   │   ├── project-card.css
+│   │   │   ├── project-filter.css
+│   │   │   ├── project-details.css
+│   │   │   ├── project-gallery.css
+│   │   │   ├── blog-card.css
+│   │   │   ├── blog-post.css
+│   │   │   ├── blog-filter.css
+│   │   │   ├── featured-blog.css
+│   │   │   ├── timeline.css
+│   │   │   ├── education-card.css
+│   │   │   ├── experience-card.css
+│   │   │   ├── certification-card.css
+│   │   │   ├── skill-card.css
+│   │   │   ├── contact-form.css
+│   │   │   ├── contact-info.css
+│   │   │   ├── social-links.css
+│   │   │   ├── button.css
+│   │   │   ├── card.css
+│   │   │   ├── badge.css
+│   │   │   ├── input.css
+│   │   │   ├── textarea.css
+│   │   │   ├── modal.css
+│   │   │   ├── loader.css
+│   │   │   ├── skeleton-loader.css
+│   │   │   ├── theme-toggle.css
+│   │   │   └── scroll-to-top.css
+│   │   │
+│   │   ├── pages/
+│   │   │   ├── home.css
+│   │   │   ├── about.css
+│   │   │   ├── projects.css
+│   │   │   ├── project-detail.css
+│   │   │   ├── blog.css
+│   │   │   ├── blog-post.css
+│   │   │   ├── contact.css
+│   │   │   └── not-found.css
+│   │   │
+│   │   └── themes/
+│   │       ├── light-theme.css
+│   │       └── dark-theme.css
+│   │
+│   ├── hooks/
+│   │   ├── useIntersectionObserver.js
+│   │   ├── useTheme.js
+│   │   ├── useLocalStorage.js
+│   │   ├── useScrollPosition.js
+│   │   ├── useMediaQuery.js
+│   │   ├── useDebounce.js
+│   │   └── useClickOutside.js
+│   │
+│   ├── utils/
+│   │   ├── constants.js
+│   │   ├── helpers.js
+│   │   ├── dateFormatter.js
+│   │   ├── validators.js
+│   │   ├── emailService.js
+│   │   └── analytics.js
+│   │
+│   ├── context/
+│   │   └── ThemeContext.jsx
+│   │
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+│
+├── .env.example
+├── .env.local
+├── .gitignore
+├── .eslintrc.cjs
+├── .prettierrc
+├── index.html
+├── package.json
+├── package-lock.json
+├── vite.config.js
+├── vercel.json
+├── README.md
+├── CHANGELOG.md
+└── LICENSE
 ```
 
 - [ ] Create all directories listed above

@@ -1,0 +1,36 @@
+/* variables.css */
+
+:root {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --grid-line: rgba(0, 0, 0, 0.04);
+
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --accent: #f8fafc;
+
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+
+  --font-body: "Inter", sans-serif;
+  --font-heading: "Poppins", sans-serif;
+  --font-ui: "Montserrat", sans-serif;
+  --font-code: "Poppins", monospace;
+  --font-blog: "Poppins", sans-serif;
+}
+
+/* Dark mode variables */
+body.dark {
+  --bg: #0b0c15;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --border: #1e293b;
+  --grid-line: rgba(255, 255, 255, 0.05);
+  --primary: #3b82f6;
+  --primary-dark: #60a5fa;
+  --accent: #111827;
+  --nav-bg: rgba(11, 12, 21, 0.85);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
