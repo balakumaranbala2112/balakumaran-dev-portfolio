@@ -1,0 +1,128 @@
+/* ============================
+   ABOUT HERO
+============================ */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Image Styling */
+.about-img-wrapper {
+  position: relative;
+  padding: 20px;
+}
+
+.img-frame {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transform: rotate(-3deg);
+  transition: 0.3s ease;
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.img-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Straighten on hover */
+.about-img-wrapper:hover .img-frame {
+  transform: rotate(0deg);
+}
+
+/* Floating Stats Card */
+.floater-card {
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 12px 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 2;
+}
+
+.floater-card i {
+  font-size: 1.4rem;
+  color: var(--primary);
+  background: rgba(37, 99, 235, 0.1);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.floater-card div {
+  display: flex;
+  flex-direction: column;
+}
+
+.floater-card strong {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.floater-card span {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* Content Side */
+.about-content .badge {
+  display: inline-block;
+  padding: 6px 12px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.about-content h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 25px;
+}
+
+.highlight {
+  color: var(--primary);
+}
+
+.lead {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.about-content p {
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-size: 1.05rem;
+}
+
+.signature {
+  font-family: var(--font-code);
+  font-size: 1.2rem;
+  color: var(--primary);
+  margin-top: 30px;
+  font-weight: 700;
+}

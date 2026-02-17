@@ -27,21 +27,24 @@
    HERO CONTENT
    ============================================ */
 
-.hero__content {
+/* .hero__content {
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: flex-start;
   text-align: left;
-}
+} */
 
 /* Intro Badge */
 .hero__intro {
   display: inline-flex;
+  gap: 5px;
   align-items: center;
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--text);
+  padding: 0;
+  margin: 0 0 10px 0;
 }
 
 .hero__highlight {
@@ -56,6 +59,7 @@
   color: var(--text);
   margin: 0;
   letter-spacing: -0.5px;
+  margin-bottom: 30px;
 }
 
 .hero__title-accent {
@@ -75,6 +79,7 @@
   line-height: 1.7;
   margin: 0;
   max-width: 500px;
+  margin-bottom: 30px;
 }
 
 /* ============================================
@@ -140,6 +145,10 @@
 
 .hero__btn--secondary:hover .hero__btn-icon {
   transform: scale(1.1);
+}
+
+.tagline {
+  margin-top: 30px;
 }
 
 /* ============================================

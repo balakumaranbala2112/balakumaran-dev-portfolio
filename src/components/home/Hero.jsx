@@ -1,5 +1,6 @@
 import React from "react";
-import { FaArrowDown, FaGithub } from "react-icons/fa";
+import { FaArrowDown, FaArrowRight, FaGithub } from "react-icons/fa";
+import { HiDocumentDownload } from "react-icons/hi";
 import TerminalHero from "./TerminalHero";
 import "../../styles/components/hero.css";
 import ScrollDown from "./ScrollDown";
@@ -11,17 +12,19 @@ const Hero = () => {
         {/* Left Content */}
         <div className="hero__content">
           <p className="hero__intro">
-            Hi, I'm <span className="hero__highlight">BK 👋</span>
+            HELLO, I'M <div className="hero__highlight"> BK 👋</div>
           </p>
 
           <h1 className="hero__title">
-            Software Engineer & <br />
-            <span className="hero__title-accent">Full-Stack Developer.</span>
+            Full-Stack <br />
+            <span className="hero__title-accent">MERN</span> Developer
           </h1>
 
           <p className="hero__description">
-            Building scalable React apps with reusable components, clean UI
-            architecture, and optimized performance.
+            Building scalable React-based web applications with clean UI
+            architecture and reusable components. Developing secure REST APIs
+            with Node.js/Express, MongoDB integration, and authentication
+            (JWT/Firebase).
           </p>
 
           <div className="hero__actions">
@@ -31,19 +34,23 @@ const Hero = () => {
               rel="noreferrer"
             >
               <span className="hero__btn-text">View Projects</span>
-              <FaArrowDown className="hero__btn-icon" />
+              <FaArrowRight className="hero__btn-icon" />
             </a>
 
             <a
-              href="https://github.com/balakumaranbala2112"
+              href="/projects"
               target="_blank"
               className="hero__btn hero__btn--secondary"
               rel="noreferrer"
             >
-              <span className="hero__btn-text">GitHub</span>
-              <FaGithub className="hero__btn-icon" />
+              <span className="hero__btn-text">RESUME</span>
+              <HiDocumentDownload className="hero__btn-icon" />
             </a>
           </div>
+          <p className="tagline">
+            Building real-world MERN products • Open for Internship / Full-Time
+            Opportunities
+          </p>
         </div>
 
         {/* Right Terminal — hidden on tablet and mobile via CSS */}
