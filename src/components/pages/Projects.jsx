@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaArrowRight, FaGithub } from "react-icons/fa";
 import "../../styles/pages/projects.css";
+import { FaArrowLeft } from "react-icons/fa6";
 
 const projectsData = [
   {
@@ -52,6 +53,48 @@ const projectsData = [
     img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
     link: "/project-details/expense",
   },
+  {
+    id: 8,
+    title: "Expense Tracker",
+    tech: "React • Context API • Charts",
+    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    link: "/project-details/expense",
+  },
+  {
+    id: 9,
+    title: "Expense Tracker",
+    tech: "React • Context API • Charts",
+    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    link: "/project-details/expense",
+  },
+  {
+    id: 10,
+    title: "Expense Tracker",
+    tech: "React • Context API • Charts",
+    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    link: "/project-details/expense",
+  },
+  {
+    id: 11,
+    title: "Expense Tracker",
+    tech: "React • Context API • Charts",
+    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    link: "/project-details/expense",
+  },
+  {
+    id: 12,
+    title: "Expense Tracker",
+    tech: "React • Context API • Charts",
+    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    link: "/project-details/expense",
+  },
+  {
+    id: 13,
+    title: "Expense Tracker",
+    tech: "React • Context API • Charts",
+    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    link: "/project-details/expense",
+  },
 ];
 
 const Projects = () => {
@@ -77,7 +120,7 @@ const Projects = () => {
       <section className="page-header section-pad">
         <div className="container">
           <h1>
-            Selected Works<span className="dot">.</span>
+            Selected Works<div className="dot"></div>
           </h1>
           <p>
             A collection of projects where I’ve focused on engineering
@@ -120,7 +163,7 @@ const Projects = () => {
             disabled={currentPage === 1}
             onClick={() => goToPage(currentPage - 1)}
           >
-            Prev
+            <FaArrowLeft />
           </button>
 
           <div className="page-numbers">
@@ -146,7 +189,7 @@ const Projects = () => {
             disabled={currentPage === totalPages}
             onClick={() => goToPage(currentPage + 1)}
           >
-            Next
+            <FaArrowRight />
           </button>
         </div>
       </section>
