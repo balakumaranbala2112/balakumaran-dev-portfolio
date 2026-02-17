@@ -1,0 +1,267 @@
+/* ============================
+   PAGE HEADER
+============================ */
+
+.page-header h1 {
+  font-size: 3.4rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.page-header p {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 650px;
+  line-height: 1.7;
+}
+
+.page-header .dot {
+  color: var(--primary);
+}
+
+/* ============================
+   GALLERY SECTION
+============================ */
+
+.gallery-section {
+  padding-bottom: 100px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 CARDS */
+  gap: 55px 35px;
+}
+
+/* ============================
+   GALLERY ITEM
+============================ */
+
+.gallery-item {
+  display: block;
+  text-decoration: none;
+}
+
+.image-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  background: var(--border);
+  margin-bottom: 18px;
+  border: 1px solid var(--border);
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hover zoom */
+.gallery-item:hover .image-wrapper img {
+  transform: scale(1.06);
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+
+.view-text {
+  color: white;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  padding: 10px 18px;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  transform: translateY(12px);
+  transition: 0.4s ease;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gallery-item:hover .view-text {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ============================
+   CONTENT BELOW IMAGE
+============================ */
+
+.content-wrapper {
+  padding: 0 5px;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.content-wrapper h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+  transition: 0.25s ease;
+}
+
+.gallery-item:hover h3 {
+  color: var(--primary);
+}
+
+.arrow-icon {
+  font-size: 1.1rem;
+  color: var(--muted);
+  transform: rotate(-45deg);
+  transition: 0.3s ease;
+}
+
+.gallery-item:hover .arrow-icon {
+  transform: rotate(0deg) translateX(5px);
+  color: var(--primary);
+}
+
+.tech-stack {
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* ============================
+   PAGINATION
+============================ */
+
+.pagination {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+.page-btn {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.page-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 10px;
+}
+
+.page-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.page-number:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.page-number.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+/* ============================
+   GITHUB CTA
+============================ */
+
+.github-cta {
+  text-align: center;
+  background: var(--accent);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-top: 60px;
+}
+
+.github-cta h2 {
+  font-size: 2.1rem;
+  font-weight: 900;
+  margin-bottom: 15px;
+  color: var(--text);
+}
+
+.github-cta p {
+  color: var(--muted);
+  margin-bottom: 30px;
+  font-size: 1.05rem;
+}
+
+.github-cta .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width: 1100px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+  }
+}
