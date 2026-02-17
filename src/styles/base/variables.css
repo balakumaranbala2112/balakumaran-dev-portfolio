@@ -19,6 +19,8 @@
   --font-ui: "Montserrat", sans-serif;
   --font-code: "Poppins", monospace;
   --font-blog: "Poppins", sans-serif;
+
+  --container: 1200px;
 }
 
 /* Dark mode variables */

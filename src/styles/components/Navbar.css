@@ -1,0 +1,267 @@
+.nanavbar__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 60px;
+}
+
+.navbar__brand {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  position: relative;
+}
+
+.navbar__brand::after {
+  content: "";
+  display: block;
+  width: 7px;
+  height: 7px;
+  background-color: var(--primary);
+  border-radius: 50%;
+}
+
+.navbar__list {
+  display: inline-flex;
+  gap: 18px;
+}
+
+.navbar__link {
+  color: var(--text);
+}
+
+.navbar__link--active {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.navbar__btn {
+  font-size: 1.2rem;
+}
+
+.navbar__btn--menu {
+  display: none;
+}
+
+.navbar__mobile--active {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.navbar__mobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(360px, 90%);
+  height: 100vh;
+  background: var(--bg);
+  z-index: 1300;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Animation Logic */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(100%);
+  transition:
+    transform 0.3s ease-in-out,
+    opacity 0.3s ease-in-out,
+    visibility 0s 0.3s;
+}
+
+.navbar__mobile--active {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    transform 0.3s ease-in-out,
+    opacity 0.3s ease-in-out,
+    visibility 0s 0s;
+}
+
+/* Mobile Header */
+.navbar__mobile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__mobile-logo {
+  font-size: clamp(1.3rem, 1vw + 0.6rem, 1.4rem);
+  font-weight: 900;
+  margin: 0;
+  color: var(--text);
+}
+
+.navbar__mobile-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Mobile Greeting */
+.navbar__mobile-greeting {
+  text-align: left;
+  padding-top: 20px;
+}
+
+.navbar__mobile-title {
+  font-size: clamp(1.15rem, 1.2vw + 0.8rem, 1.4rem);
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  margin: 0;
+  color: var(--text);
+}
+
+.navbar__mobile-subtitle {
+  margin-top: 4px;
+  font-size: clamp(0.82rem, 0.6vw + 0.7rem, 0.92rem);
+  color: var(--muted);
+}
+
+/* Mobile Navigation */
+.navbar__mobile-nav {
+  flex: 1;
+}
+
+.navbar__mobile-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar__mobile-item {
+  /* Individual mobile nav item */
+}
+
+.navbar__mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-size: clamp(0.9rem, 0.8vw + 0.6rem, 1rem);
+  font-weight: 650;
+  text-decoration: none;
+  color: var(--text);
+  transition: 0.2s ease;
+}
+
+.navbar__mobile-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.navbar__mobile-link--active {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--primary);
+}
+
+.navbar__mobile-icon {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.navbar__mobile-text {
+  /* Mobile link text */
+}
+
+/* Social Links */
+.navbar__social {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+
+.navbar__social-link {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+  transition: 0.2s ease;
+  text-decoration: none;
+}
+
+.navbar__social-link:hover {
+  color: var(--primary);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Footer */
+.navbar__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: clamp(0.75rem, 0.5vw + 0.65rem, 0.85rem);
+  color: var(--muted);
+  margin: 0;
+  text-align: center;
+}
+
+/* Backdrop */
+.navbar__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1299;
+  animation: fadeIn 0.3s ease-in-out;
+  background: rgba(0, 0, 0, 0.4); /* Slightly lower opacity */
+  backdrop-filter: blur(5px); /* This adds the frosted glass effect */
+  -webkit-backdrop-filter: blur(5px); /* Safari support */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar__btn--menu {
+    display: block;
+  }
+
+  .navbar__nav {
+    display: none;
+  }
+
+  .navbar__actions {
+    display: flex;
+    gap: 18px;
+  }
+}
