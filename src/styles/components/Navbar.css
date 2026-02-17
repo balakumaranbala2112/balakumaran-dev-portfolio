@@ -1,4 +1,15 @@
-.nanavbar__container {
+.navbar {
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--bg);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  position: sticky;
+}
+
+.navbar__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,7 +38,7 @@
 
 .navbar__list {
   display: inline-flex;
-  gap: 18px;
+  gap: 28px;
 }
 
 .navbar__link {
@@ -263,5 +274,9 @@
   .navbar__actions {
     display: flex;
     gap: 18px;
+  }
+
+  .navbar__container {
+    padding: 14px 20px;
   }
 }

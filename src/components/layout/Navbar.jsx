@@ -16,7 +16,6 @@ import {
 
 import { IoHomeSharp } from "react-icons/io5";
 import { MdWork, MdContactMail } from "react-icons/md";
-
 import "../../styles/components/Navbar.css";
 
 const NAV_LINKS = [
@@ -72,7 +71,7 @@ const Navbar = () => {
   return (
     <>
       <header className="navbar">
-        <div className="nanavbar__container">
+        <div className="navbar__container">
           {/* LOGO */}
           <NavLink to="/" className="navbar__brand">
             Balakumaran

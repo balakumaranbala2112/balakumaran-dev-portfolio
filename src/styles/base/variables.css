@@ -11,6 +11,9 @@
   --primary-dark: #1e40af;
   --accent: #f8fafc;
 
+  --primary: #3b82f6;
+  --primary-rgb: 59, 130, 246;
+
   --nav-bg: rgba(255, 255, 255, 0.85);
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 

@@ -1,0 +1,237 @@
+/* ============================================
+   HERO — DESKTOP FIRST
+   Base styles = desktop, override for mobile
+   ============================================ */
+
+.hero {
+  min-height: 80dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.hero__container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: clamp(40px, 5vw, 80px);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+/* ============================================
+   HERO CONTENT
+   ============================================ */
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Intro Badge */
+.hero__intro {
+  display: inline-flex;
+  align-items: center;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.hero__highlight {
+  color: var(--primary);
+}
+
+/* Title */
+.hero__title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.hero__title-accent {
+  color: var(--primary);
+  display: inline-block;
+}
+
+.hero__highlight {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Description */
+.hero__description {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 500px;
+}
+
+/* ============================================
+   HERO ACTIONS
+   ============================================ */
+
+.hero__actions {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.hero__btn--primary {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.hero__btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
+}
+
+.hero__btn--secondary {
+  background: var(--bg);
+  color: var(--text);
+  border-color: var(--border);
+  padding-left: 22px;
+  padding-right: 22px;
+}
+
+.hero__btn--secondary:hover {
+  background: var(--bg-secondary);
+  border-color: var(--text);
+  transform: translateY(-2px);
+}
+
+.hero__btn-icon {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.hero__btn--primary:hover .hero__btn-icon {
+  transform: translateY(2px);
+}
+
+.hero__btn--secondary:hover .hero__btn-icon {
+  transform: scale(1.1);
+}
+
+/* ============================================
+   TABLET — max-width: 968px
+   ============================================ */
+
+@media (max-width: 968px) {
+  .hero {
+    padding: 40px 24px 24px 24px;
+    justify-content: flex-start;
+    height: 100%;
+  }
+
+  .hero__container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0;
+  }
+
+  .hero__terminal,
+  .hero__scroll {
+    display: none;
+  }
+
+  .hero__content {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero__description {
+    max-width: 100%;
+  }
+
+  .hero__scroll {
+    margin-top: 16px;
+  }
+}
+
+/* ============================================
+   MOBILE — max-width: 640px
+   ============================================ */
+
+@media (max-width: 640px) {
+  .hero {
+    min-height: 100dvh;
+    padding: 24px 16px 16px 16px;
+    justify-content: flex-start;
+  }
+
+  .hero__container {
+    gap: 24px;
+  }
+
+  .hero__content {
+    gap: 14px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero__intro {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    width: fit-content;
+    text-align: left;
+  }
+
+  .hero__title {
+    font-size: clamp(1.7rem, 7vw, 2.4rem);
+    line-height: 1.2;
+  }
+
+  .hero__description {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    text-align: left;
+    max-width: 100%;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .hero__btn {
+    width: 100%;
+    padding: 11px 18px;
+    font-size: 0.95rem;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+}
