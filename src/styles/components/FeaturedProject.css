@@ -190,6 +190,19 @@
   margin-top: 80px;
 }
 
+.featured__cta a {
+  border: 1px solid var(--muted);
+  color: var(--text+);
+  border-radius: 10px;
+}
+
+.featured__cta a:hover {
+  background: var(--text);
+  color: var(--bg);
+  border: 1px solid var(--muted);
+  border-radius: 10px;
+}
+
 /* ============================================
    RESPONSIVE — TABLET 968px
    ============================================ */
