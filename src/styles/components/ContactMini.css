@@ -1,0 +1,61 @@
+.contactMini {
+  width: 100%;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.contactMini__container {
+  max-width: 650px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contactMini__title {
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.contactMini__text {
+  font-size: 1.05rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.contactMini__btn {
+  display: inline-block;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: #3b82f6;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.contactMini__btn:hover {
+  background: #2563eb;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(59, 130, 246, 0.35);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .contactMini__title {
+    font-size: 1.8rem;
+  }
+
+  .contactMini__text {
+    font-size: 1rem;
+  }
+
+  .contactMini__btn {
+    width: 100%;
+    padding: 14px 0;
+  }
+}
