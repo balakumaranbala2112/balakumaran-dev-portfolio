@@ -1,5 +1,5 @@
 import { FaCloud, FaReact, FaServer } from "react-icons/fa";
-import "./Services.css";
+import "./MyExpertise.css";
 
 const Services = () => {
   const services = [
@@ -31,7 +31,7 @@ const Services = () => {
           <h3>Full Stack & Beyond</h3>
         </div>
 
-        <div className="services-grid">
+        <div className="services">
           {services.map((service, index) => (
             <div className="service-card" key={index}>
               <div className="service-item">

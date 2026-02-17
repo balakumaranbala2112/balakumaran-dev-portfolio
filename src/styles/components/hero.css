@@ -11,6 +11,7 @@
   justify-content: center;
   position: relative;
   overflow-x: hidden;
+  padding: 0;
 }
 
 .hero__container {
@@ -19,7 +20,6 @@
   gap: clamp(40px, 5vw, 80px);
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
   align-items: center;
 }
 
@@ -155,7 +155,6 @@
 
   .hero__container {
     grid-template-columns: 1fr;
-    gap: 40px;
     padding: 0;
   }
 
