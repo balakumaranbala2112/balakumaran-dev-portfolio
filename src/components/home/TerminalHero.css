@@ -11,19 +11,21 @@
   backdrop-filter: blur(12px);
 
   animation: floatTerminal 4s ease-in-out infinite;
-  transition: 0.35s ease;
+  will-change: transform;
 }
 
+/* Floating effect */
 @keyframes floatTerminal {
   0%,
   100% {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
   }
 }
 
+/* Header */
 .terminal-header {
   height: 52px;
   background: rgba(25, 25, 30, 0.95);
@@ -57,22 +59,21 @@
   background: #28c840;
 }
 
+/* Filename */
 .terminal-filename {
   font-size: 0.85rem;
   font-weight: 600;
   font-family: "Fira Code", monospace;
   color: rgba(255, 255, 255, 0.55);
-  white-space: nowrap;
 }
 
+/* Body */
 .terminal-body {
   padding: 18px;
-  min-height: 300px;
-  max-height: 300px;
-
+  height: 300px;
   overflow: hidden;
-  font-family: "Fira Code", monospace;
 
+  font-family: "Fira Code", monospace;
   background: linear-gradient(
     180deg,
     rgba(15, 15, 18, 0.95),
@@ -80,34 +81,33 @@
   );
 }
 
-.terminal-pre {
+/* Prism Reset Scoped */
+.terminal-window pre,
+.terminal-window code {
   margin: 0;
+  padding: 0;
+  background: transparent !important;
+  text-shadow: none !important;
+  font-family: "Fira Code", monospace !important;
   font-size: 0.92rem;
   line-height: 1.65;
-  font-family: "Fira Code", monospace;
-  background: transparent !important;
 }
 
-.terminal-window code {
-  font-family: "Fira Code", monospace !important;
-  background: transparent !important;
+.terminal-window .token {
+  background: none !important;
 }
 
+/* Cursor */
 .cursor {
   display: inline-block;
-  margin-left: 2px;
+  margin-left: 3px;
   color: #ff9f68;
   font-weight: 700;
   animation: blink 0.8s infinite;
 }
 
 @keyframes blink {
-  0%,
   50% {
-    opacity: 1;
-  }
-  51%,
-  100% {
     opacity: 0;
   }
 }

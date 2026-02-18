@@ -2,10 +2,10 @@
   top: 0;
   left: 0;
   width: 100%;
-  background: var(--bg);
+  background: var(--nav-bg);
   z-index: 1000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   position: sticky;
 }
 

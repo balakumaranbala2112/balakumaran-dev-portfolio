@@ -29,7 +29,7 @@ const Timeline = () => {
             <div className="timeline-item" key={index}>
               <div className="timeline-dot"></div>
 
-              <div className="timeline-content">
+              <div className="timeline-content fade-in-up">
                 <span className="timeline-date">{item.date}</span>
                 <h3>{item.title}</h3>
                 <h4>{item.subtitle}</h4>

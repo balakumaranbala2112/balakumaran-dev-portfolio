@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
+import useTheme from "../../hooks/useTheme";
 
 import {
   FaMoon,
@@ -28,6 +29,7 @@ const NAV_LINKS = [
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     if (menuOpen) {
@@ -104,8 +106,9 @@ const Navbar = () => {
               className="navbar__btn navbar__btn--theme"
               aria-label="Toggle Theme"
               type="button"
+              onClick={toggleTheme}
             >
-              <FaMoon />
+              {theme === "dark" ? <FaSun /> : <FaMoon />}
             </button>
 
             <button
@@ -142,8 +145,9 @@ const Navbar = () => {
               className="navbar__btn navbar__btn--theme"
               aria-label="Toggle Theme"
               type="button"
+              onClick={toggleTheme}
             >
-              <FaMoon size={20} />
+              {theme === "dark" ? <FaSun size={20} /> : <FaMoon size={20} />}
             </button>
 
             <button

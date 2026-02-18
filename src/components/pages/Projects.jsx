@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaArrowRight, FaGithub } from "react-icons/fa";
-import "../../styles/pages/projects.css";
 import { FaArrowLeft } from "react-icons/fa6";
+import "../../styles/pages/projects.css";
 
 const projectsData = [
   {
@@ -9,7 +9,7 @@ const projectsData = [
     title: "StudyBuddy.AI",
     tech: "React • Node.js • MongoDB • Socket.io",
     img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
-    link: "/project-details/studybuddy",
+    link: "/case-study/studybuddy",
   },
   {
     id: 2,
@@ -55,63 +55,80 @@ const projectsData = [
   },
   {
     id: 8,
-    title: "Expense Tracker",
-    tech: "React • Context API • Charts",
+    title: "Finance Dashboard",
+    tech: "React • Tailwind • Charts",
     img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
-    link: "/project-details/expense",
+    link: "/project-details/finance",
   },
   {
     id: 9,
-    title: "Expense Tracker",
-    tech: "React • Context API • Charts",
-    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
-    link: "/project-details/expense",
+    title: "Job Portal",
+    tech: "MERN • JWT • Admin Panel",
+    img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80",
+    link: "/project-details/jobportal",
   },
   {
     id: 10,
-    title: "Expense Tracker",
-    tech: "React • Context API • Charts",
-    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
-    link: "/project-details/expense",
+    title: "E-Commerce Store",
+    tech: "React • Firebase • Stripe",
+    img: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=1200&q=80",
+    link: "/project-details/ecommerce",
   },
   {
     id: 11,
-    title: "Expense Tracker",
-    tech: "React • Context API • Charts",
-    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
-    link: "/project-details/expense",
+    title: "AI Notes App",
+    tech: "React • Node.js • OpenAI API",
+    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    link: "/project-details/ainotes",
   },
   {
     id: 12,
-    title: "Expense Tracker",
-    tech: "React • Context API • Charts",
-    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
-    link: "/project-details/expense",
+    title: "Portfolio v2",
+    tech: "React • Animations • UI/UX",
+    img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
+    link: "/project-details/portfolio2",
   },
   {
     id: 13,
-    title: "Expense Tracker",
-    tech: "React • Context API • Charts",
-    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
-    link: "/project-details/expense",
+    title: "Travel Booking",
+    tech: "React • Node.js • MongoDB",
+    img: "https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&w=1200&q=80",
+    link: "/project-details/travel",
   },
 ];
+
+// pagination generator (BEST STYLE)
+const getPagination = (current, total) => {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+
+  if (current <= 3) return [1, 2, 3, 4, "...", total];
+
+  if (current >= total - 2)
+    return [1, "...", total - 3, total - 2, total - 1, total];
+
+  return [1, "...", current - 1, current, current + 1, "...", total];
+};
 
 const Projects = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const projectsPerPage = 6;
-
   const totalPages = Math.ceil(projectsData.length / projectsPerPage);
 
   const startIndex = (currentPage - 1) * projectsPerPage;
-  const endIndex = startIndex + projectsPerPage;
+  const currentProjects = projectsData.slice(
+    startIndex,
+    startIndex + projectsPerPage,
+  );
 
-  const currentProjects = projectsData.slice(startIndex, endIndex);
+  const paginationNumbers = getPagination(currentPage, totalPages);
 
   const goToPage = (page) => {
     if (page < 1 || page > totalPages) return;
     setCurrentPage(page);
+
+    // scroll to top of gallery after clicking pagination
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -120,7 +137,7 @@ const Projects = () => {
       <section className="page-header section-pad">
         <div className="container">
           <h1>
-            Selected Works<div className="dot"></div>
+            Selected Works <span className="dot">.</span>
           </h1>
           <p>
             A collection of projects where I’ve focused on engineering
@@ -157,40 +174,44 @@ const Projects = () => {
         </div>
 
         {/* PAGINATION */}
-        <div className="pagination container">
-          <button
-            className="page-btn"
-            disabled={currentPage === 1}
-            onClick={() => goToPage(currentPage - 1)}
-          >
-            <FaArrowLeft />
-          </button>
+        <div className="pagination-wrap">
+          <div className="pagination container">
+            <button
+              className="page-btn"
+              disabled={currentPage === 1}
+              onClick={() => goToPage(currentPage - 1)}
+            >
+              <FaArrowLeft />
+            </button>
 
-          <div className="page-numbers">
-            {Array.from({ length: totalPages }, (_, index) => {
-              const pageNum = index + 1;
+            <div className="page-numbers">
+              {paginationNumbers.map((item, index) =>
+                item === "..." ? (
+                  <span key={index} className="dots">
+                    ...
+                  </span>
+                ) : (
+                  <button
+                    key={item}
+                    className={`page-number ${
+                      currentPage === item ? "active" : ""
+                    }`}
+                    onClick={() => goToPage(item)}
+                  >
+                    {item}
+                  </button>
+                ),
+              )}
+            </div>
 
-              return (
-                <button
-                  key={pageNum}
-                  className={`page-number ${
-                    currentPage === pageNum ? "active" : ""
-                  }`}
-                  onClick={() => goToPage(pageNum)}
-                >
-                  {pageNum}
-                </button>
-              );
-            })}
+            <button
+              className="page-btn"
+              disabled={currentPage === totalPages}
+              onClick={() => goToPage(currentPage + 1)}
+            >
+              <FaArrowRight />
+            </button>
           </div>
-
-          <button
-            className="page-btn"
-            disabled={currentPage === totalPages}
-            onClick={() => goToPage(currentPage + 1)}
-          >
-            <FaArrowRight />
-          </button>
         </div>
       </section>
 

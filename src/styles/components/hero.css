@@ -1,50 +1,49 @@
 /* ============================================
-   HERO — DESKTOP FIRST
-   Base styles = desktop, override for mobile
-   ============================================ */
+   HERO SECTION — RESPONSIVE + CLEAN
+============================================ */
 
 .hero {
-  min-height: 80dvh;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
+  padding: 80px 20px;
   position: relative;
   overflow-x: hidden;
-  padding: 0;
 }
 
+/* Layout Container */
 .hero__container {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: clamp(40px, 5vw, 80px);
   width: 100%;
   max-width: 1200px;
+
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(32px, 5vw, 80px);
+
   align-items: center;
 }
 
 /* ============================================
-   HERO CONTENT
-   ============================================ */
+   LEFT CONTENT
+============================================ */
 
-/* .hero__content {
+.hero__content {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 18px;
+
   align-items: flex-start;
   text-align: left;
-} */
+}
 
-/* Intro Badge */
+/* Intro */
 .hero__intro {
-  display: inline-flex;
-  gap: 5px;
-  align-items: center;
-  font-size: 1.3rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  color: var(--text);
-  padding: 0;
-  margin: 0 0 10px 0;
+  letter-spacing: 0.5px;
+  margin: 0;
 }
 
 .hero__highlight {
@@ -53,193 +52,220 @@
 
 /* Title */
 .hero__title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2.2rem, 5vw, 3.7rem);
   font-weight: 900;
   line-height: 1.1;
-  color: var(--text);
   margin: 0;
-  letter-spacing: -0.5px;
-  margin-bottom: 30px;
 }
 
 .hero__title-accent {
   color: var(--primary);
-  display: inline-block;
-}
-
-.hero__highlight {
-  color: var(--primary);
-  font-weight: 700;
 }
 
 /* Description */
 .hero__description {
-  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  max-width: 520px;
+  font-size: 1.05rem;
+  line-height: 1.75;
   color: var(--muted);
-  line-height: 1.7;
-  margin: 0;
-  max-width: 500px;
-  margin-bottom: 30px;
 }
 
 /* ============================================
-   HERO ACTIONS
-   ============================================ */
+   BUTTONS
+============================================ */
 
 .hero__actions {
   display: flex;
-  flex-direction: row;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .hero__btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   gap: 8px;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 1rem;
+  padding: 12px 22px;
+
+  border-radius: 10px;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: 2px solid transparent;
+
+  transition: all 0.25s ease;
 }
 
+/* Primary */
 .hero__btn--primary {
   background: var(--text);
   color: var(--bg);
 }
 
 .hero__btn--primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
+  transform: translateY(-3px);
 }
 
+/* Secondary */
 .hero__btn--secondary {
-  background: var(--bg);
+  border: 1px solid var(--border);
   color: var(--text);
-  border-color: var(--border);
-  padding-left: 22px;
-  padding-right: 22px;
+  background: transparent;
 }
 
 .hero__btn--secondary:hover {
-  background: var(--bg-secondary);
-  border-color: var(--text);
-  transform: translateY(-2px);
+  border-color: var(--primary);
+  transform: translateY(-3px);
 }
 
 .hero__btn-icon {
   font-size: 1rem;
-  transition: transform 0.3s ease;
-  flex-shrink: 0;
-}
-
-.hero__btn--primary:hover .hero__btn-icon {
-  transform: translateY(2px);
-}
-
-.hero__btn--secondary:hover .hero__btn-icon {
-  transform: scale(1.1);
-}
-
-.tagline {
-  margin-top: 30px;
 }
 
 /* ============================================
-   TABLET — max-width: 968px
-   ============================================ */
+   FOLLOW ICON ROW (ICON ONLY)
+============================================ */
 
-@media (max-width: 968px) {
-  .hero {
-    padding: 40px 24px 24px 24px;
-    justify-content: flex-start;
-    height: 100%;
-  }
+.hero__follow {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 
+.hero__follow-text {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.hero__socials {
+  display: flex;
+  gap: 12px;
+}
+
+/* Icon Button */
+.hero__social-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+
+  color: var(--primary);
+  font-size: 1.2rem;
+
+  transition: 0.25s ease;
+}
+
+/* Hover Glow */
+.hero__social-icon:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+
+  box-shadow: 0 10px 25px rgba(var(--primary-rgb), 0.25);
+}
+
+.hero__follow-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  opacity: 0.6;
+  max-width: 80px;
+}
+
+.hero__follow-line {
+  flex: 1;
+  height: 1px;
+  max-width: 90px;
+
+  background: linear-gradient(
+    to right,
+    var(--border),
+    rgba(var(--primary-rgb), 0.35),
+    var(--border)
+  );
+}
+
+/* ============================================
+   RIGHT TERMINAL
+============================================ */
+
+.hero__terminal {
+  width: 100%;
+}
+
+/* ============================================
+   SCROLL DOWN
+============================================ */
+
+.hero__scroll {
+  position: absolute;
+  bottom: 25px;
+}
+
+/* ============================================
+   TABLET RESPONSIVE
+============================================ */
+
+@media (max-width: 900px) {
   .hero__container {
     grid-template-columns: 1fr;
-    padding: 0;
+    text-align: center;
   }
 
-  .hero__terminal,
-  .hero__scroll {
+  .hero__content {
+    align-items: center;
+  }
+
+  .hero__description {
+    max-width: 100%;
+  }
+
+  .hero__terminal {
     display: none;
   }
 
-  .hero__content {
-    align-items: flex-start;
-    text-align: left;
-  }
-
-  .hero__description {
-    max-width: 100%;
-  }
-
   .hero__scroll {
-    margin-top: 16px;
+    display: none;
   }
 }
 
 /* ============================================
-   MOBILE — max-width: 640px
-   ============================================ */
+   MOBILE RESPONSIVE
+============================================ */
 
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   .hero {
-    min-height: 100dvh;
-    padding: 24px 16px 16px 16px;
-    justify-content: flex-start;
-  }
-
-  .hero__container {
-    gap: 24px;
-  }
-
-  .hero__content {
-    gap: 14px;
-    align-items: flex-start;
-    text-align: left;
-  }
-
-  .hero__intro {
-    padding: 6px 12px;
-    font-size: 0.9rem;
-    width: fit-content;
-    text-align: left;
-  }
-
-  .hero__title {
-    font-size: clamp(1.7rem, 7vw, 2.4rem);
-    line-height: 1.2;
-  }
-
-  .hero__description {
-    font-size: 0.92rem;
-    line-height: 1.65;
-    text-align: left;
-    max-width: 100%;
+    padding: 60px 16px;
   }
 
   .hero__actions {
     flex-direction: column;
     width: 100%;
-    gap: 10px;
-    margin-top: 4px;
   }
 
   .hero__btn {
     width: 100%;
-    padding: 11px 18px;
-    font-size: 0.95rem;
+    justify-content: center;
   }
 
-  .hero__scroll {
-    display: none;
+  .hero__title {
+    font-size: 2.1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero__follow {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

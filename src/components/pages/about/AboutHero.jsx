@@ -1,5 +1,6 @@
 import "../../../styles/components/AboutHero.css";
 import AboutImg from "../../../assets/images/profile/profile-about.jpeg";
+import { FaCode } from "react-icons/fa";
 
 const AboutHero = () => {
   return (
@@ -12,7 +13,7 @@ const AboutHero = () => {
           </div>
 
           <div className="floater-card">
-            <i className="fa-solid fa-code"></i>
+            <FaCode />
             <div>
               <strong>4+ Years</strong>
               <span>Coding Experience</span>

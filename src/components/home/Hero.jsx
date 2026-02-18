@@ -1,9 +1,14 @@
 import React from "react";
-import { FaArrowDown, FaArrowRight, FaGithub } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import { HiDocumentDownload } from "react-icons/hi";
+import { Link } from "react-router-dom";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+
 import TerminalHero from "./TerminalHero";
-import "../../styles/components/hero.css";
 import ScrollDown from "./ScrollDown";
+
+import "../../styles/components/hero.css";
 
 const Hero = () => {
   return (
@@ -11,55 +16,89 @@ const Hero = () => {
       <div className="hero__container">
         {/* Left Content */}
         <div className="hero__content">
+          {/* Intro */}
           <p className="hero__intro">
-            HELLO, I'M <div className="hero__highlight"> BK 👋</div>
+            HELLO, I'M <span className="hero__highlight">BK 👋</span>
           </p>
 
+          {/* Main Heading */}
           <h1 className="hero__title">
             Full-Stack <br />
             <span className="hero__title-accent">MERN</span> Developer
           </h1>
 
+          {/* Description */}
           <p className="hero__description">
-            Building scalable React-based web applications with clean UI
-            architecture and reusable components. Developing secure REST APIs
-            with Node.js/Express, MongoDB integration, and authentication
-            (JWT/Firebase).
+            I build scalable React web applications with clean UI architecture,
+            reusable components, secure REST APIs, MongoDB integration, and
+            authentication systems (JWT/Firebase).
           </p>
 
+          {/* Buttons */}
           <div className="hero__actions">
-            <a
-              href="/projects"
-              className="hero__btn hero__btn--primary"
-              rel="noreferrer"
-            >
-              <span className="hero__btn-text">View Projects</span>
+            <Link to="/projects" className="hero__btn hero__btn--primary">
+              View Projects
               <FaArrowRight className="hero__btn-icon" />
-            </a>
+            </Link>
 
             <a
-              href="/projects"
+              href="/resume.pdf"
               target="_blank"
-              className="hero__btn hero__btn--secondary"
               rel="noreferrer"
+              className="hero__btn hero__btn--secondary"
             >
-              <span className="hero__btn-text">RESUME</span>
+              Resume
               <HiDocumentDownload className="hero__btn-icon" />
             </a>
           </div>
-          <p className="tagline">
-            Building real-world MERN products • Open for Internship / Full-Time
-            Opportunities
-          </p>
+          {/* Follow Links */}
+          <div className="hero__follow">
+            <span className="hero__follow-text">FOLLOW ME ON</span>
+
+            {/* Straight Line */}
+            <span className="hero__follow-line"></span>
+
+            <div className="hero__socials">
+              <a
+                href="https://github.com/yourusername"
+                target="_blank"
+                rel="noreferrer"
+                className="hero__social-icon"
+                aria-label="GitHub"
+              >
+                <FaGithub />
+              </a>
+
+              <a
+                href="https://twitter.com/yourusername"
+                target="_blank"
+                rel="noreferrer"
+                className="hero__social-icon"
+                aria-label="X"
+              >
+                <FaXTwitter />
+              </a>
+
+              <a
+                href="https://linkedin.com/in/yourusername"
+                target="_blank"
+                rel="noreferrer"
+                className="hero__social-icon"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedinIn />
+              </a>
+            </div>
+          </div>
         </div>
 
-        {/* Right Terminal — hidden on tablet and mobile via CSS */}
+        {/* Right Terminal */}
         <div className="hero__terminal">
           <TerminalHero />
         </div>
       </div>
 
-      {/* ScrollDown — hidden on mobile via CSS */}
+      {/* Scroll */}
       <div className="hero__scroll">
         <ScrollDown />
       </div>

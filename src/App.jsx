@@ -5,8 +5,6 @@ import About from "./components/pages/about/About";
 import Projects from "./components/pages/Projects";
 import Blogs from "./components/pages/Blogs";
 import Contact from "./components/pages/Contact";
-import ProjectDetailPage from "./components/pages/ProjectDetailPage";
-import { useEffect } from "react";
 
 const App = () => {
   return (
@@ -16,7 +14,6 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/projectdetails" element={<ProjectDetailPage />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>

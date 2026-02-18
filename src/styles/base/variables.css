@@ -17,12 +17,6 @@
   --nav-bg: rgba(255, 255, 255, 0.85);
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 
-  --font-body: "Inter", sans-serif;
-  --font-heading: "Poppins", sans-serif;
-  --font-ui: "Montserrat", sans-serif;
-  --font-code: "Poppins", monospace;
-  --font-blog: "Poppins", sans-serif;
-
   --container: 1200px;
 }
 

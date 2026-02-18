@@ -85,10 +85,9 @@ const TerminalHero = () => {
         <pre className="terminal-pre">
           <code
             className="language-javascript"
-            dangerouslySetInnerHTML={{
-              __html: highlightedCode + `<span class="cursor">|</span>`,
-            }}
+            dangerouslySetInnerHTML={{ __html: highlightedCode }}
           />
+          <span className="cursor">|</span>
         </pre>
       </div>
     </div>
