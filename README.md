@@ -1,16 +1,78 @@
-# React + Vite
+# Balakumaran Dev Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
 
-Currently, two official plugins are available:
+![Balakumaran Dev Portfolio](./.github/app.gif)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[![Top Language](https://img.shields.io/github/languages/top/balakumaranbala2112/balakumaran-dev-portfolio?color=56BEB8)](https://github.com/balakumaranbala2112/balakumaran-dev-portfolio)
+[![Language Count](https://img.shields.io/github/languages/count/balakumaranbala2112/balakumaran-dev-portfolio?color=56BEB8)](https://github.com/balakumaranbala2112/balakumaran-dev-portfolio)
+[![Repo Size](https://img.shields.io/github/repo-size/balakumaranbala2112/balakumaran-dev-portfolio?color=56BEB8)](https://github.com/balakumaranbala2112/balakumaran-dev-portfolio)
+[![License](https://img.shields.io/github/license/balakumaranbala2112/balakumaran-dev-portfolio?color=56BEB8)](LICENSE.md)
 
-## React Compiler
+[About](#about) • [Features](#features) • [Technologies](#technologies) • [Requirements](#requirements) • [Getting Started](#getting-started) • [License](#license)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+</div>
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## About
+
+Describe your project.
+
+---
+
+## Features
+
+- ✅ Feature 1
+- ✅ Feature 2
+- ✅ Feature 3
+
+---
+
+## Technologies
+
+The following tools were used in this project:
+
+- [React](https://pt-br.reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [Node.js](https://nodejs.org/en/)
+
+---
+
+## Requirements
+
+Before starting, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+
+---
+
+## Getting Started
+
+```bash
+# Clone this project
+$ git clone https://github.com/balakumaranbala2112/balakumaran-dev-portfolio
+
+# Navigate into the project directory
+$ cd balakumaran-dev-portfolio
+
+# Install dependencies
+$ npm install
+
+# Run the project
+$ npm run dev
+
+# The server will initialize at http://localhost:5173
+```
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
+
+---
+
+Made with ❤️ by [Balakumaran](https://github.com/balakumaranbala2112)
+
+[Back to top](#balakumaran-dev-portfolio)
