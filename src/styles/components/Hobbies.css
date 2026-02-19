@@ -1,14 +1,10 @@
 .hobbies-section {
-  padding: 90px 20px;
+  padding: 60px;
 }
-
-/* ============================
-   HEADER
-============================ */
 
 .hobbies-header {
   text-align: center;
-  /* margin-bottom: 70px; */
+  margin-bottom: 70px;
 }
 
 .hobbies-header h2 {
@@ -20,6 +16,10 @@
   justify-content: center;
   align-items: center;
   gap: 12px;
+}
+
+.hobbies-header h2 svg {
+  color: #facc15;
 }
 
 .hobbies-bulb {
@@ -37,39 +37,23 @@
   margin-inline: auto;
 }
 
-/* ============================
-   GRID LAYOUT
-============================ */
-
 .hobbies-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
 }
 
-/* ============================
-   CARD STYLE
-============================ */
-
 .hobby-card {
   /* Light Mode Card */
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--bg);
   border: 1px solid var(--border);
-
-  border-radius: 16px;
-  padding: 26px 22px;
-
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
-
+  border-radius: 10px;
+  padding: 15px 22px;
   transition: 0.3s ease;
 }
 
 .hobby-card:hover {
-  transform: translateY(-6px);
-
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
-
-  border-color: rgba(var(--primary-rgb), 0.25);
+  transform: translateY(-1px);
 }
 
 body.dark .hobby-card {
@@ -95,29 +79,25 @@ body.dark .hobby-card p {
 
 /* Icon */
 .hobby-icon {
-  font-size: 2.4rem;
+  font-size: 2rem;
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 /* Title */
 .hobby-card h3 {
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   font-weight: 900;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   color: var(--text);
 }
 
 /* Description */
 .hobby-card p {
-  font-size: 0.98rem;
+  font-size: 0.9rem;
   line-height: 1.7;
   color: var(--muted);
 }
-
-/* ============================
-   RESPONSIVE
-============================ */
 
 @media (max-width: 1000px) {
   .hobbies-grid {
@@ -131,10 +111,13 @@ body.dark .hobby-card p {
   }
 
   .hobbies-header h2 {
-    font-size: 2.1rem;
+    flex-direction: column;
+    font-size: 2rem;
+    margin: 0 10px;
   }
 
   .hobby-card {
+    margin: 0 10px;
     padding: 28px 22px;
   }
 }

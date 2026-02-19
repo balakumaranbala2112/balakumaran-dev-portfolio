@@ -9,7 +9,6 @@ const About = () => {
     <>
       <AboutHero />
       <Timeline />
-      <Skills />
       <Hobbies />
     </>
   );

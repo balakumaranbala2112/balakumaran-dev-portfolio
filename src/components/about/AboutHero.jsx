@@ -22,7 +22,7 @@ const AboutHero = () => {
         </div>
 
         {/* RIGHT CONTENT SIDE */}
-        <div className="about-content fade-in-up delay-200">
+        <div className="about-content">
           <div className="badge">Who I am</div>
 
           <h1>

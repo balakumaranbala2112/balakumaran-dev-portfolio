@@ -50,8 +50,8 @@ const hobbiesData = [
 
 const Hobbies = () => {
   return (
-    <section className="hobbies-section section-pad">
-      <div className="container">
+    <section className="hobbies-section">
+      <div className="">
         {/* Title */}
         <div className="hobbies-header">
           <h2>
@@ -68,17 +68,18 @@ const Hobbies = () => {
         </div>
 
         {/* Grid */}
-        {/* <div className="hobbies-grid"> */}
-        {hobbiesData.map((item, index) => (
-          <div key={index} className="hobby-card">
-            <span className="hobby-icon" style={{ color: item.color }}>
-              {item.icon}
-            </span>
+        <div className="hobbies-grid">
+          {hobbiesData.map((item, index) => (
+            <div key={index} className="hobby-card">
+              <span className="hobby-icon" style={{ color: item.color }}>
+                {item.icon}
+              </span>
 
-            <h3>{item.title}</h3>
-            <p>{item.desc}</p>
-          </div>
-        ))}
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

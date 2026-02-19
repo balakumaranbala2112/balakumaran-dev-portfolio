@@ -187,7 +187,7 @@ const skillsGrouped = [
 const Skills = () => {
   return (
     <section className="skills-section section-pad">
-      <div className="container">
+      <div className="skills-tools">
         {/* Title */}
         <div className="section-title">
           <h3 className="section__title-name">
