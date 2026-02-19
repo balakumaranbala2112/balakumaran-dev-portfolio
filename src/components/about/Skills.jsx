@@ -22,7 +22,7 @@ import {
 
 import { TbApi } from "react-icons/tb";
 
-import "../../../styles/components/Skills.css";
+import "@/styles/components/Skills.css";
 
 const skillsGrouped = [
   {

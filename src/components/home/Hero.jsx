@@ -5,10 +5,9 @@ import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
-import TerminalHero from "./TerminalHero";
-import ScrollDown from "./ScrollDown";
+import TerminalHero from "@/components/home/TerminalHero";
 
-import "../../styles/components/hero.css";
+import "@/styles/components/hero.css";
 
 const Hero = () => {
   return (
@@ -96,11 +95,6 @@ const Hero = () => {
         <div className="hero__terminal">
           <TerminalHero />
         </div>
-      </div>
-
-      {/* Scroll */}
-      <div className="hero__scroll">
-        <ScrollDown />
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import "../../styles/components/ContactMini.css";
+import "@/styles/components/ContactMini.css";
 const ContactMini = () => {
   return (
     <section id="contact" className="contactMini">

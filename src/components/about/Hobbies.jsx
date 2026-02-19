@@ -7,7 +7,7 @@ import {
   FaPodcast,
 } from "react-icons/fa";
 
-import "../../../styles/components/Hobbies.css";
+import "@/styles/components/Hobbies.css";
 
 const hobbiesData = [
   {
@@ -69,17 +69,16 @@ const Hobbies = () => {
 
         {/* Grid */}
         {/* <div className="hobbies-grid"> */}
-          {hobbiesData.map((item, index) => (
-            <div key={index} className="hobby-card">
-              <span className="hobby-icon" style={{ color: item.color }}>
-                {item.icon}
-              </span>
+        {hobbiesData.map((item, index) => (
+          <div key={index} className="hobby-card">
+            <span className="hobby-icon" style={{ color: item.color }}>
+              {item.icon}
+            </span>
 
-              <h3>{item.title}</h3>
-              <p>{item.desc}</p>
-            </div>
-          ))}
-        </div>
+            <h3>{item.title}</h3>
+            <p>{item.desc}</p>
+          </div>
+        ))}
       </div>
     </section>
   );

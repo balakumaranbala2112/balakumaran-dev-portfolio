@@ -1,5 +1,5 @@
-import "../../styles/components/FeaturedProject.css";
-import campusLink from "../../assets/images/projects/campuslink.png";
+import "@/styles/components/FeaturedProject.css";
+import campusLink from "@/assets/images/projects/campuslink.png";
 import { FaGithub,FaArrowRight } from "react-icons/fa";
 const projects = [
   {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaArrowRight, FaGithub } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa6";
-import "../../styles/pages/projects.css";
+import "@/styles/pages/projects.css";
 
 const projectsData = [
   {

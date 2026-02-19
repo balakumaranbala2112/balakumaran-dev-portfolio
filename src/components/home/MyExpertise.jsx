@@ -1,5 +1,5 @@
 import { FaCloud, FaReact, FaServer } from "react-icons/fa";
-import "./MyExpertise.css";
+import "@/components/home/MyExpertise.css";
 
 const Services = () => {
   const services = [

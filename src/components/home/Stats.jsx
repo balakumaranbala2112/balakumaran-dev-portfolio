@@ -1,4 +1,4 @@
-import "../../styles/components/Stats.css";
+import "@/styles/components/Stats.css";
 import { useEffect, useRef } from "react";
 
 const Stats = () => {

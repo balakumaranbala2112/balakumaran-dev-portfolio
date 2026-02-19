@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
-import useTheme from "../../hooks/useTheme";
+import useTheme from "@/hooks/useTheme";
+import "@/styles/components/Navbar.css";
 
 import {
   FaMoon,
@@ -17,7 +18,6 @@ import {
 
 import { IoHomeSharp } from "react-icons/io5";
 import { MdWork, MdContactMail } from "react-icons/md";
-import "../../styles/components/Navbar.css";
 
 const NAV_LINKS = [
   { name: "Home", path: "/", icon: <IoHomeSharp /> },
@@ -234,5 +234,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-/* --------------------------------------------------------------------- */

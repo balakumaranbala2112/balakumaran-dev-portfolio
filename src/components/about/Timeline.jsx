@@ -1,4 +1,4 @@
-import "../../../styles/components/Timeline.css";
+import "@/styles/components/Timeline.css";
 
 const timelineData = [
   {
