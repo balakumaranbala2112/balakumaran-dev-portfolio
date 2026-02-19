@@ -1,25 +1,36 @@
+/* ============================================
+   NAVBAR BASE
+============================================ */
+
 .navbar {
   top: 0;
   left: 0;
   width: 100%;
-  background: var(--nav-bg);
+  position: sticky;
   z-index: 1000;
+
+  background: var(--nav-bg);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
-  position: sticky;
 }
 
 .navbar__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 14px 60px;
 }
+
+/* ============================================
+   BRAND
+============================================ */
 
 .navbar__brand {
   display: flex;
   align-items: baseline;
   gap: 3px;
+
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--text);
@@ -29,12 +40,15 @@
 
 .navbar__brand::after {
   content: "";
-  display: block;
   width: 7px;
   height: 7px;
   background-color: var(--primary);
   border-radius: 50%;
 }
+
+/* ============================================
+   DESKTOP NAVIGATION
+============================================ */
 
 .navbar__list {
   display: inline-flex;
@@ -43,68 +57,108 @@
 
 .navbar__link {
   color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .navbar__link--active {
   color: var(--primary);
-  font-weight: 500;
+  font-weight: 600;
 }
 
+/* ============================================
+   ACTION BUTTONS (FIXED)
+============================================ */
+
+.navbar__actions {
+  display: flex;
+  gap: 18px;
+}
+
+/* Base button style (NO visibility control here) */
 .navbar__btn {
-  font-size: 1.2rem;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.6rem;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
+.navbar__btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--primary);
+}
+
+/* Hamburger hidden by default (desktop) */
 .navbar__btn--menu {
   display: none;
 }
 
-.navbar__mobile--active {
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  right: 0;
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-  background: var(--bg);
+/* Close button inside sidebar always visible */
+.navbar__btn--close {
+  display: inline-flex;
 }
+
+/* ============================================
+   MOBILE MENU PANEL
+============================================ */
 
 .navbar__mobile {
   position: fixed;
   top: 0;
   right: 0;
+
   width: 100%;
   height: 100vh;
   background: var(--bg);
+
   z-index: 1300;
   padding: 18px 16px;
+
   display: flex;
   flex-direction: column;
   gap: 14px;
+
   overflow-y: auto;
   overflow-x: hidden;
 
-  /* Animation Logic */
+  /* Hidden by default */
   visibility: hidden;
   opacity: 0;
   transform: translateX(-100%);
+
   transition:
     transform 0.3s ease-in-out,
     opacity 0.3s ease-in-out,
     visibility 0s 0.3s;
 }
 
+/* Active */
 .navbar__mobile--active {
   visibility: visible;
   opacity: 1;
   transform: translateX(0);
+
   transition:
     transform 0.3s ease-in-out,
     opacity 0.3s ease-in-out,
     visibility 0s 0s;
 }
 
-/* Mobile Header */
+/* ============================================
+   MOBILE HEADER
+============================================ */
+
 .navbar__mobile-header {
   display: flex;
   justify-content: space-between;
@@ -113,7 +167,7 @@
 }
 
 .navbar__mobile-logo {
-  font-size: clamp(1.6rem, 1vw + 0.6rem, 1.4rem);
+  font-size: clamp(1.4rem, 1vw + 0.8rem, 1.6rem);
   font-weight: 900;
   margin: 0;
   color: var(--text);
@@ -125,7 +179,10 @@
   gap: 16px;
 }
 
-/* Mobile Greeting */
+/* ============================================
+   MOBILE GREETING
+============================================ */
+
 .navbar__mobile-greeting {
   text-align: left;
   padding-top: 28px;
@@ -133,20 +190,21 @@
 }
 
 .navbar__mobile-title {
-  font-size: clamp(1.4rem, 1.2vw + 0.8rem, 1.4rem);
+  font-size: 1.4rem;
   font-weight: 900;
-  letter-spacing: 0.5px;
   margin: 0;
-  color: var(--text);
 }
 
 .navbar__mobile-subtitle {
   margin-top: 4px;
-  font-size: clamp(1rem, 1vw + 1rem, 1rem);
+  font-size: 1rem;
   color: var(--muted);
 }
 
-/* Mobile Navigation */
+/* ============================================
+   MOBILE NAVIGATION LINKS
+============================================ */
+
 .navbar__mobile-nav {
   flex: 1;
 }
@@ -156,6 +214,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+
   padding-left: 18px;
   margin: 0;
 }
@@ -164,12 +223,15 @@
   display: flex;
   align-items: center;
   gap: 10px;
+
   padding: 10px 12px;
   border-radius: 14px;
-  font-size: clamp(0.9rem, 0.8vw + 0.6rem, 1rem);
+
+  font-size: 1rem;
   font-weight: 650;
   text-decoration: none;
   color: var(--text);
+
   transition: 0.2s ease;
 }
 
@@ -185,15 +247,20 @@
 .navbar__mobile-icon {
   width: 34px;
   height: 34px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   font-size: 1.2rem;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.06);
 }
 
-/* Social Links */
+/* ============================================
+   SOCIAL LINKS
+============================================ */
+
 .navbar__social {
   display: flex;
   justify-content: space-evenly;
@@ -205,12 +272,15 @@
   width: 42px;
   height: 42px;
   border-radius: 14px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+
+  font-size: 1.6rem;
   color: var(--text);
   background: rgba(255, 255, 255, 0.06);
+
   transition: 0.2s ease;
   text-decoration: none;
 }
@@ -220,31 +290,40 @@
   background: rgba(255, 255, 255, 0.14);
 }
 
-/* Footer */
+/* ============================================
+   MOBILE FOOTER
+============================================ */
+
 .navbar__footer {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-size: clamp(0.9rem, 0.5vw + 0.65rem, 0.85rem);
+
+  font-size: 0.85rem;
   color: var(--muted);
+
   margin: 0;
   text-align: center;
 }
 
-/* Backdrop */
+/* ============================================
+   BACKDROP
+============================================ */
+
 .navbar__backdrop {
   position: fixed;
   top: 0;
   left: 0;
+
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
+
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+
   z-index: 1299;
   animation: fadeIn 0.3s ease-in-out;
-  background: rgba(0, 0, 0, 0.4); /* Slightly lower opacity */
-  backdrop-filter: blur(5px); /* This adds the frosted glass effect */
-  -webkit-backdrop-filter: blur(5px); /* Safari support */
 }
 
 @keyframes fadeIn {
@@ -256,20 +335,22 @@
   }
 }
 
-@media (max-width: 768px) {
-  .navbar__btn--menu {
-    display: block;
-  }
+/* ============================================
+   RESPONSIVE BREAKPOINT
+============================================ */
 
+@media (max-width: 768px) {
+  /* Hide desktop nav */
   .navbar__nav {
     display: none;
   }
 
-  .navbar__actions {
-    display: flex;
-    gap: 18px;
+  /* Show hamburger */
+  .navbar__btn--menu {
+    display: inline-flex;
   }
 
+  /* Padding adjustment */
   .navbar__container {
     padding: 14px 20px;
   }

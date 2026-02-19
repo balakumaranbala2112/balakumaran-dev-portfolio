@@ -7,17 +7,22 @@ import {
   FaGitAlt,
   FaGithub,
   FaFire,
+  FaFolderOpen,
 } from "react-icons/fa";
 
 import {
+  SiTypescript,
+  SiNextdotjs,
+  SiRedux,
+  SiTailwindcss,
+  SiSass,
+  SiBootstrap,
+  SiMui,
   SiExpress,
   SiMongodb,
+  SiMysql,
   SiPostman,
-  SiRedux,
   SiDocker,
-  SiVercel,
-  SiNetlify,
-  SiRender,
 } from "react-icons/si";
 
 import { TbApi } from "react-icons/tb";
@@ -25,8 +30,11 @@ import { TbApi } from "react-icons/tb";
 import "@/styles/components/Skills.css";
 
 const skillsGrouped = [
+  /* ============================
+     FRONTEND
+  ============================ */
   {
-    category: "Languages & Frontend",
+    category: "Frontend",
     skills: [
       {
         name: "HTML5",
@@ -47,10 +55,22 @@ const skillsGrouped = [
         url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
       },
       {
+        name: "TypeScript",
+        icon: <SiTypescript />,
+        color: "#3178C6",
+        url: "https://www.typescriptlang.org/",
+      },
+      {
         name: "React.js",
         icon: <FaReact />,
         color: "#61DAFB",
         url: "https://react.dev/",
+      },
+      {
+        name: "Next.js",
+        icon: <SiNextdotjs />,
+        color: "#000000",
+        url: "https://nextjs.org/",
       },
       {
         name: "Redux",
@@ -58,9 +78,36 @@ const skillsGrouped = [
         color: "#764ABC",
         url: "https://redux.js.org/",
       },
+      {
+        name: "Tailwind CSS",
+        icon: <SiTailwindcss />,
+        color: "#06B6D4",
+        url: "https://tailwindcss.com/",
+      },
+      {
+        name: "SASS",
+        icon: <SiSass />,
+        color: "#CC6699",
+        url: "https://sass-lang.com/",
+      },
+      {
+        name: "Bootstrap",
+        icon: <SiBootstrap />,
+        color: "#7952B3",
+        url: "https://getbootstrap.com/",
+      },
+      {
+        name: "Material UI",
+        icon: <SiMui />,
+        color: "#007FFF",
+        url: "https://mui.com/",
+      },
     ],
   },
 
+  /* ============================
+     BACKEND & APIs
+  ============================ */
   {
     category: "Backend & APIs",
     skills: [
@@ -85,8 +132,11 @@ const skillsGrouped = [
     ],
   },
 
+  /* ============================
+     DATABASE & TOOLS
+  ============================ */
   {
-    category: "Database & Auth",
+    category: "Database & Tools",
     skills: [
       {
         name: "MongoDB",
@@ -95,17 +145,17 @@ const skillsGrouped = [
         url: "https://www.mongodb.com/",
       },
       {
+        name: "MySQL",
+        icon: <SiMysql />,
+        color: "#4479A1",
+        url: "https://www.mysql.com/",
+      },
+      {
         name: "Firebase",
         icon: <FaFire />,
         color: "#FFCA28",
         url: "https://firebase.google.com/",
       },
-    ],
-  },
-
-  {
-    category: "Tools & DevOps",
-    skills: [
       {
         name: "Git",
         icon: <FaGitAlt />,
@@ -130,24 +180,6 @@ const skillsGrouped = [
         color: "#2496ED",
         url: "https://www.docker.com/",
       },
-      {
-        name: "Vercel",
-        icon: <SiVercel />,
-        color: "#000000",
-        url: "https://vercel.com/",
-      },
-      {
-        name: "Netlify",
-        icon: <SiNetlify />,
-        color: "#00C7B7",
-        url: "https://www.netlify.com/",
-      },
-      {
-        name: "Render",
-        icon: <SiRender />,
-        color: "#4F46E5",
-        url: "https://render.com/",
-      },
     ],
   },
 ];
@@ -157,8 +189,10 @@ const Skills = () => {
     <section className="skills-section section-pad">
       <div className="container">
         {/* Title */}
-        <div className="section-title center">
-          <h3>My Stack</h3>
+        <div className="section-title">
+          <h3 className="section__title-name">
+            <FaFolderOpen /> Skill Stack
+          </h3>
           <h2>Tools & Technologies</h2>
         </div>
 

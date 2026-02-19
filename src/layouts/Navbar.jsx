@@ -117,6 +117,7 @@ const Navbar = () => {
 
           {/* Actions */}
           <div className="navbar__actions">
+            {/* Theme Toggle */}
             <button
               className="navbar__btn navbar__btn--theme"
               aria-label="Toggle Theme"
@@ -126,6 +127,7 @@ const Navbar = () => {
               {theme === "dark" ? <FaSun /> : <FaMoon />}
             </button>
 
+            {/* Hamburger Menu Button (Mobile Only) */}
             <button
               className="navbar__btn navbar__btn--menu"
               onClick={toggleMenu}
@@ -166,7 +168,7 @@ const Navbar = () => {
             </button>
 
             <button
-              className="navbar__btn"
+              className="navbar__btn navbar__btn--close"
               onClick={toggleMenu}
               aria-label="Close Menu"
               type="button"

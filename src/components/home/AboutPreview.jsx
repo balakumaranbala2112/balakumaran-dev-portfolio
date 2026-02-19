@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import AboutImage from "@/assets/images/profile/profile-about.jpeg";
 import "@/styles/components/HomeAbout.css";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaUser } from "react-icons/fa";
 
 const HomeAbout = () => {
   return (
@@ -14,7 +14,10 @@ const HomeAbout = () => {
 
         {/* Right Content */}
         <div className="home-about__content">
-          <h2 className="home-about__title">About Me</h2>
+          <h2 className="home-about__title">
+            <FaUser />
+            About Me
+          </h2>
 
           <p className="home-about__text">
             Final-year CSE student focused on{" "}
