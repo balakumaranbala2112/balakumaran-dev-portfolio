@@ -19,6 +19,7 @@ import {
 import { IoHomeSharp } from "react-icons/io5";
 import { MdWork, MdContactMail } from "react-icons/md";
 
+/* || Navigation Links */
 const NAV_LINKS = [
   { name: "Home", path: "/", icon: <IoHomeSharp /> },
   { name: "About", path: "/about", icon: <FaUserAlt /> },
@@ -27,16 +28,31 @@ const NAV_LINKS = [
   { name: "Contact", path: "/contact", icon: <MdContactMail /> },
 ];
 
+/* || Social Links */
+const SOCIAL_LINKS = [
+  {
+    icon: <FaGithub />,
+    url: "https://github.com/balakumaranbala2112",
+    label: "GitHub",
+  },
+  {
+    icon: <FaLinkedinIn />,
+    url: "https://linkedin.com/in/balakumaran2112",
+    label: "LinkedIn",
+  },
+  {
+    icon: <FaTwitter />,
+    url: "https://twitter.com/",
+    label: "Twitter",
+  },
+];
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = menuOpen ? "hidden" : "auto";
 
     return () => {
       document.body.style.overflow = "auto";
@@ -66,9 +82,8 @@ const Navbar = () => {
     console.log(menuOpen);
   };
 
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
+  const openMenu = () => setMenuOpen(true);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
@@ -193,34 +208,18 @@ const Navbar = () => {
 
         {/* Social Links */}
         <div className="navbar__social">
-          <a
-            href="https://www.github.com/balakumaranbala2112"
-            className="navbar__social-link"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="GitHub"
-          >
-            <FaGithub />
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/balakumaran2112"
-            className="navbar__social-link"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LinkedIn"
-          >
-            <FaLinkedinIn />
-          </a>
-          <a
-            href="#"
-            className="navbar__social-link"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Twitter"
-          >
-            <FaTwitter />
-          </a>
+          {SOCIAL_LINKS.map((social) => (
+            <a
+              key={social.label}
+              href={social.url}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={social.label}
+              className="navbar__social-link"
+            >
+              {social.icon}
+            </a>
+          ))}
         </div>
 
         {/* Footer */}
