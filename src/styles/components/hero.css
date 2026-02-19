@@ -279,7 +279,7 @@
 /* MOBILE ONLY */
 @media (max-width: 768px) {
   .hero {
-    padding: 55px 18px;
+    padding: 40px 18px;
   }
 
   .hero__container {
