@@ -8,6 +8,21 @@ import { FaXTwitter } from "react-icons/fa6";
 import TerminalHero from "@/components/home/TerminalHero";
 import "@/styles/components/Hero.css";
 
+const SOCIAL_LINKS = [
+  {
+    href: "https://github.com/balakumaranbala2112",
+    icon: <FaGithub />,
+  },
+  {
+    href: "https://twitter.com/yourusername",
+    icon: <FaXTwitter />,
+  },
+  {
+    href: "https://linkedin.com/in/yourusername",
+    icon: <FaLinkedinIn />,
+  },
+];
+
 const Hero = () => {
   return (
     <section className="hero">
@@ -39,7 +54,7 @@ const Hero = () => {
               <FaArrowRight className="hero__btn-icon" />
             </Link>
 
-            <a
+            <Link
               href="/resume.pdf"
               target="_blank"
               rel="noreferrer"
@@ -47,7 +62,7 @@ const Hero = () => {
             >
               Resume
               <HiDocumentDownload className="hero__btn-icon" />
-            </a>
+            </Link>
           </div>
           {/* Follow Links */}
           <div className="hero__follow">
@@ -57,35 +72,17 @@ const Hero = () => {
             <span className="hero__follow-line"></span>
 
             <div className="hero__socials">
-              <a
-                href="https://github.com/yourusername"
-                target="_blank"
-                rel="noreferrer"
-                className="hero__social-icon"
-                aria-label="GitHub"
-              >
-                <FaGithub />
-              </a>
-
-              <a
-                href="https://twitter.com/yourusername"
-                target="_blank"
-                rel="noreferrer"
-                className="hero__social-icon"
-                aria-label="X"
-              >
-                <FaXTwitter />
-              </a>
-
-              <a
-                href="https://linkedin.com/in/yourusername"
-                target="_blank"
-                rel="noreferrer"
-                className="hero__social-icon"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedinIn />
-              </a>
+              {SOCIAL_LINKS.map((social) => (
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hero__social-icon"
+                  aria-label="GitHub"
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
         </div>

@@ -10,6 +10,8 @@ import "@/styles/base/utilities.css";
 
 import App from "./App";
 
+
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <App />
