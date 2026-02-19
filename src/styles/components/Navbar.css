@@ -87,7 +87,7 @@
   /* Animation Logic */
   visibility: hidden;
   opacity: 0;
-  transform: translateX(100%);
+  transform: translateX(-100%);
   transition:
     transform 0.3s ease-in-out,
     opacity 0.3s ease-in-out,
@@ -109,6 +109,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 10px;
 }
 
 .navbar__mobile-logo {
@@ -128,6 +129,7 @@
 .navbar__mobile-greeting {
   text-align: left;
   padding-top: 28px;
+  padding-left: 20px;
 }
 
 .navbar__mobile-title {
@@ -154,12 +156,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 0;
+  padding-left: 18px;
   margin: 0;
-}
-
-.navbar__mobile-item {
-  /* Individual mobile nav item */
 }
 
 .navbar__mobile-link {
@@ -195,10 +193,6 @@
   background: rgba(255, 255, 255, 0.06);
 }
 
-.navbar__mobile-text {
-  /* Mobile link text */
-}
-
 /* Social Links */
 .navbar__social {
   display: flex;
@@ -232,7 +226,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-size: clamp(0.75rem, 0.5vw + 0.65rem, 0.85rem);
+  font-size: clamp(0.9rem, 0.5vw + 0.65rem, 0.85rem);
   color: var(--muted);
   margin: 0;
   text-align: center;
