@@ -1,0 +1,34 @@
+import { Link } from "react-router-dom";
+import AboutImage from "@/assets/images/profile/profile-about.jpeg";
+import "@/styles/components/HomeAbout.css";
+import { FaGreaterThan } from "react-icons/fa";
+
+const HomeAbout = () => {
+  return (
+    <section className="home-about">
+      <div className="home-about__container">
+        {/* Left Image */}
+        <div className="home-about__image">
+          <img src={AboutImage} alt="About BK" className="home-about__img" />
+        </div>
+
+        {/* Right Content */}
+        <div className="home-about__content">
+          <h2 className="home-about__title">About Me</h2>
+
+          <p className="home-about__text">
+            Final-year CSE student building scalable MERN web applications with
+            clean UI architecture, secure backend systems, and real-world
+            full-stack project experience.
+          </p>
+
+          <Link to="/about" className="home-about__link">
+            Read More <FaGreaterThan />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HomeAbout;
