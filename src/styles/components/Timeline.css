@@ -1,110 +1,273 @@
+/* ============================================================
+   Timeline.css — 2026 redesign
+   Same class names — no JSX changes needed.
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@300;400;500&display=swap");
+
+/* ── SECTION ─────────────────────────────────────────────── */
 .timeline-section {
+  width: 100%;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
   background: var(--accent);
+  font-family: "DM Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* dot grid */
+.timeline-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 34px 34px;
+  opacity: 0.45;
+  pointer-events: none;
+  mask-image: radial-gradient(
+    ellipse 90% 80% at 50% 50%,
+    black 10%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 90% 80% at 50% 50%,
+    black 10%,
+    transparent 100%
+  );
+}
+
+/* blue ambient glow — top left */
+.timeline-section::after {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.07) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+/* ── SECTION HEADER ──────────────────────────────────────── */
 .section-title {
+  position: relative;
+  z-index: 1;
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 64px;
 }
 
 .section-title h3 {
-  color: var(--primary);
-  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Syne", sans-serif;
+  font-size: 0.7rem;
   font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  color: var(--primary);
+  background: rgba(59, 130, 246, 0.07);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+/* blue dot before eyebrow */
+.section-title h3::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
 }
 
 .section-title h2 {
-  font-size: 2.4rem;
+  font-family: "Syne", sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
   color: var(--text);
+  margin: 0;
 }
 
+/* ── GRID ────────────────────────────────────────────────── */
 .timeline {
-  max-width: 1150px;
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  row-gap: 20px;
-  column-gap: 40px;
+  gap: 20px;
 }
 
+/* ── CARD ────────────────────────────────────────────────── */
 .timeline-content {
+  position: relative;
   background: var(--bg);
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  border-radius: 10px;
-  transition: 0.3s ease;
+  border: 1.5px solid var(--border);
+  border-radius: 18px;
+  padding: 24px 24px 24px 24px;
   display: flex;
   flex-direction: column;
-  padding: 18px 0 18px 18px;
-  gap: 5px;
+  gap: 8px;
+  overflow: hidden;
+  transition:
+    transform 380ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+/* blue top accent stripe — grows in on hover */
+.timeline-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), rgba(59, 130, 246, 0.2));
+  opacity: 0;
+  transition: opacity 260ms ease;
+  border-radius: 18px 18px 0 0;
+}
+
+/* corner glow */
+.timeline-content::after {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.08) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 260ms ease;
+  pointer-events: none;
 }
 
 .timeline-content:hover {
-  transform: translateY(-1px);
+  transform: translateY(-5px);
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow:
+    0 12px 40px rgba(59, 130, 246, 0.14),
+    0 2px 8px rgba(15, 23, 42, 0.06);
 }
 
-/* Degree Title */
-.timeline-content h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin: 0;
-  margin-top: 5px;
+.timeline-content:hover::before,
+.timeline-content:hover::after {
+  opacity: 1;
 }
 
-/* Institute */
-.timeline-content h4 {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--muted);
-}
-
+/* ── DATE + ICON ROW ─────────────────────────────────────── */
 .timeline-dateaicon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timeline-icon {
   display: flex;
-  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.22);
+  color: var(--primary);
+  font-size: 0.82rem;
+  flex-shrink: 0;
+  transition:
+    background 200ms ease,
+    color 200ms ease;
+}
+
+.timeline-content:hover .timeline-icon {
+  background: var(--primary);
+  color: #ffffff;
 }
 
 .timeline-date {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.9rem;
+  font-family: "Syne", sans-serif;
+  font-size: 0.74rem;
   font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: rgba(59, 130, 246, 0.06);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+/* ── DEGREE TITLE ────────────────────────────────────────── */
+.timeline-content h3 {
+  font-family: "Syne", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   color: var(--text);
-  background: transparent;
-  padding: 0;
+  margin: 4px 0 0;
+  line-height: 1.3;
+  transition: color 200ms ease;
+}
+
+.timeline-content:hover h3 {
+  color: var(--primary);
+}
+
+/* ── INSTITUTE ───────────────────────────────────────────── */
+.timeline-content h4 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--muted);
   margin: 0;
 }
 
-/* Tablet */
+/* ── RESPONSIVE ──────────────────────────────────────────── */
 @media (max-width: 950px) {
   .timeline {
     grid-template-columns: 1fr;
-    gap: 28px;
+    max-width: 600px;
+    gap: 16px;
   }
-
-  /* .timeline-content {
-    padding: 22px 22px;
-  } */
 }
 
-/* Mobile */
 @media (max-width: 600px) {
+  .timeline-section {
+    padding: 72px 0;
+  }
+
   .section-title h2 {
     font-size: 1.9rem;
   }
 
+  .timeline-content {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
   .timeline-content h3 {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
-
   .timeline-content h4 {
-    font-size: 0.95rem;
+    font-size: 0.82rem;
   }
-
   .timeline-date {
-    font-size: 0.85rem;
+    font-size: 0.7rem;
   }
 }

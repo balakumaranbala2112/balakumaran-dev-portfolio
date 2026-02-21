@@ -1,40 +1,115 @@
+// src/components/Footer.jsx
+// Full footer — matches the 2026 portfolio aesthetic.
+// Update hrefs, social URLs, and email to your real values.
+
+import { NavLink } from "react-router-dom";
+import {
+  FaGithub,
+  FaLinkedinIn,
+  FaXTwitter,
+  FaArrowUpLong,
+} from "react-icons/fa6";
 import "@/styles/components/Footer.css";
 
-const Footer = () => {
-  return (
-    <footer className="footer" aria-labelledby="footer-heading">
-      {/* SOCIAL + COPYRIGHT */}
-      <div className="footer__bottom">
-        <div className="footer__social" aria-label="Social media links">
-          <a
-            href="https://github.com/"
-            className="footer__social-link"
-            aria-label="GitHub"
-          >
-            {/* GitHub SVG */}
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.1-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.1 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.2 9.2 0 0 1 12 6.8c.85 0 1.7.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.56 1.4.21 2.44.1 2.7.64.72 1.02 1.63 1.02 2.75 0 3.96-2.35 4.84-4.58 5.1.36.32.68.95.68 1.92v2.84c0 .27.18.59.69.48A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z" />
-            </svg>
-          </a>
+const NAV_LINKS = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Projects", path: "/projects" },
+  { name: "Blogs", path: "/blogs" },
+  { name: "Contact", path: "/contact" },
+];
 
-          <a
-            href="https://linkedin.com/"
-            className="footer__social-link"
-            aria-label="LinkedIn"
-          >
-            {/* LinkedIn SVG */}
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24V7.98h5V24H0zm7.5-16h4.78v2.2h.07c.67-1.27 2.3-2.6 4.73-2.6 5.05 0 5.98 3.33 5.98 7.66V24h-5v-6.98c0-1.67-.03-3.82-2.33-3.82-2.34 0-2.7 1.82-2.7 3.7V24h-5V8z" />
-            </svg>
+const SOCIAL_LINKS = [
+  {
+    label: "GitHub",
+    href: "https://github.com/balakumaranbala2112",
+    icon: <FaGithub />,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/yourusername",
+    icon: <FaLinkedinIn />,
+  },
+  {
+    label: "Twitter",
+    href: "https://twitter.com/yourusername",
+    icon: <FaXTwitter />,
+  },
+];
+
+export default function Footer() {
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  return (
+    <footer className="footer">
+      {/* ── TOP RULE ────────────────────────────────────────── */}
+      <div className="footer__rule" aria-hidden="true" />
+
+      <div className="footer__inner">
+        {/* ── LEFT — brand + tagline ───────────────────────── */}
+        <div className="footer__brand-col">
+          <NavLink to="/" className="footer__brand">
+            Balakumaran
+          </NavLink>
+          <p className="footer__tagline">
+            Building scalable web products with
+            <br />
+            clean code and purposeful design.
+          </p>
+          <a href="mailto:balakumaran@example.com" className="footer__email">
+            balakumaran@example.com
           </a>
         </div>
 
+        {/* ── CENTER — nav links ───────────────────────────── */}
+        <nav className="footer__nav" aria-label="Footer navigation">
+          <span className="footer__nav-label">Pages</span>
+          <ul className="footer__nav-list">
+            {NAV_LINKS.map((l) => (
+              <li key={l.path}>
+                <NavLink to={l.path} className="footer__nav-link">
+                  {l.name}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* ── RIGHT — social + scroll-to-top ──────────────── */}
+        <div className="footer__social-col">
+          <span className="footer__nav-label">Connect</span>
+          <div className="footer__socials">
+            {SOCIAL_LINKS.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={s.label}
+                className="footer__social-link"
+              >
+                {s.icon}
+                <span>{s.label}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── BOTTOM BAR ──────────────────────────────────────── */}
+      <div className="footer__bottom">
         <p className="footer__copy">
-          © {new Date().getFullYear()} Balakumaran. All rights reserved.
+          © {new Date().getFullYear()} Balakumaran K. — crafted with care.
         </p>
+        <button
+          className="footer__top-btn"
+          onClick={scrollToTop}
+          aria-label="Back to top"
+        >
+          <FaArrowUpLong />
+          Back to top
+        </button>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

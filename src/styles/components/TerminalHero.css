@@ -1,113 +1,463 @@
-.terminal-window {
-  width: 520px;
+/* ============================================================
+   TerminalHero.css  — 2026 redesign
+   Aesthetic: high-end SaaS IDE shell
+   - Iridescent border via conic-gradient
+   - Per-snippet mesh gradient glow (--glow-color CSS var)
+   - CRT scanline texture overlay
+   - Snippet label switcher strip
+   - VS Code-style line numbers
+   - Bottom status bar
+   ============================================================ */
+
+/* @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap"); */
+
+/* ── WINDOW SHELL ─────────────────────────────────────────── */
+.th-window {
+  width: 560px;
   max-width: 100%;
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
+  position: relative;
 
-  background: rgba(15, 15, 18, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  /* layered dark background */
+  background: #0d0f14;
 
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(12px);
+  /* iridescent border — conic gradient wrapped in padding trick */
+  padding: 1.5px;
+  background-image: conic-gradient(
+    from 180deg at 50% 50%,
+    rgba(59, 130, 246, 0.7) 0deg,
+    rgba(99, 102, 241, 0.5) 72deg,
+    rgba(16, 185, 129, 0.4) 144deg,
+    rgba(59, 130, 246, 0.6) 216deg,
+    rgba(139, 92, 246, 0.5) 288deg,
+    rgba(59, 130, 246, 0.7) 360deg
+  );
 
-  animation: floatTerminal 4s ease-in-out infinite;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 24px 64px rgba(0, 0, 0, 0.7),
+    0 0 40px var(--glow-color, rgba(59, 130, 246, 0.18)),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  animation: thFloat 5s ease-in-out infinite;
   will-change: transform;
+
+  /* CSS custom property set from JSX per snippet */
+  transition:
+    box-shadow 800ms ease,
+    --glow-color 800ms ease;
 }
 
-/* Floating effect */
-@keyframes floatTerminal {
+@keyframes thFloat {
   0%,
   100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
   }
-  50% {
-    transform: translateY(-10px);
+  33% {
+    transform: translateY(-8px) rotate(0.2deg);
+  }
+  66% {
+    transform: translateY(-4px) rotate(-0.15deg);
   }
 }
 
-/* Header */
-.terminal-header {
-  height: 52px;
-  background: rgba(25, 25, 30, 0.95);
+/* inner shell — sits on top of the gradient border */
+.th-window::before {
+  content: "";
+  position: absolute;
+  inset: 1.5px;
+  border-radius: 14.5px;
+  background: #0d0f14;
+  z-index: 0;
+  pointer-events: none;
+}
 
+/* everything above the border */
+.th-window > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── SCANLINES ────────────────────────────────────────────── */
+.th-scanlines {
+  position: absolute;
+  inset: 1.5px;
+  border-radius: 14.5px;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.012) 2px,
+    rgba(255, 255, 255, 0.012) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── MESH GLOW ────────────────────────────────────────────── */
+.th-glow-mesh {
+  position: absolute;
+  inset: 1.5px;
+  border-radius: 14.5px;
+  background:
+    radial-gradient(
+      ellipse 70% 50% at 10% 10%,
+      var(--glow-color, rgba(59, 130, 246, 0.18)) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 90% 80%,
+      rgba(99, 102, 241, 0.1) 0%,
+      transparent 60%
+    );
+  pointer-events: none;
+  z-index: 0;
+  transition: background 800ms ease;
+}
+
+/* ── HEADER ───────────────────────────────────────────────── */
+.th-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
-  padding: 0 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 12px;
+  height: 46px;
+  padding: 0 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  position: relative;
+  z-index: 3;
 }
 
-.terminal-dots {
+/* traffic light dots */
+.th-dots {
   display: flex;
-  gap: 9px;
+  gap: 7px;
+  flex-shrink: 0;
 }
 
-.dot {
-  width: 12px;
-  height: 12px;
+.th-dot {
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
+  position: relative;
 }
 
-.dot.red {
+.th-dot--red {
   background: #ff5f57;
+  box-shadow: 0 0 6px rgba(255, 95, 87, 0.6);
 }
-.dot.yellow {
+.th-dot--yellow {
   background: #febc2e;
+  box-shadow: 0 0 6px rgba(254, 188, 46, 0.5);
 }
-.dot.green {
+.th-dot--green {
   background: #28c840;
+  box-shadow: 0 0 6px rgba(40, 200, 64, 0.5);
 }
 
-/* Filename */
-.terminal-filename {
-  font-size: 0.85rem;
-  font-weight: 600;
-  font-family: "Fira Code", monospace;
-  color: rgba(255, 255, 255, 0.55);
+/* hover — reveal close/min/max icons */
+.th-dot::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+.th-dots:hover .th-dot::after {
+  opacity: 1;
 }
 
-/* Body */
-.terminal-body {
-  padding: 18px;
-  height: 300px;
-  overflow: hidden;
+/* tab */
+.th-tabs {
+  flex: 1;
+  display: flex;
+}
 
-  font-family: "Fira Code", monospace;
+.th-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 6px;
+  letter-spacing: 0.01em;
+}
+
+.th-tab-icon {
+  font-size: 0.7rem;
+  color: rgba(59, 130, 246, 0.8);
+  font-style: normal;
+}
+
+/* right cluster */
+.th-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.th-clock {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.th-snippet-badge {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: rgba(59, 130, 246, 0.9);
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  padding: 2px 8px;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+}
+
+/* ── SNIPPET LABEL BAR ────────────────────────────────────── */
+.th-label-bar {
+  display: flex;
+  gap: 6px;
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  z-index: 3;
+}
+
+.th-snippet-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.28);
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  transition:
+    color 300ms ease,
+    border-color 300ms ease,
+    background 300ms ease;
+  cursor: default;
+  letter-spacing: 0.02em;
+}
+
+.th-snippet-label--active {
+  color: rgba(59, 130, 246, 1);
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.28);
+}
+
+/* ── BODY ─────────────────────────────────────────────────── */
+.th-body {
+  display: flex;
+  height: 280px;
+  overflow: hidden; /* clips the outer shell */
+  position: relative;
+  z-index: 3;
   background: linear-gradient(
     180deg,
-    rgba(15, 15, 18, 0.95),
-    rgba(10, 10, 12, 0.95)
+    rgba(13, 15, 20, 0.6) 0%,
+    rgba(8, 10, 14, 0.8) 100%
   );
 }
 
-/* Prism Reset Scoped */
-.terminal-window pre,
-.terminal-window code {
-  margin: 0;
-  padding: 0;
-  background: transparent !important;
-  text-shadow: none !important;
-  font-family: "Fira Code", monospace !important;
-  font-size: 0.92rem;
-  line-height: 1.65;
+/* LINE NUMBERS */
+.th-line-nums {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+  padding: 16px 10px 16px 14px;
+  min-width: 42px;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  user-select: none;
+  pointer-events: none;
 }
 
-.terminal-window .token {
+.th-line-nums span {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.15);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+}
+
+/* CODE */
+.th-pre {
+  flex: 1;
+  /* width:0 + flex:1 means it fills available space but NEVER pushes parent wider */
+  width: 0;
+  margin: 0;
+  padding: 16px 16px 16px 14px;
+  background: transparent !important;
+  text-shadow: none !important;
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  white-space: pre;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+/* hide scrollbar visually — keep scroll functional */
+.th-pre::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.th-pre {
+  scrollbar-width: none;
+}
+
+.th-pre code {
+  background: transparent !important;
+  text-shadow: none !important;
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* override prism tokens for dark bg */
+.th-window .token.keyword {
+  color: #60a5fa !important;
+}
+.th-window .token.function {
+  color: #34d399 !important;
+}
+.th-window .token.string {
+  color: #fbbf24 !important;
+}
+.th-window .token.number {
+  color: #f472b6 !important;
+}
+.th-window .token.operator {
+  color: #94a3b8 !important;
+}
+.th-window .token.punctuation {
+  color: #64748b !important;
+}
+.th-window .token.comment {
+  color: #475569 !important;
+  font-style: italic;
+}
+.th-window .token.property {
+  color: #a5b4fc !important;
+}
+.th-window .token.boolean {
+  color: #f472b6 !important;
+}
+.th-window .token {
   background: none !important;
 }
 
-/* Cursor */
-.cursor {
+/* CURSOR */
+.th-cursor {
   display: inline-block;
-  margin-left: 3px;
-  color: #ff9f68;
-  font-weight: 700;
-  animation: blink 0.8s infinite;
+  width: 2px;
+  height: 1.1em;
+  background: #3b82f6;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  border-radius: 1px;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.8);
+  animation: thBlink 1s ease-in-out infinite;
 }
 
-@keyframes blink {
-  50% {
+@keyframes thBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  45%,
+  55% {
     opacity: 0;
+  }
+}
+
+/* ── STATUS BAR ───────────────────────────────────────────── */
+.th-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 26px;
+  padding: 0 14px;
+  background: rgba(59, 130, 246, 0.14);
+  border-top: 1px solid rgba(59, 130, 246, 0.2);
+  position: relative;
+  z-index: 3;
+}
+
+.th-status-left,
+.th-status-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.th-statusbar span {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.45);
+  font-variant-numeric: tabular-nums;
+}
+
+.th-status-branch {
+  display: flex !important;
+  align-items: center;
+  gap: 5px;
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.th-status-branch svg {
+  opacity: 0.7;
+}
+
+.th-status-dot {
+  display: inline-block !important;
+  width: 5px !important;
+  height: 5px !important;
+  border-radius: 50% !important;
+  background: #28c840 !important;
+  box-shadow: 0 0 6px rgba(40, 200, 64, 0.7);
+  padding: 0 !important;
+}
+
+.th-status-ready {
+  color: #28c840 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .th-window {
+    width: 100%;
+    border-radius: 12px;
+  }
+  .th-pre {
+    font-size: 0.78rem;
+  }
+  .th-body {
+    height: 240px;
+  }
+  .th-clock {
+    display: none;
+  }
+  .th-label-bar {
+    gap: 4px;
+  }
+  .th-snippet-label {
+    font-size: 0.62rem;
+    padding: 2px 8px;
   }
 }

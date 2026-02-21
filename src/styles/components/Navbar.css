@@ -1,332 +1,176 @@
-/* ============================================
-   NAVBAR BASE
-============================================ */
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap");
 
+/* ── DESKTOP NAVBAR ──────────────────────────────────────── */
 .navbar {
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
-  position: sticky;
   z-index: 1000;
 
-  background: var(--nav-bg);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
+  /* frosted glass */
+  background: rgba(255, 255, 255, 0.72);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+
+  font-family: "DM Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+
+  /* subtle drop shadow */
+  box-shadow:
+    0 1px 0 rgba(15, 23, 42, 0.04),
+    0 4px 16px rgba(15, 23, 42, 0.04);
+
+  transition:
+    background 300ms ease,
+    box-shadow 300ms ease;
 }
 
+body.dark .navbar {
+  background: rgba(11, 12, 21, 0.78);
+  border-bottom-color: rgba(30, 41, 59, 0.8);
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* ── CONTAINER ───────────────────────────────────────────── */
 .navbar__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  padding: 14px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 28px;
 }
 
-/* ============================================
-   BRAND
-============================================ */
-
+/* ── BRAND ───────────────────────────────────────────────── */
 .navbar__brand {
-  display: flex;
-  align-items: baseline;
-  gap: 3px;
-
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-family: "Syne", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   color: var(--text);
   text-decoration: none;
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  transition: color 200ms ease;
 }
 
+/* animated blue dot suffix */
 .navbar__brand::after {
   content: "";
-  width: 7px;
-  height: 7px;
-  background-color: var(--primary);
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+  flex-shrink: 0;
+  transition: transform 380ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* ============================================
-   DESKTOP NAVIGATION
-============================================ */
+.navbar__brand:hover::after {
+  transform: scale(1.5);
+}
 
+/* ── DESKTOP NAV LINKS ───────────────────────────────────── */
 .navbar__list {
   display: inline-flex;
-  gap: 28px;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__item {
+  list-style: none;
 }
 
 .navbar__link {
-  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 100px;
+  font-family: "Syne", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--muted);
   text-decoration: none;
-  font-weight: 500;
+  transition:
+    color 180ms ease,
+    background 180ms ease;
+}
+
+.navbar__link:hover {
+  color: var(--text);
+  background: rgba(59, 130, 246, 0.07);
 }
 
 .navbar__link--active {
   color: var(--primary);
-  font-weight: 600;
+  background: rgba(59, 130, 246, 0.1);
+  font-weight: 700;
 }
 
-/* ============================================
-   ACTION BUTTONS (FIXED)
-============================================ */
-
+/* ── ACTION BUTTONS ──────────────────────────────────────── */
 .navbar__actions {
   display: flex;
-  gap: 18px;
+  align-items: center;
+  gap: 8px;
 }
 
-/* Base button style (NO visibility control here) */
 .navbar__btn {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  font-size: 1.6rem;
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.06);
-
-  border: none;
+  font-size: 1rem;
+  color: var(--muted);
+  background: transparent;
+  border: 1.5px solid var(--border);
   cursor: pointer;
-  transition: 0.2s ease;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 380ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .navbar__btn:hover {
-  background: rgba(255, 255, 255, 0.14);
   color: var(--primary);
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
 }
 
-/* Hamburger hidden by default (desktop) */
+/* hamburger — hidden on desktop */
 .navbar__btn--menu {
   display: none;
 }
 
-/* Close button inside sidebar always visible */
+/* close button inside sidebar — always visible */
 .navbar__btn--close {
   display: inline-flex;
 }
 
-/* ============================================
-   MOBILE MENU PANEL
-============================================ */
-
-.navbar__mobile {
-  position: fixed;
-  top: 0;
-  right: 0;
-
-  width: 100%;
-  height: 100vh;
-  background: var(--bg);
-
-  z-index: 1300;
-  padding: 18px 16px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  /* Hidden by default */
-  visibility: hidden;
-  opacity: 0;
-  transform: translateX(-100%);
-
-  transition:
-    transform 0.3s ease-in-out,
-    opacity 0.3s ease-in-out,
-    visibility 0s 0.3s;
-}
-
-/* Active */
-.navbar__mobile--active {
-  visibility: visible;
-  opacity: 1;
-  transform: translateX(0);
-
-  transition:
-    transform 0.3s ease-in-out,
-    opacity 0.3s ease-in-out,
-    visibility 0s 0s;
-}
-
-/* ============================================
-   MOBILE HEADER
-============================================ */
-
-.navbar__mobile-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 10px;
-}
-
-.navbar__mobile-logo {
-  font-size: clamp(1.4rem, 1vw + 0.8rem, 1.6rem);
-  font-weight: 900;
-  margin: 0;
-  color: var(--text);
-}
-
-.navbar__mobile-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-/* ============================================
-   MOBILE GREETING
-============================================ */
-
-.navbar__mobile-greeting {
-  text-align: left;
-  padding-top: 28px;
-  padding-left: 20px;
-}
-
-.navbar__mobile-title {
-  font-size: 1.4rem;
-  font-weight: 900;
-  margin: 0;
-}
-
-.navbar__mobile-subtitle {
-  margin-top: 4px;
-  font-size: 1rem;
-  color: var(--muted);
-}
-
-/* ============================================
-   MOBILE NAVIGATION LINKS
-============================================ */
-
-.navbar__mobile-nav {
-  flex: 1;
-}
-
-.navbar__mobile-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  padding-left: 18px;
-  margin: 0;
-}
-
-.navbar__mobile-link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  padding: 10px 12px;
-  border-radius: 14px;
-
-  font-size: 1rem;
-  font-weight: 650;
-  text-decoration: none;
-  color: var(--text);
-
-  transition: 0.2s ease;
-}
-
-.navbar__mobile-link:hover {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.navbar__mobile-link--active {
-  background: rgba(255, 255, 255, 0.14);
-  color: var(--primary);
-}
-
-.navbar__mobile-icon {
-  width: 34px;
-  height: 34px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 1.2rem;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-/* ============================================
-   SOCIAL LINKS
-============================================ */
-
-.navbar__social {
-  display: flex;
-  justify-content: space-evenly;
-  gap: 10px;
-  padding-bottom: 20px;
-}
-
-.navbar__social-link {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 1.6rem;
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.06);
-
-  transition: 0.2s ease;
-  text-decoration: none;
-}
-
-.navbar__social-link:hover {
-  color: var(--primary);
-  background: rgba(255, 255, 255, 0.14);
-}
-
-/* ============================================
-   MOBILE FOOTER
-============================================ */
-
-.navbar__footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  font-size: 0.85rem;
-  color: var(--muted);
-
-  margin: 0;
-  text-align: center;
-}
-
-/* ============================================
-   BACKDROP
-============================================ */
-
+/* ── BACKDROP ────────────────────────────────────────────── */
 .navbar__backdrop {
   position: fixed;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100vh;
-
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(5px);
-
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   z-index: 1299;
-  animation: fadeIn 0.3s ease-in-out;
+  animation: nbFadeIn 250ms ease both;
 }
 
-@keyframes fadeIn {
+@keyframes nbFadeIn {
   from {
     opacity: 0;
   }
@@ -335,22 +179,243 @@
   }
 }
 
-/* ============================================
-   RESPONSIVE BREAKPOINT
-============================================ */
+/* ── MOBILE SLIDE PANEL ──────────────────────────────────── */
+.navbar__mobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(360px, 90vw);
+  height: 100dvh;
 
+  background: var(--bg);
+  border-left: 1px solid var(--border);
+  box-shadow: -8px 0 40px rgba(15, 23, 42, 0.14);
+
+  z-index: 1300;
+  padding: 20px 18px 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+
+  /* hidden state */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(100%);
+
+  transition:
+    transform 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 320ms ease,
+    visibility 0s 320ms;
+}
+
+/* slide in from right */
+.navbar__mobile--active {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    transform 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 320ms ease,
+    visibility 0s 0s;
+}
+
+/* ── MOBILE HEADER ───────────────────────────────────────── */
+.navbar__mobile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.navbar__mobile-logo {
+  font-family: "Syne", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0;
+  /* reuse brand dot */
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.navbar__mobile-logo::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+  flex-shrink: 0;
+}
+
+.navbar__mobile-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── MOBILE GREETING ─────────────────────────────────────── */
+.navbar__mobile-greeting {
+  padding: 0 4px;
+  margin-bottom: 24px;
+}
+
+.navbar__mobile-title {
+  font-family: "Syne", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0 0 4px;
+}
+
+.navbar__mobile-subtitle {
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-weight: 300;
+  margin: 0;
+}
+
+/* ── MOBILE NAV LINKS ────────────────────────────────────── */
+.navbar__mobile-nav {
+  flex: 1;
+  margin-bottom: 24px;
+}
+
+.navbar__mobile-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navbar__mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  border-radius: 12px;
+  font-family: "Syne", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--muted);
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    transform 380ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.navbar__mobile-link:hover {
+  color: var(--text);
+  background: rgba(59, 130, 246, 0.06);
+  transform: translateX(4px);
+}
+
+.navbar__mobile-link--active {
+  color: var(--primary);
+  background: rgba(59, 130, 246, 0.1);
+  font-weight: 700;
+}
+
+.navbar__mobile-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  background: rgba(59, 130, 246, 0.07);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  color: var(--primary);
+  flex-shrink: 0;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.navbar__mobile-link--active .navbar__mobile-icon {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.navbar__mobile-link:hover .navbar__mobile-icon {
+  background: rgba(59, 130, 246, 0.14);
+}
+
+.navbar__mobile-text {
+  flex: 1;
+}
+
+/* ── MOBILE SOCIALS ──────────────────────────────────────── */
+.navbar__social {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+  margin-top: 0;
+}
+
+.navbar__social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--muted);
+  background: var(--accent);
+  border: 1.5px solid var(--border);
+  text-decoration: none;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 380ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.navbar__social-link:hover {
+  color: var(--primary);
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.3);
+  transform: translateY(-3px);
+}
+
+/* ── MOBILE FOOTER ───────────────────────────────────────── */
+.navbar__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: var(--subtle, var(--muted));
+  margin: 12px 0 0;
+  opacity: 0.65;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Hide desktop nav */
   .navbar__nav {
     display: none;
   }
-
-  /* Show hamburger */
   .navbar__btn--menu {
     display: inline-flex;
   }
-
-  /* Padding adjustment */
   .navbar__container {
     padding: 14px 20px;
   }
