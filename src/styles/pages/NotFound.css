@@ -1,0 +1,609 @@
+/* ============================================================
+   NotFound.css — 404 page
+   Glitch-terminal aesthetic | blue+white palette
+   Fonts: Syne + DM Sans + JetBrains Mono
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+/* ── PAGE SHELL ──────────────────────────────────────────── */
+.nf-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg, #fff);
+  font-family: "DM Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  padding: 60px 24px;
+}
+
+/* ── DOT GRID ────────────────────────────────────────────── */
+.nf-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    var(--border, #e2e8f0) 1px,
+    transparent 1px
+  );
+  background-size: 34px 34px;
+  opacity: 0.55;
+  pointer-events: none;
+  mask-image: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    black 10%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    black 10%,
+    transparent 100%
+  );
+}
+body.dark .nf-grid {
+  opacity: 0.2;
+}
+
+/* ── BLUE RADIAL GLOW ────────────────────────────────────── */
+.nf-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.08) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+/* ── PARTICLE CANVAS ─────────────────────────────────────── */
+.nf-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ── CONTENT ─────────────────────────────────────────────── */
+.nf-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  max-width: 580px;
+  width: 100%;
+}
+
+/* ════════════════════════════════════════════════════════════
+   GLITCH 404 NUMBER
+════════════════════════════════════════════════════════════ */
+.nf-number-wrap {
+  position: relative;
+  line-height: 1;
+  margin-bottom: -8px;
+  animation: nfUp 600ms ease both;
+}
+
+.nf-number {
+  font-family: "Syne", sans-serif;
+  font-size: clamp(7rem, 22vw, 14rem);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  color: var(--text, #0f172a);
+  display: block;
+  position: relative;
+  user-select: none;
+
+  /* periodic glitch */
+  animation: nfGlitch 4s ease-in-out infinite;
+}
+
+/* glitch — two pseudo layers offset in red/blue */
+.nf-number::before,
+.nf-number::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  pointer-events: none;
+}
+
+.nf-number::before {
+  color: #ef4444;
+  clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%);
+  animation: nfGlitchRed 4s ease-in-out infinite;
+}
+
+.nf-number::after {
+  color: #3b82f6;
+  clip-path: polygon(0 55%, 100% 55%, 100% 70%, 0 70%);
+  animation: nfGlitchBlue 4s ease-in-out infinite;
+}
+
+@keyframes nfGlitch {
+  0%,
+  78%,
+  82%,
+  86%,
+  100% {
+    transform: translate(0);
+  }
+  79% {
+    transform: translate(-3px, 1px) skewX(-1deg);
+  }
+  80% {
+    transform: translate(3px, -1px);
+  }
+  81% {
+    transform: translate(-2px, 2px);
+  }
+  83% {
+    transform: translate(0, 0) skewX(0.5deg);
+  }
+  84% {
+    transform: translate(2px, -1px);
+  }
+  85% {
+    transform: translate(0);
+  }
+}
+
+@keyframes nfGlitchRed {
+  0%,
+  78%,
+  82%,
+  86%,
+  100% {
+    transform: translate(0);
+    opacity: 0;
+  }
+  79% {
+    transform: translate(-4px, 2px);
+    opacity: 0.7;
+  }
+  80% {
+    transform: translate(4px, -2px);
+    opacity: 0.6;
+  }
+  81% {
+    transform: translate(-2px, 0px);
+    opacity: 0.5;
+  }
+  83% {
+    transform: translate(2px, 1px);
+    opacity: 0.4;
+  }
+  85% {
+    transform: translate(0);
+    opacity: 0;
+  }
+}
+
+@keyframes nfGlitchBlue {
+  0%,
+  79%,
+  84%,
+  100% {
+    transform: translate(0);
+    opacity: 0;
+  }
+  80% {
+    transform: translate(5px, 1px);
+    opacity: 0.6;
+  }
+  81% {
+    transform: translate(-3px, -2px);
+    opacity: 0.5;
+  }
+  82% {
+    transform: translate(4px, 0px);
+    opacity: 0.4;
+  }
+  83% {
+    transform: translate(-2px, 2px);
+    opacity: 0.3;
+  }
+  84% {
+    transform: translate(0);
+    opacity: 0;
+  }
+}
+
+/* scan line that sweeps over the number */
+.nf-number-wrap::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(59, 130, 246, 0.55);
+  top: -10%;
+  animation: nfScanline 4s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: 2px;
+  filter: blur(1px);
+}
+
+@keyframes nfScanline {
+  0%,
+  77% {
+    top: -10%;
+    opacity: 0;
+  }
+  78% {
+    opacity: 1;
+  }
+  86% {
+    top: 110%;
+    opacity: 0;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   EYEBROW
+════════════════════════════════════════════════════════════ */
+.nf-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Syne", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  padding: 5px 14px;
+  border-radius: 100px;
+  animation: nfUp 600ms 80ms ease both;
+}
+
+.nf-eyebrow__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ef4444;
+  flex-shrink: 0;
+  animation: nfPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes nfPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.65);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   HEADING
+════════════════════════════════════════════════════════════ */
+.nf-heading {
+  font-family: "Syne", sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: var(--text, #0f172a);
+  margin: 0;
+  animation: nfUp 600ms 160ms ease both;
+}
+
+.nf-heading__accent {
+  color: #3b82f6;
+  position: relative;
+  display: inline-block;
+}
+
+.nf-heading__accent::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, rgba(59, 130, 246, 0.15));
+  border-radius: 2px;
+}
+
+.nf-heading__period {
+  color: #3b82f6;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SUBTITLE
+════════════════════════════════════════════════════════════ */
+.nf-sub {
+  font-size: 1rem;
+  line-height: 1.78;
+  color: var(--muted, #64748b);
+  font-weight: 300;
+  max-width: 420px;
+  margin: 0;
+  animation: nfUp 600ms 220ms ease both;
+}
+
+/* ════════════════════════════════════════════════════════════
+   TERMINAL CARD
+════════════════════════════════════════════════════════════ */
+.nf-terminal {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0d0f14;
+
+  /* iridescent border */
+  padding: 1.5px;
+  background-image: conic-gradient(
+    from 180deg at 50% 50%,
+    rgba(59, 130, 246, 0.7) 0deg,
+    rgba(239, 68, 68, 0.4) 120deg,
+    rgba(59, 130, 246, 0.5) 240deg,
+    rgba(59, 130, 246, 0.7) 360deg
+  );
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 20px 56px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(59, 130, 246, 0.14);
+
+  animation: nfUp 600ms 300ms ease both;
+}
+
+/* inner shell */
+.nf-terminal > * {
+  position: relative;
+}
+.nf-terminal::before {
+  content: "";
+  position: absolute;
+  inset: 1.5px;
+  border-radius: 12.5px;
+  background: #0d0f14;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.nf-terminal__header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 42px;
+  padding: 0 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.nf-terminal__dots {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.nf-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.nf-dot--red {
+  background: #ff5f57;
+  box-shadow: 0 0 5px rgba(255, 95, 87, 0.6);
+}
+.nf-dot--yellow {
+  background: #febc2e;
+  box-shadow: 0 0 5px rgba(254, 188, 46, 0.5);
+}
+.nf-dot--green {
+  background: #28c840;
+  box-shadow: 0 0 5px rgba(40, 200, 64, 0.5);
+}
+
+.nf-terminal__title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.02em;
+}
+
+.nf-terminal__body {
+  position: relative;
+  z-index: 1;
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 110px;
+}
+
+/* lines */
+.nf-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  animation: nfLineFade 200ms ease both;
+}
+
+.nf-line--error {
+  color: #f87171;
+}
+.nf-line--muted {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+@keyframes nfLineFade {
+  from {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* prompt */
+.nf-prompt {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: pre;
+}
+.nf-prompt__user {
+  color: #34d399;
+  font-weight: 700;
+}
+.nf-prompt__sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+.nf-prompt__host {
+  color: #60a5fa;
+  font-weight: 700;
+}
+.nf-prompt__arrow {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.nf-line__text {
+  flex: 1;
+}
+
+/* blinking cursor */
+.nf-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: #3b82f6;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  border-radius: 1px;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.8);
+  animation: nfBlink 1s ease-in-out infinite;
+}
+
+@keyframes nfBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  45%,
+  55% {
+    opacity: 0;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   BUTTONS
+════════════════════════════════════════════════════════════ */
+.nf-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: nfUp 600ms 380ms ease both;
+}
+
+.nf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-family: "Syne", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 260ms ease,
+    color 260ms ease,
+    box-shadow 260ms ease,
+    transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nf-btn--primary {
+  background: #3b82f6;
+  color: #fff;
+}
+.nf-btn--primary:hover {
+  background: #1e40af;
+  box-shadow:
+    0 0 28px rgba(59, 130, 246, 0.4),
+    0 4px 14px rgba(59, 130, 246, 0.25);
+  transform: translateY(-3px);
+}
+
+.nf-btn--secondary {
+  background: rgba(59, 130, 246, 0.07);
+  color: #3b82f6;
+  border: 1.5px solid rgba(59, 130, 246, 0.28);
+}
+.nf-btn--secondary:hover {
+  background: #3b82f6;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* ── ENTRANCE ANIMATION ──────────────────────────────────── */
+@keyframes nfUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 500px) {
+  .nf-page {
+    padding: 40px 18px;
+  }
+  .nf-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .nf-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .nf-terminal__body {
+    padding: 12px 14px 14px;
+  }
+  .nf-line {
+    font-size: 0.72rem;
+  }
+}
