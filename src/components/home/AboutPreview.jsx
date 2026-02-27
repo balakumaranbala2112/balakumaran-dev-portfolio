@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import AboutImage from "@/assets/images/profile/profile-about.jpeg";
 import "@/styles/components/HomeAbout.css";
@@ -7,12 +8,12 @@ const HomeAbout = () => {
   return (
     <section className="home-about">
       <div className="home-about__container">
-        {/* Left Image */}
+        {/* Left — Profile Image */}
         <div className="home-about__image">
           <img src={AboutImage} alt="About BK" className="home-about__img" />
         </div>
 
-        {/* Right Content */}
+        {/* Right — Content */}
         <div className="home-about__content">
           <h2 className="home-about__title">
             <FaUser />
@@ -20,7 +21,7 @@ const HomeAbout = () => {
           </h2>
 
           <p className="home-about__text">
-            Final-year CSE student focused on{" "}
+            Final-year CSE student focused on
             <span className="highlight">modern MERN stack engineering</span>,
             creating responsive React interfaces, secure authentication flows,
             and scalable RESTful backend services. Experienced in building

@@ -1,71 +1,39 @@
-/* ============================================================
-   FeaturedProject.css
-   Editorial-cinematic featured projects section
-   Palette: blue + white (matches your variables.css)
-   ============================================================ */
-
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800;900&family=DM+Sans:wght@300;400;500&display=swap");
-
-/* ── TOKENS ───────────────────────────────────────────────── */
 :root {
-  --fp-bg: #ffffff;
-  --fp-surface: #f8fafc;
-  --fp-blue: #3b82f6;
-  --fp-blue-dark: #1e40af;
-  --fp-blue-glow: rgba(59, 130, 246, 0.14);
-  --fp-blue-rim: rgba(59, 130, 246, 0.25);
-  --fp-blue-soft: rgba(59, 130, 246, 0.07);
-  --fp-text: #0f172a;
-  --fp-muted: #64748b;
-  --fp-subtle: #94a3b8;
-  --fp-border: #e2e8f0;
-  --fp-shadow: 0 4px 32px rgba(15, 23, 42, 0.1);
-  --fp-shadow-hov:
-    0 16px 48px rgba(59, 130, 246, 0.18), 0 4px 16px rgba(15, 23, 42, 0.08);
-  --font-head: "Syne", sans-serif;
-  --font-body: "DM Sans", sans-serif;
   --t-smooth: 360ms cubic-bezier(0.4, 0, 0.2, 1);
   --t-spring: 440ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  --fp-shadow: 0 4px 32px rgba(15, 23, 42, 0.1); /* differs from --shadow-md */
+  --fp-shadow-hov:
+    0 16px 48px rgba(var(--primary-rgb), 0.18),
+    0 4px 16px rgba(15, 23, 42, 0.08);
 }
 
 body.dark {
-  --fp-bg: #0b0c15;
-  --fp-surface: #111827;
-  --fp-blue: #3b82f6;
-  --fp-blue-dark: #60a5fa;
-  --fp-blue-glow: rgba(59, 130, 246, 0.22);
-  --fp-blue-rim: rgba(59, 130, 246, 0.38);
-  --fp-blue-soft: rgba(59, 130, 246, 0.1);
-  --fp-text: #e2e8f0;
-  --fp-muted: #94a3b8;
-  --fp-subtle: #64748b;
-  --fp-border: #1e293b;
   --fp-shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
   --fp-shadow-hov:
-    0 16px 48px rgba(59, 130, 246, 0.22), 0 4px 16px rgba(0, 0, 0, 0.5);
+    0 16px 48px rgba(var(--primary-rgb), 0.22), 0 4px 16px rgba(0, 0, 0, 0.5);
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ════════════════════════════════════════════════════════════════
    SECTION
-════════════════════════════════════════════════════════════ */
+════════════════════════════════════════════════════════════════ */
 .fp-section {
-  background: var(--fp-bg);
+  background: var(--bg); /* was var(--fp-bg) */
   padding: clamp(80px, 10vw, 140px) 0;
-  font-family: var(--font-body);
+  font-family: var(--font-blog); /* was var(--font-body) → "DM Sans" */
   -webkit-font-smoothing: antialiased;
   overflow: hidden;
 }
 
 .fp-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--container); /* was hardcoded 1200px */
   margin-inline: auto;
   padding-inline: 28px;
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ════════════════════════════════════════════════════════════════
    HEADER
-════════════════════════════════════════════════════════════ */
+════════════════════════════════════════════════════════════════ */
 .fp-header {
   margin-bottom: clamp(56px, 8vw, 100px);
 }
@@ -74,16 +42,16 @@ body.dark {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-head);
+  font-family: var(--font-heading); /* was var(--font-head) → "Syne" */
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--fp-blue);
-  background: var(--fp-blue-soft);
-  border: 1px solid var(--fp-blue-rim);
+  color: var(--primary); /* was var(--fp-blue) */
+  background: rgba(var(--primary-rgb), 0.07); /* was var(--fp-blue-soft) */
+  border: 1px solid rgba(var(--primary-rgb), 0.25); /* was var(--fp-blue-rim) */
   padding: 5px 14px;
-  border-radius: 100px;
+  border-radius: var(--radius-full); /* was hardcoded 100px */
   margin-bottom: 20px;
 }
 
@@ -92,20 +60,20 @@ body.dark {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--fp-blue);
+  background: var(--primary); /* was var(--fp-blue) */
 }
 
 .fp-heading {
-  font-family: var(--font-head);
+  font-family: var(--font-heading); /* was var(--font-head) → "Syne" */
   font-size: clamp(2.8rem, 6vw, 3rem);
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.04em;
-  color: var(--fp-text);
+  color: var(--text); /* was var(--fp-text) */
 }
 
 .fp-heading-accent {
-  color: var(--fp-blue);
+  color: var(--primary); /* was var(--fp-blue) */
   position: relative;
   display: inline-block;
 }
@@ -117,13 +85,18 @@ body.dark {
   left: 0;
   width: 100%;
   height: 4px;
-  background: linear-gradient(90deg, var(--fp-blue), rgba(59, 130, 246, 0.15));
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    /* was var(--fp-blue) */ rgba(var(--primary-rgb), 0.15)
+      /* was rgba(59,130,246,0.15) */
+  );
   border-radius: 2px;
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ════════════════════════════════════════════════════════════════
    ROWS — SCROLL REVEAL
-════════════════════════════════════════════════════════════ */
+════════════════════════════════════════════════════════════════ */
 .fp-rows {
   display: flex;
   flex-direction: column;
@@ -136,7 +109,7 @@ body.dark {
   align-items: center;
   gap: clamp(40px, 5vw, 80px);
   position: relative;
-  /* scroll reveal */
+  /* scroll reveal — starts hidden, JS adds fp-row--visible */
   opacity: 0;
   transform: translateY(48px);
   transition:
@@ -157,18 +130,18 @@ body.dark {
   direction: ltr;
 }
 
-/* ── GHOST NUMBER ─────────────────────────────────────────── */
+/* ── GHOST NUMBER ─────────────────────────────────────────────── */
 .fp-ghost-num {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-family: var(--font-head);
+  font-family: var(--font-heading); /* was var(--font-head) → "Syne" */
   font-size: clamp(8rem, 18vw, 18rem);
   font-weight: 900;
   letter-spacing: -0.05em;
   line-height: 1;
-  color: var(--fp-text);
+  color: var(--text); /* was var(--fp-text) */
   opacity: 0.03;
   user-select: none;
   pointer-events: none;
@@ -183,9 +156,9 @@ body.dark .fp-ghost-num {
   opacity: 0.06;
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ════════════════════════════════════════════════════════════════
    IMAGE BLOCK
-════════════════════════════════════════════════════════════ */
+════════════════════════════════════════════════════════════════ */
 .fp-img-block {
   position: relative;
   z-index: 1;
@@ -196,8 +169,8 @@ body.dark .fp-ghost-num {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: var(--fp-shadow);
-  border: 1px solid var(--fp-border);
-  background: var(--fp-surface);
+  border: 1px solid var(--border); /* was var(--fp-border) */
+  background: var(--accent); /* was var(--fp-surface) */
   transition:
     transform var(--t-spring),
     box-shadow var(--t-smooth),
@@ -207,7 +180,7 @@ body.dark .fp-ghost-num {
 .fp-row:hover .fp-img-wrap {
   transform: translateY(-10px) rotate(-0.6deg);
   box-shadow: var(--fp-shadow-hov);
-  border-color: var(--fp-blue-rim);
+  border-color: rgba(var(--primary-rgb), 0.25); /* was var(--fp-blue-rim) */
 }
 
 .fp-row--reverse:hover .fp-img-wrap {
@@ -232,8 +205,8 @@ body.dark .fp-ghost-num {
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(59, 130, 246, 0.1) 0%,
-    transparent 60%
+    rgba(var(--primary-rgb), 0.1) 0%,
+    /* was rgba(59,130,246,0.1) */ transparent 60%
   );
   opacity: 0;
   transition: opacity var(--t-smooth);
@@ -248,19 +221,19 @@ body.dark .fp-ghost-num {
   position: absolute;
   bottom: 16px;
   left: 16px;
-  font-family: var(--font-head);
+  font-family: var(--font-heading); /* was var(--font-head) → "Syne" */
   font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--fp-blue);
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid var(--fp-blue-rim);
+  color: var(--primary); /* was var(--fp-blue) */
+  background: rgba(255, 255, 255, 0.92); /* intentional white glass — kept */
+  border: 1px solid rgba(var(--primary-rgb), 0.25); /* was var(--fp-blue-rim) */
   padding: 5px 12px;
-  border-radius: 100px;
+  border-radius: var(--radius-full); /* was hardcoded 100px */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.1);
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.1); /* dark shadow — kept */
   opacity: 0;
   transform: translateY(8px);
   transition:
@@ -268,16 +241,16 @@ body.dark .fp-ghost-num {
     transform 400ms 200ms ease;
 }
 body.dark .fp-label-badge {
-  background: rgba(17, 24, 39, 0.92);
+  background: rgba(17, 24, 39, 0.92); /* intentional dark glass — kept */
 }
 .fp-row--visible .fp-label-badge {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ════════════════════════════════════════════════════════════════
    CONTENT BLOCK
-════════════════════════════════════════════════════════════ */
+════════════════════════════════════════════════════════════════ */
 .fp-content {
   position: relative;
   z-index: 1;
@@ -290,7 +263,12 @@ body.dark .fp-label-badge {
 .fp-accent-line {
   width: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--fp-blue), rgba(59, 130, 246, 0.15));
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    /* was var(--fp-blue) */ rgba(var(--primary-rgb), 0.15)
+      /* was rgba(59,130,246,0.15) */
+  );
   border-radius: 2px;
   transition: width 500ms cubic-bezier(0.4, 0, 0.2, 1);
   margin-bottom: 4px;
@@ -300,38 +278,38 @@ body.dark .fp-label-badge {
 }
 
 .fp-num-small {
-  font-family: var(--font-head);
+  font-family: var(--font-heading); /* was var(--font-head) → "Syne" */
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--fp-blue);
+  color: var(--primary); /* was var(--fp-blue) */
 }
 
 .fp-title {
-  font-family: var(--font-head);
+  font-family: var(--font-heading); /* was var(--font-head) → "Syne" */
   font-size: clamp(1.6rem, 2.5vw, 2.4rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.1;
-  color: var(--fp-text);
+  color: var(--text); /* was var(--fp-text) */
   margin: 0;
   transition: color var(--t-smooth);
 }
 .fp-row:hover .fp-title {
-  color: var(--fp-blue);
+  color: var(--primary); /* was var(--fp-blue) */
 }
 
 .fp-desc {
   font-size: 1rem;
-  color: var(--fp-muted);
+  color: var(--muted); /* was var(--fp-muted) */
   line-height: 1.8;
   margin: 0;
   font-weight: 300;
   max-width: 520px;
 }
 
-/* TECH TAGS */
+/* ── TECH TAGS ────────────────────────────────────────────────── */
 .fp-tech {
   display: flex;
   flex-wrap: wrap;
@@ -339,24 +317,24 @@ body.dark .fp-label-badge {
 }
 
 .fp-tech-tag {
-  font-family: var(--font-head);
+  font-family: var(--font-heading); /* was var(--font-head) → "Syne" */
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--fp-blue);
-  background: var(--fp-blue-soft);
-  border: 1px solid var(--fp-blue-rim);
+  color: var(--primary); /* was var(--fp-blue) */
+  background: rgba(var(--primary-rgb), 0.07); /* was var(--fp-blue-soft) */
+  border: 1px solid rgba(var(--primary-rgb), 0.25); /* was var(--fp-blue-rim) */
   padding: 4px 12px;
-  border-radius: 100px;
+  border-radius: var(--radius-full); /* was hardcoded 100px */
   transition:
     background 200ms ease,
     color 200ms ease;
 }
 .fp-tech-tag:hover {
-  background: var(--fp-blue);
+  background: var(--primary); /* was var(--fp-blue) */
   color: #fff;
 }
 
-/* LINKS */
+/* ── LINKS ────────────────────────────────────────────────────── */
 .fp-links {
   display: flex;
   align-items: center;
@@ -368,14 +346,14 @@ body.dark .fp-label-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-head);
+  font-family: var(--font-heading); /* was var(--font-head) → "Syne" */
   font-size: 0.88rem;
   font-weight: 700;
   text-decoration: none;
   color: #fff;
-  background: var(--fp-blue);
+  background: var(--primary); /* was var(--fp-blue) */
   padding: 11px 22px;
-  border-radius: 100px;
+  border-radius: var(--radius-full); /* was hardcoded 100px */
   transition:
     background 300ms ease,
     box-shadow 300ms ease,
@@ -386,8 +364,8 @@ body.dark .fp-label-badge {
   transition: transform var(--t-spring);
 }
 .fp-link-live:hover {
-  background: var(--fp-blue-dark);
-  box-shadow: 0 0 28px var(--fp-blue-glow);
+  background: var(--primary-dark); /* was var(--fp-blue-dark) */
+  box-shadow: 0 0 28px rgba(var(--primary-rgb), 0.14); /* was var(--fp-blue-glow) */
   transform: translateY(-2px);
 }
 .fp-link-live:hover svg {
@@ -398,14 +376,14 @@ body.dark .fp-label-badge {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  font-family: var(--font-head);
+  font-family: var(--font-heading); /* was var(--font-head) → "Syne" */
   font-size: 0.86rem;
   font-weight: 700;
   text-decoration: none;
-  color: var(--fp-muted);
+  color: var(--muted); /* was var(--fp-muted) */
   padding: 10px 18px;
-  border-radius: 100px;
-  border: 1.5px solid var(--fp-border);
+  border-radius: var(--radius-full); /* was hardcoded 100px */
+  border: 1.5px solid var(--border); /* was var(--fp-border) */
   transition:
     color 200ms ease,
     border-color 200ms ease,
@@ -416,15 +394,15 @@ body.dark .fp-label-badge {
   font-size: 1.1em;
 }
 .fp-link-github:hover {
-  color: var(--fp-text);
-  border-color: var(--fp-blue-rim);
-  background: var(--fp-blue-soft);
+  color: var(--text); /* was var(--fp-text) */
+  border-color: rgba(var(--primary-rgb), 0.25); /* was var(--fp-blue-rim) */
+  background: rgba(var(--primary-rgb), 0.07); /* was var(--fp-blue-soft) */
   transform: translateY(-2px);
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ════════════════════════════════════════════════════════════════
    CTA
-════════════════════════════════════════════════════════════ */
+════════════════════════════════════════════════════════════════ */
 .fp-cta {
   text-align: center;
   margin-top: clamp(72px, 10vw, 110px);
@@ -442,8 +420,8 @@ body.dark .fp-label-badge {
   background: linear-gradient(
     90deg,
     transparent,
-    var(--fp-border),
-    transparent
+    var(--border),
+    /* was var(--fp-border) */ transparent
   );
 }
 
@@ -451,15 +429,15 @@ body.dark .fp-label-badge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-head);
+  font-family: var(--font-heading); /* was var(--font-head) → "Syne" */
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   text-decoration: none;
-  color: var(--fp-text);
-  border: 1.5px solid var(--fp-border);
+  color: var(--text); /* was var(--fp-text) */
+  border: 1.5px solid var(--border); /* was var(--fp-border) */
   padding: 14px 32px;
-  border-radius: 100px;
+  border-radius: var(--radius-full); /* was hardcoded 100px */
   transition:
     color var(--t-smooth),
     background var(--t-smooth),
@@ -467,25 +445,24 @@ body.dark .fp-label-badge {
     box-shadow var(--t-smooth),
     transform var(--t-spring);
 }
-
 .fp-cta-btn svg {
   font-size: 0.85em;
   transition: transform var(--t-spring);
 }
 .fp-cta-btn:hover {
   color: #fff;
-  background: var(--fp-blue);
-  border-color: var(--fp-blue);
-  box-shadow: 0 0 32px var(--fp-blue-glow);
+  background: var(--primary); /* was var(--fp-blue) */
+  border-color: var(--primary); /* was var(--fp-blue) */
+  box-shadow: 0 0 32px rgba(var(--primary-rgb), 0.14); /* was var(--fp-blue-glow) */
   transform: translateY(-3px);
 }
 .fp-cta-btn:hover svg {
   transform: translateX(4px);
 }
 
-/* ════════════════════════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════════════════════
+   RESPONSIVE — identical breakpoints, zero layout changes
+════════════════════════════════════════════════════════════════ */
 @media (max-width: 960px) {
   .fp-row,
   .fp-row--reverse {

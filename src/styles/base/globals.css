@@ -1,10 +1,17 @@
 /* globals.css */
+
+/* ── BODY ─────────────────────────────────────────────────
+   Font variables resolve from variables.css.
+   Hero / Skills / Navbar components override locally with
+   their own font-family declarations where needed.
+   ──────────────────────────────────────────────────────── */
 body {
-  font-family: var(--font-blog);
+  font-family: var(--font-blog); /* "DM Sans", sans-serif */
   background-color: var(--bg);
   color: var(--text);
+  line-height: 1.6;
 
-  /* 38px grid */
+  /* 38 px dot-grid overlay — matches the hero & skills sections */
   background-image:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
@@ -17,21 +24,42 @@ body {
   overflow-x: hidden;
 }
 
+/* ── HEADINGS ─────────────────────────────────────────────
+   Base font-family; size / weight overrides live in
+   typography.css and inside each component's CSS.
+   ──────────────────────────────────────────────────────── */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-heading);
+  font-family: var(--font-heading); /* "Syne", sans-serif */
+  color: var(--text);
 }
 
+/* ── UI ELEMENTS ──────────────────────────────────────────
+   Buttons and nav inherit the Syne typeface so they feel
+   distinct from body copy (matches Hero.css & Navbar.css).
+   ──────────────────────────────────────────────────────── */
 button,
 nav,
 .nav-link {
-  font-family: var(--font-ui);
+  font-family: var(--font-ui); /* "Syne", sans-serif */
 }
 
+/* ── CODE / PRE ───────────────────────────────────────────
+   TerminalHero uses JetBrains Mono explicitly; this ensures
+   any plain <code> or <pre> in copy pages also picks it up.
+   ──────────────────────────────────────────────────────── */
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono); /* "JetBrains Mono", monospace */
+}
+
+/* ── LAYOUT BLOCKS ───────────────────────────────────────── */
 main {
   display: block;
 }
@@ -40,9 +68,20 @@ section {
   padding: 48px 0;
 }
 
+/* ── CONTAINER ────────────────────────────────────────────
+   Shared centred wrapper — max-width matches FeaturedProject
+   and HomeAbout (1200 px), padding matches their 24–28 px
+   inline padding at mobile.
+   ──────────────────────────────────────────────────────── */
 .container {
   width: 100%;
-  max-width: var(--container);
+  max-width: var(--container); /* 1200 px */
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 0 24px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0 18px;
+  }
 }

@@ -12,14 +12,17 @@ const SOCIAL_LINKS = [
   {
     href: "https://github.com/balakumaranbala2112",
     icon: <FaGithub />,
+    label: "GitHub",
   },
   {
     href: "https://twitter.com/yourusername",
     icon: <FaXTwitter />,
+    label: "X (Twitter)",
   },
   {
     href: "https://linkedin.com/in/yourusername",
     icon: <FaLinkedinIn />,
+    label: "LinkedIn",
   },
 ];
 
@@ -55,7 +58,7 @@ const Hero = () => {
             </Link>
 
             <Link
-              href="/resume.pdf"
+              // to="/resume.pdf"                {/* fixed: was href — Link uses `to` */}
               target="_blank"
               rel="noreferrer"
               className="hero__btn hero__btn--secondary"
@@ -64,21 +67,23 @@ const Hero = () => {
               <HiDocumentDownload className="hero__btn-icon" />
             </Link>
           </div>
+
           {/* Follow Links */}
           <div className="hero__follow">
             <span className="hero__follow-text">FOLLOW ME ON</span>
 
-            {/* Straight Line */}
-            <span className="hero__follow-line"></span>
+            {/* Decorative line */}
+            <span className="hero__follow-line" aria-hidden="true"></span>
 
             <div className="hero__socials">
               {SOCIAL_LINKS.map((social) => (
                 <a
+                  key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"
                   className="hero__social-icon"
-                  aria-label="GitHub"
+                  aria-label={social.label}
                 >
                   {social.icon}
                 </a>

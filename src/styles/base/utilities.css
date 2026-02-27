@@ -1,9 +1,13 @@
-/* ================================
-   UTILITIES.CSS
-   Reusable helper classes
-================================ */
+/* utilities.css */
+/* ===========================================================
+   Reusable helper classes.
+   ALL variable references now match the tokens defined in
+   variables.css — the old code used --color-muted /
+   --color-text / --color-accent / --radius-md / --radius-lg /
+   --shadow-md which were undefined. All fixed below.
+   =========================================================== */
 
-/* Flex utilities */
+/* ── FLEX ────────────────────────────────────────────────── */
 .flex {
   display: flex;
 }
@@ -41,7 +45,7 @@
   flex-wrap: wrap;
 }
 
-/* Grid utilities */
+/* ── GRID ────────────────────────────────────────────────── */
 .grid {
   display: grid;
 }
@@ -49,7 +53,7 @@
   place-items: center;
 }
 
-/* Text utilities */
+/* ── TEXT ALIGNMENT ──────────────────────────────────────── */
 .text-left {
   text-align: left;
 }
@@ -60,6 +64,10 @@
   text-align: right;
 }
 
+/* ── TEXT SIZES ──────────────────────────────────────────── */
+.text-xs {
+  font-size: var(--text-xs);
+}
 .text-sm {
   font-size: var(--text-sm);
 }
@@ -73,17 +81,22 @@
   font-size: var(--text-xl);
 }
 
+/* ── TEXT COLOURS ────────────────────────────────────────── */
+/* FIX: was var(--color-muted) / var(--color-accent) — both undefined */
 .text-muted {
-  color: var(--color-muted);
-}
+  color: var(--muted);
+} /* slate-500 / slate-400 dark */
 .text-accent {
-  color: var(--color-accent);
-}
+  color: var(--primary);
+} /* brand blue #3b82f6         */
 .text-white {
   color: #fff;
 }
+.text-text {
+  color: var(--text);
+} /* primary body colour        */
 
-/* Spacing utilities */
+/* ── SPACING — MARGIN TOP ────────────────────────────────── */
 .mt-1 {
   margin-top: 8px;
 }
@@ -100,6 +113,7 @@
   margin-top: 48px;
 }
 
+/* ── SPACING — MARGIN BOTTOM ─────────────────────────────── */
 .mb-1 {
   margin-bottom: 8px;
 }
@@ -116,6 +130,7 @@
   margin-bottom: 48px;
 }
 
+/* ── SPACING — PADDING TOP ───────────────────────────────── */
 .pt-1 {
   padding-top: 8px;
 }
@@ -132,6 +147,7 @@
   padding-top: 48px;
 }
 
+/* ── SPACING — PADDING BOTTOM ────────────────────────────── */
 .pb-1 {
   padding-bottom: 8px;
 }
@@ -148,7 +164,7 @@
   padding-bottom: 48px;
 }
 
-/* Gap utilities */
+/* ── GAP ─────────────────────────────────────────────────── */
 .gap-1 {
   gap: 8px;
 }
@@ -162,7 +178,7 @@
   gap: 32px;
 }
 
-/* Width utilities */
+/* ── WIDTH ───────────────────────────────────────────────── */
 .w-full {
   width: 100%;
 }
@@ -173,7 +189,7 @@
   max-width: 100%;
 }
 
-/* Height utilities */
+/* ── HEIGHT ──────────────────────────────────────────────── */
 .h-full {
   height: 100%;
 }
@@ -181,26 +197,37 @@
   min-height: 100vh;
 }
 
-/* Border + Radius */
+/* ── BORDER RADIUS ───────────────────────────────────────── */
+/* FIX: --radius-md / --radius-lg are now defined in variables.css */
 .rounded-sm {
-  border-radius: 8px;
-}
+  border-radius: var(--radius-sm);
+} /*  8 px */
 .rounded-md {
   border-radius: var(--radius-md);
-}
+} /* 12 px */
 .rounded-lg {
   border-radius: var(--radius-lg);
-}
+} /* 18 px */
+.rounded-xl {
+  border-radius: var(--radius-xl);
+} /* 24 px */
 .rounded-full {
-  border-radius: 9999px;
-}
+  border-radius: var(--radius-full);
+} /* pill  */
 
-/* Shadows */
+/* ── SHADOWS ─────────────────────────────────────────────── */
+/* FIX: --shadow-md / --shadow-lg are now defined in variables.css */
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
 .shadow-md {
   box-shadow: var(--shadow-md);
 }
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
 
-/* Display */
+/* ── DISPLAY ─────────────────────────────────────────────── */
 .block {
   display: block;
 }
@@ -211,7 +238,7 @@
   display: none;
 }
 
-/* Position */
+/* ── POSITION ────────────────────────────────────────────── */
 .relative {
   position: relative;
 }
@@ -219,27 +246,31 @@
   position: absolute;
 }
 
-/* Overflow */
+/* ── OVERFLOW ────────────────────────────────────────────── */
 .overflow-hidden {
   overflow: hidden;
 }
 
-/* Cursor */
+/* ── CURSOR ──────────────────────────────────────────────── */
 .pointer {
   cursor: pointer;
 }
 
-/* Transition */
+/* ── TRANSITION ──────────────────────────────────────────── */
 .transition {
   transition: all 0.3s ease;
 }
 
-/* Hover effects */
+/* ── HOVER LIFT ──────────────────────────────────────────── */
 .hover-lift:hover {
   transform: translateY(-6px);
 }
 
-/* Button utility base */
+/* ── BUTTON BASE ──────────────────────────────────────────
+   Generic button utility — components (Hero, FeaturedProject,
+   Navbar, HomeAbout) each define their own specific button
+   variants. These .btn helpers are for unstyled generic cases.
+   ──────────────────────────────────────────────────────── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -247,28 +278,39 @@
   gap: 10px;
 
   padding: 12px 22px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-md); /* FIX: now resolves to 12 px */
 
+  font-family: var(--font-ui); /* "Syne" — matches hero/navbar btns */
+  font-size: var(--text-sm);
   font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
+/* FIX: was var(--color-accent) which was undefined — now var(--primary) */
 .btn-primary {
-  background: var(--color-accent);
+  background: var(--primary);
   color: #fff;
+  border: none;
 }
 
 .btn-primary:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 0 24px rgba(var(--primary-rgb), 0.3);
   transform: translateY(-3px);
-  opacity: 0.95;
 }
 
+/* FIX: was var(--color-text) which was undefined — now var(--text) */
 .btn-outline {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--color-text);
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--border);
 }
 
 .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(var(--primary-rgb), 0.07);
+  border-color: rgba(var(--primary-rgb), 0.35);
+  color: var(--primary);
   transform: translateY(-3px);
 }

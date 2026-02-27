@@ -1,14 +1,4 @@
-// src/components/FeaturedProjects.jsx
-// ─────────────────────────────────────────────────────────────
-// Design direction: Editorial-cinematic
-//  • Giant ghost number watermark per row
-//  • Image card lifts and clips on hover
-//  • Blue accent line animates in from left on hover
-//  • Staggered entrance animation per row
-//  • Alternating layout (image-left / image-right) preserved
-// ─────────────────────────────────────────────────────────────
-
-import { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   FaGithub,
@@ -54,9 +44,9 @@ const projects = [
   },
 ];
 
-/* ── IntersectionObserver scroll reveal ────────────────────── */
+/* ── IntersectionObserver scroll reveal ──────────────────────── */
+
 function useScrollReveal(selector = ".fp-row") {
-  const ref = useRef(null);
   useEffect(() => {
     const rows = document.querySelectorAll(selector);
     const observer = new IntersectionObserver(
@@ -73,7 +63,6 @@ function useScrollReveal(selector = ".fp-row") {
     rows.forEach((row) => observer.observe(row));
     return () => observer.disconnect();
   }, [selector]);
-  return ref;
 }
 
 export default function FeaturedProjects() {
@@ -82,7 +71,7 @@ export default function FeaturedProjects() {
   return (
     <section className="fp-section">
       <div className="fp-container">
-        {/* ── HEADER ────────────────────────────────────────── */}
+        {/* ── HEADER ──────────────────────────────────────────── */}
         <div className="fp-header">
           <span className="fp-eyebrow">Featured Work</span>
           <h2 className="fp-heading">
@@ -92,14 +81,14 @@ export default function FeaturedProjects() {
           </h2>
         </div>
 
-        {/* ── PROJECT ROWS ──────────────────────────────────── */}
+        {/* ── PROJECT ROWS ────────────────────────────────────── */}
         <div className="fp-rows">
           {projects.map((project, index) => {
             const isReverse = index % 2 !== 0;
             return (
               <div
                 key={project.id}
-                className={`fp-row ${isReverse ? "fp-row--reverse" : ""}`}
+                className={`fp-row${isReverse ? " fp-row--reverse" : ""}`}
               >
                 {/* ghost number watermark */}
                 <span className="fp-ghost-num" aria-hidden="true">
@@ -114,8 +103,8 @@ export default function FeaturedProjects() {
                       alt={project.title}
                       loading="lazy"
                     />
-                    {/* overlay shimmer on hover */}
-                    <div className="fp-img-overlay" />
+                    {/* blue shimmer overlay on hover */}
+                    <div className="fp-img-overlay" aria-hidden="true" />
                   </div>
                   {/* floating label badge */}
                   <div className="fp-label-badge">{project.label}</div>
@@ -123,8 +112,7 @@ export default function FeaturedProjects() {
 
                 {/* CONTENT */}
                 <div className="fp-content">
-                  {/* accent line */}
-                  <div className="fp-accent-line" />
+                  <div className="fp-accent-line" aria-hidden="true" />
 
                   <div className="fp-num-small">{project.num}</div>
 
@@ -146,6 +134,7 @@ export default function FeaturedProjects() {
                       target="_blank"
                       rel="noreferrer"
                       className="fp-link-live"
+                      aria-label={`View ${project.title} live`}
                     >
                       View Live <FaArrowUpRightFromSquare />
                     </a>
@@ -154,7 +143,7 @@ export default function FeaturedProjects() {
                       target="_blank"
                       rel="noreferrer"
                       className="fp-link-github"
-                      aria-label="GitHub"
+                      aria-label={`${project.title} source code on GitHub`}
                     >
                       <FaGithub />
                       Source
@@ -166,7 +155,7 @@ export default function FeaturedProjects() {
           })}
         </div>
 
-        {/* ── CTA ───────────────────────────────────────────── */}
+        {/* ── CTA ─────────────────────────────────────────────── */}
         <div className="fp-cta">
           <Link to="/projects" className="fp-cta-btn">
             View All Projects <FaArrowRight />

@@ -1,6 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800;900&family=DM+Sans:wght@300;400;500&display=swap");
-
-/* ── SECTION ─────────────────────────────────────────────── */
 .hero {
   min-height: 80vh;
   width: 100%;
@@ -10,11 +7,11 @@
   padding: 110px 24px 80px;
   position: relative;
   overflow: hidden;
-  /* font-family: "DM Sans", sans-serif; */
+  font-family: var(--font-blog); /* was commented "DM Sans" hardcode */
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── BACKGROUND: dot grid ────────────────────────────────── */
+/* ── BACKGROUND: dot grid ─────────────────────────────────────── */
 .hero::before {
   content: "";
   position: absolute;
@@ -35,7 +32,7 @@
   );
 }
 
-/* ── BACKGROUND: blue mesh glow top-left ────────────────── */
+/* ── BACKGROUND: blue mesh glow top-left ──────────────────────── */
 .hero::after {
   content: "";
   position: absolute;
@@ -45,13 +42,13 @@
   height: 640px;
   background: radial-gradient(
     circle,
-    rgba(59, 130, 246, 0.09) 0%,
-    transparent 65%
+    rgba(var(--primary-rgb), 0.09) 0%,
+    /* was rgba(59,130,246,0.09) */ transparent 65%
   );
   pointer-events: none;
 }
 
-/* secondary glow — indigo bottom-right (pseudo can't do two, use box-shadow hack) */
+/* secondary glow — indigo bottom-right */
 .hero__terminal::after {
   content: "";
   position: absolute;
@@ -62,31 +59,31 @@
   background: radial-gradient(
     circle,
     rgba(99, 102, 241, 0.07) 0%,
-    transparent 65%
+    /* intentional indigo — not primary */ transparent 65%
   );
   pointer-events: none;
 }
 
-/* ── CONTAINER ───────────────────────────────────────────── */
+/* ── CONTAINER ────────────────────────────────────────────────── */
 .hero__container {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--container); /* was hardcoded 1200px */
   display: grid;
   grid-template-columns: 1.4fr 1fr;
   gap: clamp(36px, 5vw, 80px);
   align-items: center;
 }
 
-/* ── CONTENT COL ─────────────────────────────────────────── */
+/* ── CONTENT COL ──────────────────────────────────────────────── */
 .hero__content {
   display: flex;
   flex-direction: column;
   gap: 22px;
 }
 
-/* staggered entrance */
+/* ── STAGGERED ENTRANCE ANIMATIONS ───────────────────────────── */
 .hero__intro {
   animation: hUp 600ms 0ms ease both;
 }
@@ -114,9 +111,9 @@
   }
 }
 
-/* INTRO */
+/* ── INTRO ────────────────────────────────────────────────────── */
 .hero__intro {
-  font-family: "Syne", sans-serif;
+  font-family: var(--font-heading); /* was "Syne", sans-serif */
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -129,9 +126,9 @@
   color: var(--primary);
 }
 
-/* TITLE */
+/* ── TITLE ────────────────────────────────────────────────────── */
 .hero__title {
-  font-family: "Syne", sans-serif;
+  font-family: var(--font-heading); /* was "Syne", sans-serif */
   font-size: clamp(2.6rem, 5.5vw, 4.4rem);
   font-weight: 900;
   line-height: 1;
@@ -154,7 +151,11 @@
   left: 0;
   width: 100%;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary), rgba(59, 130, 246, 0.15));
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    rgba(var(--primary-rgb), 0.15) /* was rgba(59,130,246,0.15) */
+  );
   border-radius: 2px;
   transform-origin: left;
   animation: lineGrow 700ms 600ms ease both;
@@ -169,7 +170,7 @@
   }
 }
 
-/* DESCRIPTION */
+/* ── DESCRIPTION ──────────────────────────────────────────────── */
 .hero__description {
   font-size: 1.02rem;
   line-height: 1.82;
@@ -179,7 +180,7 @@
   margin: 0;
 }
 
-/* ── BUTTONS ──────────────────────────────────────────────── */
+/* ── BUTTONS ──────────────────────────────────────────────────── */
 .hero__actions {
   display: flex;
   gap: 12px;
@@ -193,8 +194,8 @@
   justify-content: center;
   gap: 8px;
   padding: 13px 26px;
-  border-radius: 100px; /* pill shape — 2026 */
-  font-family: "Syne", sans-serif;
+  border-radius: var(--radius-full); /* was hardcoded 100px */
+  font-family: var(--font-ui); /* was "Syne", sans-serif */
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -220,10 +221,10 @@
   color: #ffffff;
 }
 .hero__btn--primary:hover {
-  background: #1e40af;
+  background: var(--primary-dark); /* was hardcoded #1e40af */
   box-shadow:
-    0 0 32px rgba(59, 130, 246, 0.35),
-    0 4px 14px rgba(59, 130, 246, 0.25);
+    0 0 32px rgba(var(--primary-rgb), 0.35),
+    /* was rgba(59,130,246,0.35) */ 0 4px 14px rgba(var(--primary-rgb), 0.25); /* was rgba(59,130,246,0.25) */
   transform: translateY(-3px);
 }
 .hero__btn--primary:hover .hero__btn-icon {
@@ -232,22 +233,22 @@
 
 /* Secondary — ghost blue pill */
 .hero__btn--secondary {
-  background: rgba(59, 130, 246, 0.07);
+  background: rgba(var(--primary-rgb), 0.07); /* was rgba(59,130,246,0.07) */
   color: var(--primary);
-  border: 1.5px solid rgba(59, 130, 246, 0.28);
+  border: 1.5px solid rgba(var(--primary-rgb), 0.28); /* was rgba(59,130,246,0.28) */
 }
 .hero__btn--secondary:hover {
   background: var(--primary);
   color: #ffffff;
   border-color: var(--primary);
-  box-shadow: 0 0 24px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 24px rgba(var(--primary-rgb), 0.3); /* was rgba(59,130,246,0.3) */
   transform: translateY(-3px);
 }
 .hero__btn--secondary:hover .hero__btn-icon {
   transform: translateY(2px);
 }
 
-/* ── FOLLOW ROW ─────────────────────────────────────────── */
+/* ── FOLLOW ROW ───────────────────────────────────────────────── */
 .hero__follow {
   margin-top: 10px;
   display: flex;
@@ -257,7 +258,7 @@
 }
 
 .hero__follow-text {
-  font-family: "Syne", sans-serif;
+  font-family: var(--font-ui); /* was "Syne", sans-serif */
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -266,7 +267,7 @@
   white-space: nowrap;
 }
 
-/* the decorative line between text and icons */
+/* decorative line between text and icons */
 .hero__follow-line {
   flex: 1;
   max-width: 48px;
@@ -274,8 +275,8 @@
   background: linear-gradient(
     to right,
     var(--border),
-    rgba(59, 130, 246, 0.4),
-    var(--border)
+    rgba(var(--primary-rgb), 0.4),
+    /* was rgba(59,130,246,0.4) */ var(--border)
   );
   border-radius: 2px;
 }
@@ -307,22 +308,22 @@
 }
 .hero__social-icon:hover {
   color: var(--primary);
-  border-color: rgba(59, 130, 246, 0.4);
-  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(var(--primary-rgb), 0.4); /* was rgba(59,130,246,0.4) */
+  background: rgba(var(--primary-rgb), 0.08); /* was rgba(59,130,246,0.08) */
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.18);
+  box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.18); /* was rgba(59,130,246,0.18) */
 }
 
-/* ── TERMINAL COL ────────────────────────────────────────── */
+/* ── TERMINAL COL ─────────────────────────────────────────────── */
 .hero__terminal {
   width: 100%;
   position: relative;
   animation: hUp 600ms 200ms ease both;
 }
 
-/* ════════════════════════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════════════════════
+   RESPONSIVE — identical breakpoints, zero layout changes
+════════════════════════════════════════════════════════════════ */
 @media (max-width: 1200px) {
   .hero__container {
     gap: 48px;
@@ -341,13 +342,11 @@
     padding: 90px 24px 64px;
     text-align: center;
   }
-
   .hero__container {
     grid-template-columns: 1fr;
     justify-items: center;
     gap: 52px;
   }
-
   .hero__content {
     align-items: center;
   }
@@ -370,7 +369,6 @@
     padding: 72px 18px 52px;
     text-align: left;
   }
-
   .hero__container {
     justify-items: start;
     gap: 36px;
@@ -386,7 +384,6 @@
     font-size: 2.3rem;
     line-height: 1.08;
   }
-
   .hero__actions {
     flex-direction: column;
     width: 100%;
@@ -396,7 +393,6 @@
     width: 100%;
     justify-content: center;
   }
-
   .hero__follow {
     justify-content: flex-start;
   }

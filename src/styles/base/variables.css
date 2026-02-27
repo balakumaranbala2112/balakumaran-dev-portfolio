@@ -1,35 +1,88 @@
-/* variables.css */
+/* ================================================================
+   variables.css
+   Single source of truth for all design tokens.
+   Updated to match home page component styles (Hero, TerminalHero,
+   HomeAbout, Skills, FeaturedProject, Stats, ContactMini).
+   ================================================================ */
 
 :root {
+  /* ── COLORS ──────────────────────────────────────────────────── */
   --bg: #ffffff;
   --text: #0f172a;
   --muted: #64748b;
   --border: #e2e8f0;
   --grid-line: rgba(0, 0, 0, 0.04);
 
-  --primary: #2563eb;
-  --primary-dark: #1e40af;
-  --accent: #f8fafc;
-
-  --primary: #3b82f6;
+  --primary: #3b82f6; /* single definition — removed duplicate */
   --primary-rgb: 59, 130, 246;
+  --primary-dark: #1e40af;
+  --accent: #f8fafc; /* surface / card bg tint */
 
+  /* Alias tokens used by utilities.css + btn helpers */
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--primary); /* btn-primary uses this as background */
+
+  /* ── NAVIGATION ──────────────────────────────────────────────── */
   --nav-bg: rgba(255, 255, 255, 0.85);
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 
+  /* ── TYPOGRAPHY — font families ──────────────────────────────── */
+  /* These are referenced in globals.css via var() */
+  --font-heading: "Syne", sans-serif; /* all h1–h6              */
+  --font-blog: "DM Sans", sans-serif; /* body / paragraph copy  */
+  --font-ui: "Syne", sans-serif; /* buttons, nav links     */
+  --font-mono: "JetBrains Mono", monospace; /* terminal / code blocks */
+
+  /* Fluid text scale (used by .text-sm, .text-base, etc. utilities) */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px */
+
+  /* ── BORDER RADIUS ───────────────────────────────────────────── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px; /* matches .skills-card, .fp-img-wrap */
+  --radius-xl: 24px;
+  --radius-full: 9999px; /* pill buttons used across all components */
+
+  /* ── SHADOWS ─────────────────────────────────────────────────── */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 40px rgba(15, 23, 42, 0.12);
+  --shadow-blue:
+    0 0 28px rgba(59, 130, 246, 0.35), 0 4px 14px rgba(59, 130, 246, 0.25);
+
+  /* ── LAYOUT ──────────────────────────────────────────────────── */
   --container: 1200px;
 }
 
-/* Dark mode variables */
+/* ── DARK MODE ──────────────────────────────────────────────────── */
 body.dark {
   --bg: #0b0c15;
   --text: #e2e8f0;
   --muted: #94a3b8;
   --border: #1e293b;
   --grid-line: rgba(255, 255, 255, 0.05);
+
   --primary: #3b82f6;
   --primary-dark: #60a5fa;
   --accent: #111827;
+
+  /* Re-declare aliases so they pick up dark values */
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--primary);
+
   --nav-bg: rgba(11, 12, 21, 0.85);
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.6);
+  --shadow-blue:
+    0 0 32px rgba(59, 130, 246, 0.4), 0 4px 16px rgba(59, 130, 246, 0.3);
 }

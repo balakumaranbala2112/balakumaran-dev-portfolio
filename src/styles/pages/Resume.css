@@ -696,9 +696,33 @@ body.dark .rv-bg-grid {
     grid-column: 1;
   }
 
+  /* ── SKILLS: 2-col card grid on tablet/mobile ─────────── */
+  .rv-skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  /* each group becomes a standalone card */
   .rv-skill-group {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 8px;
+    background: var(--surface, #f8fafc);
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: 12px;
+    padding: 12px 14px;
+    border-bottom: none;
+    padding-bottom: 12px;
+  }
+
+  .rv-skill-group:last-child {
+    border-bottom: none;
+  }
+
+  .rv-skill-category {
+    font-size: 0.68rem;
+    color: var(--primary, #3b82f6);
   }
 
   .rv-edu-top {
@@ -735,5 +759,10 @@ body.dark .rv-bg-grid {
   }
   .rv-project-card {
     padding: 18px 18px 18px 22px;
+  }
+
+  /* stay at 2-col — 3 is too cramped for tag text */
+  .rv-skills-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }

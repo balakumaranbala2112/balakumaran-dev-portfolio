@@ -1,10 +1,4 @@
-/* ==========================
-   FULL CSS RESET
-   Remove all browser default styles
-   100% control for your portfolio
-   ========================== */
-
-/* Box sizing & margin/padding reset */
+/* ── BOX MODEL ──────────────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -15,7 +9,7 @@
   vertical-align: baseline;
 }
 
-/* HTML5 display defaults */
+/* ── HTML5 SEMANTIC BLOCKS ─────────────────────────────── */
 article,
 aside,
 details,
@@ -31,7 +25,7 @@ summary {
   display: block;
 }
 
-/* Body defaults */
+/* ── BASE DOCUMENT ──────────────────────────────────────── */
 html,
 body {
   height: 100%;
@@ -39,26 +33,27 @@ body {
   font-size: 100%;
   line-height: 1.5;
   font-family: sans-serif;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
   background: transparent;
   color: inherit;
+
+  /* antialiasing — matches every component's -webkit-font-smoothing */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Remove default list styles */
+/* ── LISTS ──────────────────────────────────────────────── */
 ol,
 ul {
   list-style: none;
 }
 
-/* Remove default quotes */
+/* ── QUOTES ─────────────────────────────────────────────── */
 blockquote,
 q {
   quotes: none;
 }
-
 blockquote::before,
 blockquote::after,
 q::before,
@@ -66,13 +61,13 @@ q::after {
   content: "";
 }
 
-/* Table reset */
+/* ── TABLES ─────────────────────────────────────────────── */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* Images and media */
+/* ── MEDIA ──────────────────────────────────────────────── */
 img,
 picture,
 video,
@@ -83,7 +78,7 @@ svg {
   height: auto;
 }
 
-/* Form elements */
+/* ── FORM ELEMENTS ──────────────────────────────────────── */
 button,
 input,
 select,
@@ -99,14 +94,14 @@ textarea {
   resize: none;
 }
 
-/* Anchor reset */
+/* ── ANCHORS ────────────────────────────────────────────── */
 a {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
 }
 
-/* Button reset */
+/* ── BUTTONS ────────────────────────────────────────────── */
 button {
   cursor: pointer;
   background: none;
@@ -115,14 +110,14 @@ button {
   margin: 0;
 }
 
-/* Fieldset & legend */
+/* ── FIELDSET ───────────────────────────────────────────── */
 fieldset {
   border: none;
   margin: 0;
   padding: 0;
 }
 
-/* hr reset */
+/* ── RULE ───────────────────────────────────────────────── */
 hr {
   border: none;
   margin: 0;
@@ -130,7 +125,7 @@ hr {
   background-color: transparent;
 }
 
-/* Input type reset for checkbox/radio */
+/* ── CHECKBOX / RADIO ───────────────────────────────────── */
 input[type="checkbox"],
 input[type="radio"] {
   appearance: none;
@@ -138,59 +133,57 @@ input[type="radio"] {
   -moz-appearance: none;
 }
 
-/* Iframes */
+/* ── IFRAME ─────────────────────────────────────────────── */
 iframe {
   border: 0;
 }
 
-/* Details */
+/* ── DETAILS / SUMMARY ──────────────────────────────────── */
 details {
   display: block;
 }
-
-/* Summary */
 summary {
   display: list-item;
 }
 
-/* HTML elements that inherit font */
+/* ── INLINE TEXT ────────────────────────────────────────── */
 abbr,
-b,
-strong,
 small,
 sub,
 sup {
-  font-weight: inherit;
   font-size: inherit;
   vertical-align: baseline;
 }
 
-/* SVG */
+/* b / strong — keep bold weight */
+b,
+strong {
+  font-weight: 700;
+}
+
+/* ── SVG ────────────────────────────────────────────────── */
 svg {
   fill: currentColor;
 }
 
-/* Overflow & scrollbars */
+/* ── SCROLLBAR ──────────────────────────────────────────── */
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--primary) transparent;
 }
-
 *::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
-
 *::-webkit-scrollbar-thumb {
   background-color: var(--primary);
   border-radius: 4px;
 }
-
 *::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* Utility defaults */
+/* ── UTILITY DEFAULTS ───────────────────────────────────── */
 .hidden {
   display: none !important;
 }
