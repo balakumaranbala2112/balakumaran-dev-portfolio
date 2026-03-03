@@ -9,6 +9,7 @@
 import { useEffect, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FaMagnifyingGlass, FaBoxOpen } from "react-icons/fa6";
+import { useGitHubRepos } from "../hooks/useGitHubRepos";
 
 import projectsData from "@/data/projectsData";
 import ProjectCard from "@/components/projects/ProjectCard";
@@ -22,10 +23,13 @@ const PROJECTS_PER_PAGE = 6;
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterTech, setFilterTech] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
+  const { repos, loadding } = useGitHubRepos("balakumaranbala2112");
+
+  // if (loading) return <p>Loading...</p>;
 
   /* ── load ─────────────────────────────────────────────── */
   useEffect(() => {
@@ -182,6 +186,30 @@ export default function Projects() {
             <FaGithub /> Visit GitHub Profile
           </a>
         </div>
+
+        <section>
+          <h2>My Projects</h2>
+          <div className="grid">
+            {repos.map((repo) => (
+              <div key={repo.id} className="card">
+                <h3>{repo.name}</h3>
+                <p>{repo.description}</p>
+                <div>
+                  ⭐ {repo.stargazers_count} | 🍴 {repo.forks_count}
+                </div>
+                <p>🔤 {repo.language}</p>
+                <a href={repo.html_url} target="_blank">
+                  View on GitHub
+                </a>
+                {repo.homepage && (
+                  <a href={repo.homepage} target="_blank">
+                    Live Demo
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
       </section>
     </div>
   );
