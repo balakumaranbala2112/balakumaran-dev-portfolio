@@ -1,30 +1,28 @@
+import { useRef } from "react";
+import { useInView } from "@/hooks/useInView";
 import "@/styles/components/Stats.css";
-import { useEffect, useRef } from "react";
+
+const STATS = [
+  { value: "13+", label: "Projects Built" },
+  { value: "500+", label: "GitHub Commits" },
+  { value: "1+", label: "Years of Learning" },
+  { value: "24/7", label: "Open for Work" },
+];
 
 const Stats = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref);
+
   return (
-    <section className="stats">
+    <section className={`stats ${inView ? "stats--visible" : ""}`} ref={ref}>
       <div className="stats__container">
         <div className="stats__grid">
-          <div className="stats__item">
-            <h2 className="stats__value">4+</h2>
-            <p className="stats__label">Real World Projects</p>
-          </div>
-
-          <div className="stats__item">
-            <h2 className="stats__value">100%</h2>
-            <p className="stats__label">Job Success Score</p>
-          </div>
-
-          <div className="stats__item">
-            <h2 className="stats__value">500+</h2>
-            <p className="stats__label">Commits this Year</p>
-          </div>
-
-          <div className="stats__item">
-            <h2 className="stats__value">24/7</h2>
-            <p className="stats__label">Open for Work</p>
-          </div>
+          {STATS.map((stat) => (
+            <div className="stats__item" key={stat.label}>
+              <h2 className="stats__value">{stat.value}</h2>
+              <p className="stats__label">{stat.label}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

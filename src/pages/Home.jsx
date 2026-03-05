@@ -1,16 +1,16 @@
-import React from "react";
+// src/pages/Home.jsx
 import Hero from "@/components/home/Hero";
 import AboutPreview from "@/components/home/AboutPreview";
 import FeaturedProjects from "@/components/home/FeaturedProjects";
 import ContactMini from "@/components/home/ContactMini";
-import Skills from "@/components/about/Skills";
+import Stats from "@/components/home/Stats";
 
 const Home = () => {
   return (
     <main>
       <Hero />
+      <Stats />
       <AboutPreview />
-      <Skills />
       <FeaturedProjects />
       <ContactMini />
     </main>

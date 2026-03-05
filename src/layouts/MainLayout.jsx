@@ -1,8 +1,10 @@
+// src/layouts/MainLayout.jsx
 import Navbar from "@/layouts/Navbar";
+import Footer from "@/layouts/Footer";
 import { Outlet } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
-import Footer from "./Footer";
 
+// Prevent browser from restoring scroll position on navigation
 if ("scrollRestoration" in window.history) {
   window.history.scrollRestoration = "manual";
 }
@@ -12,11 +14,7 @@ function MainLayout() {
     <>
       <ScrollToTop />
       <Navbar />
-
-      <main>
-        <Outlet />
-      </main>
-
+      <Outlet />
       <Footer />
     </>
   );

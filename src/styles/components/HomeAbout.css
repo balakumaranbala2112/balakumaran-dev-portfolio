@@ -15,6 +15,16 @@
   background: var(--bg);
   font-family: var(--font-blog); /* was "DM Sans", sans-serif */
   -webkit-font-smoothing: antialiased;
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.55s ease 0.1s,
+    transform 0.55s ease 0.1s;
+}
+
+.home-about--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* subtle top border rule */

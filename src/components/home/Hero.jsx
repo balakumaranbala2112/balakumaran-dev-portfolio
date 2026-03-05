@@ -1,10 +1,8 @@
-import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { HiDocumentDownload } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-
 import TerminalHero from "@/components/home/TerminalHero";
 import "@/styles/components/Hero.css";
 
@@ -15,12 +13,12 @@ const SOCIAL_LINKS = [
     label: "GitHub",
   },
   {
-    href: "https://twitter.com/yourusername",
+    href: "https://twitter.com/balakumaran_dev",
     icon: <FaXTwitter />,
     label: "X (Twitter)",
   },
   {
-    href: "https://linkedin.com/in/yourusername",
+    href: "https://linkedin.com/in/balakumaran2112",
     icon: <FaLinkedinIn />,
     label: "LinkedIn",
   },
@@ -32,47 +30,43 @@ const Hero = () => {
       <div className="hero__container">
         {/* Left Content */}
         <div className="hero__content">
-          {/* Intro */}
           <p className="hero__intro">
             HELLO, I'M <span className="hero__highlight">BK 👋</span>
           </p>
 
-          {/* Main Heading */}
           <h1 className="hero__title">
             Full-Stack <br />
             <span className="hero__title-accent">MERN</span> Developer
           </h1>
 
-          {/* Description */}
           <p className="hero__description">
             I build scalable React web applications with clean UI architecture,
             reusable components, secure REST APIs, MongoDB integration, and
-            authentication systems (JWT/Firebase).
+            authentication systems (JWT / Firebase).
           </p>
 
-          {/* Buttons */}
           <div className="hero__actions">
             <Link to="/projects" className="hero__btn hero__btn--primary">
               View Projects
               <FaArrowRight className="hero__btn-icon" />
             </Link>
 
-            <Link
-              // to="/resume.pdf"                {/* fixed: was href — Link uses `to` */}
+            {/* ✅ FIX: Added `to` prop — was completely missing before.
+                Point this to your actual hosted resume PDF.
+                Using Link for internal routes, or use <a> for external PDF. */}
+            <a
+              href="/resume.pdf"
               target="_blank"
               rel="noreferrer"
               className="hero__btn hero__btn--secondary"
             >
               Resume
               <HiDocumentDownload className="hero__btn-icon" />
-            </Link>
+            </a>
           </div>
 
-          {/* Follow Links */}
           <div className="hero__follow">
             <span className="hero__follow-text">FOLLOW ME ON</span>
-
-            {/* Decorative line */}
             <span className="hero__follow-line" aria-hidden="true"></span>
 
             <div className="hero__socials">

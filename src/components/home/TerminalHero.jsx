@@ -8,11 +8,9 @@ const codeSnippets = [
   `const aboutMe = () => ({
   name: "Balakumaran",
   role: "MERN Stack Developer",
-  location: "India",
+  location: "Chennai, India",
   mindset: "Product-focused developer",
   codingStyle: "Clean, scalable, maintainable",
-  availability: "Open for Internship / Full-Time",
-  availability: "Open for Internship / Full-Time",
   availability: "Open for Internship / Full-Time",
 });`,
 
@@ -20,7 +18,7 @@ const codeSnippets = [
   focus: "Real-world web applications",
   stack: ["React", "Node.js", "Express", "MongoDB"],
   goal: "Build scalable products with smooth UX",
-  deployment: ["Vercel", "Netlify", "Render"],
+  deployment: ["Vercel", "Netlify", "Firebase"],
 });`,
 
   `const futureGoal = () => ({
