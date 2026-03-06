@@ -4,7 +4,7 @@
    Fonts: Syne (display) + DM Sans (body)
    ============================================================ */
 
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 
 /* ── TOKENS ───────────────────────────────────────────────── */
 :root {
@@ -45,8 +45,8 @@
   --r-xl: 24px;
   --r-pill: 100px;
 
-  --font-head: "Syne", sans-serif;
-  --font-body: "DM Sans", sans-serif;
+  --font-head: "Geist Mono", monospace;
+  --font-body: "Geist Mono", monospace;
 
   --t-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --t-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);

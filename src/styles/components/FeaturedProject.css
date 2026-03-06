@@ -17,7 +17,6 @@ body.dark {
    SECTION
 ════════════════════════════════════════════════════════════════ */
 .fp-section {
-  background: var(--bg); /* was var(--fp-bg) */
   padding: clamp(80px, 10vw, 140px) 0;
   font-family: var(--font-blog); /* was var(--font-body) → "DM Sans" */
   -webkit-font-smoothing: antialiased;

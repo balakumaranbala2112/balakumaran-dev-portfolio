@@ -77,7 +77,7 @@ export default function Projects() {
     <div className="projects-page">
       {/* ══ HEADER ══════════════════════════════════════════ */}
       <section className="page-header section-pad">
-        <div className="container">
+        {/* <div className="container">
           <div className="page-header__eyebrow">
             <span className="page-header__dot" />
             Portfolio
@@ -90,7 +90,7 @@ export default function Projects() {
             Search, filter, and explore projects built with scalable engineering
             practices and real-world impact.
           </p>
-        </div>
+        </div> */}
       </section>
 
       {/* ══ TOOLBAR ═════════════════════════════════════════ */}

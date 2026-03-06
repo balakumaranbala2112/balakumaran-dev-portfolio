@@ -1,60 +1,59 @@
-/* ================================================================
-   variables.css
-   Single source of truth for all design tokens.
-   Updated to match home page component styles (Hero, TerminalHero,
-   HomeAbout, Skills, FeaturedProject, Stats, ContactMini).
-   ================================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
   /* ── COLORS ──────────────────────────────────────────────────── */
-  --bg: #ffffff;
+  --bg: #f8fafc;
   --text: #0f172a;
-  --muted: #64748b;
-  --border: #e2e8f0;
-  --grid-line: rgba(0, 0, 0, 0.04);
+  /* --muted: #64748b;*/
+  --muted: #001c44;
+  --border: #e5e7eb;
+  --grid-line: rgba(15, 23, 42, 0.05);
 
-  --primary: #3b82f6; /* single definition — removed duplicate */
-  --primary-rgb: 59, 130, 246;
-  --primary-dark: #1e40af;
-  --accent: #f8fafc; /* surface / card bg tint */
+  --primary: #2563eb;
+  --primary-rgb: 37, 99, 235;
+  --primary-dark: #1d4ed8;
+  --accent: #f1f5f9;
 
   /* Alias tokens used by utilities.css + btn helpers */
   --color-text: var(--text);
   --color-muted: var(--muted);
-  --color-accent: var(--primary); /* btn-primary uses this as background */
+  --color-accent: var(--primary);
 
   /* ── NAVIGATION ──────────────────────────────────────────────── */
-  --nav-bg: rgba(255, 255, 255, 0.85);
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --nav-bg: rgba(248, 250, 252, 0.85);
+  --shadow: 0 4px 10px rgba(15, 23, 42, 0.06);
 
-  /* ── TYPOGRAPHY — font families ──────────────────────────────── */
-  /* These are referenced in globals.css via var() */
-  --font-heading: "Syne", sans-serif; /* all h1–h6              */
-  --font-blog: "DM Sans", sans-serif; /* body / paragraph copy  */
-  --font-ui: "Syne", sans-serif; /* buttons, nav links     */
-  --font-mono: "JetBrains Mono", monospace; /* terminal / code blocks */
+  /* ── TYPOGRAPHY — font families ───────────────────────────────── */
+  --font-heading: "Poppins", sans-serif;
+  --font-blog: "Geist Mono", monospace;
+  --font-ui: "Geist Mono", monospace;
+  --font-mono: monospace;
 
-  /* Fluid text scale (used by .text-sm, .text-base, etc. utilities) */
-  --text-xs: 0.75rem; /* 12px */
-  --text-sm: 0.875rem; /* 14px */
-  --text-base: 1rem; /* 16px */
-  --text-lg: 1.125rem; /* 18px */
-  --text-xl: 1.25rem; /* 20px */
-  --text-2xl: 1.5rem; /* 24px */
+  /* ── TEXT SCALE ──────────────────────────────────────────────── */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
 
   /* ── BORDER RADIUS ───────────────────────────────────────────── */
   --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 18px; /* matches .skills-card, .fp-img-wrap */
+  --radius-lg: 18px;
   --radius-xl: 24px;
-  --radius-full: 9999px; /* pill buttons used across all components */
+  --radius-full: 9999px;
 
   /* ── SHADOWS ─────────────────────────────────────────────────── */
-  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
-  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.08);
-  --shadow-lg: 0 12px 40px rgba(15, 23, 42, 0.12);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 6px 20px rgba(15, 23, 42, 0.1);
+  --shadow-lg: 0 18px 45px rgba(15, 23, 42, 0.14);
   --shadow-blue:
-    0 0 28px rgba(59, 130, 246, 0.35), 0 4px 14px rgba(59, 130, 246, 0.25);
+    0 0 32px rgba(37, 99, 235, 0.35), 0 6px 18px rgba(37, 99, 235, 0.25);
 
   /* ── LAYOUT ──────────────────────────────────────────────────── */
   --container: 1200px;
@@ -62,7 +61,7 @@
 
 /* ── DARK MODE ──────────────────────────────────────────────────── */
 body.dark {
-  --bg: #0b0c15;
+  --bg: #020617;
   --text: #e2e8f0;
   --muted: #94a3b8;
   --border: #1e293b;
@@ -70,19 +69,18 @@ body.dark {
 
   --primary: #3b82f6;
   --primary-dark: #60a5fa;
-  --accent: #111827;
+  --accent: #0f172a;
 
-  /* Re-declare aliases so they pick up dark values */
   --color-text: var(--text);
   --color-muted: var(--muted);
   --color-accent: var(--primary);
 
-  --nav-bg: rgba(11, 12, 21, 0.85);
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --nav-bg: rgba(2, 6, 23, 0.85);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 
-  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.6);
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 18px 60px rgba(0, 0, 0, 0.7);
   --shadow-blue:
-    0 0 32px rgba(59, 130, 246, 0.4), 0 4px 16px rgba(59, 130, 246, 0.3);
+    0 0 36px rgba(59, 130, 246, 0.45), 0 6px 20px rgba(59, 130, 246, 0.35);
 }

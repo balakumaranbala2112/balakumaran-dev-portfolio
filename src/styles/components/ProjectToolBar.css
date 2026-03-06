@@ -1,0 +1,222 @@
+/* ============================================================
+   PROJECTS TOOLBAR  — Tailwind-docs-style search + chips
+   Replace the old .projects-toolbar / .search-input / .filter-select
+   block in projects.css with everything below.
+   ============================================================ */
+
+/* ── WRAPPER ──────────────────────────────────────────────── */
+.toolbar-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: var(--sp-lg);
+}
+
+/* ── SEARCH BOX ───────────────────────────────────────────── */
+.toolbar-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+
+  background: var(--pg-bg);
+  border: 1.5px solid var(--pg-border);
+  border-radius: var(--r-md);
+  box-shadow: var(--pg-shadow-sm);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+  overflow: hidden;
+}
+
+.toolbar-search--focused {
+  border-color: var(--pg-blue);
+  box-shadow:
+    0 0 0 3px var(--pg-blue-glow),
+    var(--pg-shadow-sm);
+}
+
+/* leading icon */
+.toolbar-search__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  color: var(--pg-subtle);
+  font-size: 0.9rem;
+  pointer-events: none;
+  transition: color 180ms ease;
+}
+
+.toolbar-search--focused .toolbar-search__icon {
+  color: var(--pg-blue);
+}
+
+/* input */
+.toolbar-search__input {
+  flex: 1;
+  height: 52px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--pg-text);
+  caret-color: var(--pg-blue);
+  padding: 0;
+}
+
+.toolbar-search__input::placeholder {
+  color: var(--pg-subtle);
+  font-weight: 300;
+}
+
+/* trailing area */
+.toolbar-search__trail {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  min-width: 60px;
+}
+
+/* ⌘K badge */
+.toolbar-kbd {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--pg-muted);
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border);
+  border-radius: 6px;
+  padding: 3px 7px;
+  letter-spacing: 0.04em;
+  user-select: none;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.toolbar-search--focused .toolbar-kbd {
+  opacity: 0;
+}
+
+/* clear × button */
+.toolbar-search__clear {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: var(--pg-muted);
+  cursor: pointer;
+  transition:
+    background 150ms ease,
+    color 150ms ease;
+}
+
+.toolbar-search__clear:hover {
+  background: var(--pg-elevated);
+  color: var(--pg-text);
+}
+
+/* ── FILTER CHIPS ─────────────────────────────────────────── */
+.toolbar-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ── chip label above on mobile ────── */
+.toolbar-chips::before {
+  content: "Filter:";
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--pg-subtle);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+
+.chip {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--pg-muted);
+  background: var(--pg-surface);
+  border: 1.5px solid var(--pg-border);
+  border-radius: 100px;
+  padding: 6px 16px;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 160ms ease;
+  user-select: none;
+}
+
+.chip:hover {
+  border-color: var(--pg-blue-rim);
+  color: var(--pg-blue);
+  background: var(--pg-blue-soft);
+  transform: translateY(-1px);
+}
+
+.chip--active {
+  background: var(--pg-blue);
+  border-color: var(--pg-blue);
+  color: #ffffff;
+  box-shadow: 0 0 16px var(--pg-blue-glow);
+  transform: translateY(-1px);
+}
+
+.chip--active:hover {
+  background: var(--pg-blue-dark);
+  border-color: var(--pg-blue-dark);
+  color: #ffffff;
+}
+
+/* active dot indicator */
+.chip__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  flex-shrink: 0;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .toolbar-search__input {
+    font-size: 0.88rem;
+  }
+
+  .toolbar-search__input::placeholder {
+    font-size: 0.82rem;
+  }
+
+  .toolbar-kbd {
+    display: none;
+  }
+
+  .chip {
+    font-size: 0.75rem;
+    padding: 5px 13px;
+  }
+}

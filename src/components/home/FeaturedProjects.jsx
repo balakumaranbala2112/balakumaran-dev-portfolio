@@ -75,9 +75,7 @@ export default function FeaturedProjects() {
         <div className="fp-header">
           <span className="fp-eyebrow">Featured Work</span>
           <h2 className="fp-heading">
-            Selected
-            <br />
-            <span className="fp-heading-accent">Projects.</span>
+            Selected <span className="fp-heading-accent"> Projects.</span>
           </h2>
         </div>
 

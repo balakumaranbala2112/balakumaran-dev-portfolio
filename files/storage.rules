@@ -1,0 +1,28 @@
+// storage.rules
+// ─────────────────────────────────────────────────────────────
+// Public read for project thumbnails and resume
+// No client writes — all uploads via Firebase Console / Admin SDK
+// ─────────────────────────────────────────────────────────────
+
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Project images: public read
+    match /projects/{allPaths=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Resume PDF: public read
+    match /resume/{fileName} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Block everything else
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

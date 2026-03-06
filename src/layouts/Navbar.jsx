@@ -25,7 +25,7 @@ const NAV_LINKS = [
   { name: "About", path: "/about", icon: <FaUserAlt /> },
   { name: "Projects", path: "/projects", icon: <MdWork /> },
   { name: "Resume", path: "/resume", icon: <MdWork /> },
-  { name: "Blogs", path: "/blogs", icon: <FaBlog /> },
+  // { name: "Blogs", path: "/blogs", icon: <FaBlog /> },
   { name: "Contact", path: "/contact", icon: <MdContactMail /> },
 ];
 
