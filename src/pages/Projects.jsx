@@ -76,8 +76,8 @@ export default function Projects() {
   return (
     <div className="projects-page">
       {/* ══ HEADER ══════════════════════════════════════════ */}
-      <section className="page-header section-pad">
-        {/* <div className="container">
+      <section className="page-header section-pad flex ">
+        <div className="container">
           <div className="page-header__eyebrow">
             <span className="page-header__dot" />
             Portfolio
@@ -90,32 +90,34 @@ export default function Projects() {
             Search, filter, and explore projects built with scalable engineering
             practices and real-world impact.
           </p>
-        </div> */}
+        </div>
+        {/* ══ TOOLBAR ═════════════════════════════════════════ */}
+        <div className="container">
+          <ProjectsToolbar
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            filterTech={filterTech}
+            setFilterTech={setFilterTech}
+          />
+
+          {/* result count */}
+          {!loading && (
+            <p className="projects-count">
+              Showing <strong>{filteredProjects.length}</strong> of{" "}
+              <strong>{projects.length}</strong> project
+              {projects.length !== 1 ? "s" : ""}
+              {(searchTerm || filterTech !== "all") && (
+                <button
+                  className="projects-count__clear"
+                  onClick={clearFilters}
+                >
+                  Clear filters
+                </button>
+              )}
+            </p>
+          )}
+        </div>
       </section>
-
-      {/* ══ TOOLBAR ═════════════════════════════════════════ */}
-      <div className="container">
-        <ProjectsToolbar
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          filterTech={filterTech}
-          setFilterTech={setFilterTech}
-        />
-
-        {/* result count */}
-        {!loading && (
-          <p className="projects-count">
-            Showing <strong>{filteredProjects.length}</strong> of{" "}
-            <strong>{projects.length}</strong> project
-            {projects.length !== 1 ? "s" : ""}
-            {(searchTerm || filterTech !== "all") && (
-              <button className="projects-count__clear" onClick={clearFilters}>
-                Clear filters
-              </button>
-            )}
-          </p>
-        )}
-      </div>
 
       {/* ══ GRID ════════════════════════════════════════════ */}
       <section className="gallery-section">
@@ -186,30 +188,6 @@ export default function Projects() {
             <FaGithub /> Visit GitHub Profile
           </a>
         </div>
-
-        <section>
-          <h2>My Projects</h2>
-          <div className="grid">
-            {repos.map((repo) => (
-              <div key={repo.id} className="card">
-                <h3>{repo.name}</h3>
-                <p>{repo.description}</p>
-                <div>
-                  ⭐ {repo.stargazers_count} | 🍴 {repo.forks_count}
-                </div>
-                <p>🔤 {repo.language}</p>
-                <a href={repo.html_url} target="_blank">
-                  View on GitHub
-                </a>
-                {repo.homepage && (
-                  <a href={repo.homepage} target="_blank">
-                    Live Demo
-                  </a>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
       </section>
     </div>
   );

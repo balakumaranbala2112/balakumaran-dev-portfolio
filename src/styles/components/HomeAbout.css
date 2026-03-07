@@ -1,19 +1,12 @@
-/* ================================================================
-   HomeAbout.css
-   @import removed — Google Fonts now loaded globally in globals.css
-   All hardcoded font strings, colors, radii, and container widths
-   replaced with CSS custom properties from variables.css.
-   Zero layout or visual changes.
-   ================================================================ */
-
-/* ── SECTION ──────────────────────────────────────────────────── */
+/* ── SECTION  */
 .home-about {
   width: 100%;
   padding: 100px 24px;
+  /* margin: 0 200px 0 0; */
   position: relative;
   overflow: hidden;
-  /* background: var(--bg); */
-  font-family: var(--font-blog); /* was "DM Sans", sans-serif */
+  background: var(--bg);
+  font-family: var(--font-blog);
   -webkit-font-smoothing: antialiased;
   opacity: 0;
   transform: translateY(28px);
@@ -28,7 +21,7 @@
 }
 
 /* subtle top border rule */
-.home-about::before {
+/* .home-about::before {
   content: "";
   position: absolute;
   top: 0;
@@ -41,10 +34,10 @@
     transparent,
     var(--border),
     rgba(var(--primary-rgb), 0.35),
-    /* was rgba(59, 130, 246, 0.35) */ var(--border),
+    /* was rgba(59, 130, 246, 0.35)  var(--border),
     transparent
   );
-}
+} */
 
 /* blue radial glow — top right, behind image */
 .home-about::after {

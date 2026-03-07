@@ -2904,7 +2904,7 @@ app.post('/api/chat', async (req, res) => {
 - Moz Beginner's Guide to SEO
 
 **Accessibility**
-- Web Content Accessibility Guidelines (WCAG)
+- Web Content Accessibility Guidelines (WCAG)[text](.git)
 - A11y Project: https://www.a11yproject.com/
 
 ---

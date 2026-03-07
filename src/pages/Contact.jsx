@@ -25,44 +25,44 @@ const SOCIAL_LINKS = [
     label: "LinkedIn",
     handle: "Balakumaran",
     url: "https://linkedin.com/in/yourusername",
-    icon: FaLinkedinIn,
+    icon: <FaLinkedinIn />,
   },
   {
     label: "Dev.to",
     handle: "@balakumaran",
     url: "https://dev.to/yourusername",
-    icon: FaDev,
+    icon: <FaDev />,
   },
   {
     label: "Medium",
     handle: "@balakumaran",
     url: "https://medium.com/@yourusername",
-    icon: FaMedium,
+    icon: <FaMedium />,
   },
 ];
 
 const INFO_CARDS = [
   {
-    icon: FaEnvelope,
+    icon: <FaEnvelope />,
     label: "Email",
     value: "balakumaran@example.com",
     href: "mailto:balakumaran@example.com",
   },
   {
-    icon: FaLocationDot,
+    icon: <FaLocationDot />,
     label: "Based in",
     value: "Chennai, Tamil Nadu 🇮🇳",
     href: null,
   },
   {
-    icon: FaClock,
+    icon: <FaClock />,
     label: "Response time",
     value: "Usually within 24 hours",
     href: null,
   },
 ];
 
-/* ── FIELD CONFIG ───────────────────────────────────────────── */
+/* ── FIELD CONFIG ──────── */
 const INITIAL = { name: "", email: "", subject: "", message: "" };
 
 function validate(fields) {
@@ -133,7 +133,7 @@ export default function Contact() {
 
   return (
     <div className="ct-page">
-      {/* ══ HERO STRIP ══════════════════════════════════════ */}
+      {/* ══ HERO STRIP ═══ */}
       <section className="ct-hero">
         <div className="ct-container">
           <span className="ct-eyebrow">Get in touch</span>
@@ -165,9 +165,7 @@ export default function Contact() {
             <div className="ct-info-cards">
               {INFO_CARDS.map((card) => (
                 <div className="ct-info-card" key={card.label}>
-                  <div className="ct-info-icon">
-                    <i className={card.icon} />
-                  </div>
+                  <div className="ct-info-icon">{card.icon}</div>
                   <div className="ct-info-text">
                     <span className="ct-info-label">{card.label}</span>
                     {card.href ? (
@@ -196,9 +194,7 @@ export default function Contact() {
                   rel="noreferrer"
                   className="ct-social-item"
                 >
-                  <div className="ct-social-icon">
-                    <i className={s.icon} />
-                  </div>
+                  <div className="ct-social-icon">{s.icon}</div>
                   <div className="ct-social-text">
                     <span className="ct-social-platform">{s.label}</span>
                     <span className="ct-social-handle">{s.handle}</span>
