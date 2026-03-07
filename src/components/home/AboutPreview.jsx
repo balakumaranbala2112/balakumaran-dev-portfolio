@@ -29,9 +29,9 @@ const AboutPreview = () => {
           </h2>
 
           <p className="home-about__text">
-            I'm Balakumaran, a Full-Stack MERN developer based in Chennai,
-            India. I focus on writing clean, maintainable code and building
-            interfaces that are fast, accessible, and genuinely useful.
+            I'm <span className="">Balakumaran</span>, a Full-Stack MERN developer based in
+            Ariyalur, India. I focus on writing clean, maintainable code and
+            building interfaces that are fast, accessible, and genuinely useful.
           </p>
           <p className="home-about__text">
             Currently looking for internship and full-time opportunities where I

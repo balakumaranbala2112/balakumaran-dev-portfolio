@@ -48,21 +48,17 @@ const Hero = () => {
           <div className="hero__actions">
             <Link to="/projects" className="hero__btn hero__btn--primary">
               View Projects
-              <FaArrowRight className="hero__btn-icon" />
+              <FaArrowRight size={18} className="hero__btn-icon" />
             </Link>
-
-            {/* ✅ FIX: Added `to` prop — was completely missing before.
-                Point this to your actual hosted resume PDF.
-                Using Link for internal routes, or use <a> for external PDF. */}
-            <a
+            <Link
               href="/resume.pdf"
               target="_blank"
               rel="noreferrer"
               className="hero__btn hero__btn--secondary"
             >
               Resume
-              <HiDocumentDownload className="hero__btn-icon" />
-            </a>
+              <HiDocumentDownload size={20} className="hero__btn-icon" />
+            </Link>
           </div>
 
           <div className="hero__follow">
