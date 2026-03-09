@@ -6,7 +6,7 @@ import {
   FaArrowUpRightFromSquare,
 } from "react-icons/fa6";
 import campusLink from "@/assets/images/projects/campuslink.png";
-import "@/styles/components/FeaturedProject.css";
+import "../../styles/components/home/FeaturedProject.css";
 
 const projects = [
   {

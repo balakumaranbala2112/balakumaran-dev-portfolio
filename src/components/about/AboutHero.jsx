@@ -1,4 +1,4 @@
-import "@/styles/components/AboutHero.css";
+import "../../styles/components/about/AboutHero.css";
 import AboutImg from "@/assets/images/profile/profile-about.jpeg";
 import { FaCode } from "react-icons/fa";
 
@@ -15,8 +15,8 @@ const AboutHero = () => {
           <div className="floater-card">
             <FaCode />
             <div>
-              <strong>4+ Years</strong>
-              <span>Coding Experience</span>
+              <strong>6+ </strong>
+              <span>Real World Projects</span>
             </div>
           </div>
         </div>

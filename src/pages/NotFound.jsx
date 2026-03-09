@@ -1,115 +1,7 @@
-// src/pages/NotFound.jsx
-// 404 page — glitch-terminal aesthetic
-// Matches blue+white portfolio palette (Syne + DM Sans)
-//
-// Add to your router:
-//   { path: "*", element: <NotFound /> }
-
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowLeft, FaHouse } from "react-icons/fa6";
 import "@/styles/pages/NotFound.css";
-
-/* ── typing effect for the terminal card ─────────────────── */
-const TERMINAL_LINES = [
-  { prompt: true, text: "find page --path /this-url" },
-  { prompt: false, text: "Scanning filesystem...", delay: 900 },
-  {
-    prompt: false,
-    text: "Error: ENOENT — no such page exists.",
-    delay: 1800,
-    error: true,
-  },
-  {
-    prompt: false,
-    text: "Hint: Try navigating from home.",
-    delay: 2600,
-    muted: true,
-  },
-];
-
-function TerminalCard() {
-  const [visibleCount, setVisibleCount] = useState(0);
-  const [typed, setTyped] = useState("");
-  const [typing, setTyping] = useState(false);
-
-  /* reveal lines one by one */
-  useEffect(() => {
-    let timers = [];
-    TERMINAL_LINES.forEach((line, i) => {
-      const t = setTimeout(
-        () => {
-          setVisibleCount(i + 1);
-          if (i === 0) {
-            setTyping(true);
-            let charIdx = 0;
-            const interval = setInterval(() => {
-              charIdx++;
-              setTyped(line.text.slice(0, charIdx));
-              if (charIdx >= line.text.length) {
-                clearInterval(interval);
-                setTyping(false);
-              }
-            }, 38);
-            timers.push(interval);
-          }
-        },
-        line.delay ?? i * 200,
-      );
-      timers.push(t);
-    });
-    return () => timers.forEach(clearTimeout);
-  }, []);
-
-  return (
-    <div className="nf-terminal">
-      {/* header */}
-      <div className="nf-terminal__header">
-        <div className="nf-terminal__dots">
-          <span className="nf-dot nf-dot--red" />
-          <span className="nf-dot nf-dot--yellow" />
-          <span className="nf-dot nf-dot--green" />
-        </div>
-        <span className="nf-terminal__title">bash — portfolio</span>
-      </div>
-
-      {/* body */}
-      <div className="nf-terminal__body">
-        {TERMINAL_LINES.slice(0, visibleCount).map((line, i) => (
-          <div
-            key={i}
-            className={`nf-line ${line.error ? "nf-line--error" : ""} ${line.muted ? "nf-line--muted" : ""}`}
-          >
-            {line.prompt && (
-              <span className="nf-prompt">
-                <span className="nf-prompt__user">bk</span>
-                <span className="nf-prompt__sep">@</span>
-                <span className="nf-prompt__host">portfolio</span>
-                <span className="nf-prompt__arrow"> $ </span>
-              </span>
-            )}
-            <span className="nf-line__text">
-              {i === 0 ? typed : line.text}
-              {i === 0 && typing && <span className="nf-cursor" />}
-            </span>
-          </div>
-        ))}
-        {/* idle cursor after last line */}
-        {visibleCount >= TERMINAL_LINES.length && (
-          <div className="nf-line">
-            <span className="nf-prompt">
-              <span className="nf-prompt__user">bk</span>
-              <span className="nf-prompt__sep">@</span>
-              <span className="nf-prompt__host">portfolio</span>
-              <span className="nf-prompt__arrow"> $ </span>
-            </span>
-            <span className="nf-cursor" />
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
 
 /* ── floating particle canvas ─────────────────────────────── */
 function Particles() {
@@ -192,8 +84,7 @@ export default function NotFound() {
 
         {/* ── HEADING ─────────────────────────────────────── */}
         <h1 className="nf-heading">
-          Lost in the
-          <br />
+          <span>Lost in the </span>
           <span className="nf-heading__accent">void</span>
           <span className="nf-heading__period">.</span>
         </h1>
@@ -203,9 +94,6 @@ export default function NotFound() {
           The page you're looking for was moved, deleted, or never existed.
           Let's get you back on track.
         </p>
-
-        {/* ── TERMINAL CARD ───────────────────────────────── */}
-        <TerminalCard />
 
         {/* ── ACTIONS ─────────────────────────────────────── */}
         <div className="nf-actions">

@@ -1,4 +1,4 @@
-import "@/styles/components/Timeline.css";
+import "../../styles/components/about/Timeline.css";
 import { FaCalendarDays } from "react-icons/fa6";
 
 const timelineData = [

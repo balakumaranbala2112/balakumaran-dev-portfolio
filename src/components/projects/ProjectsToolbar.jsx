@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FaMagnifyingGlass, FaXmark } from "react-icons/fa6";
-import "@/styles/components/ProjectToolBar.css";
+import "../../styles/components/projects/ProjectToolBar.css";
 
 const FILTERS = [
   { label: "All", value: "all" },

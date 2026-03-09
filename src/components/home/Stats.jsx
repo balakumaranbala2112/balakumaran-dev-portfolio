@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { useInView } from "@/hooks/useInView";
-import "@/styles/components/Stats.css";
+import "../../styles/components/home/Stats.css";
 
 const STATS = [
-  { value: "13+", label: "Projects Built" },
+  { value: "10+", label: "Projects Built" },
   { value: "500+", label: "GitHub Commits" },
   { value: "1+", label: "Years of Learning" },
   { value: "24/7", label: "Open for Work" },

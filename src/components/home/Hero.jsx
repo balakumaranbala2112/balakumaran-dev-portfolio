@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import TerminalHero from "@/components/home/TerminalHero";
-import "@/styles/components/Hero.css";
-
+import "../../styles/components/home/Hero.css";
 const SOCIAL_LINKS = [
   {
     href: "https://github.com/balakumaranbala2112",

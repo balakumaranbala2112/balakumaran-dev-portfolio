@@ -1,14 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useTheme from "@/hooks/useTheme";
-import "@/styles/components/Navbar.css";
+import "../styles/components/layouts/Navbar.css";
 
 import {
   FaMoon,
   FaSun,
   FaBars,
   FaUserAlt,
-  FaBlog,
   FaGithub,
   FaLinkedinIn,
   FaTwitter,
@@ -25,7 +24,6 @@ const NAV_LINKS = [
   { name: "About", path: "/about", icon: <FaUserAlt /> },
   { name: "Projects", path: "/projects", icon: <MdWork /> },
   { name: "Resume", path: "/resume", icon: <MdWork /> },
-  // { name: "Blogs", path: "/blogs", icon: <FaBlog /> },
   { name: "Contact", path: "/contact", icon: <MdContactMail /> },
 ];
 

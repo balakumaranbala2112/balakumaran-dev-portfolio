@@ -1,7 +1,3 @@
-// src/components/Footer.jsx
-// Full footer — matches the 2026 portfolio aesthetic.
-// Update hrefs, social URLs, and email to your real values.
-
 import { NavLink } from "react-router-dom";
 import {
   FaGithub,
@@ -9,13 +5,12 @@ import {
   FaXTwitter,
   FaArrowUpLong,
 } from "react-icons/fa6";
-import "@/styles/components/Footer.css";
+import "../styles/components/layouts/Footer.css";
 
 const NAV_LINKS = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Projects", path: "/projects" },
-  { name: "Blogs", path: "/blogs" },
   { name: "Contact", path: "/contact" },
 ];
 

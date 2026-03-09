@@ -1,17 +1,12 @@
-// src/pages/Contact.jsx
-// ─────────────────────────────────────────────────────────────
-// Split-layout contact page:
-//   LEFT  — intro text, contact info cards, social links
-//   RIGHT — working form with validation + success state
-//
-// For real form submission, replace the setTimeout in
-// handleSubmit with your EmailJS / Formspree / API call.
-// EmailJS example: https://www.emailjs.com/docs/sdk/send/
-// ─────────────────────────────────────────────────────────────
-
 import { useState } from "react";
 import "@/styles/pages/contact.css";
-import { FaGithub, FaLinkedinIn, FaDev, FaMedium } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedinIn,
+  FaDev,
+  FaMedium,
+  FaCheck,
+} from "react-icons/fa";
 
 import { FaEnvelope, FaLocationDot, FaClock } from "react-icons/fa6";
 const SOCIAL_LINKS = [
@@ -78,9 +73,6 @@ function validate(fields) {
   return errors;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   COMPONENT
-═══════════════════════════════════════════════════════════════ */
 export default function Contact() {
   const [fields, setFields] = useState(INITIAL);
   const [errors, setErrors] = useState({});
@@ -212,7 +204,7 @@ export default function Contact() {
                 /* SUCCESS STATE */
                 <div className="ct-success">
                   <div className="ct-success-icon">
-                    <i className="fa-solid fa-check" />
+                    <FaCheck />
                   </div>
                   <h3>Message sent!</h3>
                   <p>

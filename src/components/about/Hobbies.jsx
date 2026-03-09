@@ -7,7 +7,7 @@ import {
   FaPodcast,
 } from "react-icons/fa";
 
-import "@/styles/components/Hobbies.css";
+import "../../styles/components/about/Hobbies.css";
 
 const hobbiesData = [
   {

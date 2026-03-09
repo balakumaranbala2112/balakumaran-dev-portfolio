@@ -27,7 +27,7 @@ import {
 
 import { TbApi } from "react-icons/tb";
 
-import "@/styles/components/Skills.css";
+import "../../styles/components/about/Skills.css";
 
 const skillsGrouped = [
   /* ============================
@@ -191,7 +191,7 @@ const Skills = () => {
         {/* Title */}
         <div className="section-title">
           <h3 className="section__title-name">
-            <FaFolderOpen /> Skill Stack
+            <FaFolderOpen size={18} /> Skill Stack
           </h3>
           <h2>Tools & Technologies</h2>
         </div>

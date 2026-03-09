@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-javascript";
-import "@/styles/components/TerminalHero.css";
+import "../../styles/components/home/TerminalHero.css";
 
 const codeSnippets = [
   `const aboutMe = () => ({

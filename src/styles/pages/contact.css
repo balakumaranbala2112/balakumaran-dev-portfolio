@@ -45,8 +45,8 @@
   --r-xl: 24px;
   --r-pill: 100px;
 
-  --font-head: "Geist Mono", monospace;
-  --font-body: "Geist Mono", monospace;
+  --font-heading: "Geist Mono", monospace;
+  --font-ui: "Geist Mono", monospace;
 
   --t-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --t-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -81,7 +81,7 @@ body.dark {
 .ct-page {
   background: var(--ct-bg);
   color: var(--ct-text);
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
@@ -159,7 +159,7 @@ body.dark .ct-hero::after {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-head);
+  font-family: var(--font-heading);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -195,7 +195,7 @@ body.dark .ct-hero::after {
 }
 
 .ct-hero-title {
-  font-family: var(--font-head);
+  font-family: var(--font-heading);
   font-size: clamp(2.8rem, 6vw, 5rem);
   font-weight: 800;
   line-height: 1.06;
@@ -276,7 +276,7 @@ body.dark .ct-hero::after {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-head);
+  font-family: var(--font-heading);
   font-size: 0.82rem;
   font-weight: 700;
   color: var(--ct-success);
@@ -385,7 +385,7 @@ body.dark .ct-hero::after {
 
 /* SOCIAL LINKS */
 .ct-social-label {
-  font-family: var(--font-head);
+  font-family: var(--font-heading);
   font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -451,7 +451,7 @@ body.dark .ct-hero::after {
 }
 
 .ct-social-platform {
-  font-family: var(--font-head);
+  font-family: var(--font-heading);
   font-size: 0.88rem;
   font-weight: 700;
   color: var(--ct-text);
@@ -496,7 +496,7 @@ body.dark .ct-hero::after {
 }
 
 .ct-form-header h2 {
-  font-family: var(--font-head);
+  font-family: var(--font-heading);
   font-size: 1.6rem;
   font-weight: 800;
   letter-spacing: -0.025em;
@@ -526,7 +526,7 @@ body.dark .ct-hero::after {
 }
 
 .ct-field label {
-  font-family: var(--font-head);
+  font-family: var(--font-heading);
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -568,7 +568,7 @@ body.dark .ct-hero::after {
   color: var(--ct-text);
   border: 1.5px solid var(--ct-border);
   border-radius: var(--r-md);
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: 0.92rem;
   outline: none;
   transition:
@@ -603,7 +603,7 @@ body.dark .ct-hero::after {
   color: var(--ct-text);
   border: 1.5px solid var(--ct-border);
   border-radius: var(--r-md);
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: 0.92rem;
   resize: vertical;
   min-height: 140px;
@@ -657,7 +657,7 @@ body.dark .ct-hero::after {
   gap: 10px;
   padding: 14px 28px;
   border-radius: var(--r-pill);
-  font-family: var(--font-head);
+  font-family: var(--font-heading);
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -780,7 +780,7 @@ body.dark .ct-hero::after {
 }
 
 .ct-success h3 {
-  font-family: var(--font-head);
+  font-family: var(--font-heading);
   font-size: 1.6rem;
   font-weight: 800;
   color: var(--ct-text);
