@@ -2,7 +2,6 @@
 import Hero from "@/components/home/Hero";
 import AboutPreview from "@/components/home/AboutPreview";
 import FeaturedProjects from "@/components/home/FeaturedProjects";
-// import ContactMini from "@/components/home/ContactMini";
 import Stats from "@/components/home/Stats";
 
 const Home = () => {
@@ -12,7 +11,6 @@ const Home = () => {
       <Stats />
       <AboutPreview />
       <FeaturedProjects />
-      {/* <ContactMini /> */}
     </main>
   );
 };
