@@ -8,6 +8,7 @@ import {
   FaGithub,
   FaFire,
   FaFolderOpen,
+  FaFlask,
 } from "react-icons/fa";
 
 import {
@@ -128,6 +129,12 @@ const skillsGrouped = [
         icon: <TbApi />,
         color: "#3B82F6",
         url: "https://restfulapi.net/",
+      },
+      {
+        name: "Flask API",
+        icon: <FaFlask />,
+        color: "black",
+        url: "https://flaskapi.net/",
       },
     ],
   },
