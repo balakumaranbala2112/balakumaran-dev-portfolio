@@ -57,6 +57,9 @@
   --shadow-md: 0 6px 20px rgba(15, 23, 42, 0.1);
   --shadow-lg: 0 18px 45px rgba(15, 23, 42, 0.14);
 
+  --primary-rgb: 37, 99, 235; /* matches --primary: #2563eb */
+  --radius-full: 9999px; /* for pill-shaped buttons */
+
   --container: 1200px;
 }
 
@@ -91,6 +94,8 @@ body.dark {
 
   /* ── NAV ───────────────────────────────────────────────── */
   --nav-bg: rgba(2, 6, 23, 0.85);
+
+  --primary-rgb: 59, 130, 246; /* matches dark --primary: #3b82f6 */
 
   /* ── SHADOWS ───────────────────────────────────────────── */
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
