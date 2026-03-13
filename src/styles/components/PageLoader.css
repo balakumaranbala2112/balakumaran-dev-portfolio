@@ -1,0 +1,448 @@
+/* ═══════════════════════════════════════════════════════════════
+   PageLoader.css  —  Terminal boot aesthetic
+   Matches bk-dev-portfolio dark palette: --primary (blue), --text, --muted
+═══════════════════════════════════════════════════════════════ */
+
+/* ── ROOT OVERLAY ─────────────────────────────────────────────── */
+.pl-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #050810;
+  overflow: hidden;
+  animation: pl-fadeIn 300ms ease both;
+}
+
+.pl-root--exit {
+  animation: pl-exitSlide 700ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes pl-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pl-exitSlide {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+/* ── SCANLINES ────────────────────────────────────────────────── */
+.pl-scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0, 0, 0, 0.18) 3px,
+    rgba(0, 0, 0, 0.18) 4px
+  );
+  animation: pl-scanMove 8s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes pl-scanMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 100px;
+  }
+}
+
+/* ── GRAIN NOISE ──────────────────────────────────────────────── */
+.pl-grain {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  animation: pl-grainShift 0.3s steps(1) infinite;
+}
+
+@keyframes pl-grainShift {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-2%, -3%);
+  }
+  50% {
+    transform: translate(3%, 1%);
+  }
+  75% {
+    transform: translate(-1%, 4%);
+  }
+  100% {
+    transform: translate(2%, -2%);
+  }
+}
+
+/* ── CORNER BRACKETS ──────────────────────────────────────────── */
+.pl-corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  opacity: 0.5;
+  animation: pl-cornerFade 600ms 200ms ease both;
+}
+
+@keyframes pl-cornerFade {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+
+.pl-corner--tl {
+  top: 24px;
+  left: 24px;
+  border-top: 2px solid var(--primary, #3b82f6);
+  border-left: 2px solid var(--primary, #3b82f6);
+}
+.pl-corner--tr {
+  top: 24px;
+  right: 24px;
+  border-top: 2px solid var(--primary, #3b82f6);
+  border-right: 2px solid var(--primary, #3b82f6);
+}
+.pl-corner--bl {
+  bottom: 24px;
+  left: 24px;
+  border-bottom: 2px solid var(--primary, #3b82f6);
+  border-left: 2px solid var(--primary, #3b82f6);
+}
+.pl-corner--br {
+  bottom: 24px;
+  right: 24px;
+  border-bottom: 2px solid var(--primary, #3b82f6);
+  border-right: 2px solid var(--primary, #3b82f6);
+}
+
+/* ── CARD ─────────────────────────────────────────────────────── */
+.pl-card {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: min(520px, 90vw);
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(59, 130, 246, 0.14);
+  border-radius: 16px;
+  padding: 40px 44px;
+  box-shadow:
+    0 0 0 1px rgba(59, 130, 246, 0.06),
+    0 40px 80px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  animation: pl-cardRise 500ms 100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Blue ambient glow behind card */
+.pl-card::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.12) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes pl-cardRise {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── LOGO ─────────────────────────────────────────────────────── */
+.pl-logo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  animation: pl-logoGlow 2s ease-in-out infinite alternate;
+}
+
+.pl-logo__bracket {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: rgba(59, 130, 246, 0.5);
+  line-height: 1;
+}
+
+.pl-logo__letters {
+  font-family: "Syne", "JetBrains Mono", monospace;
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  line-height: 1;
+  text-shadow:
+    0 0 30px rgba(59, 130, 246, 0.7),
+    0 0 60px rgba(59, 130, 246, 0.3);
+}
+
+.pl-logo__cursor {
+  width: 3px;
+  height: 2.4rem;
+  background: var(--primary, #3b82f6);
+  border-radius: 1px;
+  margin-left: 4px;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+  animation: pl-blink 1s step-end infinite;
+}
+
+@keyframes pl-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes pl-logoGlow {
+  from {
+    filter: brightness(1);
+  }
+  to {
+    filter: brightness(1.15) drop-shadow(0 0 12px rgba(59, 130, 246, 0.4));
+  }
+}
+
+/* ── TAGLINE ──────────────────────────────────────────────────── */
+.pl-tagline {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: rgba(148, 163, 184, 0.6);
+  letter-spacing: 0.06em;
+  margin: -12px 0 0;
+}
+
+.pl-tagline__version {
+  color: rgba(59, 130, 246, 0.7);
+  margin-left: 6px;
+}
+
+/* ── TERMINAL LINES ───────────────────────────────────────────── */
+.pl-terminal {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 16px 18px;
+  min-height: 152px;
+}
+
+.pl-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    opacity 280ms ease,
+    transform 280ms ease;
+}
+
+.pl-line--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.pl-line__prompt {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 0.72rem;
+  color: rgba(59, 130, 246, 0.7);
+  flex-shrink: 0;
+  width: 12px;
+}
+
+.pl-line--success .pl-line__prompt {
+  color: #34d399;
+}
+
+.pl-line__text {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 0.76rem;
+  color: rgba(203, 213, 225, 0.75);
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+.pl-line--success .pl-line__text {
+  color: #34d399;
+  font-weight: 600;
+}
+
+/* Inline blinking cursor after active line */
+.pl-line__blink {
+  display: inline-block;
+  width: 7px;
+  height: 0.76rem;
+  background: var(--primary, #3b82f6);
+  border-radius: 1px;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: pl-blink 0.8s step-end infinite;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.7);
+}
+
+/* ── PROGRESS BAR ─────────────────────────────────────────────── */
+.pl-progress {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pl-progress__track {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 100px;
+  overflow: visible;
+}
+
+.pl-progress__fill {
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, #1d4ed8, #3b82f6 60%, #60a5fa);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+  transition: width 40ms linear;
+  position: relative;
+  z-index: 1;
+}
+
+/* Moving glow dot at the tip */
+.pl-progress__glow {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #93c5fd;
+  box-shadow:
+    0 0 6px 3px rgba(147, 197, 253, 0.6),
+    0 0 20px 6px rgba(59, 130, 246, 0.4);
+  z-index: 2;
+  pointer-events: none;
+  transition: left 40ms linear;
+}
+
+.pl-progress__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pl-progress__label {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(148, 163, 184, 0.4);
+}
+
+.pl-progress__pct {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--primary, #3b82f6);
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+  min-width: 3ch;
+  text-align: right;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .pl-card {
+    padding: 28px 24px;
+    gap: 16px;
+  }
+
+  .pl-logo__letters {
+    font-size: 2rem;
+  }
+
+  .pl-logo__bracket {
+    font-size: 2.3rem;
+  }
+
+  .pl-line__text {
+    font-size: 0.68rem;
+  }
+
+  .pl-corner {
+    width: 20px;
+    height: 20px;
+  }
+
+  .pl-corner--tl,
+  .pl-corner--tr {
+    top: 14px;
+  }
+  .pl-corner--bl,
+  .pl-corner--br {
+    bottom: 14px;
+  }
+  .pl-corner--tl,
+  .pl-corner--bl {
+    left: 14px;
+  }
+  .pl-corner--tr,
+  .pl-corner--br {
+    right: 14px;
+  }
+}
