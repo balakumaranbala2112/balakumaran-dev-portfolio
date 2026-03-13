@@ -1,15 +1,47 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import { EJ_SERVICE_ID, EJ_TEMPLATE_ID, EJ_PUBLIC_KEY } from "../../config";
 import "@/styles/pages/contact.css";
+
 import {
   FaGithub,
   FaLinkedinIn,
   FaDev,
   FaMedium,
   FaCheck,
-} from "react-icons/fa";
+  FaShieldHalved,
+  FaArrowUpRightFromSquare,
+  FaEnvelope,
+  FaLocationDot,
+  FaClock,
+  FaUser,
+  FaPenNib,
+  FaPaperPlane,
+  FaCircleExclamation,
+} from "react-icons/fa6";
 
-import { FaEnvelope, FaLocationDot, FaClock } from "react-icons/fa6";
-const SOCIAL_LINKS = [
+const INFO = [
+  {
+    icon: <FaEnvelope />,
+    label: "Email",
+    value: "bkumaran2112@gmail.com",
+    href: "mailto:bkumaran2112@gmail.com",
+  },
+  {
+    icon: <FaLocationDot />,
+    label: "Location",
+    value: "Chennai, India 🇮🇳",
+    href: null,
+  },
+  {
+    icon: <FaClock />,
+    label: "Response",
+    value: "Within 24 hours",
+    href: null,
+  },
+];
+
+const SOCIALS = [
   {
     label: "GitHub",
     handle: "@balakumaranbala2112",
@@ -18,8 +50,8 @@ const SOCIAL_LINKS = [
   },
   {
     label: "LinkedIn",
-    handle: "Balakumaran",
-    url: "https://linkedin.com/in/yourusername",
+    handle: "Balakumaran K",
+    url: "https://linkedin.com/in/balakumaran2112",
     icon: <FaLinkedinIn />,
   },
   {
@@ -36,327 +68,293 @@ const SOCIAL_LINKS = [
   },
 ];
 
-const INFO_CARDS = [
-  {
-    icon: <FaEnvelope />,
-    label: "Email",
-    value: "balakumaran@example.com",
-    href: "mailto:balakumaran@example.com",
-  },
-  {
-    icon: <FaLocationDot />,
-    label: "Based in",
-    value: "Chennai, Tamil Nadu 🇮🇳",
-    href: null,
-  },
-  {
-    icon: <FaClock />,
-    label: "Response time",
-    value: "Usually within 24 hours",
-    href: null,
-  },
-];
+const EMPTY = { name: "", email: "", subject: "", message: "" };
 
-/* ── FIELD CONFIG ──────── */
-const INITIAL = { name: "", email: "", subject: "", message: "" };
-
-function validate(fields) {
-  const errors = {};
-  if (!fields.name.trim()) errors.name = "Name is required.";
-  if (!fields.email.trim()) errors.email = "Email is required.";
-  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email))
-    errors.email = "Enter a valid email address.";
-  if (!fields.subject.trim()) errors.subject = "Subject is required.";
-  if (!fields.message.trim()) errors.message = "Message is required.";
-  else if (fields.message.trim().length < 20)
-    errors.message = "Message must be at least 20 characters.";
-  return errors;
+function validate(f) {
+  const e = {};
+  if (!f.name.trim()) e.name = "Name is required.";
+  if (!f.email.trim()) e.email = "Email is required.";
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email))
+    e.email = "Enter a valid email.";
+  if (!f.subject.trim()) e.subject = "Subject is required.";
+  if (!f.message.trim()) e.message = "Message is required.";
+  else if (f.message.trim().length < 20) e.message = "At least 20 characters.";
+  return e;
 }
 
 export default function Contact() {
-  const [fields, setFields] = useState(INITIAL);
+  const [fields, setFields] = useState(EMPTY);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
-  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [status, setStatus] = useState("idle");
 
-  const handleChange = (e) => {
+  const onChange = (e) => {
     const { name, value } = e.target;
-    setFields((prev) => ({ ...prev, [name]: value }));
-    // clear error as user types
-    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
+    setFields((p) => ({ ...p, [name]: value }));
+    if (errors[name]) setErrors((p) => ({ ...p, [name]: "" }));
   };
 
-  const handleBlur = (e) => {
+  const onBlur = (e) => {
     const { name } = e.target;
-    setTouched((prev) => ({ ...prev, [name]: true }));
-    const errs = validate({ ...fields });
-    setErrors((prev) => ({ ...prev, [name]: errs[name] || "" }));
+    setTouched((p) => ({ ...p, [name]: true }));
+    setErrors((p) => ({ ...p, [name]: validate(fields)[name] || "" }));
   };
 
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const errs = validate(fields);
-    if (Object.keys(errs).length > 0) {
+    if (Object.keys(errs).length) {
       setErrors(errs);
       setTouched({ name: true, email: true, subject: true, message: true });
       return;
     }
-
     setStatus("loading");
-
-    // ── Replace this block with your real submission logic ──
-    // e.g. EmailJS:
-    //   await emailjs.send(serviceId, templateId, fields, publicKey);
-    // e.g. Formspree:
-    //   await fetch("https://formspree.io/f/YOUR_ID", {
-    //     method: "POST", headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(fields),
-    //   });
-    await new Promise((r) => setTimeout(r, 1600)); // simulate network
-    // ────────────────────────────────────────────────────────
-
-    setStatus("success");
-    setFields(INITIAL);
-    setTouched({});
-    setErrors({});
+    try {
+      await emailjs.send(EJ_SERVICE_ID, EJ_TEMPLATE_ID, fields, EJ_PUBLIC_KEY);
+      setStatus("success");
+      setFields(EMPTY);
+      setTouched({});
+      setErrors({});
+    } catch {
+      setStatus("error");
+    }
   };
-
-  const handleReset = () => setStatus("idle");
 
   return (
     <div className="ct-page">
-      {/* ══ HERO STRIP ═══ */}
-      <section className="ct-hero">
-        <div className="ct-container">
-          <span className="ct-eyebrow">Get in touch</span>
-          <h1 className="ct-hero-title">
-            Let's build something
-            <br />
-            <span className="ct-hero-accent">great together.</span>
-          </h1>
-          <p className="ct-hero-sub">
-            Open to freelance projects, full-time roles, and interesting
-            collaborations. Drop me a message — I'll get back to you within a
-            day.
-          </p>
-        </div>
-      </section>
-
-      {/* ══ SPLIT LAYOUT ════════════════════════════════════ */}
-      <section className="ct-body">
-        <div className="ct-container ct-grid">
-          {/* ── LEFT PANEL ────────────────────────────────── */}
-          <div className="ct-left">
-            {/* AVAILABILITY BADGE */}
-            <div className="ct-availability">
-              <span className="ct-avail-dot" />
-              Available for new projects
-            </div>
-
-            {/* INFO CARDS */}
-            <div className="ct-info-cards">
-              {INFO_CARDS.map((card) => (
-                <div className="ct-info-card" key={card.label}>
-                  <div className="ct-info-icon">{card.icon}</div>
-                  <div className="ct-info-text">
-                    <span className="ct-info-label">{card.label}</span>
-                    {card.href ? (
-                      <a href={card.href} className="ct-info-value link">
-                        {card.value}
-                      </a>
-                    ) : (
-                      <span className="ct-info-value">{card.value}</span>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* DIVIDER */}
-            <div className="ct-divider" />
-
-            {/* SOCIAL LINKS */}
-            <p className="ct-social-label">Find me online</p>
-            <div className="ct-socials">
-              {SOCIAL_LINKS.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="ct-social-item"
-                >
-                  <div className="ct-social-icon">{s.icon}</div>
-                  <div className="ct-social-text">
-                    <span className="ct-social-platform">{s.label}</span>
-                    <span className="ct-social-handle">{s.handle}</span>
-                  </div>
-                  <i className="fa-solid fa-arrow-up-right-from-square ct-social-arrow" />
-                </a>
-              ))}
-            </div>
+      <div className="ct-wrap">
+        {/* ── INLINE PAGE LABEL — not a hero, just one row ── */}
+        <div className="ct-label-row">
+          <div className="ct-label-row__left">
+            <span className="ct-badge">
+              <span className="ct-badge__dot" />
+              Contact
+            </span>
+            <h1 className="ct-page-title">
+              Let's work <span className="ct-accent">together</span>
+            </h1>
           </div>
+          <div className="ct-avail">
+            <span className="ct-avail__dot" />
+            Open to opportunities
+          </div>
+        </div>
 
-          {/* ── RIGHT PANEL — FORM ────────────────────────── */}
-          <div className="ct-right">
-            <div className="ct-form-card">
+        {/* ── MAIN GRID ── */}
+        <div className="ct-grid">
+          {/* FORM — first in DOM = first on mobile */}
+          <div className="ct-form-col">
+            <div className="ct-card">
               {status === "success" ? (
-                /* SUCCESS STATE */
                 <div className="ct-success">
-                  <div className="ct-success-icon">
+                  <div className="ct-success__icon">
                     <FaCheck />
                   </div>
                   <h3>Message sent!</h3>
                   <p>
-                    Thanks for reaching out. I'll reply to your email within 24
-                    hours. Looking forward to connecting!
+                    I'll reply within 24 hours. Looking forward to connecting.
                   </p>
-                  <button className="ct-btn outline" onClick={handleReset}>
-                    Send another message
+                  <button
+                    className="ct-btn ct-btn--ghost"
+                    onClick={() => setStatus("idle")}
+                  >
+                    Send another
                   </button>
                 </div>
               ) : (
-                /* FORM */
-                <form className="ct-form" onSubmit={handleSubmit} noValidate>
-                  <div className="ct-form-header">
+                <form onSubmit={onSubmit} noValidate>
+                  <div className="ct-form-head">
                     <h2>Send a message</h2>
-                    <p>Fill in the form and I'll get back to you shortly.</p>
+                    <p>
+                      Fill in the details and I'll respond as soon as possible.
+                    </p>
                   </div>
 
-                  {/* ROW: name + email */}
-                  <div className="ct-row-2">
-                    <div
-                      className={`ct-field ${errors.name && touched.name ? "error" : ""}`}
+                  {status === "error" && (
+                    <div className="ct-banner ct-banner--error">
+                      <FaCircleExclamation />
+                      Something went wrong — please try again or email me
+                      directly.
+                    </div>
+                  )}
+
+                  <div className="ct-row2">
+                    <F
+                      id="name"
+                      label="Full Name"
+                      err={errors.name}
+                      touched={touched.name}
                     >
-                      <label htmlFor="name">Full Name</label>
-                      <div className="ct-input-wrap">
-                        <i className="fa-solid fa-user" />
+                      <div className="ct-ibox">
+                        <FaUser className="ct-ibox__icon" />
                         <input
                           id="name"
                           name="name"
                           type="text"
-                          placeholder="Balakumaran"
+                          placeholder="Balakumaran K"
                           value={fields.name}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
+                          onChange={onChange}
+                          onBlur={onBlur}
                           autoComplete="name"
                         />
                       </div>
-                      {errors.name && touched.name && (
-                        <span className="ct-error-msg">
-                          <i className="fa-solid fa-circle-exclamation" />{" "}
-                          {errors.name}
-                        </span>
-                      )}
-                    </div>
-
-                    <div
-                      className={`ct-field ${errors.email && touched.email ? "error" : ""}`}
+                    </F>
+                    <F
+                      id="email"
+                      label="Email Address"
+                      err={errors.email}
+                      touched={touched.email}
                     >
-                      <label htmlFor="email">Email Address</label>
-                      <div className="ct-input-wrap">
-                        <i className="fa-solid fa-envelope" />
+                      <div className="ct-ibox">
+                        <FaEnvelope className="ct-ibox__icon" />
                         <input
                           id="email"
                           name="email"
                           type="email"
                           placeholder="you@example.com"
                           value={fields.email}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
+                          onChange={onChange}
+                          onBlur={onBlur}
                           autoComplete="email"
                         />
                       </div>
-                      {errors.email && touched.email && (
-                        <span className="ct-error-msg">
-                          <i className="fa-solid fa-circle-exclamation" />{" "}
-                          {errors.email}
-                        </span>
-                      )}
-                    </div>
+                    </F>
                   </div>
 
-                  {/* SUBJECT */}
-                  <div
-                    className={`ct-field ${errors.subject && touched.subject ? "error" : ""}`}
+                  <F
+                    id="subject"
+                    label="Subject"
+                    err={errors.subject}
+                    touched={touched.subject}
                   >
-                    <label htmlFor="subject">Subject</label>
-                    <div className="ct-input-wrap">
-                      <i className="fa-solid fa-pen-nib" />
+                    <div className="ct-ibox">
+                      <FaPenNib className="ct-ibox__icon" />
                       <input
                         id="subject"
                         name="subject"
                         type="text"
-                        placeholder="Freelance project, Job opportunity, Collaboration…"
+                        placeholder="Freelance, job opportunity, collaboration…"
                         value={fields.subject}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
+                        onChange={onChange}
+                        onBlur={onBlur}
                       />
                     </div>
-                    {errors.subject && touched.subject && (
-                      <span className="ct-error-msg">
-                        <i className="fa-solid fa-circle-exclamation" />{" "}
-                        {errors.subject}
-                      </span>
-                    )}
-                  </div>
+                  </F>
 
-                  {/* MESSAGE */}
-                  <div
-                    className={`ct-field ${errors.message && touched.message ? "error" : ""}`}
-                  >
-                    <label htmlFor="message">
-                      Message
-                      <span className="ct-char-count">
-                        {fields.message.length} / 20 min
+                  <F
+                    id="message"
+                    label="Message"
+                    err={errors.message}
+                    touched={touched.message}
+                    right={
+                      <span className="ct-char">
+                        {fields.message.length}/20 min
                       </span>
-                    </label>
+                    }
+                  >
                     <textarea
                       id="message"
                       name="message"
-                      rows={6}
-                      placeholder="Tell me about your project, idea, or what you'd like to discuss…"
+                      rows={5}
+                      placeholder="Tell me about your project or what you'd like to discuss…"
                       value={fields.message}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
+                      onChange={onChange}
+                      onBlur={onBlur}
                     />
-                    {errors.message && touched.message && (
-                      <span className="ct-error-msg">
-                        <i className="fa-solid fa-circle-exclamation" />{" "}
-                        {errors.message}
-                      </span>
-                    )}
+                  </F>
+
+                  <div className="ct-submit-row">
+                    <button
+                      type="submit"
+                      className={`ct-btn ct-btn--primary${status === "loading" ? " ct-btn--loading" : ""}`}
+                      disabled={status === "loading"}
+                    >
+                      {status === "loading" ? (
+                        <>
+                          <span className="ct-spin" />
+                          Sending…
+                        </>
+                      ) : (
+                        <>
+                          <FaPaperPlane />
+                          Send Message
+                        </>
+                      )}
+                    </button>
+                    <span className="ct-privacy">
+                      <FaShieldHalved />
+                      Never shared with third parties
+                    </span>
                   </div>
-
-                  {/* SUBMIT */}
-                  <button
-                    type="submit"
-                    className={`ct-btn primary ${status === "loading" ? "loading" : ""}`}
-                    disabled={status === "loading"}
-                  >
-                    {status === "loading" ? (
-                      <>
-                        <span className="ct-spinner" />
-                        Sending…
-                      </>
-                    ) : (
-                      <>
-                        Send Message
-                        <i className="fa-solid fa-paper-plane" />
-                      </>
-                    )}
-                  </button>
-
-                  <p className="ct-form-note">
-                    <i className="fa-solid fa-shield-halved" />
-                    Your information is never shared with third parties.
-                  </p>
                 </form>
               )}
             </div>
           </div>
+
+          {/* SIDEBAR — second in DOM = below form on mobile */}
+          <aside className="ct-sidebar">
+            <div className="ct-panel">
+              {INFO.map((c) => (
+                <div className="ct-info" key={c.label}>
+                  <div className="ct-info__icon">{c.icon}</div>
+                  <div className="ct-info__body">
+                    <span className="ct-info__label">{c.label}</span>
+                    {c.href ? (
+                      <a
+                        href={c.href}
+                        className="ct-info__val ct-info__val--link"
+                      >
+                        {c.value}
+                      </a>
+                    ) : (
+                      <span className="ct-info__val">{c.value}</span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="ct-panel">
+              <div className="ct-panel__head">Find me online</div>
+              {SOCIALS.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="ct-social"
+                >
+                  <div className="ct-social__icon">{s.icon}</div>
+                  <div className="ct-social__text">
+                    <span className="ct-social__name">{s.label}</span>
+                    <span className="ct-social__handle">{s.handle}</span>
+                  </div>
+                  <FaArrowUpRightFromSquare className="ct-social__arrow" />
+                </a>
+              ))}
+            </div>
+          </aside>
         </div>
-      </section>
+      </div>
+    </div>
+  );
+}
+
+function F({ id, label, err, touched, right, children }) {
+  const bad = err && touched;
+  return (
+    <div className={`ct-field${bad ? " ct-field--err" : ""}`}>
+      <label htmlFor={id}>
+        {label}
+        {right}
+      </label>
+      {children}
+      {bad && (
+        <span className="ct-err">
+          <FaCircleExclamation />
+          {err}
+        </span>
+      )}
     </div>
   );
 }
