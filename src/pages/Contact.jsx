@@ -1,6 +1,6 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
-import { EJ_SERVICE_ID, EJ_TEMPLATE_ID, EJ_PUBLIC_KEY } from "../../config";
+// import { EJ_SERVICE_ID, EJ_TEMPLATE_ID, EJ_PUBLIC_KEY } from "../../config";
 import "@/styles/pages/contact.css";
 
 import {
@@ -67,6 +67,10 @@ const SOCIALS = [
     icon: <FaMedium />,
   },
 ];
+
+const EJ_SERVICE_ID = import.meta.env.VITE_EMAIL_SERVICE_ID;
+const EJ_TEMPLATE_ID = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
+const EJ_PUBLIC_KEY = import.meta.env.VITE_EMAIL_PUBLIC_KEY;
 
 const EMPTY = { name: "", email: "", subject: "", message: "" };
 

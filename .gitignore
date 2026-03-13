@@ -25,3 +25,7 @@ dist-ssr
 
 # EmailJS config (private keys)
 config.js
+
+
+.env
+.env.local
