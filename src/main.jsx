@@ -1,5 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+debugger;
 
 // Import base CSS in proper order
 import "@/styles/base/reset.css";
@@ -9,8 +10,6 @@ import "@/styles/base/typography.css";
 import "@/styles/base/utilities.css";
 
 import App from "./App";
-
-
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

@@ -1,40 +1,36 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap");
-:root {
-  /* COLORS */
+/* ── FONTS — single combined request (faster load) ───────── */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 
+:root {
+  /* ── BACKGROUNDS ───────────────────────────────────────── */
   --bg: #f8fafc;
   --surface: #ffffff;
-
-  --text: #0f172a;
-  --muted: #475569;
-
-  --border: #e2e8f0;
-  --grid-line: rgba(15, 23, 42, 0.05);
-
-  --primary: #2563eb;
-  --primary-dark: #1d4ed8;
-
   --accent: #e0f2fe;
   --accent-soft: #f0f9ff;
 
-  /* NAV */
+  /* ── TEXT ──────────────────────────────────────────────── */
+  --text: #0f172a;
+  --muted: #475569;
 
+  /* ── BORDERS ───────────────────────────────────────────── */
+  --border: #e2e8f0;
+  --grid-line: rgba(15, 23, 42, 0.05);
+
+  /* ── BRAND ─────────────────────────────────────────────── */
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-rgb: 37, 99, 235;
+
+  /* ── NAV ───────────────────────────────────────────────── */
   --nav-bg: rgba(248, 250, 252, 0.85);
 
-  /* FONTS */
-
+  /* ── FONTS ─────────────────────────────────────────────── */
   --font-heading: "Space Grotesk", sans-serif;
-  --font-ui: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
   --font-blog: "DM Sans", sans-serif;
+  --font-ui: "DM Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 
-  /* TEXT SCALE */
-
+  /* ── TEXT SCALE ────────────────────────────────────────── */
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -45,63 +41,52 @@
   --text-4xl: 2.25rem;
   --text-5xl: 3rem;
 
-  /* RADIUS */
-
+  /* ── RADIUS ────────────────────────────────────────────── */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
+  --radius-full: 9999px;
 
-  /* SHADOW */
-
+  /* ── SHADOWS ───────────────────────────────────────────── */
   --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
   --shadow-md: 0 6px 20px rgba(15, 23, 42, 0.1);
   --shadow-lg: 0 18px 45px rgba(15, 23, 42, 0.14);
 
-  --primary-rgb: 37, 99, 235; /* matches --primary: #2563eb */
-  --radius-full: 9999px; /* for pill-shaped buttons */
-
   --container: 1200px;
 }
 
-/* ── DARK MODE — add these missing tokens ─────────────────
-   Paste the full body.dark block below into your variables.css,
-   replacing the existing body.dark block entirely.
-──────────────────────────────────────────────────────────── */
-
 body.dark {
-  /* ── BACKGROUNDS ───────────────────────────────────────── */
-  --bg: #020617; /* page background               */
-  --surface: #0f172a; /* card / toolbar / panel bg     */ /* ← WAS MISSING */
-  --accent: #1e293b; /* elevated surface / input bg   */
-  --accent-soft: #1e293b; /* same — used by chip hover etc */ /* ← WAS MISSING */
+  /* ── BACKGROUNDS ───────────────────────────────────────────
+     Changed from slate (#020617 / #0f172a) to zinc-based neutrals.
+     Slate has a strong blue undertone that looks vivid on OLED
+     mobile screens but flat-black on laptop IPS panels.
+     Zinc (#18181b / #27272a) is perceptually neutral on both.
+  ──────────────────────────────────────────────────────────── */
+  --bg: #111113; /* zinc-950 — true neutral dark, no blue cast  */
+  --surface: #1c1c1f; /* zinc-900 — cards, toolbar, panels           */
+  --accent: #28282c; /* zinc-800 — elevated surfaces, input bg      */
+  --accent-soft: #28282c; /* same — chip hover, subtle fills             */
 
   /* ── TEXT ──────────────────────────────────────────────── */
-  --text: #e2e8f0;
-  --muted: #94a3b8;
+  --text: #f0f0f2; /* slightly warm white — easier on eyes        */
+  --muted: #a0a0ab; /* zinc-400 — secondary text                   */
 
   /* ── BORDERS ───────────────────────────────────────────── */
-  --border: #1e293b;
-  --grid-line: rgba(255, 255, 255, 0.05);
+  --border: #2e2e33; /* zinc-700 — visible but not harsh            */
+  --grid-line: rgba(255, 255, 255, 0.04);
 
   /* ── BRAND ─────────────────────────────────────────────── */
-  --primary: #3b82f6;
-  --primary-dark: #60a5fa;
-
-  /* ── ALIASES ───────────────────────────────────────────── */
-  --color-text: var(--text);
-  --color-muted: var(--muted);
-  --color-accent: var(--primary);
+  --primary: #4f8ef7; /* blue that pops on neutral dark, not too neon */
+  --primary-dark: #74a8f9; /* lighter for hover states                    */
+  --primary-rgb: 79, 142, 247;
 
   /* ── NAV ───────────────────────────────────────────────── */
-  --nav-bg: rgba(2, 6, 23, 0.85);
-
-  --primary-rgb: 59, 130, 246; /* matches dark --primary: #3b82f6 */
+  --nav-bg: rgba(17, 17, 19, 0.85);
 
   /* ── SHADOWS ───────────────────────────────────────────── */
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 18px 60px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 18px 60px rgba(0, 0, 0, 0.65);
   --shadow-blue:
-    0 0 36px rgba(59, 130, 246, 0.45), 0 6px 20px rgba(59, 130, 246, 0.35);
+    0 0 32px rgba(79, 142, 247, 0.35), 0 6px 20px rgba(79, 142, 247, 0.25);
 }
