@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AboutImage from "@/assets/images/profile/profile-about.jpeg";
+import AboutImage from "@/assets/images/profile/profile-about.webp";
 import { FaArrowRight, FaUser } from "react-icons/fa";
 import { useRef } from "react";
 import { useInView } from "@/hooks/useInView";

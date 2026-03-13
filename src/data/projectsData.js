@@ -1,9 +1,3 @@
-// src/data/projectsData.js
-// ─────────────────────────────────────────────────────────────
-// All 13 projects — card fields kept exactly as you had them.
-// Each project now also has full case-study fields that
-// ProjectDetail.jsx reads automatically via /projects/:id
-// ─────────────────────────────────────────────────────────────
 
 const projectsData = [
   // ── 1 ──────────────────────────────────────────────────────

@@ -126,10 +126,6 @@ export default function Contact() {
         {/* ── INLINE PAGE LABEL — not a hero, just one row ── */}
         <div className="ct-label-row">
           <div className="ct-label-row__left">
-            <span className="ct-badge">
-              <span className="ct-badge__dot" />
-              Contact
-            </span>
             <h1 className="ct-page-title">
               Let's work <span className="ct-accent">together</span>
             </h1>

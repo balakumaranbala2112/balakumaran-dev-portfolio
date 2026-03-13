@@ -1,10 +1,3 @@
-// src/pages/Projects.jsx
-// Redesigned for HR clarity:
-//  • Compact inline header — title + live count on one row
-//  • Search + filters tight below header, not buried after a hero
-//  • Projects grid visible above the fold on every screen
-//  • Cleaner empty state and GitHub CTA
-
 import { useEffect, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FaMagnifyingGlass, FaBoxOpen } from "react-icons/fa6";
@@ -69,11 +62,7 @@ export default function Projects() {
       {/* ══ COMPACT PAGE HEADER ═════════════════════════════ */}
       <div className="pj-topbar">
         <div className="pj-topbar__left">
-          {/* eyebrow label */}
-          <span className="pj-badge">
-            <span className="pj-badge__dot" />
-            Portfolio
-          </span>
+         
           <h1 className="pj-heading">
             Projects
             <span className="pj-heading__accent">.</span>

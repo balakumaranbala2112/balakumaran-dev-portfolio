@@ -1,5 +1,5 @@
 import "../../styles/components/about/AboutHero.css";
-import AboutImg from "@/assets/images/profile/profile-about.jpeg";
+import AboutImg from "@/assets/images/profile/profile-about.webp";
 import { FaCode } from "react-icons/fa";
 
 const AboutHero = () => {
