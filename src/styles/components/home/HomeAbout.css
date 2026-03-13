@@ -185,7 +185,6 @@
   color: #fff;
   background: var(--primary);
   padding: 11px 22px;
-  border-radius: var(--radius-full); /* was hardcoded 100px */
   text-decoration: none;
   transition:
     background 260ms ease,

@@ -50,7 +50,10 @@ const INFO = {
     label: "linkedin.com/in/balakumaran2112",
     url: "https://linkedin.com/in/balakumaran2112",
   },
-  portfolio: { label: "balakumaran.dev", url: "https://balakumaran.dev" },
+  portfolio: {
+    label: "balakumaran-k.web.app",
+    url: "https://balakumaran-k.web.app/",
+  },
 };
 
 const SUMMARY =

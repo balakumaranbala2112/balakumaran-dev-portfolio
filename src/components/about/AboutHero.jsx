@@ -30,9 +30,9 @@ const AboutHero = () => {
           </h1>
 
           <p className="lead">
-            I’m Balakumaran, a Full-Stack Developer based in India. I don't just
-            write code; I solve complex problems with simple, scalable
-            solutions.
+            I’m <b> Balakumaran</b>, a Full-Stack Developer based in India. I
+            don't just write code; I solve complex problems with simple,
+            scalable solutions.
           </p>
 
           <p>

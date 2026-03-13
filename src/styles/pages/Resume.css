@@ -735,6 +735,7 @@ body.dark .rv-skill-chip__icon {
 .rv-dl-btn--lg {
   font-size: 0.875rem;
   padding: 11px 26px;
+  width: 100%;
 }
 
 /* ════════════════════════════════════════════════════════════

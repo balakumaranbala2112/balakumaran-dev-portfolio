@@ -11,27 +11,6 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── BACKGROUND: dot grid ─────────────────────────────────────── */
-/* .hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
-  background-size: 34px 34px;
-  opacity: 0.6;
-  pointer-events: none;
-  mask-image: radial-gradient(
-    ellipse 85% 75% at 50% 40%,
-    black 20%,
-    transparent 100%
-  );
-  -webkit-mask-image: radial-gradient(
-    ellipse 85% 75% at 50% 40%,
-    black 20%,
-    transparent 100%
-  );
-} */
-
 /* ── BACKGROUND: blue mesh glow top-left ──────────────────────── */
 .hero::after {
   content: "";
@@ -195,7 +174,7 @@
   justify-content: center;
   gap: 8px;
   padding: 13px 26px;
-  border-radius: var(--radius-full); /* was hardcoded 100px */
+  /* border-radius: var(--radius-full); was hardcoded 100px */
   font-family: var(--font-ui); /* was "Syne", sans-serif */
   font-size: 0.88rem;
   font-weight: 700;
