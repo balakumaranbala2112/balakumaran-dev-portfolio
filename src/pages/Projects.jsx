@@ -1,15 +1,13 @@
 // src/pages/Projects.jsx
-// All logic preserved. Additions:
-//  • Eyebrow badge above h1 (matches portfolio-wide style)
-//  • Result count shown below toolbar ("Showing X of Y projects")
-//  • Better empty state with icon + clear-filter button
-//  • GitHub CTA gets an eyebrow label too
-//  • Fixed: <Link href=...> → <a href=...> on resume (was already a bug)
+// Redesigned for HR clarity:
+//  • Compact inline header — title + live count on one row
+//  • Search + filters tight below header, not buried after a hero
+//  • Projects grid visible above the fold on every screen
+//  • Cleaner empty state and GitHub CTA
 
 import { useEffect, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FaMagnifyingGlass, FaBoxOpen } from "react-icons/fa6";
-import { useGitHubRepos } from "../hooks/useGitHubRepos";
 
 import projectsData from "@/data/projectsData";
 import ProjectCard from "@/components/projects/ProjectCard";
@@ -23,15 +21,11 @@ const PROJECTS_PER_PAGE = 6;
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterTech, setFilterTech] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
-  const { repos, loadding } = useGitHubRepos("balakumaranbala2112");
 
-  // if (loading) return <p>Loading...</p>;
-
-  /* ── load ─────────────────────────────────────────────── */
   useEffect(() => {
     setLoading(true);
     const t = setTimeout(() => {
@@ -41,7 +35,6 @@ export default function Projects() {
     return () => clearTimeout(t);
   }, []);
 
-  /* ── filter ───────────────────────────────────────────── */
   const filteredProjects = projects.filter((p) => {
     const q = searchTerm.toLowerCase();
     const matchSearch =
@@ -51,12 +44,10 @@ export default function Projects() {
     return matchSearch && matchFilter;
   });
 
-  /* reset to page 1 on filter/search change */
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, filterTech]);
 
-  /* ── pagination ───────────────────────────────────────── */
   const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE);
   const startIndex = (currentPage - 1) * PROJECTS_PER_PAGE;
   const currentProjects = filteredProjects.slice(
@@ -74,54 +65,63 @@ export default function Projects() {
   };
 
   return (
-    <div className="projects-page">
-      {/* ══ HEADER ══════════════════════════════════════════ */}
-      <section className="page-header section-pad flex ">
-        <div className="container">
-          <div className="page-header__eyebrow">
-            <span className="page-header__dot" />
+    <div className="pj-page">
+      {/* ══ COMPACT PAGE HEADER ═════════════════════════════ */}
+      <div className="pj-topbar">
+        <div className="pj-topbar__left">
+          {/* eyebrow label */}
+          <span className="pj-badge">
+            <span className="pj-badge__dot" />
             Portfolio
-          </div>
-          <h1>
-            Selected <em>Works</em>
-            <span className="dot"> .</span>
+          </span>
+          <h1 className="pj-heading">
+            Projects
+            <span className="pj-heading__accent">.</span>
           </h1>
-          <p>
-            Search, filter, and explore projects built with scalable engineering
-            practices and real-world impact.
+          <p className="pj-subheading">
+            Full-stack applications built with real-world engineering practices.
           </p>
         </div>
-        {/* ══ TOOLBAR ═════════════════════════════════════════ */}
-        <div className="container">
-          <ProjectsToolbar
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            filterTech={filterTech}
-            setFilterTech={setFilterTech}
-          />
 
-          {/* result count */}
-          {!loading && (
-            <p className="projects-count">
-              Showing <strong>{filteredProjects.length}</strong> of{" "}
-              <strong>{projects.length}</strong> project
-              {projects.length !== 1 ? "s" : ""}
-              {(searchTerm || filterTech !== "all") && (
-                <button
-                  className="projects-count__clear"
-                  onClick={clearFilters}
-                >
-                  Clear filters
-                </button>
-              )}
-            </p>
+        {/* live count — immediately tells HR how many projects */}
+        <div className="pj-topbar__stat">
+          {loading ? (
+            <span className="pj-stat-skeleton" />
+          ) : (
+            <>
+              <span className="pj-stat-number">{projects.length}</span>
+              <span className="pj-stat-label">Projects</span>
+            </>
           )}
         </div>
-      </section>
+      </div>
+
+      {/* ══ TOOLBAR (search + filters) ═════════════════════ */}
+      <div className="pj-toolbar-wrap">
+        <ProjectsToolbar
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          filterTech={filterTech}
+          setFilterTech={setFilterTech}
+        />
+
+        {/* result count — only when filtered */}
+        {!loading && (searchTerm || filterTech !== "all") && (
+          <div className="pj-results-row">
+            <span className="pj-results-text">
+              <strong>{filteredProjects.length}</strong> of {projects.length}{" "}
+              projects
+            </span>
+            <button className="pj-clear-btn" onClick={clearFilters}>
+              Clear filters ×
+            </button>
+          </div>
+        )}
+      </div>
 
       {/* ══ GRID ════════════════════════════════════════════ */}
-      <section className="gallery-section">
-        <div className="container gallery-grid">
+      <main className="pj-grid-section">
+        <div className="pj-grid">
           {loading
             ? Array.from({ length: 6 }).map((_, i) => (
                 <ProjectSkeleton key={i} />
@@ -142,50 +142,46 @@ export default function Projects() {
 
         {/* EMPTY STATE */}
         {!loading && filteredProjects.length === 0 && (
-          <div className="empty-state">
-            <div className="empty-state__icon">
+          <div className="pj-empty">
+            <div className="pj-empty__icon">
               <FaBoxOpen />
             </div>
             <h3>No projects found</h3>
             <p>
-              No projects match{" "}
+              Nothing matches{" "}
               {searchTerm ? (
                 <>
-                  "<strong>{searchTerm}</strong>"
+                  <strong>"{searchTerm}"</strong>
                 </>
               ) : (
-                "your current filter"
+                "your filter"
               )}
               .
             </p>
-            <button className="empty-state__btn" onClick={clearFilters}>
-              <FaMagnifyingGlass /> Clear search &amp; filters
+            <button className="pj-empty__btn" onClick={clearFilters}>
+              <FaMagnifyingGlass /> Clear &amp; show all
             </button>
           </div>
         )}
-      </section>
+      </main>
 
       {/* ══ GITHUB CTA ══════════════════════════════════════ */}
-      <section className="github-cta section-pad">
-        <div className="container">
-          <div className="page-header__eyebrow">
-            <span className="page-header__dot" />
-            Open Source
+      <section className="pj-cta">
+        <div className="pj-cta__inner">
+          <div>
+            <p className="pj-cta__label">Open Source</p>
+            <h2 className="pj-cta__title">More on GitHub</h2>
+            <p className="pj-cta__sub">
+              Explore full repos, commit history, and experiments.
+            </p>
           </div>
-          <h2>
-            Want to see <span>more</span> code?
-          </h2>
-          <p>
-            Explore full repositories, commit history, and real-world
-            implementations on GitHub.
-          </p>
           <a
             href="https://github.com/balakumaranbala2112"
             target="_blank"
             rel="noreferrer"
-            className="btn outline"
+            className="pj-cta__btn"
           >
-            <FaGithub /> Visit GitHub Profile
+            <FaGithub /> Visit GitHub
           </a>
         </div>
       </section>

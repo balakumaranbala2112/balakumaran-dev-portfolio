@@ -5,87 +5,94 @@
 @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
+  /* COLORS */
 
-/* COLORS */
+  --bg: #f8fafc;
+  --surface: #ffffff;
 
---bg:#f8fafc;
---surface:#ffffff;
+  --text: #0f172a;
+  --muted: #475569;
 
---text:#0f172a;
---muted:#475569;
+  --border: #e2e8f0;
+  --grid-line: rgba(15, 23, 42, 0.05);
 
---border:#e2e8f0;
---grid-line:rgba(15,23,42,0.05);
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
 
---primary:#2563eb;
---primary-dark:#1d4ed8;
+  --accent: #e0f2fe;
+  --accent-soft: #f0f9ff;
 
---accent:#e0f2fe;
---accent-soft:#f0f9ff;
+  /* NAV */
 
+  --nav-bg: rgba(248, 250, 252, 0.85);
 
-/* NAV */
+  /* FONTS */
 
---nav-bg:rgba(248,250,252,0.85);
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-ui: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 
+  /* TEXT SCALE */
 
-/* FONTS */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
 
---font-heading:"Space Grotesk",sans-serif;
---font-ui:"Inter",sans-serif;
---font-mono:"JetBrains Mono",monospace;
+  /* RADIUS */
 
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
 
-/* TEXT SCALE */
+  /* SHADOW */
 
---text-xs:0.75rem;
---text-sm:0.875rem;
---text-base:1rem;
---text-lg:1.125rem;
---text-xl:1.25rem;
---text-2xl:1.5rem;
---text-3xl:1.875rem;
---text-4xl:2.25rem;
---text-5xl:3rem;
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 6px 20px rgba(15, 23, 42, 0.1);
+  --shadow-lg: 0 18px 45px rgba(15, 23, 42, 0.14);
 
-
-/* RADIUS */
-
---radius-sm:8px;
---radius-md:12px;
---radius-lg:18px;
-
-
-/* SHADOW */
-
---shadow-sm:0 1px 3px rgba(15,23,42,0.08);
---shadow-md:0 6px 20px rgba(15,23,42,0.1);
---shadow-lg:0 18px 45px rgba(15,23,42,0.14);
-
-
---container:1200px;
-
+  --container: 1200px;
 }
 
-/* ── DARK MODE ──────────────────────────────────────────────────── */
+/* ── DARK MODE — add these missing tokens ─────────────────
+   Paste the full body.dark block below into your variables.css,
+   replacing the existing body.dark block entirely.
+──────────────────────────────────────────────────────────── */
+
 body.dark {
-  --bg: #020617;
+  /* ── BACKGROUNDS ───────────────────────────────────────── */
+  --bg: #020617; /* page background               */
+  --surface: #0f172a; /* card / toolbar / panel bg     */ /* ← WAS MISSING */
+  --accent: #1e293b; /* elevated surface / input bg   */
+  --accent-soft: #1e293b; /* same — used by chip hover etc */ /* ← WAS MISSING */
+
+  /* ── TEXT ──────────────────────────────────────────────── */
   --text: #e2e8f0;
   --muted: #94a3b8;
+
+  /* ── BORDERS ───────────────────────────────────────────── */
   --border: #1e293b;
   --grid-line: rgba(255, 255, 255, 0.05);
 
+  /* ── BRAND ─────────────────────────────────────────────── */
   --primary: #3b82f6;
   --primary-dark: #60a5fa;
-  --accent: #0f172a;
 
+  /* ── ALIASES ───────────────────────────────────────────── */
   --color-text: var(--text);
   --color-muted: var(--muted);
   --color-accent: var(--primary);
 
+  /* ── NAV ───────────────────────────────────────────────── */
   --nav-bg: rgba(2, 6, 23, 0.85);
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 
+  /* ── SHADOWS ───────────────────────────────────────────── */
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
   --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.35);
   --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 18px 60px rgba(0, 0, 0, 0.7);
