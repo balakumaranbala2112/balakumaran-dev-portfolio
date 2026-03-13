@@ -1,7 +1,3 @@
-// src/pages/Resume.jsx
-// Skills rendered as icon + label cards using react-icons/si
-// Mobile-first layout — works great on every screen size
-
 import {
   FaDownload,
   FaEnvelope,
@@ -49,7 +45,7 @@ const INFO = {
   title: "MERN Stack Developer",
   email: "bkumaran2112@gmail.com",
   phone: "+91 9597437868",
-  location: "Chennai, Tamil Nadu, India",
+  location: "Ariyalur, Tamil Nadu, India",
   linkedin: {
     label: "linkedin.com/in/balakumaran2112",
     url: "https://linkedin.com/in/balakumaran2112",
