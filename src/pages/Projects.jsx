@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FaMagnifyingGlass, FaBoxOpen } from "react-icons/fa6";
 
-import projectsData from "@/data/projectsData";
+import projectsData from "@/data/projectsData.json";
 import ProjectCard from "@/components/projects/ProjectCard";
 import Pagination from "@/components/projects/Pagination";
 import ProjectSkeleton from "@/components/projects/ProjectSkeleton";

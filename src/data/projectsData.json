@@ -1,0 +1,144 @@
+[
+  {
+    "id": "fraudshield",
+    "title": "FraudShield",
+    "subtitle": "An intelligent bank transaction monitoring system that flags fraudulent activity in real time using machine learning.",
+    "tech": "MERN · XGBoost · Flask · JWT",
+    "img": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80",
+    "heroImg": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1400&q=80",
+    "liveUrl": "#",
+    "githubUrl": "#",
+    "meta": [
+      { "label": "Role", "value": "Full Stack Dev" },
+      { "label": "Timeline", "value": "6 Weeks" },
+      { "label": "Type", "value": "Final Year Project" }
+    ],
+    "overview": {
+      "heading": "The Problem & Solution",
+      "paragraphs": [
+        "Banking fraud costs institutions billions annually, yet most systems rely on simple rule-based checks that fraudsters quickly learn to bypass. False positives also frustrate legitimate customers by blocking real transactions.",
+        "FraudShield introduces a three-tier severity flag system powered by an XGBoost model trained on transaction behavior patterns. Suspicious transactions are scored in real time through a Flask API, and analysts review flagged cases on a MERN dashboard — reducing false positives while catching actual fraud."
+      ]
+    },
+    "features": {
+      "heading": "Key Features",
+      "items": [
+        {
+          "icon": "fa-solid fa-shield-halved",
+          "title": "Three-Tier Flag System",
+          "description": "Transactions are classified as Safe, Review, or Block based on ML confidence scores — giving analysts context instead of binary alerts."
+        },
+        {
+          "icon": "fa-solid fa-brain",
+          "title": "XGBoost ML Engine",
+          "description": "A trained XGBoost classifier evaluates 20+ transaction features — amount, location delta, merchant category, time-of-day — and returns a fraud probability score via Flask REST API."
+        },
+        {
+          "icon": "fa-solid fa-chart-bar",
+          "title": "Analyst Dashboard",
+          "description": "React-based dashboard displays flagged transactions with risk scores, feature explanations, and one-click approve/block actions stored in MongoDB."
+        }
+      ]
+    },
+    "techStack": {
+      "heading": "Technology Stack",
+      "description": "Python ML layer exposed via Flask REST API, consumed by a full MERN stack application.",
+      "items": [
+        { "icon": "fa-brands fa-react", "label": "React.js" },
+        { "icon": "fa-brands fa-node-js", "label": "Node.js" },
+        { "icon": "fa-solid fa-server", "label": "Express" },
+        { "icon": "fa-solid fa-database", "label": "MongoDB" },
+        { "icon": "fa-brands fa-python", "label": "Python / Flask" },
+        { "icon": "fa-solid fa-lock", "label": "JWT Auth" }
+      ]
+    },
+    "challenges": {
+      "heading": "Challenges & Learnings",
+      "paragraphs": [
+        "The ML model was trained on a highly imbalanced dataset — only 0.17% of transactions were fraudulent. Naive training produced a model that predicted Safe for everything and still achieved 99.8% accuracy.",
+        "Bridging the Python ML layer with the Node.js backend also introduced latency. Each transaction required a synchronous HTTP call to Flask, which became a bottleneck under load."
+      ],
+      "highlight": {
+        "title": "The Fix",
+        "body": "Used SMOTE oversampling to balance the training data and switched to F1-score as the evaluation metric. On the backend, Flask calls were moved to a queue with async resolution so the UI remains responsive while scores are computed."
+      }
+    },
+    "outcome": {
+      "heading": "Final Outcome",
+      "paragraphs": [
+        "FraudShield successfully completed its second academic review with a working end-to-end demo. The model achieves 94% F1-score on the test set, and the dashboard renders flagged transactions in under 400ms including ML scoring time."
+      ],
+      "img": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      "imgAlt": "FraudShield Dashboard View"
+    },
+    "nextProject": { "label": "CampusConnect", "id": "campusconnect" }
+  },
+
+  {
+    "id": "campusconnect",
+    "title": "CampusConnect",
+    "subtitle": "A real-time collaborative platform where college students share resources and clear doubts in subject-specific rooms.",
+    "tech": "MERN · Socket.io · JWT · Cloudinary",
+    "img": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80",
+    "heroImg": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80",
+    "liveUrl": "#",
+    "githubUrl": "#",
+    "meta": [
+      { "label": "Role", "value": "Full Stack Dev" },
+      { "label": "Timeline", "value": "5 Weeks" },
+      { "label": "Type", "value": "Team Project" }
+    ],
+    "overview": {
+      "heading": "The Problem & Solution",
+      "paragraphs": [
+        "College students waste hours searching scattered WhatsApp groups and generic Stack Overflow threads for subject-specific help.",
+        "CampusConnect organises academic help into subject rooms — DSA, Web Dev, OS, DBMS and more."
+      ]
+    },
+    "features": {
+      "heading": "Key Features",
+      "items": [
+        {
+          "icon": "fa-solid fa-door-open",
+          "title": "Subject Rooms",
+          "description": "Students join or create rooms per subject."
+        },
+        {
+          "icon": "fa-solid fa-bolt",
+          "title": "Real-time Updates",
+          "description": "New posts and answers appear instantly via Socket.io."
+        },
+        {
+          "icon": "fa-solid fa-file-arrow-up",
+          "title": "File & Image Sharing",
+          "description": "Students upload screenshots of problems using Cloudinary."
+        }
+      ]
+    },
+    "nextProject": { "label": "SecureNotes", "id": "securenotes" }
+  },
+
+  {
+    "id": "securenotes",
+    "title": "SecureNotes",
+    "subtitle": "A full-stack notes application with JWT authentication and protected routes.",
+    "tech": "MERN · JWT · Bcrypt · REST API",
+    "img": "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=800&q=80",
+    "heroImg": "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1400&q=80",
+    "liveUrl": "#",
+    "githubUrl": "#",
+    "meta": [
+      { "label": "Role", "value": "Full Stack Dev" },
+      { "label": "Timeline", "value": "3 Weeks" },
+      { "label": "Type", "value": "Personal Project" }
+    ],
+    "overview": {
+      "heading": "The Problem & Solution",
+      "paragraphs": [
+        "Most beginner CRUD apps skip authentication entirely.",
+        "SecureNotes was built to understand the full JWT authentication cycle."
+      ]
+    },
+    "nextProject": { "label": "FraudShield", "id": "fraudshield" }
+  }
+]

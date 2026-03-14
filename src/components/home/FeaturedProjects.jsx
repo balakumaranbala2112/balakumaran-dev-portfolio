@@ -5,85 +5,9 @@ import {
   FaArrowRight,
   FaArrowUpRightFromSquare,
 } from "react-icons/fa6";
+import projects from "@/data/selectedProjects.json";
 import campusLink from "@/assets/images/projects/campuslink.png";
 import "../../styles/components/home/FeaturedProject.css";
-
-// const projects = [
-//   {
-//     id: 1,
-//     num: "01",
-//     title: "CampusLink",
-//     label: "EdTech Platform",
-//     description:
-//       "A comprehensive learning platform allowing students to collaborate, ask questions, and share resources in subject-specific rooms. Features real-time forums and AI-assisted content sorting.",
-//     image: campusLink,
-//     tech: ["React", "Node.js", "MongoDB", "Socket.io"],
-//     links: { liveLink: "#", githubLink: "#" },
-//   },
-//   {
-//     id: 2,
-//     num: "02",
-//     title: "LiveLife",
-//     label: "Health & Wellness",
-//     description:
-//       "A habit-tracking and wellness app that combines daily check-ins, streak motivation, and data-driven insights to help users build sustainable routines.",
-//     image: campusLink,
-//     tech: ["Next.js", "TypeScript", "Prisma", "Tailwind"],
-//     links: { liveLink: "#", githubLink: "#" },
-//   },
-//   {
-//     id: 3,
-//     num: "03",
-//     title: "Portfolio 2026",
-//     label: "Personal Brand",
-//     description:
-//       "This very portfolio — hand-crafted without UI libraries. Custom CSS architecture, dark/light theming, scroll animations, and a perfect Lighthouse score.",
-//     image: campusLink,
-//     tech: ["React", "CSS Modules", "Vite", "Animations"],
-//     links: { liveLink: "#", githubLink: "#" },
-//   },
-// ];
-
-// import bankImg from "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80";
-// import campusImg from "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80";
-// import aiImg from "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80";
-
-// ✅ Just use the URL directly as a string value
-const projects = [
-  {
-    id: 1,
-    num: "01",
-    title: "FraudShield",
-    label: "FinTech · ML",
-    description: "An intelligent bank transaction monitoring system...",
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80",
-    tech: ["React", "Node.js", "Python", "XGBoost", "Flask", "MongoDB"],
-    links: { liveLink: "#", githubLink: "#" },
-  },
-  {
-    id: 2,
-    num: "02",
-    title: "CampusConnect",
-    label: "EdTech Platform",
-    description: "A collaborative platform for college students...",
-    image:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80",
-    tech: ["React", "Node.js", "MongoDB", "Express", "Socket.io"],
-    links: { liveLink: "#", githubLink: "#" },
-  },
-  {
-    id: 3,
-    num: "03",
-    title: "AskAI",
-    label: "AI · Productivity",
-    description: "A minimalist AI chat interface powered by the Gemini API...",
-    image:
-      "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
-    tech: ["React", "Gemini API", "Node.js", "Express"],
-    links: { liveLink: "#", githubLink: "#" },
-  },
-];
 
 /* ── IntersectionObserver scroll reveal ──────────────────────── */
 
