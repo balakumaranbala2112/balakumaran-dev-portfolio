@@ -1,0 +1,598 @@
+/* ═══════════════════════════════════════════════════════════════
+   GitHubStats.css  — FIXED responsive version
+   Location: src/styles/components/home/GitHubStats.css
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Section ──────────────────────────────────────────────────── */
+.ghs {
+  width: 100%;
+  padding: 100px 24px;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.55s ease 0.1s,
+    transform 0.55s ease 0.1s;
+}
+.ghs--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ghs::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(900px, 90%);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border),
+    rgba(var(--primary-rgb), 0.35),
+    var(--border),
+    transparent
+  );
+}
+.ghs::after {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -120px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(var(--primary-rgb), 0.06) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+/* ── Container ────────────────────────────────────────────────── */
+.ghs__container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* ── Section header ───────────────────────────────────────────── */
+.ghs__header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.ghs__label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: rgba(var(--primary-rgb), 0.1);
+  border: 1px solid rgba(var(--primary-rgb), 0.2);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+}
+
+.ghs__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+.ghs__accent {
+  color: var(--primary);
+}
+
+.ghs__sub {
+  font-size: var(--text-base);
+  color: var(--muted);
+  max-width: 460px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* ── Error banner ─────────────────────────────────────────────── */
+.ghs__error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(var(--primary-rgb), 0.06);
+  border: 1px solid rgba(var(--primary-rgb), 0.18);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.ghs__error a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* ── Skeleton shimmer ─────────────────────────────────────────── */
+@keyframes ghs-shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+.ghs-skeleton {
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--accent) 25%,
+    var(--accent-soft) 50%,
+    var(--accent) 75%
+  );
+  background-size: 800px 100%;
+  animation: ghs-shimmer 1.4s infinite linear;
+}
+.ghs-skeleton--val {
+  height: 36px;
+  width: 70%;
+  margin: 6px auto 0;
+}
+.ghs-skeleton--lang {
+  height: 38px;
+  margin-bottom: 14px;
+}
+.ghs-skeleton--repo {
+  height: 90px;
+  margin-bottom: 10px;
+  border-radius: var(--radius-md);
+}
+
+/* ── Stat cards ───────────────────────────────────────────────── */
+.ghs__stats {
+  display: grid;
+  /* FIX: minmax(0, 1fr) prevents cards from overflowing their column */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.ghs-stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  text-align: center;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.ghs-stat:hover {
+  border-color: rgba(var(--primary-rgb), 0.35);
+  box-shadow: var(--shadow-sm);
+}
+.ghs-stat__icon {
+  font-size: 1.2rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ghs-stat__lang-icon {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.ghs-stat__value {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.2;
+  /* FIX: long language names (e.g. "JavaScript") no longer overflow */
+  word-break: break-word;
+}
+.ghs-stat__label {
+  font-size: var(--text-xs);
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ── Bottom grid: languages + repos ──────────────────────────── */
+.ghs__grid {
+  display: grid;
+  /* FIX: minmax(0, ...) on both sides so neither column can escape its bounds */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.ghs__panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  /* FIX: panels must not overflow their grid cell */
+  min-width: 0;
+  overflow: hidden;
+}
+.ghs__panel-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Language bars ────────────────────────────────────────────── */
+.ghs-lang {
+  margin-bottom: 14px;
+}
+
+.ghs-lang__meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+.ghs-lang__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ghs-lang__name {
+  font-size: var(--text-sm);
+  color: var(--text);
+  font-weight: 500;
+  flex: 1;
+  /* FIX: flex:1 alone isn't enough — min-width:0 lets it shrink below content size */
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ghs-lang__pct {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  /* FIX: flex-shrink:0 so the % never gets pushed off screen */
+  flex-shrink: 0;
+}
+
+.ghs-lang__track {
+  height: 5px;
+  background: var(--accent);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  /* FIX: explicit 100% width so bar fills the panel regardless of parent */
+  width: 100%;
+}
+.ghs-lang__fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  width: 0%;
+  transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Repo cards ───────────────────────────────────────────────── */
+.ghs__repos {
+  display: grid;
+  /* FIX: was hardcoded `1fr 1fr` — auto-fill collapses to 1 col on narrow panels */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.ghs-repo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  text-decoration: none;
+  /* FIX: min-width:0 lets the card shrink inside the grid cell */
+  min-width: 0;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.4s ease var(--delay, 0s),
+    transform 0.4s ease var(--delay, 0s),
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+.ghs--visible .ghs-repo {
+  opacity: 1;
+  transform: translateY(0);
+}
+.ghs-repo:hover {
+  border-color: rgba(var(--primary-rgb), 0.4);
+  box-shadow: var(--shadow-sm);
+}
+
+.ghs-repo__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* FIX: min-width:0 is required for text-overflow to work in a flex child */
+  min-width: 0;
+}
+.ghs-repo__icon {
+  font-size: 0.9rem;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.ghs-repo__name {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--primary);
+  flex: 1;
+  /* FIX: both min-width:0 AND overflow:hidden are needed together */
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ghs-repo__arrow {
+  font-size: 0.65rem;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.ghs-repo:hover .ghs-repo__arrow {
+  color: var(--primary);
+}
+
+.ghs-repo__desc {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ghs-repo__foot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+.ghs-repo__lang {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+.ghs-repo__lang-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
+}
+.ghs-repo__meta {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.68rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+.ghs-repo__updated {
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-left: auto;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+/* ── Contribution heatmap ─────────────────────────────────────── */
+.ghs__heatmap-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 32px;
+}
+.ghs__heatmap-note {
+  font-size: var(--text-xs);
+  color: var(--muted);
+  margin-bottom: 20px;
+  margin-top: -12px;
+}
+
+.ghs__heatmap {
+  position: relative;
+  border-radius: var(--radius-md);
+  /* FIX: horizontal scroll on narrow screens instead of clipping the chart */
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ghs__heatmap-img {
+  /* FIX: min-width keeps the chart readable rather than squashing to ~50px */
+  min-width: 600px;
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  opacity: 0.92;
+  transition: opacity 0.2s;
+}
+.ghs__heatmap-img:hover {
+  opacity: 1;
+}
+
+.ghs__heatmap-fallback {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+.ghs__heatmap--failed .ghs__heatmap-img {
+  display: none;
+}
+.ghs__heatmap--failed .ghs__heatmap-fallback {
+  display: flex;
+}
+
+/* ── CTA ──────────────────────────────────────────────────────── */
+.ghs__cta {
+  display: flex;
+  justify-content: center;
+}
+.ghs__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    color 0.2s;
+}
+.ghs__cta-btn:hover {
+  border-color: rgba(var(--primary-rgb), 0.5);
+  background: rgba(var(--primary-rgb), 0.06);
+  color: var(--primary);
+}
+.ghs__cta-btn svg:last-child {
+  font-size: 0.75rem;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   RESPONSIVE — 5 breakpoints, each collapses one layer
+════════════════════════════════════════════════════════════════ */
+
+/* 1024px — grid collapses to single column */
+@media (max-width: 1024px) {
+  .ghs__grid {
+    grid-template-columns: 1fr;
+  }
+  /* When panel is full-width, repos have room for 2 cols */
+  .ghs__repos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 768px — THE KEY FIX: repos drop to single column here */
+@media (max-width: 768px) {
+  .ghs {
+    padding: 80px 20px;
+  }
+  .ghs__header {
+    margin-bottom: 40px;
+  }
+  .ghs__title {
+    font-size: var(--text-3xl);
+  }
+
+  /* This was the missing breakpoint causing cards to be cut off */
+  .ghs__repos {
+    grid-template-columns: 1fr;
+  }
+
+  .ghs__panel {
+    padding: 20px 18px;
+  }
+  .ghs__heatmap-wrap {
+    padding: 20px 18px;
+  }
+}
+
+/* 640px — stats go 2×2 */
+@media (max-width: 640px) {
+  .ghs {
+    padding: 64px 16px;
+  }
+
+  .ghs__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .ghs__grid {
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .ghs__panel {
+    padding: 18px 16px;
+  }
+  .ghs__heatmap-wrap {
+    padding: 18px 16px;
+    margin-bottom: 20px;
+  }
+}
+
+/* 480px — tighten padding, hide "Updated" date in repo cards */
+@media (max-width: 480px) {
+  .ghs-stat {
+    padding: 18px 12px;
+  }
+  .ghs-stat__value {
+    font-size: var(--text-xl);
+  }
+  .ghs-stat__label {
+    font-size: 0.65rem;
+  }
+  .ghs-lang__name {
+    font-size: var(--text-xs);
+  }
+  /* Hide date to free space — stars/forks remain visible */
+  .ghs-repo__updated {
+    display: none;
+  }
+  .ghs-repo {
+    padding: 14px 12px;
+  }
+}
+
+/* 380px — stats still 2×2 but more compact */
+@media (max-width: 380px) {
+  .ghs__stats {
+    gap: 8px;
+  }
+  .ghs-stat {
+    padding: 14px 8px;
+  }
+  .ghs-stat__value {
+    font-size: var(--text-lg);
+  }
+}

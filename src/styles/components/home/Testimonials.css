@@ -1,0 +1,298 @@
+/* ═══════════════════════════════════════════════════════════════
+   Testimonials.css
+   Matches your existing CSS variable system exactly.
+   File location: src/styles/components/home/Testimonials.css
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Section wrapper ──────────────────────────────────────────── */
+.testimonials {
+  width: 100%;
+  /* padding: 100px 24px; */
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+
+  /* Scroll-in animation — same pattern as Stats and AboutPreview */
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.55s ease 0.1s,
+    transform 0.55s ease 0.1s;
+}
+
+.testimonials--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle top border gradient — same as home-about */
+.testimonials::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(900px, 90%);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border),
+    rgba(var(--primary-rgb), 0.35),
+    var(--border),
+    transparent
+  );
+}
+
+/* Faint radial glow in the background */
+.testimonials::after {
+  content: "";
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(
+    circle,
+    rgba(var(--primary-rgb), 0.06) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+/* ── Container ────────────────────────────────────────────────── */
+.testimonials__container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* ── Section Header ───────────────────────────────────────────── */
+.testimonials__header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.testimonials__label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: rgba(var(--primary-rgb), 0.1);
+  border: 1px solid rgba(var(--primary-rgb), 0.2);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+}
+
+.testimonials__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.testimonials__accent {
+  color: var(--primary);
+}
+
+.testimonials__sub {
+  font-size: var(--text-base);
+  color: var(--muted);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* ── Cards grid ───────────────────────────────────────────────── */
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ── Individual card ──────────────────────────────────────────── */
+.testimonials__card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  /* Staggered fade-in — each card delays via --delay custom prop */
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.45s ease var(--delay, 0s),
+    transform 0.45s ease var(--delay, 0s),
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Cards animate in once parent is visible */
+.testimonials--visible .testimonials__card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonials__card:hover {
+  border-color: rgba(var(--primary-rgb), 0.35);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Decorative quote icon ────────────────────────────────────── */
+.testimonials__quote-icon {
+  font-size: 1.4rem;
+  color: var(--primary);
+  opacity: 0.35;
+  line-height: 1;
+}
+
+/* ── Quote text ───────────────────────────────────────────────── */
+.testimonials__quote {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  line-height: 1.75;
+  flex: 1;
+  margin: 0;
+  font-style: italic;
+}
+
+/* ── Author row ───────────────────────────────────────────────── */
+.testimonials__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Avatar circle ────────────────────────────────────────────── */
+.testimonials__avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  flex-shrink: 0;
+  letter-spacing: 0.03em;
+}
+
+/* Color variants — matching your primary/accent palette */
+.testimonials__avatar--blue {
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--primary);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.testimonials__avatar--teal {
+  background: rgba(13, 148, 136, 0.12);
+  color: #0d9488;
+  border: 1px solid rgba(13, 148, 136, 0.2);
+}
+
+.testimonials__avatar--purple {
+  background: rgba(124, 58, 237, 0.12);
+  color: #7c3aed;
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+/* Dark mode avatar adjustments — colors are already dark-safe
+   via CSS variables, but we lighten the teal and purple slightly */
+body.dark .testimonials__avatar--teal {
+  background: rgba(20, 184, 166, 0.15);
+  color: #2dd4bf;
+  border-color: rgba(20, 184, 166, 0.25);
+}
+
+body.dark .testimonials__avatar--purple {
+  background: rgba(167, 139, 250, 0.15);
+  color: #a78bfa;
+  border-color: rgba(167, 139, 250, 0.25);
+}
+
+/* ── Author text ──────────────────────────────────────────────── */
+.testimonials__author-info {
+  min-width: 0;
+}
+
+.testimonials__name {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.testimonials__role {
+  font-size: var(--text-xs);
+  color: var(--muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── LinkedIn icon ────────────────────────────────────────────── */
+.testimonials__linkedin {
+  color: var(--muted);
+  font-size: 0.75rem;
+  transition: color 0.15s ease;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.testimonials__linkedin:hover {
+  color: #0a66c2; /* LinkedIn brand blue */
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .testimonials__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .testimonials {
+    padding: 72px 20px;
+  }
+
+  .testimonials__title {
+    font-size: var(--text-3xl);
+  }
+
+  .testimonials__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials__header {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonials__card {
+    padding: 22px 18px;
+  }
+}
