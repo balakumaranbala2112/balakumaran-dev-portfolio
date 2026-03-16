@@ -26,18 +26,21 @@ const AboutPreview = () => {
             <FaUser />
             About Me
           </h2>
-
           <p className="home-about__text">
-            I'm <span className="">Balakumaran</span>, a Full-Stack MERN
-            developer based in Ariyalur, India. I focus on writing clean,
-            maintainable code and building interfaces that are fast, accessible,
-            and genuinely useful.
+            I'm Balakumaran — a final-year B.E. student and self-driven MERN
+            Stack developer from Ariyalur. I don't just build things that work;
+            I build things that are readable, scalable, and worth showing.
           </p>
           <p className="home-about__text">
-            Currently looking for internship and full-time opportunities where I
-            can contribute to a real product and grow alongside a strong team.
+            My journey started with curiosity, moved through dozens of real
+            projects, and is now aimed at one goal — joining a team where I can
+            grow fast and contribute from day one.
           </p>
-
+          <p className="home-about__text">
+            Outside of code, I'm deep into DSA with Java, exploring system
+            design patterns, and documenting what I learn to help others catch
+            up faster.
+          </p>
           <Link to="/about" className="home-about__link">
             More about me <FaArrowRight />
           </Link>

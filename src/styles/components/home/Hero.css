@@ -117,9 +117,12 @@
 }
 
 .hero__title-accent {
-  color: var(--primary);
+  color: var(--bg);
   position: relative;
   display: inline-block;
+  background-color: var(--primary);
+  padding: 8px;
+  border-radius: 5px;
 }
 
 /* animated underline on MERN */

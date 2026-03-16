@@ -39,9 +39,13 @@ const Hero = () => {
           </h1>
 
           <p className="hero__description">
-            I build scalable React web applications with clean UI architecture,
-            reusable components, secure REST APIs, MongoDB integration, and
-            authentication systems (JWT / Firebase).
+            MERN Stack Developer crafting end-to-end products with clean code,
+            thoughtful UI, and real-world problem solving. Based in Ariyalur,
+            open to opportunities across India.
+          </p>
+
+          <p>
+            3+ Full-Stack Projects • REST APIs • Authentication • Responsive UI
           </p>
 
           <div className="hero__actions">

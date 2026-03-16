@@ -16,6 +16,10 @@ const Stats = () => {
   return (
     <section className={`stats ${inView ? "stats--visible" : ""}`} ref={ref}>
       <div className="stats__container">
+        <div className="ghs__header">
+          <h3 className="ghs__title">Stats</h3>
+        </div>
+
         <div className="stats__grid">
           {STATS.map((stat) => (
             <div className="stats__item" key={stat.label}>

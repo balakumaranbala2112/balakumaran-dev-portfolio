@@ -14,7 +14,7 @@ const Home = () => {
       <Stats />
       <FeaturedProjects />
       <GitHubStats />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <HireMe />
     </main>
   );

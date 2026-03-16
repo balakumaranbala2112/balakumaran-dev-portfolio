@@ -71,10 +71,10 @@ const HireMe = () => {
 
           {/* Subtext */}
           <p className="hire__body">
-            I'm a fresher MERN stack developer actively looking for{" "}
-            <strong>full-time roles and internships</strong>. I ship clean React
-            UIs, solid Node.js APIs, and MongoDB backends — ready to contribute
-            from day one.
+            I'm actively looking for full-time roles as a fresher in{" "}
+            <strong> Full-Stack </strong> or{" "}
+            <strong>Backend development</strong>. If you're hiring,
+            collaborating, or just want to talk tech — my inbox is always open.
           </p>
 
           {/* Skills chips */}
