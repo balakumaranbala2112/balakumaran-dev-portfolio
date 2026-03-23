@@ -1,5 +1,5 @@
 import Hero from "@/components/home/Hero";
-import AboutPreview from "@/components/home/AboutPreview";
+// import AboutPreview from "@/components/home/AboutPreview";
 import FeaturedProjects from "@/components/home/FeaturedProjects";
 import Stats from "@/components/home/Stats";
 import Testimonials from "../components/home/Testimonials";
@@ -10,8 +10,8 @@ const Home = () => {
   return (
     <main>
       <Hero />
-      <AboutPreview />
-      <Stats />
+      {/* <AboutPreview /> */}
+      {/* <Stats /> */}
       <FeaturedProjects />
       <GitHubStats />
       {/* <Testimonials /> */}

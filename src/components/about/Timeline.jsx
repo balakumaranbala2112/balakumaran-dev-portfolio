@@ -1,56 +1,103 @@
+// src/components/about/Timeline.jsx
+
 import "../../styles/components/about/Timeline.css";
-import { FaCalendarDays } from "react-icons/fa6";
+import { FaGraduationCap, FaSchool, FaBookOpen } from "react-icons/fa";
+import { HiAcademicCap } from "react-icons/hi2";
 
 const timelineData = [
   {
-    date: "2022 - 2026",
-    icon: <FaCalendarDays />,
-    title: "B.E. Computer Science and Engineering",
+    date: "2022 – 2026",
+    tag: "Current",
+    icon: <HiAcademicCap />,
+    title: "B.E. Computer Science & Engineering",
     subtitle: "Anna University",
     desc: "Focusing on Data Structures, Algorithms, and Web Engineering. Lead developer for the college tech club.",
+    active: true,
   },
   {
-    date: "2020 - 2022",
-    icon: <FaCalendarDays />,
+    date: "2020 – 2022",
+    tag: "Completed",
+    icon: <FaGraduationCap />,
     title: "Higher Secondary (HSC)",
-    subtitle: "State Board",
+    subtitle: "State Board, Tamil Nadu",
     desc: "Specialized in Mathematics and Computer Science. Graduated with distinction.",
+    active: false,
   },
   {
-    date: "2015 - 2020",
-    icon: <FaCalendarDays />,
-    title: "SSLC",
-    subtitle: "State Board",
-    desc: "Specialized in Mathematics and Computer Science. Graduated with distinction.",
+    date: "2015 – 2020",
+    tag: "Completed",
+    icon: <FaBookOpen />,
+    title: "SSLC — Secondary School",
+    subtitle: "State Board, Tamil Nadu",
+    desc: "Solid foundation in Science and Mathematics. Graduated with distinction.",
+    active: false,
   },
 ];
 
-const Timeline = () => {
-  return (
-    <section className="timeline-section">
-      <div className="container">
-        <div className="section-title">
-          <h3>My Journey</h3>
-          <h2>Education & Experience</h2>
-        </div>
+const Timeline = () => (
+  <section className="tl-section">
+    <div className="tl-bg-dots" aria-hidden="true" />
+    <div className="tl-bg-glow" aria-hidden="true" />
 
-        <div className="timeline">
-          {timelineData.map((item, index) => (
-            <div className="timeline-item" key={index}>
-              <div className="timeline-content">
-                <div className="timeline-dateaicon">
-                  <span className="timeline-icon"> {item.icon}</span>
-                  <span className="timeline-date">{item.date}</span>
-                </div>
-                <h3>{item.title}</h3>
-                <h4>{item.subtitle}</h4>
-              </div>
-            </div>
-          ))}
-        </div>
+    <div className="tl-container">
+      {/* header */}
+      <div className="tl-header">
+        <span className="tl-eyebrow">
+          <span className="tl-eyebrow-dot" />
+          My Journey
+        </span>
+        <h2 className="tl-title">Education &amp; Experience</h2>
+        <p className="tl-subtitle">
+          The path that shaped my skills and perspective as a developer.
+        </p>
       </div>
-    </section>
-  );
-};
+
+      {/* timeline list */}
+      <div className="tl-list">
+        {/* vertical spine line */}
+        <div className="tl-spine" aria-hidden="true" />
+
+        {timelineData.map((item, i) => (
+          <div
+            key={i}
+            className={`tl-item${item.active ? " tl-item--active" : ""}`}
+            style={{ "--delay": `${i * 80}ms` }}
+          >
+            {/* dot on the spine */}
+            <div className="tl-dot" aria-hidden="true">
+              <div className="tl-dot-inner" />
+              {item.active && (
+                <div className="tl-dot-ring" aria-hidden="true" />
+              )}
+            </div>
+
+            {/* card */}
+            <div className="tl-card">
+              {/* top row: icon + date + tag */}
+              <div className="tl-card-top">
+                <div className="tl-icon">{item.icon}</div>
+                <span className="tl-date">{item.date}</span>
+                <span
+                  className={`tl-tag${item.active ? " tl-tag--active" : ""}`}
+                >
+                  {item.tag}
+                </span>
+              </div>
+
+              {/* degree */}
+              <h3 className="tl-card-title">{item.title}</h3>
+
+              {/* institution */}
+              <p className="tl-card-sub">{item.subtitle}</p>
+
+              {/* description */}
+              <p className="tl-card-desc">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 export default Timeline;

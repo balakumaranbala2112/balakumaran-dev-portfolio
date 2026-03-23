@@ -1,10 +1,12 @@
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaGithub, FaLinkedinIn, FaNodeJs } from "react-icons/fa";
 import { HiDocumentDownload } from "react-icons/hi";
-import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import TerminalHero from "@/components/home/TerminalHero";
+import { Link } from "react-router-dom";
+import AboutImage from "@/assets/images/profile/profile-about.webp";
 import "../../styles/components/home/Hero.css";
+import { GrReactjs } from "react-icons/gr";
+import { SiExpress, SiMongodb } from "react-icons/si";
+
 const SOCIAL_LINKS = [
   {
     href: "https://github.com/balakumaranbala2112",
@@ -14,7 +16,7 @@ const SOCIAL_LINKS = [
   {
     href: "https://twitter.com/balakumaran_dev",
     icon: <FaXTwitter />,
-    label: "X (Twitter)",
+    label: "Twitter",
   },
   {
     href: "https://linkedin.com/in/balakumaran2112",
@@ -23,75 +25,167 @@ const SOCIAL_LINKS = [
   },
 ];
 
-const Hero = () => {
-  return (
-    <section className="hero">
-      <div className="hero__container">
-        {/* Left Content */}
-        <div className="hero__content">
-          <p className="hero__intro">
-            HELLO, I'M <span className="hero__highlight">BK 👋</span>
-          </p>
+const STATS = [
+  { n: "3", suffix: "+", label: "Projects" },
+  { n: "500", suffix: "+", label: "Commits" },
+  { n: "1", suffix: "+", label: "Yr. Learning" },
+];
 
-          <h1 className="hero__title">
-            Full-Stack <br />
-            <span className="hero__title-accent">MERN</span> Developer
-          </h1>
+const Hero = () => (
+  <section className="hero">
+    <div className="hero__bg-glow" aria-hidden="true" />
+    <div className="hero__bg-dots" aria-hidden="true" />
 
-          <p className="hero__description">
-            MERN Stack Developer crafting end-to-end products with clean code,
-            thoughtful UI, and real-world problem solving. Based in Ariyalur,
-            open to opportunities across India.
-          </p>
-
-          <p>
-            3+ Full-Stack Projects • REST APIs • Authentication • Responsive UI
-          </p>
-
-          <div className="hero__actions">
-            <Link to="/projects" className="hero__btn hero__btn--primary">
-              View Projects
-              <FaArrowRight size={18} className="hero__btn-icon" />
-            </Link>
-            <Link
-              href="/resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="hero__btn hero__btn--secondary"
-            >
-              Resume
-              <HiDocumentDownload size={20} className="hero__btn-icon" />
-            </Link>
-          </div>
-
-          <div className="hero__follow">
-            <span className="hero__follow-text">FOLLOW ME ON</span>
-            <span className="hero__follow-line" aria-hidden="true"></span>
-
-            <div className="hero__socials">
-              {SOCIAL_LINKS.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hero__social-icon"
-                  aria-label={social.label}
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
-          </div>
+    <div className="hero__container">
+      {/* ══ LEFT CONTENT ═══════════════════════════════════ */}
+      <div className="hero__content">
+        {/* OTW badge */}
+        <div className="hero__otw">
+          <span className="hero__otw-dot">
+            <span className="hero__otw-ring" aria-hidden="true" />
+          </span>
+          Open to Work
+          <span className="hero__otw-divider" aria-hidden="true" />
+          Available Now
         </div>
 
-        {/* Right Terminal */}
-        <div className="hero__terminal">
-          <TerminalHero />
+        {/* intro */}
+        <p className="hero__intro">
+          HELLO, I'M <span className="hero__hi">BK 👋</span>
+        </p>
+
+        {/* title */}
+        <h1 className="hero__title">
+          Full-Stack
+          <br />
+          <mark className="hero__mark">MERN</mark> Developer
+        </h1>
+
+        {/* desc */}
+        <p className="hero__desc">
+          I design and build full-stack web apps using MongoDB, Express, React,
+          and Node. Focused on performance, clean architecture, and real-world
+          impact.
+        </p>
+
+        {/* stats */}
+        <div className="hero__stats">
+          {STATS.map((s) => (
+            <div key={s.label} className="hero__stat">
+              <span className="hero__stat-n">
+                {s.n}
+                <span className="hero__stat-sfx">{s.suffix}</span>
+              </span>
+              <span className="hero__stat-l">{s.label}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* CTAs */}
+        <div className="hero__actions">
+          <Link to="/projects" className="hero__btn hero__btn--solid">
+            View My Projects
+            <FaArrowRight className="hero__btn-ico" />
+          </Link>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="hero__btn hero__btn--ghost"
+          >
+            <HiDocumentDownload className="hero__btn-ico" />
+            Download Resume
+          </a>
+        </div>
+
+        {/* follow */}
+        <div className="hero__follow">
+          <span className="hero__follow-label">FOLLOW ME ON</span>
+          <span className="hero__follow-rule" aria-hidden="true" />
+          <div className="hero__socials">
+            {SOCIAL_LINKS.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                className="hero__soc"
+                aria-label={s.label}
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
-    </section>
-  );
-};
+
+      {/* ══ RIGHT — IMAGE ══════════════════════════════════ */}
+      <div className="hero__visual" aria-hidden="true">
+        <div className="hero__orbit" />
+        <div className="hero__orbit hero__orbit--lg" />
+
+        <div className="hero__frame">
+          <img
+            src={AboutImage}
+            alt="Balakumaran K"
+            className="hero__img"
+            draggable="false"
+          />
+
+          <div className="hero__frame-chip">
+            <span className="hero__chip-dot" />
+            MERN Stack
+          </div>
+        </div>
+
+        <div className="hero__pill hero__pill--tl">
+          <GrReactjs />
+        </div>
+        <div className="hero__pill hero__pill--tr">
+          <FaNodeJs />
+        </div>
+        <div className="hero__pill hero__pill--br">
+          <SiMongodb />
+        </div>
+        <div className="hero__pill hero__pill--br">
+          <SiExpress />
+        </div>
+      </div>
+    </div>
+
+    {/* ══ MOBILE PROFILE CARD (shown only on mobile) ═══════
+        A compact horizontal card: photo left | identity right
+        Appears ABOVE the main content on small screens.
+    ════════════════════════════════════════════════════════ */}
+    <div className="hero__mobile-card" aria-hidden="true">
+      <div className="hero__mc-photo">
+        <img src={AboutImage} alt="" draggable="false" />
+      </div>
+      <div className="hero__mc-info">
+        <p className="hero__mc-name">Balakumaran K</p>
+        <p className="hero__mc-role">MERN Stack Developer</p>
+        <div className="hero__mc-socials">
+          {SOCIAL_LINKS.map((s) => (
+            <a
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noreferrer"
+              className="hero__mc-soc"
+              aria-label={s.label}
+            >
+              {s.icon}
+            </a>
+          ))}
+        </div>
+      </div>
+      {/* availability badge inside card */}
+      <div className="hero__mc-avail">
+        <span className="hero__mc-avail-dot" />
+        Open
+      </div>
+    </div>
+  </section>
+);
 
 export default Hero;

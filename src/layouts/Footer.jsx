@@ -1,16 +1,15 @@
+// src/components/layouts/Footer.jsx
+
 import { NavLink } from "react-router-dom";
-import {
-  FaGithub,
-  FaLinkedinIn,
-  FaXTwitter,
-  FaArrowUpLong,
-} from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import "../styles/components/layouts/Footer.css";
 
 const NAV_LINKS = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Projects", path: "/projects" },
+  { name: "Resume", path: "/resume" },
   { name: "Contact", path: "/contact" },
 ];
 
@@ -22,34 +21,26 @@ const SOCIAL_LINKS = [
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/yourusername",
+    href: "https://linkedin.com/in/balakumaran2112",
     icon: <FaLinkedinIn />,
   },
   {
     label: "Twitter",
-    href: "https://twitter.com/yourusername",
+    href: "https://twitter.com/balakumaran_dev",
     icon: <FaXTwitter />,
   },
 ];
 
 export default function Footer() {
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
   return (
     <footer className="footer">
-      {/* ── BOTTOM BAR ──────────────────────────────────────── */}
+      <div className="footer__rule" />
+
+      {/* copyright */}
       <div className="footer__bottom">
         <p className="footer__copy">
-          © {new Date().getFullYear()} Balakumaran K. — crafted with care.
+          © {new Date().getFullYear()} Balakumaran K
         </p>
-        <button
-          className="footer__top-btn"
-          onClick={scrollToTop}
-          aria-label="Back to top"
-        >
-          <FaArrowUpLong />
-          Back to top
-        </button>
       </div>
     </footer>
   );

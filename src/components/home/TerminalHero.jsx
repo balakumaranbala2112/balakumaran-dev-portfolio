@@ -6,12 +6,13 @@ import "../../styles/components/home/TerminalHero.css";
 
 const codeSnippets = [
   `const aboutMe = () => ({
-  name: "Balakumaran",
+  name: "Balakumaran K",
+  alias: "BK",
   role: "MERN Stack Developer",
   location: "Chennai, India",
   mindset: "Product-focused developer",
   codingStyle: "Clean, scalable, maintainable",
-  availability: "Open for Internship / Full-Time",
+  Status: "Open for Internship / Full-Time",
 });`,
 
   `const myProjects = () => ({

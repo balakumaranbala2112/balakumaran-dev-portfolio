@@ -9,6 +9,8 @@ import {
   FaArrowUpRightFromSquare,
 } from "react-icons/fa6";
 
+import { FaCss3Alt } from "react-icons/fa";
+
 import {
   SiJavascript,
   SiTypescript,
@@ -18,7 +20,6 @@ import {
   SiRedux,
   SiTailwindcss,
   SiHtml5,
-  SiCss3,
   SiSass,
   SiNodedotjs,
   SiExpress,
@@ -80,7 +81,7 @@ const SKILL_GROUPS = [
       { label: "Tailwind CSS", icon: <SiTailwindcss />, color: "#38bdf8" },
       { label: "Framer Motion", icon: <SiFramer />, color: "#0055ff" },
       { label: "HTML5", icon: <SiHtml5 />, color: "#e34f26" },
-      { label: "CSS3", icon: <SiCss3 />, color: "#264de4" },
+      { label: "CSS3", icon: <FaCss3Alt />, color: "#264de4" },
       { label: "Sass", icon: <SiSass />, color: "#cc6699" },
     ],
   },

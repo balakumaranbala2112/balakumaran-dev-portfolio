@@ -1,45 +1,43 @@
-/* ============================================================
-   Timeline.css — 2026 redesign
-   Same class names — no JSX changes needed.
-   ============================================================ */
-
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@300;400;500&display=swap");
-
 /* ── SECTION ─────────────────────────────────────────────── */
-.timeline-section {
+.tl-section {
   width: 100%;
-  padding: 100px 0;
+  padding: 96px 0 96px;
   position: relative;
   overflow: hidden;
-  background: var(--accent);
-  font-family: "DM Sans", sans-serif;
+  /* background: var(--accent, #f0f9ff); */
+  background-color: var(--bg);
+  font-family: var(--font-ui, "Inter", sans-serif);
   -webkit-font-smoothing: antialiased;
 }
 
-/* dot grid */
-.timeline-section::before {
-  content: "";
+body.dark .tl-section {
+  background: var(--accent, #0f172a);
+}
+
+/* ── BG ──────────────────────────────────────────────────── */
+.tl-bg-dots {
   position: absolute;
   inset: 0;
   background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
-  background-size: 34px 34px;
-  opacity: 0.45;
+  background-size: 32px 32px;
+  opacity: 0.5;
   pointer-events: none;
   mask-image: radial-gradient(
     ellipse 90% 80% at 50% 50%,
     black 10%,
-    transparent 100%
+    transparent 90%
   );
   -webkit-mask-image: radial-gradient(
     ellipse 90% 80% at 50% 50%,
     black 10%,
-    transparent 100%
+    transparent 90%
   );
 }
+body.dark .tl-bg-dots {
+  opacity: 0.14;
+}
 
-/* blue ambient glow — top left */
-.timeline-section::after {
-  content: "";
+.tl-bg-glow {
   position: absolute;
   top: -100px;
   left: -100px;
@@ -47,227 +45,384 @@
   height: 520px;
   background: radial-gradient(
     circle,
-    rgba(59, 130, 246, 0.07) 0%,
+    rgba(37, 99, 235, 0.07) 0%,
     transparent 65%
   );
   pointer-events: none;
 }
 
-/* ── SECTION HEADER ──────────────────────────────────────── */
-.section-title {
+/* ── CONTAINER ───────────────────────────────────────────── */
+.tl-container {
   position: relative;
   z-index: 1;
-  text-align: center;
-  margin-bottom: 64px;
+  max-width: var(--container, 1200px);
+  margin: 0 auto;
+  padding: 0 28px;
 }
 
-.section-title h3 {
+/* ── HEADER ──────────────────────────────────────────────── */
+.tl-header {
+  text-align: center;
+  margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.tl-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-family: "Syne", sans-serif;
-  font-size: 0.7rem;
+  gap: 7px;
+  font-family: var(--font-heading, "Space Grotesk", sans-serif);
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--primary);
-  background: rgba(59, 130, 246, 0.07);
-  border: 1px solid rgba(59, 130, 246, 0.25);
+  background: rgba(37, 99, 235, 0.07);
+  border: 1px solid rgba(37, 99, 235, 0.22);
   padding: 5px 14px;
   border-radius: 100px;
-  margin-bottom: 16px;
 }
 
-/* blue dot before eyebrow */
-.section-title h3::before {
-  content: "";
-  width: 6px;
-  height: 6px;
+.tl-eyebrow-dot {
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--primary);
   flex-shrink: 0;
 }
 
-.section-title h2 {
-  font-family: "Syne", sans-serif;
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  font-weight: 900;
+.tl-title {
+  font-family: var(--font-heading, "Space Grotesk", sans-serif);
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.1;
   color: var(--text);
   margin: 0;
 }
 
-/* ── GRID ────────────────────────────────────────────────── */
-.timeline {
-  position: relative;
-  z-index: 1;
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+.tl-subtitle {
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-weight: 300;
+  max-width: 420px;
+  line-height: 1.7;
+  margin: 0;
 }
 
-/* ── CARD ────────────────────────────────────────────────── */
-.timeline-content {
+/* ════════════════════════════════════════════════════════════
+   TIMELINE LIST
+════════════════════════════════════════════════════════════ */
+.tl-list {
   position: relative;
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: 18px;
-  padding: 24px 24px 24px 24px;
+  max-width: 720px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  overflow: hidden;
+  gap: 0;
+}
+
+/* ── VERTICAL SPINE ──────────────────────────────────────── */
+.tl-spine {
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: 19px; /* centres on the 40px dot */
+  width: 1.5px;
+  background: linear-gradient(
+    to bottom,
+    var(--primary) 0%,
+    rgba(37, 99, 235, 0.3) 60%,
+    transparent 100%
+  );
+  border-radius: 2px;
+}
+
+/* ── ITEM ────────────────────────────────────────────────── */
+.tl-item {
+  position: relative;
+  display: flex;
+  gap: 24px;
+  padding-bottom: 32px;
+  animation: tlUp 500ms var(--delay, 0ms) ease both;
+}
+
+.tl-item:last-child {
+  padding-bottom: 0;
+}
+
+@keyframes tlUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── SPINE DOT ───────────────────────────────────────────── */
+.tl-dot {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.tl-dot-inner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--border);
+  border: 2.5px solid var(--surface, #fff);
+  box-shadow: 0 0 0 2px var(--border);
   transition:
-    transform 380ms cubic-bezier(0.34, 1.56, 0.64, 1),
-    border-color 260ms ease,
+    background 260ms ease,
     box-shadow 260ms ease;
 }
 
-/* blue top accent stripe — grows in on hover */
-.timeline-content::before {
+/* active item — glowing blue dot */
+.tl-item--active .tl-dot-inner {
+  background: var(--primary);
+  border-color: var(--surface, #fff);
+  box-shadow:
+    0 0 0 2px var(--primary),
+    0 0 12px rgba(37, 99, 235, 0.45);
+}
+
+/* pulsing ring on active dot */
+.tl-dot-ring {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(37, 99, 235, 0.6);
+  animation: dotRingExpand 1.8s ease-out infinite;
+}
+
+@keyframes dotRingExpand {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+/* ── CARD ────────────────────────────────────────────────── */
+.tl-card {
+  flex: 1;
+  background: var(--surface, #fff);
+  border: 1.5px solid var(--border);
+  border-radius: 18px;
+  padding: 22px 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 360ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 240ms ease,
+    box-shadow 240ms ease;
+}
+
+/* blue top stripe — visible on active, fades in on hover */
+.tl-card::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), rgba(59, 130, 246, 0.2));
-  opacity: 0;
-  transition: opacity 260ms ease;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), rgba(37, 99, 235, 0.12));
   border-radius: 18px 18px 0 0;
-}
-
-/* corner glow */
-.timeline-content::after {
-  content: "";
-  position: absolute;
-  top: -40px;
-  right: -40px;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(
-    circle,
-    rgba(59, 130, 246, 0.08) 0%,
-    transparent 70%
-  );
   opacity: 0;
-  transition: opacity 260ms ease;
-  pointer-events: none;
+  transition: opacity 240ms ease;
 }
 
-.timeline-content:hover {
-  transform: translateY(-5px);
-  border-color: rgba(59, 130, 246, 0.35);
-  box-shadow:
-    0 12px 40px rgba(59, 130, 246, 0.14),
-    0 2px 8px rgba(15, 23, 42, 0.06);
-}
-
-.timeline-content:hover::before,
-.timeline-content:hover::after {
+.tl-item--active .tl-card::before,
+.tl-card:hover::before {
   opacity: 1;
 }
 
-/* ── DATE + ICON ROW ─────────────────────────────────────── */
-.timeline-dateaicon {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+.tl-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(37, 99, 235, 0.28);
+  box-shadow:
+    var(--shadow-md),
+    0 0 0 1px rgba(37, 99, 235, 0.08);
 }
 
-.timeline-icon {
+.tl-item--active .tl-card {
+  border-color: rgba(37, 99, 235, 0.25);
+}
+
+/* ── CARD TOP ROW ────────────────────────────────────────── */
+.tl-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.tl-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.22);
-  color: var(--primary);
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   flex-shrink: 0;
   transition:
     background 200ms ease,
     color 200ms ease;
 }
 
-.timeline-content:hover .timeline-icon {
+.tl-card:hover .tl-icon {
   background: var(--primary);
-  color: #ffffff;
+  color: #fff;
 }
 
-.timeline-date {
-  font-family: "Syne", sans-serif;
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.tl-date {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   color: var(--muted);
-  background: rgba(59, 130, 246, 0.06);
-  border: 1px solid rgba(59, 130, 246, 0.15);
+  background: rgba(37, 99, 235, 0.06);
+  border: 1px solid rgba(37, 99, 235, 0.14);
   padding: 3px 10px;
   border-radius: 100px;
 }
 
-/* ── DEGREE TITLE ────────────────────────────────────────── */
-.timeline-content h3 {
-  font-family: "Syne", sans-serif;
-  font-size: 1.05rem;
-  font-weight: 800;
-  letter-spacing: -0.01em;
+.tl-tag {
+  font-family: var(--font-heading, "Space Grotesk", sans-serif);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 2px 9px;
+  border-radius: 100px;
+  margin-left: auto;
+}
+
+.tl-tag--active {
+  color: #15803d;
+  background: rgba(21, 128, 61, 0.08);
+  border-color: rgba(21, 128, 61, 0.24);
+}
+body.dark .tl-tag--active {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.08);
+  border-color: rgba(74, 222, 128, 0.22);
+}
+
+/* ── CARD CONTENT ────────────────────────────────────────── */
+.tl-card-title {
+  font-family: var(--font-heading, "Space Grotesk", sans-serif);
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--text);
-  margin: 4px 0 0;
+  margin: 0 0 5px;
   line-height: 1.3;
   transition: color 200ms ease;
 }
 
-.timeline-content:hover h3 {
+.tl-card:hover .tl-card-title {
   color: var(--primary);
 }
 
-/* ── INSTITUTE ───────────────────────────────────────────── */
-.timeline-content h4 {
-  font-family: "DM Sans", sans-serif;
-  font-size: 0.84rem;
+.tl-card-sub {
+  font-size: 0.82rem;
   font-weight: 500;
   color: var(--muted);
+  margin: 0 0 10px;
+}
+
+.tl-card-desc {
+  font-size: 0.86rem;
+  line-height: 1.72;
+  color: var(--muted);
+  font-weight: 300;
   margin: 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
 }
 
-/* ── RESPONSIVE ──────────────────────────────────────────── */
-@media (max-width: 950px) {
-  .timeline {
-    grid-template-columns: 1fr;
-    max-width: 600px;
-    gap: 16px;
-  }
-}
-
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════════════════════ */
 @media (max-width: 600px) {
-  .timeline-section {
+  .tl-section {
     padding: 72px 0;
   }
-
-  .section-title h2 {
+  .tl-container {
+    padding: 0 16px;
+  }
+  .tl-header {
+    margin-bottom: 48px;
+    gap: 12px;
+  }
+  .tl-title {
     font-size: 1.9rem;
   }
 
-  .timeline-content {
-    padding: 20px;
+  .tl-item {
+    gap: 16px;
+    padding-bottom: 24px;
+  }
+
+  .tl-dot {
+    width: 32px;
+    height: 32px;
+  }
+  .tl-spine {
+    left: 15px;
+  }
+
+  .tl-card {
+    padding: 18px 16px;
     border-radius: 14px;
   }
 
-  .timeline-content h3 {
-    font-size: 1rem;
+  .tl-card-title {
+    font-size: 0.95rem;
   }
-  .timeline-content h4 {
-    font-size: 0.82rem;
+  .tl-card-sub {
+    font-size: 0.79rem;
   }
-  .timeline-date {
-    font-size: 0.7rem;
+  .tl-card-desc {
+    font-size: 0.83rem;
+  }
+
+  .tl-tag {
+    display: none;
+  } /* too tight on small screens */
+}
+
+@media (max-width: 380px) {
+  .tl-title {
+    font-size: 1.7rem;
+  }
+  .tl-card-top {
+    gap: 7px;
   }
 }
