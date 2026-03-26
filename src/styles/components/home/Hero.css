@@ -238,7 +238,7 @@ body.dark .hero__otw-dot::before {
   font-family: var(--font-heading, "Space Grotesk", sans-serif);
   font-size: clamp(2.8rem, 5.5vw, 3.8rem);
   font-weight: 700;
-  line-height: 1.06;
+  line-height: 1.16;
   letter-spacing: -0.038em;
   display: inline-block;
   color: var(--text);
