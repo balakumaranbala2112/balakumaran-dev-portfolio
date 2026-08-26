@@ -253,10 +253,11 @@ export default function Resume() {
 
           <a
             href="/resume.pdf"
-            download="Balakumaran_K_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="rv-dl-btn"
           >
-            <FaDownload /> Download PDF
+            <FaDownload /> View / Download PDF
           </a>
         </div>
 
@@ -385,10 +386,11 @@ export default function Resume() {
           <p>Want the full document?</p>
           <a
             href="/resume.pdf"
-            download="Balakumaran_K_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="rv-dl-btn rv-dl-btn--lg"
           >
-            <FaDownload /> Download Resume PDF
+            <FaDownload /> View / Download Resume PDF
           </a>
         </div>
       </div>
