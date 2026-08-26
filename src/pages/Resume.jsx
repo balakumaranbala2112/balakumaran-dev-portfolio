@@ -252,7 +252,7 @@ export default function Resume() {
           </ul>
 
           <a
-            href="/resume.pdf"
+            href="https://drive.google.com/file/d/1YeUtpNiEF3ctlVVGi9yn1ku6a8AhxIvN/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             className="rv-dl-btn"
@@ -385,7 +385,7 @@ export default function Resume() {
         <div className="rv-cta">
           <p>Want the full document?</p>
           <a
-            href="/resume.pdf"
+            href="https://drive.google.com/file/d/1YeUtpNiEF3ctlVVGi9yn1ku6a8AhxIvN/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             className="rv-dl-btn rv-dl-btn--lg"

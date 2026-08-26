@@ -63,7 +63,7 @@ export default defineConfig({
         clientsClaim: true,
         // Offline fallback for navigation requests
         navigateFallback: "/offline.html",
-        navigateFallbackDenylist: [/^\/api/],
+        navigateFallbackDenylist: [/^\/api/, /\.pdf$/, /^https:\/\/drive\.google\.com/],
         runtimeCaching: [
           // Google Fonts — cache-first, long TTL
           {

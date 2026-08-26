@@ -10,7 +10,7 @@ export default function FeaturedProjects() {
   const latestProjects = projectsData.slice(0, 3);
 
   return (
-    <section className="fp-section">
+    <section className="fp-section" id="featured-projects">
       <div className="fp-container">
         {/* ── HEADER ──────────────────────────────────────────── */}
         <div className="fp-header">

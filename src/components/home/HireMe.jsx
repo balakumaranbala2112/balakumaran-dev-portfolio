@@ -16,7 +16,7 @@ import {
 import { HiDocumentDownload } from "react-icons/hi";
 import "@/styles/components/home/HireMe.css";
 
-const RESUME_URL = "/resume.pdf"; // update to your actual hosted PDF path
+const RESUME_URL = "https://drive.google.com/file/d/1YeUtpNiEF3ctlVVGi9yn1ku6a8AhxIvN/view?usp=drive_link";
 const EMAIL = "bkumaran2112@gmail.com";
 
 const QUICK_LINKS = [
