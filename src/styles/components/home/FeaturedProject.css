@@ -21,20 +21,81 @@ body.dark {
   font-family: var(--font-blog); /* was var(--font-body) → "DM Sans" */
   -webkit-font-smoothing: antialiased;
   overflow: hidden;
+  background-color: var(--accent-soft);
+  position: relative;
 }
+
+.fp-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle,
+      rgba(var(--primary-rgb), 0.05) 1.2px,
+      transparent 1.2px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(circle at 50% 50%, black 50%, transparent 95%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 50%, transparent 95%);
+}
+
+body.dark .fp-section::before {
+  background-image: radial-gradient(circle,
+      rgba(var(--primary-rgb), 0.08) 1.2px,
+      transparent 1.2px);
+}
+
+/* Floating/decor dot grid behind/beside project content */
+.fp-decor-dots {
+  position: absolute;
+  width: 96px; /* 6 columns * 16px */
+  height: 64px; /* 4 rows * 16px */
+  background-image: radial-gradient(circle,
+      rgba(var(--primary-rgb), 0.16) 1.5px,
+      transparent 1.5px);
+  background-size: 16px 16px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+  transition: transform 600ms ease;
+}
+
+body.dark .fp-decor-dots {
+  background-image: radial-gradient(circle,
+      rgba(var(--primary-rgb), 0.24) 1.5px,
+      transparent 1.5px);
+}
+
+/* Stagger placement depending on row orientation */
+.fp-row:not(.fp-row--reverse) .fp-decor-dots {
+  bottom: -20px;
+  left: -32px;
+}
+
+.fp-row.fp-row--reverse .fp-decor-dots {
+  top: -20px;
+  right: -32px;
+}
+
+.fp-row:hover .fp-decor-dots {
+  transform: translateY(-5px);
+}
+
 
 .fp-container {
   width: 100%;
   max-width: var(--container); /* was hardcoded 1200px */
   margin-inline: auto;
   padding-inline: 28px;
+  position: relative;
+  z-index: 1;
 }
 
 /* ════════════════════════════════════════════════════════════════
    HEADER
 ════════════════════════════════════════════════════════════════ */
 .fp-header {
-  margin-bottom: clamp(56px, 8vw, 100px);
+  margin-bottom: clamp(24px, 4vw, 40px);
 }
 
 .fp-eyebrow {
@@ -51,7 +112,36 @@ body.dark {
   border: 1px solid rgba(var(--primary-rgb), 0.25); /* was var(--fp-blue-rim) */
   padding: 5px 14px;
   border-radius: var(--radius-full); /* was hardcoded 100px */
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
+}
+
+.fp-subheading {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 620px;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+}
+
+.latest-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 1024px) {
+  .latest-projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .latest-projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
 }
 
 .fp-eyebrow::before {

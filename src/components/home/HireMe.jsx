@@ -49,6 +49,9 @@ const HireMe = () => {
     >
       {/* Decorative grid pattern overlay */}
       <div className="hire__grid-bg" aria-hidden="true" />
+      <div className="hire__decor-dots hire__decor-dots--1" aria-hidden="true" />
+      <div className="hire__decor-dots hire__decor-dots--2" aria-hidden="true" />
+
 
       <div className="hire__container">
         {/* ── LEFT COLUMN ────────────────────────────────────── */}

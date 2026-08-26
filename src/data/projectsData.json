@@ -7,7 +7,7 @@
     "img": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80",
     "heroImg": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1400&q=80",
     "liveUrl": "#",
-    "githubUrl": "#",
+    "githubUrl": "https://github.com/balakumaranbala2112/bankguard-fraud-detection",
     "meta": [
       { "label": "Role", "value": "Full Stack Dev" },
       { "label": "Timeline", "value": "6 Weeks" },

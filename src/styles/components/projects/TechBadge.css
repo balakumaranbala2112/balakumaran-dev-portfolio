@@ -1,0 +1,68 @@
+/* src/styles/components/projects/TechBadge.css */
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-ui, "Plus Jakarta Sans", sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  background: var(--accent-soft, rgba(224, 242, 254, 0.6));
+  color: var(--text, #0f172a);
+  border: 1px solid var(--border, #e2e8f0);
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.tech-badge:hover {
+  background: var(--accent, #e0f2fe);
+  border-color: rgba(37, 99, 235, 0.3);
+  color: var(--primary, #2563eb);
+}
+
+.tech-badge--accent {
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--primary, #2563eb);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+.tech-badge--accent:hover {
+  background: rgba(37, 99, 235, 0.15);
+  border-color: rgba(37, 99, 235, 0.35);
+  color: var(--primary-dark, #1d4ed8);
+}
+
+.tech-badge--pill {
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+}
+
+.tech-badge-icon {
+  font-size: 0.8rem;
+}
+
+/* Dark Mode Overrides */
+body.dark .tech-badge {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text, #f0f0f2);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark .tech-badge:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+body.dark .tech-badge--accent {
+  background: rgba(79, 142, 247, 0.12);
+  color: #60a5fa;
+  border-color: rgba(79, 142, 247, 0.25);
+}
+
+body.dark .tech-badge--accent:hover {
+  background: rgba(79, 142, 247, 0.2);
+  border-color: rgba(79, 142, 247, 0.4);
+  color: #93c5fd;
+}

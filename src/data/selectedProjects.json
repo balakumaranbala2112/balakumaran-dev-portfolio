@@ -7,7 +7,7 @@
     "description": "An intelligent bank transaction monitoring system that detects and flags fraudulent activity in real time using XGBoost. Features a three-tier severity flag system, REST API powered by Flask, and a MERN dashboard for analyst review.",
     "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80",
     "tech": ["React", "Node.js", "Python", "XGBoost", "Flask", "MongoDB"],
-    "links": { "liveLink": "#", "githubLink": "#" }
+    "links": { "liveLink": "#", "githubLink": "https://github.com/balakumaranbala2112/bankguard-fraud-detection" }
   },
   {
     "id": 2,

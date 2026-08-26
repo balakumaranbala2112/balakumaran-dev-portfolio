@@ -22,6 +22,66 @@
   transform: translateY(0);
 }
 
+.ghs__dots-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle,
+      rgba(var(--primary-rgb), 0.055) 1.2px,
+      transparent 1.2px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 85%);
+}
+
+body.dark .ghs__dots-bg {
+  background-image: radial-gradient(circle,
+      rgba(var(--primary-rgb), 0.09) 1.2px,
+      transparent 1.2px);
+}
+
+.ghs__decor-dots {
+  position: absolute;
+  width: 96px;
+  height: 64px;
+  background-image: radial-gradient(circle,
+      rgba(var(--primary-rgb), 0.16) 1.5px,
+      transparent 1.5px);
+  background-size: 16px 16px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+  animation: ghsDotFloat 14s ease-in-out infinite;
+}
+
+body.dark .ghs__decor-dots {
+  background-image: radial-gradient(circle,
+      rgba(var(--primary-rgb), 0.24) 1.5px,
+      transparent 1.5px);
+}
+
+.ghs__decor-dots--1 {
+  top: 15%;
+  left: 5%;
+}
+
+.ghs__decor-dots--2 {
+  bottom: 15%;
+  right: 5%;
+  animation-delay: -4s;
+}
+
+@keyframes ghsDotFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(1deg);
+  }
+}
+
+
 .ghs::before {
   content: "";
   position: absolute;

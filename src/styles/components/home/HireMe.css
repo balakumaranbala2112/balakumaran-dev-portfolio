@@ -11,6 +11,7 @@
   overflow: hidden;
   font-family: var(--font-ui);
   -webkit-font-smoothing: antialiased;
+  background-color: var(--accent-soft);
 
   /* Scroll-in — same pattern as every other section */
   opacity: 0;
@@ -60,15 +61,65 @@
   pointer-events: none;
 }
 
-/* ── Decorative dot-grid overlay ──────────────────────────────── */
 .hire__grid-bg {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(var(--grid-line) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-image: radial-gradient(circle,
+      rgba(var(--primary-rgb), 0.055) 1.2px,
+      transparent 1.2px);
+  background-size: 20px 20px;
   pointer-events: none;
-  opacity: 0.6;
+  z-index: 0;
+  mask-image: radial-gradient(circle at 75% 50%, black 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 75% 50%, black 30%, transparent 85%);
 }
+
+body.dark .hire__grid-bg {
+  background-image: radial-gradient(circle,
+      rgba(var(--primary-rgb), 0.09) 1.2px,
+      transparent 1.2px);
+}
+
+.hire__decor-dots {
+  position: absolute;
+  width: 96px;
+  height: 64px;
+  background-image: radial-gradient(circle,
+      rgba(var(--primary-rgb), 0.16) 1.5px,
+      transparent 1.5px);
+  background-size: 16px 16px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+  animation: hireDotFloat 14s ease-in-out infinite;
+}
+
+body.dark .hire__decor-dots {
+  background-image: radial-gradient(circle,
+      rgba(var(--primary-rgb), 0.24) 1.5px,
+      transparent 1.5px);
+}
+
+.hire__decor-dots--1 {
+  top: 10%;
+  left: 3%;
+}
+
+.hire__decor-dots--2 {
+  bottom: 15%;
+  right: 3%;
+  animation-delay: -5s;
+}
+
+@keyframes hireDotFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(-1deg);
+  }
+}
+
 
 /* ── Container ────────────────────────────────────────────────── */
 .hire__container {
@@ -98,29 +149,29 @@
   align-items: center;
   gap: 8px;
   padding: 6px 14px 6px 10px;
-  background: rgba(34, 197, 94, 0.1);
-  border: 1px solid rgba(34, 197, 94, 0.25);
+  background: rgba(var(--primary-rgb), 0.08);
+  border: 1px solid rgba(var(--primary-rgb), 0.25);
   border-radius: var(--radius-full);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: 0.06em;
-  color: #16a34a;
+  color: var(--primary);
   width: fit-content;
 }
 
 body.dark .hire__badge {
-  background: rgba(34, 197, 94, 0.12);
-  border-color: rgba(34, 197, 94, 0.22);
-  color: #4ade80;
+  background: rgba(var(--primary-rgb), 0.12);
+  border-color: rgba(var(--primary-rgb), 0.22);
+  color: var(--primary-dark);
 }
 
-/* Pulsing green dot */
+/* Pulsing blue dot */
 .hire__badge-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #22c55e;
+  background: var(--primary);
   flex-shrink: 0;
   position: relative;
 }
@@ -130,7 +181,7 @@ body.dark .hire__badge {
   position: absolute;
   inset: -3px;
   border-radius: 50%;
-  background: rgba(34, 197, 94, 0.35);
+  background: rgba(var(--primary-rgb), 0.35);
   animation: hire-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 

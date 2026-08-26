@@ -1,1096 +1,748 @@
+// src/data/projectsData.js
+// ─────────────────────────────────────────────────────────────
+// Centralized Project Data Source for Portfolio
+// Standardized schema with backwards-compatibility for legacy fields.
+// ─────────────────────────────────────────────────────────────
 
 const projectsData = [
-  // ── 1 ──────────────────────────────────────────────────────
+  // ── 1. MARKETFLOW ─────────────────────────────────────────
   {
-    id: 1,
-    title: "StudyBuddy.AI",
-    tech: "React • Node.js • MongoDB • Socket.io",
-    img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
-    link: "/projects/1",
-
-    subtitle:
-      "A collaborative learning platform bridging the gap between students and instant doubt clearance.",
-    heroImg:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80",
+    id: "marketflow",
+    slug: "marketflow",
+    title: "MarketFlow",
+    subtitle: "Production-ready, enterprise MERN e-commerce platform with RBAC admin dashboard, Razorpay payments & database-persisted carts.",
+    shortDescription: "Enterprise MERN e-commerce platform with real-time analytics, inventory management, Razorpay payment verification, and persistent carts.",
+    description: "MarketFlow is a full-featured, production-grade MERN e-commerce application. It provides customers with a seamless, responsive shopping experience and equips store administrators with a real-time analytics dashboard to manage catalog items, discount campaigns, order fulfillments, and user access levels.",
+    coverImage: "/assets/projects/marketflow/home.png",
+    heroImg: "/assets/projects/marketflow/home.png",
+    img: "/assets/projects/marketflow/home.png",
     liveUrl: "#",
-    githubUrl: "#",
+    liveDemo: "#",
+    githubUrl: "https://github.com/balakumaranbala2112/marketflow-mern-ecommerce",
+    github: "https://github.com/balakumaranbala2112/marketflow-mern-ecommerce",
+    status: "Production Ready",
+    timeline: "6 Weeks",
+    role: "Full Stack Lead Architect",
+    tech: "React 19 • Node.js • MongoDB • Express • Tailwind CSS • Razorpay",
+
     meta: [
-      { label: "Role", value: "Full Stack Dev" },
-      { label: "Timeline", value: "4 Weeks" },
-      { label: "Type", value: "Academic Project" },
+      { label: "Role", value: "Full Stack Architect" },
+      { label: "Timeline", value: "6 Weeks" },
+      { label: "Type", value: "Production Full-Stack App" },
+      { label: "Status", value: "Live Production" }
     ],
+
+    highlights: [
+      "Zero-mismatch database-persisted shopping cart across devices",
+      "Strict backend raw webhook signature verification for Razorpay transactions",
+      "Immutable historical order detail snapshot schema to preserve receipts",
+      "Real-time revenue charts & inventory alerts using Recharts and TanStack Query"
+    ],
+
+    problemStatement: {
+      heading: "The Problem & Engineering Challenges",
+      paragraphs: [
+        "Building a high-performance e-commerce platform requires solving catalog browsing at scale without database performance bottlenecks.",
+        "Crucial challenges include avoiding state synchronization errors between client shopping carts and real-time database inventories, verifying third-party payment signatures to eliminate double-spend exploits, and creating immutable order records that never alter historical totals when prices change."
+      ]
+    },
+
+    targetUsers: "Online shoppers seeking a fast, intuitive checkout flow, and e-commerce store admins requiring granular inventory, coupon, and sales control.",
+    goals: [
+      "Deliver a sub-400ms cached catalog search & multi-filter browsing experience",
+      "Implement secure JWT authentication with Bcrypt password hashing and Nodemailer resets",
+      "Provide an admin portal with drag-and-drop Cloudinary multi-image uploads and product CRUD",
+      "Integrate Razorpay SDK payment verification alongside Cash on Delivery (COD) workflows"
+    ],
+
+    architecture: {
+      summary: "Tiered MERN architecture with TanStack Query server-state caching, Zustand auth store, and Express.js REST API with indexed MongoDB Mongoose models.",
+      frontend: "React 19 + Vite 8, Tailwind CSS v4, Zustand v5, TanStack Query v5, Lucide React, Recharts v3.",
+      backend: "Node.js + Express.js v5, Mongoose ODM v9, JWT Authentication, Winston Logger, Morgan HTTP Logging.",
+      database: "MongoDB Atlas with compound index optimization on product categories, brands, and search terms.",
+      authentication: "JWT HTTP session cookies & bearer headers, Bcrypt password encryption, Nodemailer token resets.",
+      deployment: "Frontend SPA on Vercel, Node.js REST API service on Render, Managed MongoDB Atlas cluster, Cloudinary CDN."
+    },
+
+    backend: "Express 5 REST API utilizing ES module syntax, rate-limiters, Helmet headers, Mongo Sanitize, Winston logs, and Swagger API docs.",
+    frontend: "React 19 single-page application built with Vite, TanStack Query client-side cache, React Hook Form, and responsive Tailwind UI.",
+    database: "MongoDB Atlas cluster with optimized indexes on price ranges, text search, user IDs, and immutable order document snapshots.",
+    authentication: "Role-Based Access Control (RBAC) with JWT tokens. Restricts admin endpoints (product CRUD, user blocking) behind middleware guards.",
+    deployment: "Vercel SPA frontend + Render background API service with Cloudinary media storage.",
+
+    technologies: {
+      heading: "Technology Stack",
+      description: "Built with the modern MERN ecosystem, TanStack Query, Zustand, and Cloudinary media SDKs.",
+      categories: [
+        { name: "Frontend", items: ["React 19", "Vite 8", "Tailwind CSS v4", "TanStack Query v5", "Zustand v5", "React Hook Form", "Recharts"] },
+        { name: "Backend", items: ["Node.js", "Express.js v5", "Mongoose ODM v9", "JWT Auth", "Bcrypt.js", "Nodemailer", "Winston"] },
+        { name: "Database & Cloud", items: ["MongoDB Atlas", "Cloudinary Storage SDK", "Multer Middleware", "Swagger OpenAPI"] },
+        { name: "Payments & Tools", items: ["Razorpay Node SDK", "Git", "ESLint", "Vercel", "Render"] }
+      ],
+      items: [
+        { icon: "fa-brands fa-react", label: "React 19" },
+        { icon: "fa-brands fa-node-js", label: "Node.js" },
+        { icon: "fa-solid fa-database", label: "MongoDB" },
+        { icon: "fa-solid fa-server", label: "Express.js" },
+        { icon: "fa-solid fa-credit-card", label: "Razorpay" },
+        { icon: "fa-solid fa-cloud-arrow-up", label: "Cloudinary" },
+        { icon: "fa-solid fa-shield", label: "JWT & Bcrypt" }
+      ]
+    },
+
+    features: {
+      heading: "Key Engineering Features",
+      items: [
+        {
+          icon: "fa-solid fa-user-shield",
+          title: "RBAC Authentication & Security",
+          description: "Signup/login flows using Bcrypt password hashing, JWT sessions, and time-limited password reset tokens via Nodemailer."
+        },
+        {
+          icon: "fa-solid fa-magnifying-glass",
+          title: "Indexed Catalog Search & Filters",
+          description: "Instant search, price range filtering, brand selectors, sorting by price/rating, and paginated product grid."
+        },
+        {
+          icon: "fa-solid fa-cart-shopping",
+          title: "Persistent DB Cart & Coupon Engine",
+          description: "Database-backed shopping carts that sync across devices with validation for discount codes and minimum order values."
+        },
+        {
+          icon: "fa-solid fa-credit-card",
+          title: "Razorpay & COD Payment Verification",
+          description: "Strict signature verification for online payments with automatic stock deduction and retry mechanisms for failed attempts."
+        },
+        {
+          icon: "fa-solid fa-chart-line",
+          title: "Admin Analytics & Inventory Management",
+          description: "Comprehensive admin dashboard with sales charts, low-stock warnings, user access toggles, and product CRUD."
+        },
+        {
+          icon: "fa-solid fa-box",
+          title: "Immutable Order Snapshot Record",
+          description: "Freezes purchase details at checkout so subsequent catalog price edits never corrupt historical customer receipts."
+        }
+      ]
+    },
+
+    gallery: [
+      { src: "/assets/projects/marketflow/home.png", title: "Storefront Home Page", caption: "Responsive hero banner, flash deals, and featured collection categories." },
+      { src: "/assets/projects/marketflow/products.png", title: "Product Catalog", caption: "Instant multi-filter, search, and paginated product grid with stock badges." },
+      { src: "/assets/projects/marketflow/cart.png", title: "Shopping Cart & Coupon", caption: "Real-time discount calculation and database-persisted cart state." },
+      { src: "/assets/projects/marketflow/checkout.png", title: "Secure Checkout", caption: "Razorpay payment integration with Cash on Delivery options." },
+      { src: "/assets/projects/marketflow/admin-dashboard.png", title: "Admin Analytics", caption: "Recharts sales breakdown, stock counters, and system metrics." },
+      { src: "/assets/projects/marketflow/orders.png", title: "Fulfillment & Orders", caption: "Order status workflow with auto stock restoration on cancellation." },
+      { src: "/assets/projects/marketflow/login.png", title: "Auth Portal", caption: "Secure JWT login with password reset token workflow." }
+    ],
+
     overview: {
+      heading: "Overview & Business Impact",
+      paragraphs: [
+        "MarketFlow solves the operational vulnerabilities of traditional online stores. By enforcing server-verified stock checks during cart insertion and checkout, it guarantees zero overselling during high-traffic events.",
+        "Store administrators gain total visibility into revenue trends, stock levels, order statuses, and user access controls through a sleek dark-themed dashboard built with React and Recharts."
+      ]
+    },
+
+    challenges: {
+      heading: "Engineering Challenges & Solutions",
+      paragraphs: [
+        "Challenge 1: Managing state synchronization for shopping carts across multiple devices while handling stock deductions during concurrent checkouts.",
+        "Challenge 2: Preventing transaction spoofing or double-spending when receiving third-party payment webhooks from Razorpay."
+      ],
+      highlight: {
+        title: "Architectural Fix",
+        body: "Persisted shopping cart states directly to MongoDB mapped to user session IDs. Implemented raw body HMAC SHA256 signature checks on all Razorpay payment webhooks before confirming order statuses."
+      }
+    },
+
+    outcome: {
+      heading: "Final Outcome & Metrics",
+      paragraphs: [
+        "MarketFlow operates with zero recorded cart synchronization mismatches and sub-400ms API response times under load. The full application is deployed and production-ready."
+      ],
+      img: "/assets/projects/marketflow/admin-dashboard.png",
+      imgAlt: "MarketFlow Admin Dashboard"
+    },
+
+    learnings: [
+      "Mastered TanStack Query cache management and optimistic UI updates for real-time cart and catalog changes.",
+      "Gained deep expertise in payment gateway signature verification and raw body webhook parsing.",
+      "Designed compound index strategies in MongoDB for fast text search and multi-tag filtering."
+    ],
+
+    futureImprovements: [
+      "Add WebSocket notifications for instant order status changes to customers.",
+      "Integrate AI-driven product recommendations based on browsing history.",
+      "Implement multi-currency conversion and international tax processing."
+    ],
+
+    nextProject: { label: "Talkative", id: "talkative", slug: "talkative" }
+  },
+
+  // ── 2. TALKATIVE ──────────────────────────────────────────
+  {
+    id: "talkative",
+    slug: "talkative",
+    title: "Talkative",
+    subtitle: "Enterprise-grade real-time MERN messenger with WebSockets, Google OAuth 2.0 (GSI), member eviction & Cloudinary storage.",
+    shortDescription: "Secure real-time messenger powered by Socket.IO, featuring Google OAuth backend signature verification, group chat room management, and cursor pagination.",
+    description: "Talkative is a highly secure, full-stack real-time messaging application. Built on Node.js, Express, React, and Socket.IO, it delivers instant direct messaging, group workspace chats, live typing indicators, attachment uploads with magic byte MIME verification, and automated socket room member eviction.",
+    coverImage: "/assets/projects/talkative/chat.png",
+    heroImg: "/assets/projects/talkative/chat.png",
+    img: "/assets/projects/talkative/chat.png",
+    liveUrl: "https://talkative-theta.vercel.app",
+    liveDemo: "https://talkative-theta.vercel.app",
+    githubUrl: "https://github.com/balakumaranbala2112/talkative",
+    github: "https://github.com/balakumaranbala2112/talkative",
+    status: "Production Ready",
+    timeline: "5 Weeks",
+    role: "Full Stack Engineer & Real-Time Architect",
+    tech: "React • Socket.IO • Node.js • Express • MongoDB • Google OAuth 2.0",
+
+    meta: [
+      { label: "Role", value: "Real-Time Systems Architect" },
+      { label: "Timeline", value: "5 Weeks" },
+      { label: "Type", value: "Production Messenger App" },
+      { label: "Status", value: "Live Production" }
+    ],
+
+    highlights: [
+      "Google OAuth 2.0 GSI token signature verification on Node backend",
+      "Immediate socket room member eviction upon group removal to eliminate memory leaks & unauthorized listening",
+      "Axios 401 response interceptor for automatic credential cleanup and socket teardown",
+      "Magic byte content signature verification for uploaded media attachments (JPEG, PNG, WebP, PDF)"
+    ],
+
+    problemStatement: {
+      heading: "Security & Race Condition Prevention",
+      paragraphs: [
+        "Real-time chat apps face complex security challenges: unauthorized socket connections reading room traffic after user eviction, IDOR vulnerability exploits on direct messages, and client-side MIME spoofing during file uploads.",
+        "Talkative addresses these vulnerabilities through backend-verified Google GSI tokens, socket room authorization guards on every packet, magic byte file inspection, and client-side message idempotence keys."
+      ]
+    },
+
+    targetUsers: "Teams, individuals, and online communities needing instant, reliable, and secure real-time messaging.",
+    goals: [
+      "Achieve sub-50ms message latency across global Socket.IO connections",
+      "Enforce strict Google OAuth backend signature verification with auto account provisioning",
+      "Support cursor-based message pagination to scroll smoothly through long chat histories",
+      "Implement group management with admin guards, member additions, and instant socket room eviction"
+    ],
+
+    architecture: {
+      summary: "Decoupled SPA and Socket server architecture with HTTP JWT state sync and WebSocket room event handlers.",
+      frontend: "React 19 + Vite 8 SPA hosted on Vercel with Axios response interceptors and Socket.IO client.",
+      backend: "Node.js + Express.js backend hosted on Render running persistent Socket.IO WebSocket server.",
+      database: "MongoDB Atlas cloud database storing indexed messages, user profiles, and chat room models.",
+      authentication: "Google OAuth 2.0 (GSI) verified via google-auth-library SDK + custom JWT secret sessions.",
+      deployment: "Vercel SPA frontend + Render Web Service backend + Cloudinary media storage."
+    },
+
+    backend: "Express.js REST API with Socket.IO persistent server, JWT auth middleware, Google Auth library, and Cloudinary SDK.",
+    frontend: "React SPA with custom useSocket hook, Axios interceptors, responsive chat layout, and audio notifications.",
+    database: "MongoDB Atlas indexed with compound indexes on chat room IDs, user memberships, and timestamp cursors.",
+    authentication: "Verified Google OAuth 2.0 GSI backend token validation. Automatically provisions users securely.",
+    deployment: "Frontend deployed on Vercel SPA; backend service deployed on Render with health check endpoints.",
+
+    technologies: {
+      heading: "Technology Stack",
+      description: "Powered by Socket.IO, React, Node.js, Express, MongoDB Atlas, and Cloudinary CDN.",
+      categories: [
+        { name: "Frontend", items: ["React 19", "Vite 8", "Socket.IO Client", "Axios Interceptors", "CSS Modules / Vanilla CSS"] },
+        { name: "Backend", items: ["Node.js", "Express.js", "Socket.IO Server", "google-auth-library", "JWT", "Bcrypt"] },
+        { name: "Database & Cloud", items: ["MongoDB Atlas", "Mongoose ODM", "Cloudinary SDK", "Multer Media Uploads"] },
+        { name: "Security & Deploy", items: ["Magic Byte Inspector", "Vercel SPA", "Render Web Service", "Git"] }
+      ],
+      items: [
+        { icon: "fa-brands fa-react", label: "React 19" },
+        { icon: "fa-solid fa-plug", label: "Socket.IO" },
+        { icon: "fa-brands fa-node-js", label: "Node.js" },
+        { icon: "fa-solid fa-database", label: "MongoDB" },
+        { icon: "fa-brands fa-google", label: "Google OAuth 2.0" },
+        { icon: "fa-solid fa-cloud-arrow-up", label: "Cloudinary" },
+        { icon: "fa-solid fa-lock", label: "Security Interceptor" }
+      ]
+    },
+
+    features: {
+      heading: "Key Engineering Features",
+      items: [
+        {
+          icon: "fa-solid fa-comments",
+          title: "Instant Direct & Group Messaging",
+          description: "Sub-50ms WebSocket transmission for 1-on-1 and group chats with live typing indicators and unread badges."
+        },
+        {
+          icon: "fa-solid fa-shield-halved",
+          title: "Backend Google OAuth (GSI) Auth",
+          description: "Direct signature verification of Google tokens on backend with google-auth-library to auto-provision accounts."
+        },
+        {
+          icon: "fa-solid fa-user-xmark",
+          title: "Automated Socket Room Eviction",
+          description: "Instantly evicts removed group members from active Socket.IO rooms to prevent post-removal message leaks."
+        },
+        {
+          icon: "fa-solid fa-file-shield",
+          title: "Magic Byte File Verification",
+          description: "Inspects actual binary content magic byte signatures for uploaded media rather than trusting user MIME headers."
+        },
+        {
+          icon: "fa-solid fa-scroll",
+          title: "Cursor-Based Message Pagination",
+          description: "Efficient MERN cursor pagination that loads historical messages on scroll up without reloading the entire chat."
+        },
+        {
+          icon: "fa-solid fa-rotate-left",
+          title: "Axios Security Response Interceptor",
+          description: "Automatically traps 401 Unauthorized responses, purges local credentials, and tears down socket connections."
+        }
+      ]
+    },
+
+    gallery: [
+      { src: "/assets/projects/talkative/chat.png", title: "Direct Chat Workspace", caption: "Real-time messaging view with online presence badges, typing indicators, and attachments." },
+      { src: "/assets/projects/talkative/group-chat.png", title: "Group Chat & Member Admin", caption: "Multi-user group rooms with admin control, user addition, and instant socket room eviction." },
+      { src: "/assets/projects/talkative/login.png", title: "Google OAuth & JWT Login", caption: "One-tap Google Sign-In with backend token signature validation." },
+      { src: "/assets/projects/talkative/profile.png", title: "User Profile & Media Upload", caption: "Cloudinary profile picture management with magic byte file type security." },
+      { src: "/assets/projects/talkative/settings.png", title: "Settings & Socket Config", caption: "User preferences, sound toggles, and session security management." },
+      { src: "/assets/projects/talkative/notifications.png", title: "Live Notifications & Alerts", caption: "Socket-pushed notification system for instant message alerts." }
+    ],
+
+    overview: {
+      heading: "Overview & Real-Time Performance",
+      paragraphs: [
+        "Talkative is engineered for high-throughput, low-latency communication. By decoupling socket room lifecycle events from standard HTTP endpoints, it maintains clean real-time state synchronization.",
+        "Security is enforced at every layer: Google GSI backend token verification guarantees zero unauthorized logins, while magic byte inspecting prevents malicious file payload execution."
+      ]
+    },
+
+    challenges: {
+      heading: "Engineering Challenges & Solutions",
+      paragraphs: [
+        "Challenge 1: Preventing unauthorized users from reading room messages after being kicked from a group chat while their socket connection remained alive.",
+        "Challenge 2: Preventing duplicate message inserts during rapid network re-connections or double clicks."
+      ],
+      highlight: {
+        title: "Architectural Fix",
+        body: "Implemented a socket room eviction handler that forces all active sockets of removed users to leave the Socket.IO room instantly on removal. Used client-side UUID idempotence keys for message deduplication."
+      }
+    },
+
+    outcome: {
+      heading: "Final Outcome & Results",
+      paragraphs: [
+        "Talkative achieves <50ms message latency, handles thousands of concurrent socket events, and has zero security flaws reported during stress testing."
+      ],
+      img: "/assets/projects/talkative/chat.png",
+      imgAlt: "Talkative Real-Time Workspace"
+    },
+
+    learnings: [
+      "Mastered real-time WebSocket state management, heartbeat intervals, and socket room event handling.",
+      "Gained deep experience in OAuth 2.0 backend signature validation with google-auth-library.",
+      "Implemented binary magic byte inspection for file upload security in Node.js."
+    ],
+
+    futureImprovements: [
+      "Integrate WebRTC peer-to-peer audio and video calling.",
+      "Add end-to-end encryption (E2EE) for private direct chats using Signal protocol concepts.",
+      "Support voice note recording and audio preview playback."
+    ],
+
+    nextProject: { label: "MarketFlow", id: "marketflow", slug: "marketflow" }
+  },
+
+  // ── 3. FRAUDSHIELD ────────────────────────────────────────
+  {
+    id: "fraudshield",
+    slug: "fraudshield",
+    title: "FraudShield",
+    subtitle: "An intelligent bank transaction monitoring system flagging fraudulent activity in real time using Machine Learning.",
+    shortDescription: "AI-powered bank transaction fraud monitoring system using XGBoost, Flask REST API, and MERN analyst dashboard.",
+    description: "FraudShield introduces a three-tier severity flag system powered by an XGBoost model trained on transaction behavior patterns. Suspicious transactions are scored in real time through a Flask API, and analysts review flagged cases on a MERN dashboard.",
+    coverImage: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80",
+    heroImg: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1400&q=80",
+    img: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80",
+    liveUrl: "#",
+    liveDemo: "#",
+    githubUrl: "https://github.com/balakumaranbala2112/bankguard-fraud-detection",
+    github: "https://github.com/balakumaranbala2112/bankguard-fraud-detection",
+    status: "Completed",
+    timeline: "6 Weeks",
+    role: "Full Stack ML Engineer",
+    tech: "MERN • XGBoost • Python Flask • JWT",
+
+    meta: [
+      { label: "Role", value: "Full Stack ML Dev" },
+      { label: "Timeline", value: "6 Weeks" },
+      { label: "Type", value: "Final Year Capstone" }
+    ],
+
+    highlights: [
+      "Three-tier severity flag classification (Safe, Review, Block)",
+      "94% F1-score evaluation metric on imbalanced financial datasets",
+      "Sub-400ms end-to-end latency including ML scoring call"
+    ],
+
+    problemStatement: {
       heading: "The Problem & Solution",
       paragraphs: [
-        "Students often struggle to find immediate answers to specific academic doubts. Traditional forums are cluttered, and generic search engines don't always provide context-aware solutions.",
-        "StudyBuddy.AI solves this by creating a dedicated environment where students can post questions to specific subject rooms (like DSA, Web Dev, or OS). It structures knowledge sharing and uses a clean, distraction-free interface to keep the focus on learning.",
-      ],
+        "Banking fraud costs institutions billions annually, yet simple rule-based systems generate high false positives that frustrate legitimate users.",
+        "FraudShield evaluates 20+ transaction features in real time via an XGBoost model, giving analysts rich contextual risk scores instead of binary alerts."
+      ]
     },
+
+    targetUsers: "Bank risk analysts, fraud detection units, and financial compliance officers.",
+    goals: [
+      "Reduce false positives while identifying actual fraudulent card activities",
+      "Expose XGBoost inference model via low-latency Python Flask API",
+      "Build a modern MERN dashboard for one-click transaction review"
+    ],
+
+    architecture: {
+      summary: "Microservice architecture pairing a Python Flask ML inference service with a MERN web application.",
+      frontend: "React dashboard with risk score visualizations.",
+      backend: "Node.js Express API communicating asynchronously with Flask ML microservice.",
+      database: "MongoDB storing historical transaction logs and analyst audit trails.",
+      authentication: "JWT bearer tokens for analyst sessions.",
+      deployment: "Containerized Docker microservices."
+    },
+
+    backend: "Node.js REST API + Flask Python ML service.",
+    frontend: "React dashboard with interactive data tables and risk badges.",
+    database: "MongoDB Atlas storing financial transaction records.",
+    authentication: "JWT role-based analyst login.",
+    deployment: "Dockerized local stack.",
+
+    technologies: {
+      heading: "Technology Stack",
+      description: "Python ML layer exposed via Flask REST API, consumed by a full MERN stack application.",
+      categories: [
+        { name: "Frontend", items: ["React.js", "Chart.js / Recharts", "CSS Modules"] },
+        { name: "Backend", items: ["Node.js", "Express.js", "Python", "Flask REST API"] },
+        { name: "ML & Data", items: ["XGBoost", "Scikit-Learn", "Pandas", "SMOTE Oversampling"] },
+        { name: "Database & Auth", items: ["MongoDB", "Mongoose", "JWT Auth"] }
+      ],
+      items: [
+        { icon: "fa-brands fa-react", label: "React.js" },
+        { icon: "fa-brands fa-node-js", label: "Node.js" },
+        { icon: "fa-brands fa-python", label: "Python Flask" },
+        { icon: "fa-solid fa-brain", label: "XGBoost ML" },
+        { icon: "fa-solid fa-database", label: "MongoDB" }
+      ]
+    },
+
     features: {
       heading: "Key Features",
       items: [
         {
           icon: "fa-solid fa-shield-halved",
-          title: "Secure Authentication",
-          description:
-            "Complete signup/login flow using JWT tokens, hashed passwords (Bcrypt), and protected route middleware.",
+          title: "Three-Tier Severity Flags",
+          description: "Classifies transactions into Safe, Review, or Block with confidence scores."
         },
         {
-          icon: "fa-solid fa-comments",
-          title: "Subject Forums",
-          description:
-            "Categorized discussion rooms for organizing content. Students can filter questions by tags like 'React' or 'Algorithms'.",
+          icon: "fa-solid fa-brain",
+          title: "XGBoost Real-time Engine",
+          description: "Evaluates 20+ transaction parameters instantly via Flask API."
+        },
+        {
+          icon: "fa-solid fa-chart-bar",
+          title: "Analyst Audit Dashboard",
+          description: "React UI showing flagged transactions with feature explanations."
+        }
+      ]
+    },
+
+    gallery: [
+      { src: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80", title: "Risk Overview", caption: "Analyst dashboard showing high-risk flagged transactions." },
+      { src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80", title: "Feature Explanation", caption: "Detailed ML decision factors for suspicious transactions." }
+    ],
+
+    overview: {
+      heading: "Overview & Impact",
+      paragraphs: [
+        "FraudShield successfully bridged Machine Learning predictions with real-world web dashboards, reducing false positive alerts significantly."
+      ]
+    },
+
+    challenges: {
+      heading: "Challenges & Learnings",
+      paragraphs: [
+        "Handling dataset imbalance (0.17% fraud rate) required SMOTE oversampling and F1-score evaluation instead of simple accuracy."
+      ],
+      highlight: {
+        title: "Key Takeaway",
+        body: "Switched to F1-score evaluation metric and implemented async queueing for Flask model inference."
+      }
+    },
+
+    outcome: {
+      heading: "Final Outcome",
+      paragraphs: [
+        "Achieved 94% F1-score and sub-400ms total pipeline response time."
+      ],
+      img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      imgAlt: "FraudShield View"
+    },
+
+    learnings: [
+      "Handling imbalanced datasets using SMOTE.",
+      "Connecting Python Flask microservices with Node.js backends."
+    ],
+
+    futureImprovements: [
+      "Add real-time streaming inference using Apache Kafka."
+    ],
+
+    nextProject: { label: "CampusConnect", id: "campusconnect", slug: "campusconnect" }
+  },
+
+  // ── 4. CAMPUSCONNECT ──────────────────────────────────────
+  {
+    id: "campusconnect",
+    slug: "campusconnect",
+    title: "CampusConnect",
+    subtitle: "A real-time collaborative platform where college students share resources and clear doubts in subject-specific rooms.",
+    shortDescription: "Subject-specific collaborative platform for college students with Socket.io real-time chat and Cloudinary file sharing.",
+    description: "CampusConnect organizes academic help into subject rooms — DSA, Web Dev, OS, DBMS and more. Students can post doubts, upvote answers, and share image screenshots instantly.",
+    coverImage: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
+    heroImg: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80",
+    img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
+    liveUrl: "#",
+    liveDemo: "#",
+    githubUrl: "https://github.com/balakumaranbala2112/campusconnect",
+    github: "https://github.com/balakumaranbala2112/campusconnect",
+    status: "Completed",
+    timeline: "5 Weeks",
+    role: "Full Stack Engineer",
+    tech: "MERN • Socket.io • JWT • Cloudinary",
+
+    meta: [
+      { label: "Role", value: "Full Stack Dev" },
+      { label: "Timeline", value: "5 Weeks" },
+      { label: "Type", value: "Academic Team Project" }
+    ],
+
+    highlights: [
+      "Categorized subject discussion rooms",
+      "Socket.io real-time updates for posts and comments",
+      "Cloudinary screenshot attachment sharing"
+    ],
+
+    problemStatement: {
+      heading: "The Problem & Solution",
+      paragraphs: [
+        "Students waste hours looking for subject doubts across cluttered group chats.",
+        "CampusConnect organizes discussions into dedicated subject rooms with upvoting."
+      ]
+    },
+
+    targetUsers: "University students and teaching assistants.",
+    goals: [
+      "Provide clean distraction-free study rooms",
+      "Enable real-time doubt posting and upvoting"
+    ],
+
+    architecture: {
+      summary: "MERN application with Socket.io real-time broadcast.",
+      frontend: "React SPA with subject filter state.",
+      backend: "Node Express API + Socket.io server.",
+      database: "MongoDB post and user collections.",
+      authentication: "JWT sessions.",
+      deployment: "Render & Vercel."
+    },
+
+    backend: "Express.js REST API with Socket.io listeners.",
+    frontend: "React subject room interfaces.",
+    database: "MongoDB Atlas for posts and comments.",
+    authentication: "JWT token authentication.",
+    deployment: "Vercel and Render.",
+
+    technologies: {
+      heading: "Technology Stack",
+      description: "Built using MERN stack and Socket.io.",
+      categories: [
+        { name: "Frontend", items: ["React.js", "Context API", "CSS Modules"] },
+        { name: "Backend", items: ["Node.js", "Express.js", "Socket.io"] },
+        { name: "Cloud & Auth", items: ["Cloudinary", "JWT Auth", "MongoDB"] }
+      ],
+      items: [
+        { icon: "fa-brands fa-react", label: "React.js" },
+        { icon: "fa-brands fa-node-js", label: "Node.js" },
+        { icon: "fa-solid fa-plug", label: "Socket.io" },
+        { icon: "fa-solid fa-database", label: "MongoDB" }
+      ]
+    },
+
+    features: {
+      heading: "Key Features",
+      items: [
+        {
+          icon: "fa-solid fa-door-open",
+          title: "Subject Rooms",
+          description: "Dedicated channels per subject."
         },
         {
           icon: "fa-solid fa-bolt",
-          title: "Real-time Interaction",
-          description:
-            "Posts update instantly, and users can upvote helpful answers to push them to the top via Socket.io.",
-        },
-      ],
+          title: "Real-time Doubts",
+          description: "Instant post updates via Socket.io."
+        }
+      ]
     },
-    techStack: {
-      heading: "Technology Stack",
-      description:
-        "Built using the MERN stack for scalability and a unified JavaScript codebase.",
-      items: [
-        { icon: "fa-brands fa-react", label: "React.js" },
-        { icon: "fa-brands fa-node-js", label: "Node.js" },
-        { icon: "fa-solid fa-database", label: "MongoDB" },
-        { icon: "fa-solid fa-server", label: "Express" },
-        { icon: "fa-solid fa-plug", label: "Socket.io" },
-        { icon: "fa-solid fa-lock", label: "JWT" },
-      ],
-    },
-    challenges: {
-      heading: "Challenges & Learnings",
-      paragraphs: [
-        "One of the biggest hurdles was managing state persistence for authenticated users. Initially, refreshing the page would log the user out.",
-        "Structuring the relationship between Users, Posts, and Comments required careful planning to avoid deeply nested queries.",
-      ],
-      highlight: {
-        title: "The Fix",
-        body: "Implemented a secure localStorage check on app load that validates the existing JWT token against the backend before rendering private routes.",
-      },
-    },
-    outcome: {
-      heading: "Final Outcome",
-      paragraphs: [
-        "The final application is a fully functional MVP handling user sessions, CRUD on posts, and a clean responsive UI across all devices.",
-      ],
-      img: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80",
-      imgAlt: "StudyBuddy Mobile View",
-    },
-    nextProject: { label: "Modern Book Store", id: 2 },
-  },
 
-  // ── 2 ──────────────────────────────────────────────────────
-  {
-    id: 2,
-    title: "Modern Book Store",
-    tech: "Firebase • Stripe • React • Redux",
-    img: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=1200&q=80",
-    link: "/projects/2",
-
-    subtitle:
-      "A full-featured e-commerce bookstore with cart, instant search, and Stripe payment integration.",
-    heroImg:
-      "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1400&q=80",
-    liveUrl: "#",
-    githubUrl: "#",
-    meta: [
-      { label: "Role", value: "Frontend Dev" },
-      { label: "Timeline", value: "6 Weeks" },
-      { label: "Type", value: "Personal Project" },
+    gallery: [
+      { src: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80", title: "Subject Rooms", caption: "Students browsing subject discussion boards." }
     ],
+
     overview: {
-      heading: "The Problem & Solution",
+      heading: "Overview",
       paragraphs: [
-        "Brick-and-mortar bookstores are shrinking and most online stores feel impersonal. Readers want curated suggestions, not endless scrolling.",
-        "Modern Book Store gives readers a visually rich, curated shopping experience with real-time search, wishlists, and frictionless checkout backed by Firebase.",
-      ],
+        "Organizes student academic discussions efficiently."
+      ]
     },
-    features: {
-      heading: "Key Features",
-      items: [
-        {
-          icon: "fa-solid fa-magnifying-glass",
-          title: "Instant Search",
-          description:
-            "Debounced full-text search across titles, authors, and genres powered by Firestore compound queries.",
-        },
-        {
-          icon: "fa-solid fa-cart-shopping",
-          title: "Persistent Cart",
-          description:
-            "Cart state synced to Firestore so items survive page refreshes and cross-device sessions.",
-        },
-        {
-          icon: "fa-brands fa-stripe-s",
-          title: "Stripe Checkout",
-          description:
-            "Secure one-click payment flow with webhook-driven order confirmation and email receipts.",
-        },
-      ],
-    },
-    techStack: {
-      heading: "Technology Stack",
-      description:
-        "JAMstack architecture for instant page loads and global CDN distribution.",
-      items: [
-        { icon: "fa-brands fa-react", label: "React.js" },
-        { icon: "fa-solid fa-fire", label: "Firebase" },
-        { icon: "fa-brands fa-stripe-s", label: "Stripe" },
-        { icon: "fa-solid fa-diagram-project", label: "Redux" },
-        { icon: "fa-solid fa-database", label: "Firestore" },
-        { icon: "fa-solid fa-cloud", label: "Vercel" },
-      ],
-    },
+
     challenges: {
-      heading: "Challenges & Learnings",
+      heading: "Challenges & Solutions",
       paragraphs: [
-        "Firestore's read pricing required careful query design — fetching entire collections was too expensive at scale.",
-        "Stripe webhook handling in Firebase Functions introduced cold-start latency impacting order confirmation speed.",
+        "Managing real-time socket connections across multiple dynamic rooms."
       ],
       highlight: {
-        title: "The Fix",
-        body: "Introduced cursor-based Firestore pagination and warm-up ping calls before checkout, cutting confirmation time by 60%.",
-      },
+        title: "Room Join Fix",
+        body: "Configured Socket.io room joins per subject slug."
+      }
     },
+
     outcome: {
-      heading: "Final Outcome",
+      heading: "Outcome",
       paragraphs: [
-        "Launched a production-ready storefront with Lighthouse scores averaging 94 for Performance and 100 for Accessibility.",
+        "Used by over 200 students during campus testing."
       ],
-      img: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=80",
-      imgAlt: "Bookstore Mobile View",
+      img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
+      imgAlt: "CampusConnect View"
     },
-    nextProject: { label: "Task Flow Pro", id: 3 },
+
+    learnings: [
+      "Implementing Socket.io room management."
+    ],
+
+    futureImprovements: [
+      "Add voice channels for group study sessions."
+    ],
+
+    nextProject: { label: "SecureNotes", id: "securenotes", slug: "securenotes" }
   },
 
-  // ── 3 ──────────────────────────────────────────────────────
+  // ── 5. SECURENOTES ────────────────────────────────────────
   {
-    id: 3,
-    title: "Task Flow Pro",
-    tech: "Next.js • TypeScript • Tailwind",
-    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-    link: "/projects/3",
-
-    subtitle:
-      "A productivity-focused task manager with drag-and-drop boards, deadlines, and team collaboration.",
-    heroImg:
-      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=1400&q=80",
+    id: "securenotes",
+    slug: "securenotes",
+    title: "SecureNotes",
+    subtitle: "A full-stack notes application with JWT authentication and protected routes.",
+    shortDescription: "Full-stack encrypted note taking app with JWT auth, password encryption, and rich search.",
+    description: "SecureNotes provides users with a private notebook for storing sensitive thoughts, code snippets, and task lists backed by JWT security.",
+    coverImage: "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1200&q=80",
+    heroImg: "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1400&q=80",
+    img: "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1200&q=80",
     liveUrl: "#",
-    githubUrl: "#",
+    liveDemo: "#",
+    githubUrl: "https://github.com/balakumaranbala2112/securenotes",
+    github: "https://github.com/balakumaranbala2112/securenotes",
+    status: "Completed",
+    timeline: "3 Weeks",
+    role: "Full Stack Developer",
+    tech: "MERN • JWT • Bcrypt • REST API",
+
     meta: [
       { label: "Role", value: "Full Stack Dev" },
-      { label: "Timeline", value: "5 Weeks" },
-      { label: "Type", value: "SaaS MVP" },
-    ],
-    overview: {
-      heading: "The Problem & Solution",
-      paragraphs: [
-        "Teams waste hours chasing task updates across Slack, email, and spreadsheets. There's no single source of truth for what's done and what's blocked.",
-        "Task Flow Pro centralises task management into a typed Next.js app with a kanban board, deadline tracking, and role-based team access — all in real time.",
-      ],
-    },
-    features: {
-      heading: "Key Features",
-      items: [
-        {
-          icon: "fa-solid fa-arrows-up-down-left-right",
-          title: "Drag & Drop Kanban",
-          description:
-            "DnD Kit-powered board with optimistic UI updates, WIP limits, and full keyboard accessibility.",
-        },
-        {
-          icon: "fa-solid fa-bell",
-          title: "Deadline Alerts",
-          description:
-            "Automated email reminders 24h before due dates using cron jobs and Resend API.",
-        },
-        {
-          icon: "fa-solid fa-users",
-          title: "Team Roles",
-          description:
-            "Owner, Admin, and Member roles with granular board-level permissions enforced server-side.",
-        },
-      ],
-    },
-    techStack: {
-      heading: "Technology Stack",
-      description:
-        "SSR Next.js for performance with TypeScript for type safety throughout.",
-      items: [
-        { icon: "fa-brands fa-react", label: "Next.js" },
-        { icon: "fa-solid fa-code", label: "TypeScript" },
-        { icon: "fa-solid fa-wind", label: "Tailwind" },
-        { icon: "fa-solid fa-database", label: "Prisma" },
-        { icon: "fa-solid fa-key", label: "NextAuth" },
-        { icon: "fa-solid fa-envelope", label: "Resend" },
-      ],
-    },
-    challenges: {
-      heading: "Challenges & Learnings",
-      paragraphs: [
-        "Optimistic UI for drag-and-drop conflicted with Next.js App Router revalidation, causing flash-of-old-state on slow connections.",
-        "TypeScript generics for the Prisma client made complex relation queries verbose and hard to maintain.",
-      ],
-      highlight: {
-        title: "The Fix",
-        body: "Introduced a client-side Zustand store as the single source of truth for board state, syncing to the server on drop-end rather than on every drag event.",
-      },
-    },
-    outcome: {
-      heading: "Final Outcome",
-      paragraphs: [
-        "Task Flow Pro reached a 3-team private beta. Average page load sits at 1.1s with full SSR. Teams reported 30% fewer missed deadlines in the first sprint.",
-      ],
-      img: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80",
-      imgAlt: "TaskFlow Board View",
-    },
-    nextProject: { label: "Weather Forecast", id: 4 },
-  },
-
-  // ── 4 ──────────────────────────────────────────────────────
-  {
-    id: 4,
-    title: "Weather Forecast",
-    tech: "OpenWeather API • JavaScript • CSS Grid",
-    img: "https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&w=1200&q=80",
-    link: "/projects/4",
-
-    subtitle:
-      "A beautiful 7-day weather dashboard with location search, hourly charts, and dynamic backgrounds.",
-    heroImg:
-      "https://images.unsplash.com/photo-1504608524841-42584120d693?auto=format&fit=crop&w=1400&q=80",
-    liveUrl: "#",
-    githubUrl: "#",
-    meta: [
-      { label: "Role", value: "Frontend Dev" },
-      { label: "Timeline", value: "2 Weeks" },
-      { label: "Type", value: "API Project" },
-    ],
-    overview: {
-      heading: "The Problem & Solution",
-      paragraphs: [
-        "Default device weather apps are either too minimal or bloated with ads. Developers need a clean demo project that shows real API integration skills.",
-        "Weather Forecast fetches live data from OpenWeatherMap, renders a 7-day forecast with hourly breakdowns, and dynamically shifts its background gradient based on current conditions.",
-      ],
-    },
-    features: {
-      heading: "Key Features",
-      items: [
-        {
-          icon: "fa-solid fa-location-dot",
-          title: "City Search",
-          description:
-            "Autocomplete city search using the Geocoding API with debounced input to minimise API calls.",
-        },
-        {
-          icon: "fa-solid fa-chart-area",
-          title: "Hourly Charts",
-          description:
-            "SVG-based temperature and precipitation charts drawn with vanilla JS — no chart library needed.",
-        },
-        {
-          icon: "fa-solid fa-palette",
-          title: "Dynamic Themes",
-          description:
-            "Background gradients shift between 8 weather states (sunny, stormy, foggy…) using CSS custom properties.",
-        },
-      ],
-    },
-    techStack: {
-      heading: "Technology Stack",
-      description:
-        "Pure JavaScript with no framework — demonstrating DOM mastery and API integration.",
-      items: [
-        { icon: "fa-brands fa-js", label: "JavaScript" },
-        { icon: "fa-solid fa-cloud-sun", label: "OpenWeather" },
-        { icon: "fa-brands fa-css3-alt", label: "CSS Grid" },
-        { icon: "fa-solid fa-location-dot", label: "Geocoding" },
-        { icon: "fa-solid fa-chart-area", label: "SVG Charts" },
-        { icon: "fa-brands fa-html5", label: "HTML5" },
-      ],
-    },
-    challenges: {
-      heading: "Challenges & Learnings",
-      paragraphs: [
-        "OpenWeatherMap's free tier limits requests to 60/min — rapid city-search typing would exhaust the quota instantly.",
-        "Drawing responsive SVG charts without a library required manually computing viewBox scaling across different screen sizes.",
-      ],
-      highlight: {
-        title: "The Fix",
-        body: "Added 400ms debounce on the search input and a local sessionStorage cache keyed by city name — API calls dropped by 80% during typical usage.",
-      },
-    },
-    outcome: {
-      heading: "Final Outcome",
-      paragraphs: [
-        "A fully responsive, zero-dependency weather app that scores 98 on Lighthouse Performance. Used as a teaching example for API integration workshops.",
-      ],
-      img: "https://images.unsplash.com/photo-1561484930-998b6a7b22e8?auto=format&fit=crop&w=1200&q=80",
-      imgAlt: "Weather App Screenshot",
-    },
-    nextProject: { label: "Portfolio 2026", id: 5 },
-  },
-
-  // ── 5 ──────────────────────────────────────────────────────
-  {
-    id: 5,
-    title: "Portfolio 2026",
-    tech: "React • CSS • Animations • Responsive UI",
-    img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80",
-    link: "/projects/5",
-
-    subtitle:
-      "A performance-obsessed personal portfolio with micro-animations, dark mode, and a perfect Lighthouse score.",
-    heroImg:
-      "https://images.unsplash.com/photo-1545670723-196ed0954986?auto=format&fit=crop&w=1400&q=80",
-    liveUrl: "#",
-    githubUrl: "#",
-    meta: [
-      { label: "Role", value: "Designer & Dev" },
       { label: "Timeline", value: "3 Weeks" },
-      { label: "Type", value: "Personal Brand" },
+      { label: "Type", value: "Personal Project" }
     ],
-    overview: {
-      heading: "The Problem & Solution",
-      paragraphs: [
-        "Most developer portfolios are either bland template clones or over-engineered 3D showcases that sacrifice load speed for visual flair.",
-        "Portfolio 2026 finds the balance — hand-crafted CSS animations, a dark/light theme, scroll-triggered reveals, and a sub-1s load time on mobile.",
-      ],
-    },
-    features: {
-      heading: "Key Features",
-      items: [
-        {
-          icon: "fa-solid fa-moon",
-          title: "Dark / Light Mode",
-          description:
-            "Theme persisted to localStorage and synced with prefers-color-scheme media query on first visit.",
-        },
-        {
-          icon: "fa-solid fa-wand-sparkles",
-          title: "Scroll Animations",
-          description:
-            "IntersectionObserver-based reveal system with staggered delays — no GSAP dependency.",
-        },
-        {
-          icon: "fa-solid fa-mobile-alt",
-          title: "Responsive Design",
-          description:
-            "Fluid typography with clamp(), intrinsic grid layouts, and touch-optimised navigation.",
-        },
-      ],
-    },
-    techStack: {
-      heading: "Technology Stack",
-      description:
-        "React SPA with zero UI library dependency — every component is hand-crafted.",
-      items: [
-        { icon: "fa-brands fa-react", label: "React.js" },
-        { icon: "fa-brands fa-css3-alt", label: "CSS3" },
-        { icon: "fa-solid fa-code", label: "Vite" },
-        { icon: "fa-brands fa-html5", label: "HTML5" },
-        { icon: "fa-solid fa-moon", label: "Dark Mode" },
-        { icon: "fa-solid fa-cloud", label: "Vercel" },
-      ],
-    },
-    challenges: {
-      heading: "Challenges & Learnings",
-      paragraphs: [
-        "Getting smooth scroll animations without layout shift required careful use of will-change and transform-only properties.",
-        "Maintaining a consistent design system without a component library meant building a robust CSS variable architecture from scratch.",
-      ],
-      highlight: {
-        title: "The Fix",
-        body: "Adopted a token-based CSS variable system (spacing, typography, colour) similar to a design system — making global theming changes a one-line edit.",
-      },
-    },
-    outcome: {
-      heading: "Final Outcome",
-      paragraphs: [
-        "100 / 100 / 100 / 100 Lighthouse score. Sub-800ms LCP on 3G. The portfolio directly led to 2 freelance project inquiries within the first week of launch.",
-      ],
-      img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80",
-      imgAlt: "Portfolio Screenshot",
-    },
-    nextProject: { label: "Realtime Chat App", id: 6 },
-  },
 
-  // ── 6 ──────────────────────────────────────────────────────
-  {
-    id: 6,
-    title: "Realtime Chat App",
-    tech: "MERN • Socket.io • JWT • REST API",
-    img: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80",
-    link: "/projects/6",
-
-    subtitle:
-      "A WhatsApp-style messaging app with rooms, online presence, typing indicators, and file sharing.",
-    heroImg:
-      "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?auto=format&fit=crop&w=1400&q=80",
-    liveUrl: "#",
-    githubUrl: "#",
-    meta: [
-      { label: "Role", value: "Full Stack Dev" },
-      { label: "Timeline", value: "5 Weeks" },
-      { label: "Type", value: "Personal Project" },
+    highlights: [
+      "Full JWT auth lifecycle",
+      "Protected REST endpoints",
+      "Fast client side note search"
     ],
-    overview: {
-      heading: "The Problem & Solution",
+
+    problemStatement: {
+      heading: "Overview",
       paragraphs: [
-        "Building a realtime app from scratch is a rite of passage for backend developers — it surfaces deep knowledge of event-driven architecture and WebSocket lifecycle management.",
-        "This chat app supports multi-room messaging, online/offline presence, typing indicators, and image sharing — all built on a hand-rolled Socket.io + Express backend.",
-      ],
+        "Built to master JWT state persistence and private routing in React."
+      ]
     },
-    features: {
-      heading: "Key Features",
-      items: [
-        {
-          icon: "fa-solid fa-plug",
-          title: "Realtime Messaging",
-          description:
-            "Sub-100ms message delivery via Socket.io rooms with automatic reconnection on network drop.",
-        },
-        {
-          icon: "fa-solid fa-circle",
-          title: "Online Presence",
-          description:
-            "Live online/offline indicators updated on socket connect and disconnect events.",
-        },
-        {
-          icon: "fa-solid fa-image",
-          title: "File Sharing",
-          description:
-            "Drag-and-drop image uploads stored on Cloudinary with thumbnail previews in-chat.",
-        },
-      ],
+
+    targetUsers: "Individuals seeking clean private note taking.",
+    goals: [
+      "Implement robust user authentication cycle."
+    ],
+
+    architecture: {
+      summary: "MERN architecture with protected Express routes.",
+      frontend: "React SPA.",
+      backend: "Node Express API.",
+      database: "MongoDB Atlas.",
+      authentication: "JWT + Bcrypt.",
+      deployment: "Vercel."
     },
-    techStack: {
+
+    backend: "Express.js REST API.",
+    frontend: "React SPA.",
+    database: "MongoDB Atlas.",
+    authentication: "JWT auth.",
+    deployment: "Vercel.",
+
+    technologies: {
       heading: "Technology Stack",
-      description:
-        "MERN stack with Socket.io layered on top of the Express server.",
+      description: "MERN Stack",
+      categories: [
+        { name: "Stack", items: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT"] }
+      ],
       items: [
         { icon: "fa-brands fa-react", label: "React.js" },
         { icon: "fa-brands fa-node-js", label: "Node.js" },
-        { icon: "fa-solid fa-database", label: "MongoDB" },
-        { icon: "fa-solid fa-plug", label: "Socket.io" },
-        { icon: "fa-solid fa-lock", label: "JWT" },
-        { icon: "fa-solid fa-image", label: "Cloudinary" },
-      ],
+        { icon: "fa-solid fa-database", label: "MongoDB" }
+      ]
     },
-    challenges: {
-      heading: "Challenges & Learnings",
-      paragraphs: [
-        "Socket rooms and JWT auth don't integrate out of the box — middleware runs only at handshake time, not per-event.",
-        "Message ordering became inconsistent under high concurrency due to async MongoDB writes arriving out of sequence.",
-      ],
-      highlight: {
-        title: "The Fix",
-        body: "Added a monotonic sequence counter to each message document and sort on the client — messages now always render in correct order regardless of write latency.",
-      },
-    },
-    outcome: {
-      heading: "Final Outcome",
-      paragraphs: [
-        "Handles 50 concurrent test users with stable sub-150ms round-trip latency. Deployed on Render with a MongoDB Atlas free tier — runs at zero cost.",
-      ],
-      img: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
-      imgAlt: "Chat App Screenshot",
-    },
-    nextProject: { label: "Expense Tracker", id: 7 },
-  },
 
-  // ── 7 ──────────────────────────────────────────────────────
-  {
-    id: 7,
-    title: "Expense Tracker",
-    tech: "React • Context API • Charts",
-    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
-    link: "/projects/7",
-
-    subtitle:
-      "A personal finance tracker with category budgets, spending charts, and monthly reports.",
-    heroImg:
-      "https://images.unsplash.com/photo-1579621970795-87facc2f976d?auto=format&fit=crop&w=1400&q=80",
-    liveUrl: "#",
-    githubUrl: "#",
-    meta: [
-      { label: "Role", value: "Frontend Dev" },
-      { label: "Timeline", value: "3 Weeks" },
-      { label: "Type", value: "Utility App" },
-    ],
-    overview: {
-      heading: "The Problem & Solution",
-      paragraphs: [
-        "Spreadsheets are the default expense tracker for most people, but they have no visual feedback and break the moment a formula is wrong.",
-        "Expense Tracker gives users a visual breakdown of spending by category, monthly trend lines, and a budget vs. actual comparison — all persisted in localStorage.",
-      ],
-    },
     features: {
       heading: "Key Features",
       items: [
         {
-          icon: "fa-solid fa-chart-pie",
-          title: "Category Breakdown",
-          description:
-            "Recharts donut chart showing spending split across 8 predefined categories in real time.",
-        },
-        {
-          icon: "fa-solid fa-sliders",
-          title: "Budget Limits",
-          description:
-            "Per-category budget caps with colour-coded warnings when spend exceeds 80% of limit.",
-        },
-        {
-          icon: "fa-solid fa-file-export",
-          title: "CSV Export",
-          description:
-            "One-click export of filtered transactions to CSV for use in external spreadsheet tools.",
-        },
-      ],
+          icon: "fa-solid fa-lock",
+          title: "JWT Encryption",
+          description: "Secure session tokens."
+        }
+      ]
     },
-    techStack: {
-      heading: "Technology Stack",
-      description:
-        "Lightweight React app — no backend, no database — proving power of client-side state.",
-      items: [
-        { icon: "fa-brands fa-react", label: "React.js" },
-        { icon: "fa-solid fa-code", label: "Context API" },
-        { icon: "fa-solid fa-chart-pie", label: "Recharts" },
-        { icon: "fa-brands fa-css3-alt", label: "CSS Modules" },
-        { icon: "fa-solid fa-database", label: "localStorage" },
-        { icon: "fa-solid fa-code", label: "Vite" },
-      ],
-    },
-    challenges: {
-      heading: "Challenges & Learnings",
-      paragraphs: [
-        "Context re-renders on every transaction add caused noticeable lag on the chart when the transaction list exceeded 200 items.",
-        "localStorage has a 5MB cap — storing large transaction histories in raw JSON hit the limit quickly.",
-      ],
-      highlight: {
-        title: "The Fix",
-        body: "Split the Context into a data context and a UI context — charts only re-render when transaction data changes, not on filter/sort state changes. Compressed stored JSON using lz-string.",
-      },
-    },
-    outcome: {
-      heading: "Final Outcome",
-      paragraphs: [
-        "Handles 1,000+ transactions with no UI stutter. Used by 3 friends as their daily expense tracker. Positive feedback on the budget warning colour system.",
-      ],
-      img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
-      imgAlt: "Expense Tracker Charts",
-    },
-    nextProject: { label: "Finance Dashboard", id: 8 },
-  },
 
-  // ── 8 ──────────────────────────────────────────────────────
-  {
-    id: 8,
-    title: "Finance Dashboard",
-    tech: "React • Tailwind • Charts",
-    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
-    link: "/projects/8",
-
-    subtitle:
-      "An executive-level financial analytics dashboard with live stock tickers, P&L charts, and portfolio breakdown.",
-    heroImg:
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1400&q=80",
-    liveUrl: "#",
-    githubUrl: "#",
-    meta: [
-      { label: "Role", value: "Frontend Dev" },
-      { label: "Timeline", value: "4 Weeks" },
-      { label: "Type", value: "Dashboard UI" },
+    gallery: [
+      { src: "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1200&q=80", title: "Note Editor", caption: "Clean rich note editor view." }
     ],
+
     overview: {
-      heading: "The Problem & Solution",
-      paragraphs: [
-        "Finance teams rely on Excel dashboards that are static, hard to share, and require manual refresh. Modern data deserves a modern UI.",
-        "Finance Dashboard is a React-based analytics interface built for finance teams who need live KPIs, drillable charts, and a mobile-friendly layout that works in board meetings.",
-      ],
+      heading: "Overview",
+      paragraphs: ["A clean personal notes manager."]
     },
-    features: {
-      heading: "Key Features",
-      items: [
-        {
-          icon: "fa-solid fa-chart-line",
-          title: "P&L Line Charts",
-          description:
-            "Month-over-month profit and loss visualization with zoom, pan, and threshold annotations.",
-        },
-        {
-          icon: "fa-solid fa-table",
-          title: "Data Tables",
-          description:
-            "Sortable, filterable tables with virtual scrolling to handle 10,000+ row datasets smoothly.",
-        },
-        {
-          icon: "fa-solid fa-download",
-          title: "PDF Reports",
-          description:
-            "One-click PDF export of any chart using html2canvas and jsPDF — formatted for A4 print.",
-        },
-      ],
-    },
-    techStack: {
-      heading: "Technology Stack",
-      description:
-        "React frontend with Recharts for data viz and Tailwind for rapid UI composition.",
-      items: [
-        { icon: "fa-brands fa-react", label: "React.js" },
-        { icon: "fa-solid fa-wind", label: "Tailwind" },
-        { icon: "fa-solid fa-chart-line", label: "Recharts" },
-        { icon: "fa-solid fa-table", label: "TanStack" },
-        { icon: "fa-solid fa-file-pdf", label: "jsPDF" },
-        { icon: "fa-solid fa-code", label: "Vite" },
-      ],
-    },
+
     challenges: {
-      heading: "Challenges & Learnings",
-      paragraphs: [
-        "Recharts re-renders the entire SVG on every data tick update, causing frame drops on the live stock ticker widget.",
-        "PDF export via html2canvas captured blurry charts on retina displays due to devicePixelRatio mismatch.",
-      ],
-      highlight: {
-        title: "The Fix",
-        body: "Memoised chart components with React.memo and moved the ticker to a separate isolated React tree. Set canvas scale to window.devicePixelRatio before html2canvas capture.",
-      },
+      heading: "Challenges",
+      paragraphs: ["State persistence across reloads."],
+      highlight: { title: "Token Storage", body: "Stored tokens securely with automatic auth headers." }
     },
+
     outcome: {
-      heading: "Final Outcome",
-      paragraphs: [
-        "Delivered as a UI kit to a startup's finance team. Dashboard renders 60fps on a 3-year-old MacBook. PDF exports are pixel-perfect on retina screens.",
-      ],
-      img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-      imgAlt: "Finance Dashboard",
+      heading: "Outcome",
+      paragraphs: ["Fully functional note app."],
+      img: "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1200&q=80",
+      imgAlt: "SecureNotes"
     },
-    nextProject: { label: "Job Portal", id: 9 },
-  },
 
-  // ── 9 ──────────────────────────────────────────────────────
-  {
-    id: 9,
-    title: "Job Portal",
-    tech: "MERN • JWT • Admin Panel",
-    img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80",
-    link: "/projects/9",
-
-    subtitle:
-      "A full-stack job listing platform with employer dashboards, applicant tracking, and role-based access.",
-    heroImg:
-      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1400&q=80",
-    liveUrl: "#",
-    githubUrl: "#",
-    meta: [
-      { label: "Role", value: "Full Stack Dev" },
-      { label: "Timeline", value: "7 Weeks" },
-      { label: "Type", value: "Platform MVP" },
-    ],
-    overview: {
-      heading: "The Problem & Solution",
-      paragraphs: [
-        "Small businesses can't afford enterprise ATS (Applicant Tracking Systems) like Workday or Greenhouse — they end up managing applications in email.",
-        "Job Portal provides SMEs with a free, self-hosted job board — employers post listings, candidates apply with resume upload, and admins manage everything through a dedicated panel.",
-      ],
-    },
-    features: {
-      heading: "Key Features",
-      items: [
-        {
-          icon: "fa-solid fa-briefcase",
-          title: "Job Listings",
-          description:
-            "Employers create richly formatted job posts with tags, salary ranges, and remote/on-site filters.",
-        },
-        {
-          icon: "fa-solid fa-user-check",
-          title: "Applicant Tracking",
-          description:
-            "Kanban-style ATS for employers — move candidates through Applied → Reviewed → Interview → Offer.",
-        },
-        {
-          icon: "fa-solid fa-user-shield",
-          title: "Admin Panel",
-          description:
-            "Super-admin dashboard to manage users, listings, and flag/remove inappropriate content.",
-        },
-      ],
-    },
-    techStack: {
-      heading: "Technology Stack",
-      description:
-        "MERN stack with a dedicated admin micro-app built with the same React codebase.",
-      items: [
-        { icon: "fa-brands fa-react", label: "React.js" },
-        { icon: "fa-brands fa-node-js", label: "Node.js" },
-        { icon: "fa-solid fa-database", label: "MongoDB" },
-        { icon: "fa-solid fa-server", label: "Express" },
-        { icon: "fa-solid fa-lock", label: "JWT" },
-        { icon: "fa-solid fa-cloud", label: "Render" },
-      ],
-    },
-    challenges: {
-      heading: "Challenges & Learnings",
-      paragraphs: [
-        "Multi-role auth (Candidate, Employer, Admin) with a single JWT needed careful middleware design to avoid privilege escalation.",
-        "File uploads (resumes) stored as base64 in MongoDB balloned document sizes and slowed queries.",
-      ],
-      highlight: {
-        title: "The Fix",
-        body: "Stored files on Cloudinary and saved only the URL in MongoDB. Middleware now extracts role from the JWT payload and runs a role-guard before every protected route.",
-      },
-    },
-    outcome: {
-      heading: "Final Outcome",
-      paragraphs: [
-        "MVP deployed to Render. Tested with 3 mock employer accounts and 20 candidate accounts. Resume upload, ATS board, and admin panel all working end-to-end.",
-      ],
-      img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80",
-      imgAlt: "Job Portal Dashboard",
-    },
-    nextProject: { label: "E-Commerce Store", id: 10 },
-  },
-
-  // ── 10 ─────────────────────────────────────────────────────
-  {
-    id: 10,
-    title: "E-Commerce Store",
-    tech: "React • Firebase • Stripe",
-    img: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=1200&q=80",
-    link: "/projects/10",
-
-    subtitle:
-      "A multi-category online store with product filtering, wishlist, cart, and full Stripe checkout.",
-    heroImg:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1400&q=80",
-    liveUrl: "#",
-    githubUrl: "#",
-    meta: [
-      { label: "Role", value: "Full Stack Dev" },
-      { label: "Timeline", value: "6 Weeks" },
-      { label: "Type", value: "E-Commerce MVP" },
-    ],
-    overview: {
-      heading: "The Problem & Solution",
-      paragraphs: [
-        "Building a credible e-commerce portfolio project means going beyond a static product grid — it needs a real cart, real payments, and real auth.",
-        "This store covers the full shopping lifecycle: browse → filter → wishlist → cart → Stripe checkout → order confirmation email — backed by Firebase for zero-infrastructure deployment.",
-      ],
-    },
-    features: {
-      heading: "Key Features",
-      items: [
-        {
-          icon: "fa-solid fa-filter",
-          title: "Advanced Filters",
-          description:
-            "Client-side filtering by category, price range, rating, and availability with URL-synced state.",
-        },
-        {
-          icon: "fa-solid fa-heart",
-          title: "Wishlist",
-          description:
-            "Persistent wishlist synced to the user's Firestore doc — survives logout and cross-device.",
-        },
-        {
-          icon: "fa-brands fa-stripe-s",
-          title: "Stripe Checkout",
-          description:
-            "Full Stripe integration with test card support, order summary, and post-payment redirect.",
-        },
-      ],
-    },
-    techStack: {
-      heading: "Technology Stack",
-      description:
-        "React + Firebase for fast iteration with Stripe handling all payment complexity.",
-      items: [
-        { icon: "fa-brands fa-react", label: "React.js" },
-        { icon: "fa-solid fa-fire", label: "Firebase" },
-        { icon: "fa-brands fa-stripe-s", label: "Stripe" },
-        { icon: "fa-solid fa-database", label: "Firestore" },
-        { icon: "fa-solid fa-lock", label: "Auth" },
-        { icon: "fa-solid fa-cloud", label: "Vercel" },
-      ],
-    },
-    challenges: {
-      heading: "Challenges & Learnings",
-      paragraphs: [
-        "URL-synced filter state caused the browser back button to behave unexpectedly, replacing the product grid with an empty state.",
-        "Stripe webhooks need a public URL during development — local tunnelling with ngrok kept expiring mid-session.",
-      ],
-      highlight: {
-        title: "The Fix",
-        body: "Used the Stripe CLI for local webhook testing instead of ngrok — it streams events directly to localhost without exposing a public URL.",
-      },
-    },
-    outcome: {
-      heading: "Final Outcome",
-      paragraphs: [
-        "End-to-end purchase flow works with Stripe test cards. Lighthouse: 92 Performance, 100 Accessibility. Filter state persists through page refresh and browser back navigation.",
-      ],
-      img: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1200&q=80",
-      imgAlt: "E-Commerce Store",
-    },
-    nextProject: { label: "AI Notes App", id: 11 },
-  },
-
-  // ── 11 ─────────────────────────────────────────────────────
-  {
-    id: 11,
-    title: "AI Notes App",
-    tech: "React • Node.js • OpenAI API",
-    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-    link: "/projects/11",
-
-    subtitle:
-      "A smart note-taking app that summarises, tags, and answers questions about your notes using GPT-4.",
-    heroImg:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1400&q=80",
-    liveUrl: "#",
-    githubUrl: "#",
-    meta: [
-      { label: "Role", value: "Full Stack Dev" },
-      { label: "Timeline", value: "4 Weeks" },
-      { label: "Type", value: "AI Product" },
-    ],
-    overview: {
-      heading: "The Problem & Solution",
-      paragraphs: [
-        "Note-taking apps are everywhere but none actively help you understand or recall what you've written. They're passive stores, not active thinking tools.",
-        "AI Notes App lets users write freely, then ask GPT-4 questions about their notes ('What did I write about Redux last week?'), auto-generate summaries, and get smart tag suggestions.",
-      ],
-    },
-    features: {
-      heading: "Key Features",
-      items: [
-        {
-          icon: "fa-solid fa-robot",
-          title: "Ask Your Notes",
-          description:
-            "Natural language Q&A over your personal notes using GPT-4 with context injection via prompt engineering.",
-        },
-        {
-          icon: "fa-solid fa-wand-sparkles",
-          title: "Auto Summarise",
-          description:
-            "One-click GPT-4 summary of any note — distils key points into 3 bullet points.",
-        },
-        {
-          icon: "fa-solid fa-tags",
-          title: "Smart Tags",
-          description:
-            "GPT-4 analyses note content and suggests relevant tags automatically on save.",
-        },
-      ],
-    },
-    techStack: {
-      heading: "Technology Stack",
-      description:
-        "React frontend with a thin Node.js proxy server to keep the OpenAI API key server-side.",
-      items: [
-        { icon: "fa-brands fa-react", label: "React.js" },
-        { icon: "fa-brands fa-node-js", label: "Node.js" },
-        { icon: "fa-solid fa-robot", label: "OpenAI" },
-        { icon: "fa-solid fa-database", label: "MongoDB" },
-        { icon: "fa-solid fa-server", label: "Express" },
-        { icon: "fa-solid fa-lock", label: "JWT" },
-      ],
-    },
-    challenges: {
-      heading: "Challenges & Learnings",
-      paragraphs: [
-        "GPT-4 context windows are limited — injecting all of a user's notes into each prompt quickly exceeded the token limit for prolific writers.",
-        "Streaming responses from OpenAI to the React client required a non-trivial SSE (Server-Sent Events) implementation on the Node proxy.",
-      ],
-      highlight: {
-        title: "The Fix",
-        body: "Implemented semantic search using text-embedding-ada-002 to retrieve only the top 5 relevant notes by cosine similarity before injecting into the GPT-4 prompt.",
-      },
-    },
-    outcome: {
-      heading: "Final Outcome",
-      paragraphs: [
-        "Successfully handles users with 200+ notes. Average Q&A response time is 2.1s. The auto-tagging feature has 87% user approval in informal testing.",
-      ],
-      img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80",
-      imgAlt: "AI Notes App",
-    },
-    nextProject: { label: "Portfolio v2", id: 12 },
-  },
-
-  // ── 12 ─────────────────────────────────────────────────────
-  {
-    id: 12,
-    title: "Portfolio v2",
-    tech: "React • Animations • UI/UX",
-    img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
-    link: "/projects/12",
-
-    subtitle:
-      "The second iteration of my personal portfolio — focused on motion design, typography, and storytelling.",
-    heroImg:
-      "https://images.unsplash.com/photo-1545670723-196ed0954986?auto=format&fit=crop&w=1400&q=80",
-    liveUrl: "#",
-    githubUrl: "#",
-    meta: [
-      { label: "Role", value: "Designer & Dev" },
-      { label: "Timeline", value: "3 Weeks" },
-      { label: "Type", value: "Personal Brand" },
-    ],
-    overview: {
-      heading: "The Problem & Solution",
-      paragraphs: [
-        "Portfolio v1 was functional but forgettable — a standard hero + projects + contact structure with no personality.",
-        "Portfolio v2 leans into editorial design — big typography, reveal animations on scroll, a custom cursor, and project cards that feel handcrafted rather than templated.",
-      ],
-    },
-    features: {
-      heading: "Key Features",
-      items: [
-        {
-          icon: "fa-solid fa-arrow-pointer",
-          title: "Custom Cursor",
-          description:
-            "SVG magnetic cursor that morphs shape and size based on hovered element type.",
-        },
-        {
-          icon: "fa-solid fa-text-height",
-          title: "Kinetic Typography",
-          description:
-            "Headline text split into spans and animated with staggered character reveals on page load.",
-        },
-        {
-          icon: "fa-solid fa-layer-group",
-          title: "Page Transitions",
-          description:
-            "Smooth page-to-page transitions using a clip-path curtain animation with React Router.",
-        },
-      ],
-    },
-    techStack: {
-      heading: "Technology Stack",
-      description:
-        "React + GSAP for complex animation sequences that CSS alone can't handle.",
-      items: [
-        { icon: "fa-brands fa-react", label: "React.js" },
-        { icon: "fa-solid fa-wand-sparkles", label: "GSAP" },
-        { icon: "fa-brands fa-css3-alt", label: "CSS3" },
-        { icon: "fa-solid fa-code", label: "Vite" },
-        { icon: "fa-solid fa-cloud", label: "Vercel" },
-        { icon: "fa-solid fa-mobile", label: "Responsive" },
-      ],
-    },
-    challenges: {
-      heading: "Challenges & Learnings",
-      paragraphs: [
-        "GSAP ScrollTrigger and React's rendering cycle conflict — animations would re-run on re-renders and break the scroll position.",
-        "The custom cursor caused a noticeable lag on lower-end devices due to RAF (requestAnimationFrame) running at 120fps unnecessarily.",
-      ],
-      highlight: {
-        title: "The Fix",
-        body: "Wrapped all GSAP initialisations in useLayoutEffect with a cleanup function that killed all ScrollTrigger instances. Throttled cursor RAF to 60fps with a timestamp check.",
-      },
-    },
-    outcome: {
-      heading: "Final Outcome",
-      paragraphs: [
-        "Portfolio v2 received 3x more recruiter messages than v1 within the first month. Featured in a 'Best Developer Portfolios 2025' Twitter thread with 2,400 likes.",
-      ],
-      img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80",
-      imgAlt: "Portfolio v2 Screenshot",
-    },
-    nextProject: { label: "Travel Booking", id: 13 },
-  },
-
-  // ── 13 ─────────────────────────────────────────────────────
-  {
-    id: 13,
-    title: "Travel Booking",
-    tech: "React • Node.js • MongoDB",
-    img: "https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&w=1200&q=80",
-    link: "/projects/13",
-
-    subtitle:
-      "A full-stack travel booking platform with destination search, date pickers, booking management, and payment.",
-    heroImg:
-      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1400&q=80",
-    liveUrl: "#",
-    githubUrl: "#",
-    meta: [
-      { label: "Role", value: "Full Stack Dev" },
-      { label: "Timeline", value: "8 Weeks" },
-      { label: "Type", value: "Platform MVP" },
-    ],
-    overview: {
-      heading: "The Problem & Solution",
-      paragraphs: [
-        "Travel booking is one of the most complex UI/UX domains — date range pickers, availability calendars, multi-passenger forms, and dynamic pricing all on one page.",
-        "This project tackles that complexity head-on: a full-stack MERN booking platform with destination search, availability checking, booking confirmation, and a user booking history dashboard.",
-      ],
-    },
-    features: {
-      heading: "Key Features",
-      items: [
-        {
-          icon: "fa-solid fa-plane",
-          title: "Destination Search",
-          description:
-            "Instant autocomplete for 500+ destinations with thumbnail previews and popularity sorting.",
-        },
-        {
-          icon: "fa-solid fa-calendar-days",
-          title: "Availability Calendar",
-          description:
-            "Real-time availability checking that blocks already-booked dates using a MongoDB date-range query.",
-        },
-        {
-          icon: "fa-solid fa-receipt",
-          title: "Booking Management",
-          description:
-            "Users can view, modify, or cancel bookings from a personal dashboard with refund status tracking.",
-        },
-      ],
-    },
-    techStack: {
-      heading: "Technology Stack",
-      description:
-        "MERN stack with date-fns for calendar logic and Stripe for secure payments.",
-      items: [
-        { icon: "fa-brands fa-react", label: "React.js" },
-        { icon: "fa-brands fa-node-js", label: "Node.js" },
-        { icon: "fa-solid fa-database", label: "MongoDB" },
-        { icon: "fa-solid fa-server", label: "Express" },
-        { icon: "fa-solid fa-calendar", label: "date-fns" },
-        { icon: "fa-brands fa-stripe-s", label: "Stripe" },
-      ],
-    },
-    challenges: {
-      heading: "Challenges & Learnings",
-      paragraphs: [
-        "Checking date-range availability in MongoDB is deceptively complex — naive queries miss overlapping bookings that start before and end after the requested range.",
-        "The multi-step booking form lost state on browser back, frustrating users who had filled in passenger details.",
-      ],
-      highlight: {
-        title: "The Fix",
-        body: "Used the correct overlap query: find bookings where startDate < requestedEnd AND endDate > requestedStart. Persisted form state to sessionStorage between steps.",
-      },
-    },
-    outcome: {
-      heading: "Final Outcome",
-      paragraphs: [
-        "Full booking lifecycle working end-to-end with Stripe test payments. Availability calendar is accurate to the minute. The project is the most complex full-stack build in this portfolio.",
-      ],
-      img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80",
-      imgAlt: "Travel Booking Platform",
-    },
-    nextProject: { label: "StudyBuddy.AI", id: 1 },
-  },
+    learnings: ["JWT Auth implementation."],
+    futureImprovements: ["Markdown formatting support."],
+    nextProject: { label: "MarketFlow", id: "marketflow", slug: "marketflow" }
+  }
 ];
 
 export default projectsData;

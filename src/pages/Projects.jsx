@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FaMagnifyingGlass, FaBoxOpen } from "react-icons/fa6";
 
-import projectsData from "@/data/projectsData.json";
+import projectsData from "@/data/projectsData";
 import ProjectCard from "@/components/projects/ProjectCard";
 import Pagination from "@/components/projects/Pagination";
 import ProjectSkeleton from "@/components/projects/ProjectSkeleton";
@@ -24,16 +24,21 @@ export default function Projects() {
     const t = setTimeout(() => {
       setProjects(projectsData);
       setLoading(false);
-    }, 800);
+    }, 400);
     return () => clearTimeout(t);
   }, []);
 
   const filteredProjects = projects.filter((p) => {
     const q = searchTerm.toLowerCase();
+    const techStr = p.tech || (p.technologies?.items ? p.technologies.items.map((i) => i.label).join(" ") : "");
     const matchSearch =
-      p.title.toLowerCase().includes(q) || p.tech.toLowerCase().includes(q);
+      p.title.toLowerCase().includes(q) ||
+      techStr.toLowerCase().includes(q) ||
+      (p.shortDescription && p.shortDescription.toLowerCase().includes(q)) ||
+      (p.subtitle && p.subtitle.toLowerCase().includes(q));
+
     const matchFilter =
-      filterTech === "all" || p.tech.toLowerCase().includes(filterTech);
+      filterTech === "all" || techStr.toLowerCase().includes(filterTech.toLowerCase());
     return matchSearch && matchFilter;
   });
 
@@ -62,17 +67,20 @@ export default function Projects() {
       {/* ══ COMPACT PAGE HEADER ═════════════════════════════ */}
       <div className="pj-topbar">
         <div className="pj-topbar__left">
-         
+          <span className="pj-badge">
+            <span className="pj-badge__dot" />
+            Engineering Portfolio
+          </span>
           <h1 className="pj-heading">
             Projects
             <span className="pj-heading__accent">.</span>
           </h1>
           <p className="pj-subheading">
-            Full-stack applications built with real-world engineering practices.
+            Production full-stack applications &amp; systems built with real-world engineering practices.
           </p>
         </div>
 
-        {/* live count — immediately tells HR how many projects */}
+        {/* live count */}
         <div className="pj-topbar__stat">
           {loading ? (
             <span className="pj-stat-skeleton" />
@@ -116,7 +124,7 @@ export default function Projects() {
                 <ProjectSkeleton key={i} />
               ))
             : currentProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
+                <ProjectCard key={project.id || project.slug} project={project} />
               ))}
         </div>
 
@@ -161,7 +169,7 @@ export default function Projects() {
             <p className="pj-cta__label">Open Source</p>
             <h2 className="pj-cta__title">More on GitHub</h2>
             <p className="pj-cta__sub">
-              Explore full repos, commit history, and experiments.
+              Explore full repos, commit history, and production architecture.
             </p>
           </div>
           <a

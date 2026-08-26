@@ -1,92 +1,114 @@
 // src/components/projects/ProjectCard.jsx
-// Richer card: image → title → description → tech tags → action links
-// Each project in projectsData should have:
-//   { id, title, description, tech, img, github, live, link }
-
+import React from "react";
 import { Link } from "react-router-dom";
-import {
-  FaGithub,
-  FaArrowUpRightFromSquare,
-  FaArrowRight,
-} from "react-icons/fa6";
+import ProjectButtons from "./ProjectButtons";
+import TechBadge from "./TechBadge";
+import "@/styles/components/projects/ProjectCard.css";
 
-const ProjectCard = ({ project }) => {
-  const techList = project.tech
-    ? project.tech
-        .split(",")
+export default function ProjectCard({ project }) {
+  if (!project) return null;
+
+  const {
+    id,
+    slug,
+    title,
+    description,
+    shortDescription,
+    subtitle,
+    coverImage,
+    img,
+    tech,
+    technologies,
+    github,
+    githubUrl,
+    liveDemo,
+    liveUrl,
+    status,
+    features
+  } = project;
+
+  const displaySlug = slug || String(id);
+  const displayImage = coverImage || img;
+  const displayDesc = shortDescription || subtitle || description;
+  const githubLink = github || githubUrl;
+  const liveLink = liveDemo || liveUrl;
+
+  // Extract technology badges
+  const techList = technologies?.items
+    ? technologies.items.map((t) => t.label).slice(0, 5)
+    : tech
+    ? tech
+        .split(/[•·,]/)
         .map((t) => t.trim())
-        .slice(0, 4)
+        .filter(Boolean)
+        .slice(0, 5)
     : [];
 
+  // Top feature highlights (up to 2)
+  const topFeatures = features?.items?.slice(0, 2) || [];
+
   return (
-    <article className="pc-card">
-      {/* ── IMAGE ──────────────────────────────────────── */}
-      <div className="pc-image">
-        <img src={project.img} alt={project.title} loading="lazy" />
-        <div className="pc-image__overlay">
-          {project.link && (
-            <Link
-              to={project.link}
-              className="pc-overlay-btn"
-              aria-label={`View case study for ${project.title}`}
-            >
-              View Case Study <FaArrowRight />
-            </Link>
-          )}
-        </div>
+    <article className="project-card">
+      {/* ── CARD THUMBNAIL ───────────────────────────────── */}
+      <div className="project-card__media">
+        <Link to={`/projects/${displaySlug}`} className="project-card__img-link">
+          <img
+            src={displayImage}
+            alt={`${title} thumbnail`}
+            loading="lazy"
+            className="project-card__img"
+          />
+          <div className="project-card__overlay">
+            <span className="project-card__overlay-btn">View Case Study →</span>
+          </div>
+        </Link>
+        {status && (
+          <span className="project-card__status-tag">
+            {status}
+          </span>
+        )}
       </div>
 
-      {/* ── CONTENT ────────────────────────────────────── */}
-      <div className="pc-body">
-        {/* title row */}
-        <div className="pc-title-row">
-          <h3 className="pc-title">{project.title}</h3>
-          <div className="pc-link-btns">
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noreferrer"
-                className="pc-icon-btn"
-                aria-label="GitHub repository"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <FaGithub />
-              </a>
-            )}
-            {project.live && (
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noreferrer"
-                className="pc-icon-btn pc-icon-btn--live"
-                aria-label="Live demo"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <FaArrowUpRightFromSquare />
-              </a>
-            )}
-          </div>
-        </div>
+      {/* ── CARD CONTENT ─────────────────────────────────── */}
+      <div className="project-card__content">
+        <h3 className="project-card__title">
+          <Link to={`/projects/${displaySlug}`}>{title}</Link>
+        </h3>
 
-        {/* description */}
-        {project.description && (
-          <p className="pc-desc">{project.description}</p>
-        )}
+        <p className="project-card__desc">{displayDesc}</p>
 
-        {/* tech tags */}
-        {techList.length > 0 && (
-          <div className="pc-tags">
-            {techList.map((t) => (
-              <span key={t} className="pc-tag">
-                {t}
-              </span>
+        {/* Feature Highlights */}
+        {topFeatures.length > 0 && (
+          <div className="project-card__features">
+            {topFeatures.map((f, idx) => (
+              <div key={idx} className="project-card__feature-item">
+                <span className="project-card__feature-bullet">•</span>
+                <span className="project-card__feature-text">{f.title}</span>
+              </div>
             ))}
           </div>
         )}
+
+        {/* Technology Stack Pills */}
+        {techList.length > 0 && (
+          <div className="project-card__tech">
+            {techList.map((t, idx) => (
+              <TechBadge key={idx} tech={t} />
+            ))}
+          </div>
+        )}
+
+        {/* Action Buttons: GitHub, Live Demo, View Details */}
+        <div className="project-card__actions">
+          <ProjectButtons
+            github={githubLink}
+            liveDemo={liveLink}
+            slug={displaySlug}
+            showDetails={true}
+            size="small"
+          />
+        </div>
       </div>
     </article>
   );
-};
-
-export default ProjectCard;
+}

@@ -1,0 +1,112 @@
+/* src/styles/components/projects/ProjectButtons.css */
+.project-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+}
+
+.pj-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-ui, "Plus Jakarta Sans", sans-serif);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-sm, 8px);
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Primary Button */
+.pj-btn--primary {
+  background: linear-gradient(135deg, var(--primary, #2563eb) 0%, var(--primary-dark, #1d4ed8) 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+}
+
+.pj-btn--primary:hover {
+  background: linear-gradient(135deg, #3b82f6 0%, var(--primary, #2563eb) 100%);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+/* Secondary Button (GitHub) */
+.pj-btn--secondary {
+  background: var(--surface, #ffffff);
+  color: var(--text, #0f172a);
+  border: 1px solid var(--border, #e2e8f0);
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.08));
+}
+
+.pj-btn--secondary:hover {
+  background: var(--accent-soft, #f0f9ff);
+  color: var(--primary, #2563eb);
+  border-color: rgba(37, 99, 235, 0.3);
+  transform: translateY(-2px);
+}
+
+body.dark .pj-btn--secondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text, #f0f0f2);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+}
+
+body.dark .pj-btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Outline Button (View Details) */
+.pj-btn--outline {
+  background: transparent;
+  color: var(--muted, #475569);
+  border: 1px solid var(--border, #e2e8f0);
+}
+
+.pj-btn--outline:hover {
+  color: var(--primary, #2563eb);
+  border-color: rgba(37, 99, 235, 0.3);
+  background: rgba(37, 99, 235, 0.05);
+  transform: translateY(-2px);
+}
+
+body.dark .pj-btn--outline {
+  color: #94a3b8;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark .pj-btn--outline:hover {
+  color: #60a5fa;
+  border-color: rgba(96, 165, 250, 0.4);
+  background: rgba(96, 165, 250, 0.08);
+}
+
+.pj-btn--outline:hover .pj-btn-arrow {
+  transform: translateX(3px);
+}
+
+.pj-btn-icon {
+  font-size: 0.95rem;
+  transition: transform 0.2s ease;
+}
+
+/* Sizes */
+.project-buttons--small .pj-btn {
+  font-size: 0.8125rem;
+  padding: 0.4rem 0.75rem;
+}
+
+.project-buttons--large .pj-btn {
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.35rem;
+  border-radius: 10px;
+}

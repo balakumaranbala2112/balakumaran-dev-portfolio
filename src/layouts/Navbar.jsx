@@ -13,6 +13,7 @@ import {
   FaTwitter,
   FaCopyright,
   FaAngleDoubleLeft,
+  FaWhatsapp,
 } from "react-icons/fa";
 
 import { IoHomeSharp } from "react-icons/io5";
@@ -45,6 +46,20 @@ const SOCIAL_LINKS = [
     label: "Twitter",
   },
 ];
+
+const getWhatsAppUrl = () => {
+  const hour = new Date().getHours();
+  let greeting = "Hello";
+  if (hour < 12) {
+    greeting = "Good morning";
+  } else if (hour < 17) {
+    greeting = "Good afternoon";
+  } else {
+    greeting = "Good evening";
+  }
+  const message = `${greeting}! I visited your portfolio and would love to connect.`;
+  return `https://wa.me/919597437868?text=${encodeURIComponent(message)}`;
+};
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -116,6 +131,17 @@ const Navbar = () => {
 
           {/* Actions */}
           <div className="navbar__actions">
+            {/* WhatsApp Contact */}
+            <a
+              className="navbar__btn navbar__btn--whatsapp"
+              href={getWhatsAppUrl()}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Contact on WhatsApp"
+            >
+              <FaWhatsapp />
+            </a>
+
             {/* Theme Toggle */}
             <button
               className="navbar__btn navbar__btn--theme"
@@ -157,6 +183,17 @@ const Navbar = () => {
           <h2 className="navbar__mobile-logo navbar__brand">Balakumaran</h2>
 
           <div className="navbar__mobile-actions">
+            {/* WhatsApp Contact */}
+            <a
+              className="navbar__btn navbar__btn--whatsapp"
+              href={getWhatsAppUrl()}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Contact on WhatsApp"
+            >
+              <FaWhatsapp size={20} />
+            </a>
+
             <button
               className="navbar__btn navbar__btn--theme"
               aria-label="Toggle Theme"

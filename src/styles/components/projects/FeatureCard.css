@@ -1,0 +1,89 @@
+/* src/styles/components/projects/FeatureCard.css */
+.feature-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-radius: var(--radius-md, 12px);
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border, #e2e8f0);
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.08));
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feature-card:hover {
+  background: var(--accent-soft, #f0f9ff);
+  border-color: rgba(37, 99, 235, 0.3);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md, 0 6px 20px rgba(15, 23, 42, 0.1));
+}
+
+.feature-card__icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--primary, #2563eb);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  flex-shrink: 0;
+}
+
+.feature-card__icon {
+  font-size: 1.15rem;
+}
+
+.feature-card__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary, #2563eb);
+}
+
+.feature-card__content {
+  flex: 1;
+}
+
+.feature-card__title {
+  font-family: var(--font-heading, "Plus Jakarta Sans", sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text, #0f172a);
+  margin: 0 0 0.35rem 0;
+}
+
+.feature-card__desc {
+  font-size: 0.875rem;
+  color: var(--muted, #475569);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Dark Mode Overrides */
+body.dark .feature-card {
+  background: rgba(17, 17, 19, 0.7);
+  border-color: var(--border, #2e2e33);
+  box-shadow: none;
+}
+
+body.dark .feature-card:hover {
+  background: rgba(30, 41, 59, 0.7);
+  border-color: rgba(79, 142, 247, 0.35);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 0 15px rgba(79, 142, 247, 0.1);
+}
+
+body.dark .feature-card__icon-wrap {
+  background: rgba(79, 142, 247, 0.12);
+  color: #60a5fa;
+  border-color: rgba(79, 142, 247, 0.25);
+}
+
+body.dark .feature-card__title {
+  color: var(--text, #f0f0f2);
+}
+
+body.dark .feature-card__desc {
+  color: var(--muted, #a0a0ab);
+}

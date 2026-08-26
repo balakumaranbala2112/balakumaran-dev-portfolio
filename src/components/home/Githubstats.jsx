@@ -170,6 +170,10 @@ const GitHubStats = () => {
       ref={ref}
       aria-label="GitHub activity"
     >
+      <div className="ghs__dots-bg" aria-hidden="true" />
+      <div className="ghs__decor-dots ghs__decor-dots--1" aria-hidden="true" />
+      <div className="ghs__decor-dots ghs__decor-dots--2" aria-hidden="true" />
+
       <div className="ghs__container">
         {/* ── Header ──────────────────────────────────────────── */}
         <div className="ghs__header">

@@ -28,3 +28,10 @@ config.js
 
 .env
 .env.local
+
+# Firebase build cache
+.firebase
+
+# IDE & Agent workspace directories
+.agents
+.vite
